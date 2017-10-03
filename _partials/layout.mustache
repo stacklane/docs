@@ -15,19 +15,20 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-5">
+        <div class="col-3">
+            <div id="side" class="float-right">
             <div class="logo">
                 <a class="site" href="/" title="Stacklane">{{>logo-stacklane}}</a>
                 <a class="extension" href="/docs">docs</a>
             </div>
             <div class="nav-border"></div>
             <nav>
-                <h1 class="home">
+                <h6 class="home">
                     <a href="/">Home</a>
-                </h1>
-                <h1>
+                </h6>
+                <h6>
                     Data
-                </h1>
+                </h6>
                 <ul>
                     <li><a href="/data">Overview</a></li>
                     <li><a href="/data/simple">Simple</a></li>
@@ -35,9 +36,9 @@
                     <li><a href="/data/container">Containers</a></li>
                     <li><a href="/data/unique">Unique Values</a></li>
                 </ul>
-                <h1>
+                <h6>
                     Routing
-                </h1>
+                </h6>
                 <ul>
                     <li><a href="/routing">Overview</a></li>
                     <li><a href="/routing/js">JS Endpoint</a></li>
@@ -48,6 +49,7 @@
                     <li><a href="/routing/csp">CSP</a></li>
                 </ul>
             </nav>
+            </div>
         </div>
         <div class="col">
             {{$content}}Content{{/content}}

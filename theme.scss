@@ -81,6 +81,15 @@ $sl-logo-secondary: #13bdce;
 
 ///
 
+#side{
+  list-style-type: none;
+
+}
+
+#side a{
+  color: inherit;
+}
+
 #docs{
   position: absolute;
   top: 0;
