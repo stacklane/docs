@@ -13,47 +13,60 @@
 </head>
 
 <body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-5">
+            <div class="logo">
+                <a class="site" href="/" title="Stacklane">{{>logo-stacklane}}</a>
+                <a class="extension" href="/docs">docs</a>
+            </div>
+            <div class="nav-border"></div>
+            <nav>
+                <h1 class="home">
+                    <a href="/">Home</a>
+                </h1>
+                <h1>
+                    Data
+                </h1>
+                <ul>
+                    <li><a href="/data">Overview</a></li>
+                    <li><a href="/data/simple">Simple</a></li>
+                    <li><a href="/data/fields">Fields</a></li>
+                    <li><a href="/data/container">Containers</a></li>
+                    <li><a href="/data/unique">Unique Values</a></li>
+                </ul>
+                <h1>
+                    Routing
+                </h1>
+                <ul>
+                    <li><a href="/routing">Overview</a></li>
+                    <li><a href="/routing/js">JS Endpoint</a></li>
+                    <li><a href="/routing/mustache">Mustache View</a></li>
+                    <li><a href="/routing/chain">Chain</a></li>
+                    <li><a href="/routing/supplier">Supplier</a></li>
+                    <li><a href="/routing/errors">Errors</a></li>
+                    <li><a href="/routing/csp">CSP</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col">
+            {{$content}}Content{{/content}}
+        </div>
+    </div>
+
+</div>
+<!--
 <div id="docs">
 <div id="sidebar">
-    <div class="logo">
-        <a class="site" href="/" title="Stacklane">{{>logo-stacklane}}</a>
-        <a class="extension" href="/docs">docs</a>
-    </div>
-    <div class="nav-border"></div>
-    <nav>
-        <h1 class="home">
-            <a href="/">Home</a>
-        </h1>
-        <h1>
-            Data
-        </h1>
-        <ul>
-            <li><a href="/data">Overview</a></li>
-            <li><a href="/data/simple">Simple</a></li>
-            <li><a href="/data/fields">Fields</a></li>
-            <li><a href="/data/container">Containers</a></li>
-            <li><a href="/data/unique">Unique Values</a></li>
-        </ul>
-        <h1>
-            Routing
-        </h1>
-        <ul>
-            <li><a href="/routing">Overview</a></li>
-            <li><a href="/routing/js">JS Endpoint</a></li>
-            <li><a href="/routing/mustache">Mustache View</a></li>
-            <li><a href="/routing/chain">Chain</a></li>
-            <li><a href="/routing/supplier">Supplier</a></li>
-            <li><a href="/routing/errors">Errors</a></li>
-            <li><a href="/routing/csp">CSP</a></li>
-        </ul>
-    </nav>
+
 </div>
 
 <div id="content-wrapper">
 <div id="content">
-{{$content}}Content{{/content}}
+
 </div>
 </div>
 </div>
+-->
 </body>
 </html>
