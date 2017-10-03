@@ -14,9 +14,9 @@
 
 <body>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-3">
-            <div id="side" class="float-right">
+    <div class="row flex-xl-nowrap">
+        <div class="col-12 col-md-3 col-xl-2" id="side">
+            <div class="float-right">
             <div class="logo">
                 <a class="site" href="/" title="Stacklane">{{>logo-stacklane}}</a>
                 <a class="extension" href="/docs">docs</a>
@@ -51,7 +51,7 @@
             </nav>
             </div>
         </div>
-        <div class="col">
+        <div class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
             {{$content}}Content{{/content}}
         </div>
     </div>
