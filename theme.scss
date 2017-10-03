@@ -92,7 +92,7 @@ $sl-logo-secondary: #13bdce;
   -webkit-overflow-scrolling: touch;
 }
 
-#content{
+#content-wrapper{
   position: absolute;
   top: 0;
   left: 0;
@@ -104,6 +104,12 @@ $sl-logo-secondary: #13bdce;
   min-width: 1050px;
   transform: translateZ(0);
   outline: none
+}
+
+#content{
+  margin-left: calc((100% - 994px) / 2 + 226px);
+  width: 770px;
+  overflow-x: visible!important;
 }
 
 #sidebar{
