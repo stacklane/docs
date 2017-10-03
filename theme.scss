@@ -81,10 +81,25 @@ $sl-logo-secondary: #13bdce;
 
 ///
 
+.logo{
+  @include sl-logo-color($gray-600, $gray-600);
+}
+
+/*
 h1 {
   margin-bottom: 20px;
   padding-bottom: 9px;
   border-bottom: 1px solid #eee;
+}*/
+
+/**
+ * Article
+ */
+article header h1{
+  font-size: $h2-font-size;
+}
+article section h2{
+  font-size: $h4-font-size;
 }
 
 /*
@@ -133,7 +148,7 @@ h1 {
  * Dashboard
  */
 
-/* Placeholders */
+/* Placeholders
 .placeholders {
   padding-bottom: 3rem;
 }
@@ -142,6 +157,7 @@ h1 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
+*/
 
 /*
 #side{
