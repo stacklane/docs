@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/theme.css">
+
+    <!-- Imports -->
+    {{% svg /_logos/ as logo }}
+    {{% svg /_icons/ as icon }}
+</head>
+
+<body>
+<div id="docs">
+<div id="sidebar">
+    <div class="logo">
+        <a class="site" href="/" title="Stacklane">{{>logo-stacklane}}</a>
+        <a class="extension" href="/docs">docs</a>
+    </div>
+    <div class="nav-border"></div>
+    <nav>
+        <h1 class="home">
+            <a href="/">Home</a>
+        </h1>
+        <h1>
+            Data
+        </h1>
+        <ul>
+            <li><a href="/data">Overview</a></li>
+            <li><a href="/data/simple">Simple</a></li>
+            <li><a href="/data/fields">Fields</a></li>
+            <li><a href="/data/container">Containers</a></li>
+            <li><a href="/data/unique">Unique Values</a></li>
+        </ul>
+        <h1>
+            Routing
+        </h1>
+        <ul>
+            <li><a href="/routing">Overview</a></li>
+            <li><a href="/routing/js">JS Endpoint</a></li>
+            <li><a href="/routing/mustache">Mustache View</a></li>
+            <li><a href="/routing/chain">Chain</a></li>
+            <li><a href="/routing/supplier">Supplier</a></li>
+            <li><a href="/routing/errors">Errors</a></li>
+            <li><a href="/routing/csp">CSP</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div id="content">
+
+{{$content}}Content{{$content}}
+
+</div>
+</div>
+</body>
+</html>

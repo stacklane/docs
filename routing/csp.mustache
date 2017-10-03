@@ -1,0 +1,55 @@
+
+{{% partial /_partials/ }}
+
+{{<layout}}
+{{$content}}
+
+<article>
+    <header>
+        <h1>Content Security Policies</h1>
+
+        <p>
+           Learn more about how Stacklane applies CSP on your pages.
+        </p>
+    </header>
+
+
+    <section>
+        <h2>Automatic Behavior</h2>
+
+        <p>
+            HTML files are automatically analyzed to create a reasonable CSP file.
+
+            <ul>
+                <li><code>&lt;script src=" ... &gt;</code></li>
+                <li><code>&lt;link rel="stylesheet" href=" ... &gt;</code></li>
+                <li>Inline <code>&lt;script&gt;</code> is allowed using the CSP hash sources.</li>
+            </ul>
+
+        </p>
+    </section>
+
+    <section>
+        <h2>Extensions</h2>
+
+        <p>
+            View files ending with <code>.html</code> and <code>.mustache</code> may include the following
+            element anywhere in their body:
+
+            <pre>
+                <code>&lt;link itemprop="content-security-policy" ... &gt;</code>
+            </pre>
+
+            This element supports the following properties:
+
+            <ul>
+                <li><code>data-connect-self="true"</code></li>
+                <li><code>data-img-src-data="true"</code></li>
+            </ul>
+        </p>
+    </section>
+
+</article>
+
+{{/$content}}
+{{/layout}}

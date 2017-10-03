@@ -1,0 +1,181 @@
+
+$enable-print-styles: false;
+
+////
+
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/print";
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/images";
+@import "bootstrap/code";
+@import "bootstrap/grid";
+@import "bootstrap/tables";
+@import "bootstrap/forms";
+@import "bootstrap/buttons";
+@import "bootstrap/transitions";
+@import "bootstrap/dropdown";
+@import "bootstrap/button-group";
+@import "bootstrap/input-group";
+//@import "bootstrap/custom-forms";
+@import "bootstrap/nav";
+@import "bootstrap/navbar";
+@import "bootstrap/card";
+//@import "bootstrap/breadcrumb";
+//@import "bootstrap/pagination";
+@import "bootstrap/badge";
+@import "bootstrap/jumbotron";
+@import "bootstrap/alert";
+//@import "bootstrap/progress";
+@import "bootstrap/media";
+@import "bootstrap/list-group";
+@import "bootstrap/close";
+
+// JS @import "bootstrap/modal";
+// JS depends on popper: @import "bootstrap/tooltip";
+// JS depends on popper: @import "bootstrap/popover";
+//@import "bootstrap/carousel";
+
+@import "bootstrap/utilities";
+
+////////////////////////
+
+$sl-logo-primary: #3b424c;
+$sl-logo-secondary: #13bdce;
+
+
+@mixin svg-color($color) {
+  fill: $color;
+  stroke: $color;
+}
+
+@mixin text-svg(){
+  height: 1em !important;
+  vertical-align: text-bottom;
+}
+
+@mixin sl-logo-color($primary, $secondary){
+  .stacklane-logo {
+    .logo-primary {
+      fill: $primary;
+    }
+    .logo-secondary{
+      fill: $secondary;
+    }
+  }
+}
+
+@include sl-logo-color($sl-logo-primary, $sl-logo-secondary);
+
+/* Make sure filled and text elements only get fills */
+.iconic-property-fill, .iconic-property-text {
+  stroke: none !important;
+}
+
+/* Make sure stroked elements only get strokes */
+.iconic-property-stroke {
+  fill: none !important;
+}
+
+///
+
+#docs{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+#content{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  min-width: 1050px;
+  transform: translateZ(0);
+  outline: none
+}
+
+#sidebar{
+  bottom: 0;
+  background: #f5f7f9;
+  flex: 0;
+  display: flex;
+  z-index: 5;
+  flex-direction: column;
+  align-items: flex-end;
+  -webkit-user-select: none;
+  user-select: none;
+  width: calc((100% - 994px) / 2 + 226px);
+  min-width: 252px;
+  padding-left: calc((100% - 994px) / 2)
+}
+#sidebar:after, #sidebar:before{
+  content: '';
+  position: absolute;
+  top: 0
+}
+#sidebar:before{
+  left: 0;
+  width: 100%;
+  height: 600px;
+  background-image: linear-gradient(81deg, hsla(0, 0%, 100%, 0) 57%, hsla(0, 0%, 100%, .16) 84%, hsla(0, 0%, 100%, .17) 0, hsla(0, 0%, 100%, .57))
+}
+#sidebar:after{
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(18, 60, 83, .05)
+}
+
+#sidebar .logo{
+  overflow: hidden;
+  position: absolute;
+  transform: translateZ(0);
+  z-index: 10;
+  top: 14px;
+  right: 0;
+  width: 226px;
+  margin: 0 0 0 -1px;
+}
+
+#sidebar .nav-border{
+  position: absolute;
+  top: 55px;
+  right: 0;
+  width: 226px;
+  height: 1px;
+  background: rgba(120, 134, 156, .08);
+  opacity: 0;
+  transition: opacity .15s ease-in-out;
+  pointer-events: none;
+}
+
+#sidebar .logo .extension{
+  display: inline-block;
+  height: 22px;
+  padding-left: 4px;
+  padding-top: 3px;
+  font-size: 20px;
+  line-height: 20px;
+  vertical-align: top;
+  color: #0099e5;
+  font-weight: 500;
+  text-decoration: none
+}
+
+
+article section{
+  border-bottom: 2px solid #f4f6f7;
+  padding: 39px 0;
+}
