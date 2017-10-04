@@ -123,17 +123,17 @@ article section{
   padding: 39px 0;
 }
 article pre{
-  padding: 11px 14px;
-  background: #f7f8f9;
-  border-radius: 5px;
-  position: relative;
+  padding: 11px 14px !important;
+  background: #f7f8f9 !important;
+  border-radius: 5px !important;
+  position: relative !important;
 }
 article pre code{
   padding:0 !important;
-  color: #333;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 19px;
+  color: #333 !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  line-height: 19px !important;
 }
 article .code>pre{
   margin:0;
