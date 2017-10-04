@@ -97,7 +97,7 @@ h1 {
  */
 
 @media (min-width: map-get($grid-breakpoints, sm) )  {
-  article width {
+  article {
     max-width: 75%;
   }
 }
