@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="/theme.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.8.1/themes/prism.min.css">
 
     <!-- Imports -->
     {{% svg /_logos/ as logo }}
@@ -26,6 +27,16 @@
                 <h6 class="home">
                     <a href="/">Home</a>
                 </h6>
+                <h6>Routing</h6>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link" href="/routing">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/routing/js">JavaScript</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/routing/mustache">Mustache</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/routing/sass">SASS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/routing/supplier">Supplier</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/routing/errors">Errors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/routing/csp">CSP</a></li>
+                </ul>
                 <h6>Data</h6>
                 <ul class="nav  flex-column">
                     <li class="nav-item"><a class="nav-link" href="/data">Overview</a></li>
@@ -33,17 +44,6 @@
                     <li class="nav-item"><a class="nav-link" href="/data/fields">Fields</a></li>
                     <li class="nav-item"><a class="nav-link" href="/data/container">Containers</a></li>
                     <li class="nav-item"><a class="nav-link" href="/data/unique">Unique Values</a></li>
-                </ul>
-                <h6>Routing</h6>
-                <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link" href="/routing">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/routing/js">JS Endpoint</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/routing/mustache">Mustache View</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/routing/sass">SASS</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/routing/chain">Chain</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/routing/supplier">Supplier</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/routing/errors">Errors</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/routing/csp">CSP</a></li>
                 </ul>
             </nav>
             </div>
@@ -67,6 +67,7 @@
 </div>
 </div>
 -->
+<script src="https://cdn.jsdelivr.net/combine/npm/prismjs@1.8.1/components/prism-core.min.js,npm/prismjs@1.8.1/components/prism-clike.min.js,npm/prismjs@1.8.1/components/prism-markdown.min.js,npm/prismjs@1.8.1/components/prism-markup.min.js,npm/prismjs@1.8.1/components/prism-json.min.js,npm/prismjs@1.8.1/components/prism-javascript.min.js,npm/prismjs@1.8.1/components/prism-sass.min.js,npm/prismjs@1.8.1/components/prism-css.min.js"></script>
 
 <script>
     var elements = document.getElementsByClassName('nav-link');

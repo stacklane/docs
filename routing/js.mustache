@@ -6,7 +6,7 @@
 
 <article>
     <header>
-        <h1>JavaScript</h1>
+        <h1>JavaScript Endpoints</h1>
 
         <p>
            Learn how to use JavaScript to create custom logic for your views and endpoints.
@@ -16,26 +16,23 @@
     <section>
         <p>
             Stacklane uses a JavaScript <b>subset</b> for server-side logic.
-            This subset is designed to for speed, security, and compile time validation.
-            It's put to use in three ways:
-            <a href="#endpoints">endpoints</a>,
-            <a href="#suppliers">suppliers</a>,
-            and
-            <a href="#suppliers">chains</a>.
+            This subset is designed for speed, security, and compile time validation.
         </p>
-    </section>
-
-    <section>
-        <h2><a name="endpoints">Endpoints</a></h2>
 
         <p>
             JavaScript endpoints live at files named after HTTP verbs:
             <code>GET.js</code>, <code>POST.js</code>, <code>PUT.js</code>, <code>DELETE.js</code>.
         </p>
+
+    </section>
+
+    <section>
+        <h2><a name="output">Output</a></h2>
+
         <p>
             Scripts are executed on the server-side only, and their last emitted value
             becomes the response value. Scripts do not produce HTML, which is better suited
-            with <a href="/routing/mustache">Mustache</a> files.
+            for <a href="/routing/mustache">Mustache</a> files.
             The following types of output are supported:
         </p>
 
@@ -75,7 +72,7 @@
             Output an object literal from the script to create a JSON response.  For example:
 
             <pre>
-            <code>
+            <code class="language-javascript">
                 ({
                   hello: 'world
                 })
@@ -85,7 +82,7 @@
             Result:
 
             <pre>
-            <code>
+            <code class="language-json">
                 {
                   "hello": "world"
                 }
@@ -119,21 +116,6 @@
 
     </section>
 
-    <section>
-        <h2>Private / Server-Side Files</h2>
-
-        <p>
-            Any file prefixed with an underscore (_fileName.mustache)
-            will never be publicly accessible, and is only used for
-            server side includes or similar logic.
-        </p>
-
-        <p>
-            Similarly any files whose <b>direct</b> parent folder
-            has an underscore, will be considered private, even
-            if the files themselves are not prefixed with an underscore.
-        </p>
-    </section>
 
 </article>
 
