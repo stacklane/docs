@@ -4,7 +4,7 @@
 {{<layout}}
 {{$content}}
 
-<article>
+<article class="language-javascript">
     <header>
         <h1>JavaScript Endpoints</h1>
 
@@ -71,47 +71,39 @@
         <p>
             Output an object literal from the script to create a JSON response.  For example:
 
-            <pre>
-            <code class="language-javascript">
-                ({
-                  hello: 'world
-                })
-            </code>
-            </pre>
+            <pre><code>
+({
+  hello: 'world
+})
+            </code></pre>
 
             Result:
 
-            <pre>
-            <code class="language-json">
-                {
-                  "hello": "world"
-                }
-            </code>
-            </pre>
+            <pre><code>
+{
+  "hello": "world"
+}
+            </code></pre>
 
             Stream aware model methods may also be used:
 
-            <pre>
-            <code>
-                /* Code to assign LoadedList variable */
+            <pre><code>
+/* Code to assign LoadedList variable */
 
-                ({
-                  list: LoadedList.name,
-                  tasks: LoadedList(()=>Task.all().map(t=>({name:t.title}}))
-                })
-            </code>
-            </pre>
+({
+  list: LoadedList.name,
+  tasks: LoadedList(()=>Task.all().map(t=>({name:t.title}}))
+})
+            </code></pre>
 
             Result:
 
-            <pre>
-            <code>
-                {
-                  "list": "hello"
-                  "tasks": [{"name":"world"}]
-                }
-            </code>
-            </pre>
+            <pre><code>
+{
+  "list": "hello"
+  "tasks": [{"name":"world"}]
+}
+            </code></pre>
         </p>
 
     </section>
