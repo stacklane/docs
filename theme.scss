@@ -122,6 +122,22 @@ article section{
   border-bottom: 2px solid #f4f6f7;
   padding: 39px 0;
 }
+article pre{
+  padding: 11px 14px;
+  background: #f7f8f9;
+  border-radius: 5px;
+  position: relative;
+}
+article pre code{
+  padding:0 !important;
+  color: #333;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 19px;
+}
+article .code>pre{
+  margin:0;
+}
 
 /*
  * Sidebar
