@@ -96,12 +96,14 @@ h1 {
  * Article
  */
 
-@media (min-width: map-get($grid-breakpoints, sm) )  {
+@media (min-width: map-get($grid-breakpoints, md) )  {
   article {
     max-width: 75%;
   }
 }
-
+article{
+  font-size: 90%;
+}
 article header{
   padding-top: 8px;
   padding-bottom: 39px;
@@ -136,6 +138,7 @@ article section{
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
   border-right: 1px solid #eee;
+  font-size: 85%;
 }
 
 /* Sidebar navigation */
@@ -158,5 +161,13 @@ article section{
 
 .sidebar .nav-link {
   border-radius: 0;
+  padding: 0;
+  color: #4c555a;
+}
+.sidebar .nav-link:visited {
+  color: #4c555a;
+}
+.sidebar .nav-link:hover {
+  color: black;
 }
 
