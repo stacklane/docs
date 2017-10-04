@@ -115,7 +115,7 @@ article header h1{
 article section h2{
   font-size: $h4-font-size;
 }
-article section h2{
+article section h3{
   font-size: $h6-font-size;
 }
 article section{
@@ -123,7 +123,8 @@ article section{
   padding: 39px 0;
 }
 article pre{
-  padding: 11px 14px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   background: #f7f8f9 !important;
   border-radius: 5px !important;
   position: relative !important;
