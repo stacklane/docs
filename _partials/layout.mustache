@@ -66,5 +66,15 @@
 </div>
 </div>
 -->
+
+<script>
+    var elements = document.getElementsByClassName('nav-link');
+    var loc = window.location.pathname;
+    for (var i; i < elements.length; i++){
+        if (elements[i].getAttribute('href') == loc){
+            elements[i].className += ' active';
+        }
+    }
+</script>
 </body>
 </html>
