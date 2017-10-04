@@ -1,0 +1,141 @@
+
+{{% partial /_partials/ }}
+
+{{<layout}}
+{{$content}}
+
+<article>
+    <header>
+        <h1>JavaScript</h1>
+
+        <p>
+           Learn how to use JavaScript to create custom logic for your views and endpoints.
+        </p>
+    </header>
+
+    <section>
+        <p>
+            Stacklane uses a JavaScript <b>subset</b> for server-side logic.
+            This subset is designed to for speed, security, and compile time validation.
+            It's put to use in three ways:
+            <a href="#endpoints">endpoints</a>,
+            <a href="#suppliers">suppliers</a>,
+            and
+            <a href="#suppliers">chains</a>.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="endpoints">Endpoints</a></h2>
+
+        <p>
+            JavaScript endpoints live at files named after HTTP verbs:
+            <code>GET.js</code>, <code>POST.js</code>, <code>PUT.js</code>, <code>DELETE.js</code>.
+        </p>
+        <p>
+            Scripts are executed on the server-side only, and their last emitted value
+            becomes the response value. Scripts do not produce HTML, which is better suited
+            with <a href="/routing/mustache">Mustache</a> files.
+            The following types of output are supported:
+        </p>
+
+        <h3>Redirects</h3>
+        <p>
+            <ul>
+                <li>
+                    Internal redirects -
+                    Output a string prefixed with "/"
+                    to perform an absolute redirect to another endpoint within your app.
+                </li>
+                <li>
+                    External redirects -
+                    Output a string prefixed with "http" to perform an external redirect.
+                </li>
+            </ul>
+        </p>
+
+        <h3>Rerouting</h3>
+        <p>
+            Similar to an internal redirect, but no extra client request is made.
+            A few conditions must exist for this to occur.
+
+            <ul>
+                <li>It must be an POST/PUT/DELETE request.</li>
+                <li>"X-Requested-With" header must exist and equal "XMLHttpRequest" (denoting an AJAX request).</li>
+                <li>The script must emit an absolute path for the app, similar to an regular internal redirect.</li>
+            </ul>
+
+            For example, with a POST via AJAX returning '/show/all', the server would
+            internally route and return the result of executing GET /show/all, <b>instead of</b>
+            requiring the client to round trip as it would with a normal internal redirect.
+        </p>
+
+        <h3>JSON</h3>
+        <p>
+            Output an object literal from the script to create a JSON response.  For example:
+
+            <pre>
+            <code>
+                ({
+                  hello: 'world
+                })
+            </code>
+            </pre>
+
+            Result:
+
+            <pre>
+            <code>
+                {
+                  "hello": "world"
+                }
+            </code>
+            </pre>
+
+            Stream aware model methods may also be used:
+
+            <pre>
+            <code>
+                /* Code to assign LoadedList variable */
+
+                ({
+                  list: LoadedList.name,
+                  tasks: LoadedList(()=>Task.all().map(t=>({name:t.title}}))
+                })
+            </code>
+            </pre>
+
+            Result:
+
+            <pre>
+            <code>
+                {
+                  "list": "hello"
+                  "tasks": [{"name":"world"}]
+                }
+            </code>
+            </pre>
+        </p>
+
+    </section>
+
+    <section>
+        <h2>Private / Server-Side Files</h2>
+
+        <p>
+            Any file prefixed with an underscore (_fileName.mustache)
+            will never be publicly accessible, and is only used for
+            server side includes or similar logic.
+        </p>
+
+        <p>
+            Similarly any files whose <b>direct</b> parent folder
+            has an underscore, will be considered private, even
+            if the files themselves are not prefixed with an underscore.
+        </p>
+    </section>
+
+</article>
+
+{{/content}}
+{{/layout}}

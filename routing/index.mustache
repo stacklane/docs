@@ -1,0 +1,69 @@
+
+{{% partial /_partials/ }}
+
+{{<layout}}
+{{$content}}
+
+<article>
+    <header>
+        <h1>Routing Basics</h1>
+
+        <p>
+           Learn how to structure files and folders into RESTful endpoints and views.
+        </p>
+    </header>
+
+    <section>
+        <p>
+            Files and folders in your source code closely match the
+        resulting RESTful paths and endpoints.
+        </p>
+
+        <p>
+        The main types of files supported include
+        <a href="/routing/js">JavaScript</a>,
+        <a href="/routing/mustache">Mustache</a>,
+        <a href="/routing/sass">SASS/SCSS</a>,
+        <a href="/routing/html">HTML</a>,
+        <a href="/routing/css">CSS</a>
+        </p>
+    </section>
+
+    <section>
+        <h2>Dynamic Path Parameters</h2>
+
+        <p>
+            Placeholders may be used in a path node.
+
+            For example:
+
+            <code>/article/{article}/index.mustache</code>
+
+            would be served at the HTML endpoint
+
+            <code>/article/1234</code>
+
+            (other logic determines whether "1234" is a valid article or not).
+        </p>
+    </section>
+
+    <section>
+        <h2>Private / Server-Side Files</h2>
+
+        <p>
+            Any file prefixed with an underscore (_fileName.mustache)
+            will never be publicly accessible, and is only used for
+            server side includes or similar logic.
+        </p>
+
+        <p>
+            Similarly any files whose <b>direct</b> parent folder
+            has an underscore, will be considered private, even
+            if the files themselves are not prefixed with an underscore.
+        </p>
+    </section>
+
+</article>
+
+{{/content}}
+{{/layout}}
