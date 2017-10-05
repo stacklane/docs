@@ -163,24 +163,17 @@ article header p:last-child{
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
   border-right: 1px solid #eee;
-  font-size: 85%;
-}
-
-/* Sidebar navigation */
-.sidebar {
   padding-left: 0;
   padding-right: 0;
   font-size: .8rem;
 }
 
-.sidebar .nav {
+.sidebar nav ul {
   margin-bottom: 20px;
-}
-
-.sidebar ul{
   padding-left: 1rem;
 }
-.sidebar .nav h1 svg{
+
+.sidebar nav h1 svg{
   vertical-align: text-bottom;
 }
 
