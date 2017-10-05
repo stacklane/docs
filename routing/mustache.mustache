@@ -46,7 +46,7 @@
 
         <p>
             Mustache partials may be thought of as file includes.
-            The syntax for including a partial <code>&#123&#123> nameOfPartial&#125&#125</code>.
+            The syntax for including a partial is <code>&#123&#123> nameOfPartial&#125&#125</code>.
         </p>
         <p>
             By default there are no partials available.  Stacklane uses pragmas to
@@ -55,7 +55,7 @@
 
         <h3>Directory of Partials</h3>
         <p>
-            Name the directory with a leading underscore to indicate it is private.
+            Name the directory with a leading underscore to indicate it is private:
             <code>/_partials/</code>.  To allow the individual Mustache files in the directory
             to be used as partials, use the pragma <code>&#123&#123% partial /_partials/ &#125&#125</code>
             (note the trailing slash).  Given a file in this directory <code>/_partials/something.mustache</code>,
@@ -64,7 +64,8 @@
         <p>
             A directory of partials may optionally be given a prefix.  Using the above example,
             <code>&#123&#123% partial /_partials/ as my&#125&#125</code>
-            brings in those partials with the "my" prefix.  The same partial is now include using
+            brings in those partials with the "my-" prefix (hyphen is implied).
+            The same partial is now included using
             <code>&#123&#123> my-something&#125&#125</code>
         </p>
 
@@ -72,7 +73,7 @@
         <p>
             A single partial may be imported by referencing its full path name without the trailing
             ".mustache" extension.  <code>&#123&#123% partial /_partials/something &#125&#125</code>
-            is now accessible via <code>&#123&#123> something&#125&#125</code>.
+            is accessible via <code>&#123&#123> something&#125&#125</code>.
         </p>
         <p>
             Single file partials also support aliases.
@@ -85,9 +86,12 @@
         <h2>SVG</h2>
         <p>
             SVG files may be included/inlined using the same nomenclature as Mustache partials.
-            The only difference is the initial pragma. Given a directory of SVG icons,
-             <code>&#123&#123% svg /_icons/ as ic &#125&#125</code> which would be
-            used in the file as <code>&#123&#123> ic-gear&#125&#125</code>.
+            The only difference is the initial pragma.
+        </p>
+        <p>
+            Given a directory of SVG icons, the pragma
+             <code>&#123&#123% svg /_icons/ as ic &#125&#125</code> would allow
+            importing of gear.svg using <code>&#123&#123> ic-gear&#125&#125</code>.
         </p>
     </section>
 
@@ -112,16 +116,17 @@
 
         <p>
             Mustache views may import variables which were exported by <a href="/routing/suppliers">Suppliers</a>.
-            This uses a JavaScript syntax within a pragma:
+            To import a variable (or variables) use the following pragma:
         </p>
         <p>
-            <code>&#123&#123% import {SomeVar} from '📤' &#125&#125</code>
+            <code>&#123&#123% import {SomeVar, AnotherVar} from '📤' &#125&#125</code>
         </p>
         <p>
             After importing, <code>&#123&#123SomeVar&#125&#125</code> may then be used anywhere within the Mustache view.
-
-            As mentioned in the documentation on  <a href="/routing/suppliers">Suppliers</a>,
-            all variables exported exist in the module '📤'.
+        <p>
+        <p>
+            (As mentioned in the documentation on <a href="/routing/suppliers">Suppliers</a>,
+            all variables exported exist in the module '📤'.)
         </p>
     </section>
 
