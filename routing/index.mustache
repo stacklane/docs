@@ -51,15 +51,16 @@
         <h2>Private / Server-Side Files</h2>
 
         <p>
-            Any file prefixed with an underscore (_fileName.mustache)
+            Any file prefixed with an underscore <code>_fileName.mustache</code>
             will never be publicly accessible, and is only used for
             server side includes or similar logic.
         </p>
 
         <p>
             Similarly any files whose <b>direct</b> parent folder
-            has an underscore, will be considered private, even
-            if the files themselves are not prefixed with an underscore.
+            has an underscore such as <code>/_files/something.mustache</code>,
+            will be considered private even if the files themselves are not prefixed
+            with an underscore.
         </p>
     </section>
 

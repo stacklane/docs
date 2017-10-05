@@ -14,53 +14,9 @@
     </header>
 
     <section>
-        <p>
-            <a target="_blank" href="https://en.wikipedia.org/wiki/Content_Security_Policy">Content Security Policies (CSP)</a>
-            are a security standard which helps prevent common techniques for cross-site scripting (XSS), clickjacking, and other
-            code injection attacks.
-        </p>
-        <p>
-            The CSP header allows a server to declare trusted sources of content (JS execution, CSS styles, images etc).
-            They are a best practice followed by many large sites.
-        </p>
-        <p>
-            Stacklane makes using CSP easy through a combination of automatic behavior and custom declarations.
-        </p>
+
     </section>
 
-    <section>
-        <h2>Automatic Behavior</h2>
-
-        <p>
-            HTML files are analyzed to create a reasonable CSP file.
-
-        <ul>
-            <li><code>&lt;script src=" ... &gt;</code></li>
-            <li><code>&lt;link rel="stylesheet" href=" ... &gt;</code></li>
-            <li>Inline <code>&lt;script&gt;</code> becomes a CSP hash source.</li>
-        </ul>
-        </p>
-    </section>
-
-    <section>
-        <h2>Custom Declarations</h2>
-
-        <p>
-            View files ending with <code>.html</code> and <code>.mustache</code> may include the following
-            element anywhere in their body:
-
-        <pre>
-                <code>&lt;link itemprop="content-security-policy" ... &gt;</code>
-            </pre>
-
-        This element supports the following properties:
-
-        <ul>
-            <li><code>data-connect-self="true"</code></li>
-            <li><code>data-img-src-data="true"</code></li>
-        </ul>
-        </p>
-    </section>
 
 </article>
 
