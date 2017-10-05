@@ -183,6 +183,10 @@ article header p:last-child{
   overflow:hidden;
 }
 
+.sidebar .nav-category{
+  cursor:pointer;
+}
+
 .sidebar nav ul.open{
   height:auto;
   -webkit-transition:height, 0.5s linear;
