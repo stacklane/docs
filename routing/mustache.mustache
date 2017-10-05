@@ -1,5 +1,5 @@
 
-{{% partial /_layout }}
+{{% partial /_layout.mustache }}
 
 {{<layout}}
 {{$content}}
@@ -71,13 +71,13 @@
 
         <h3>Single Files</h3>
         <p>
-            A single partial may be imported by referencing its full path name without the trailing
-            ".mustache" extension.  <code>&#123&#123% partial /_partials/something &#125&#125</code>
+            A single partial may be imported by referencing its full path name including the
+            ".mustache" extension.  <code>&#123&#123% partial /_partials/something.mustache &#125&#125</code>
             is accessible via <code>&#123&#123> something&#125&#125</code>.
         </p>
         <p>
             Single file partials also support aliases.
-            <code>&#123&#123% partial /_partials/something as somethingElse &#125&#125</code>
+            <code>&#123&#123% partial /_partials/something.mustache as somethingElse &#125&#125</code>
             is accessible via <code>&#123&#123> somethingElse&#125&#125</code>.
         </p>
     </section>
