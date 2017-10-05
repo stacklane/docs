@@ -149,8 +149,8 @@
         <h3>HTML Encoding/Escapes</h3>
         <p>
             Mustache escapes / encodes special HTML characters by default when they
-            are included from a variable or model field.  If <code>&#123&#123%company.name&#125&#125</code>
-            is "ABC &amp; Co.", then this will become the encoded HTML equivalent  <code>ABC &amp;amp Co.</code>.
+            are included from a variable or model field.  If <code>&#123&#123company.name&#125&#125</code>
+            is "ABC &amp; Co.", then this will become the encoded HTML equivalent  <code>ABC &amp;amp; Co.</code>.
         </p>
     </section>
 
@@ -158,7 +158,7 @@
         <h2>Separation of Concerns</h2>
 
         <p>
-            If there are developers who are strictly working on Mustache views, it may be useful to
+            If there are developers on a team who are strictly working on Mustache views, it may be useful to
             limit their access to specific <a href="/routing/suppliers">Supplier</a> variables.
         </p>
         <p>

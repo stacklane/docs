@@ -1,0 +1,40 @@
+
+{{% partial /_layout }}
+
+{{<layout}}
+{{$content}}
+
+<article>
+    <header>
+        <h1>Scripting Modules/Libraries</h1>
+
+        <p>
+            Learn about available modules to use in server-side JavaScript.
+        </p>
+    </header>
+
+
+    <section>
+        <h2>Utilities</h2>
+        <p>
+            The utilities module is named named '⚙' and exports the following objects:
+        </p>
+        <h3>Encoding</h3>
+        <p>
+        <pre><code class="language-javascript">
+import {Encoding} from '⚙';
+
+Encoding.base64Url().encode('string');
+Encoding.base64Url().encodeNum(1234);
+            </code></pre>
+        </p>
+        <p>
+
+        </p>
+    </section>
+
+</article>
+
+{{/content}}
+{{/layout}}
+
