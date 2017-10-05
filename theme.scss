@@ -81,6 +81,11 @@ $sl-logo-secondary: #13bdce;
 
 ///
 
+.svg-icon svg{
+  height: 1em !important;
+  width: 1em !important;
+}
+
 .logo{
   @include sl-logo-color($gray-900, $gray-900);
 }
@@ -140,7 +145,8 @@ article pre code{
 article .code>pre{
   margin:0;
 }
-article section p:last-child{
+article section p:last-child,
+article header p:last-child{
   margin-bottom: 0;
 }
 

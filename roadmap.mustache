@@ -1,0 +1,93 @@
+
+{{% partial /_partials/ }}
+
+{{<layout}}
+{{$content}}
+
+<article>
+    <header>
+        <h1>Roadmap</h1>
+
+        <p>
+            Stacklane is going places.  Here are the broad strokes, in no specific order.
+            In general we strive to distill common and time-tested best practices.
+            We do not want to reinvent the wheel, but make it easier to pull off the shelf and drive.
+        </p>
+    </header>
+
+    <section>
+        <h2>Users / Authentication</h2>
+
+        <p>
+            Identity, two factor auth, social accounts, etc -- we do not want to reinvent the wheel.
+            People are tired of new passwords.  We'll provide integration points for common
+            user account providers (Google, Twitter, Facebook, etc).
+        </p>
+    </section>
+
+    <section>
+        <h2>Content Model Type</h2>
+
+        <p>
+            Represents content that is "hand crafted for consumption by a wide audience".
+            Heavily skewed to content / CMS data, where languages, versioning, variations, etc,
+            all become important and necessary.
+            Here's some of what makes content unique:
+        </p>
+        <ul>
+            <li>Browseable</li>
+            <li>Versioned</li>
+            <li>Drafted/Branched/Published/Released</li>
+            <li>Crafted, authored, and thought about more than "recorded data",
+                or data that represents a concept/entity like an "Account".</li>
+            <li>Has an audience, usually wide.</li>
+            <li>Multiple languages. Has translators.</li>
+            <li>Has an author or author-per-version.</li>
+            <li>Has built in created/modified fields.</li>
+            <li>Has built in IETF BCP 47 compatible "lang" field.</li>
+            <li>May be a singleton.</li>
+            <li>May <b>not</b> be a container.</li>
+            <li>Unique values are not allowed (except for slug/uid)</li>.
+            <li>May not be created/edited from API -- or can only be "authored" within the context of a "user".</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Tag Field Type</h2>
+        <p>
+           Tags are a common enough idiom that we do not want you to reinvent them
+            for every one of your projects.  These will be a first class field type supporting:
+
+            <ul>
+                <li>Quickly accessible list of all currently defined tags, independent of documents</li>.
+                <li>Deletion/removal</li>
+                <li>Merge/combine (effectively a delete / replace)</li>
+                <li>Explicit and implicit tagging modes</li>
+                <li>A basic tag type (name, optional color) implementation that is used when an "extended" tag type is not needed</li>
+            </ul>
+        </p>
+    </section>
+
+    <section>
+        <h2>Unit Testing</h2>
+
+        <p>
+            Nothing beats automated unit testing for
+            continuously "proving" that your app still works.
+            We want to make building unit tests as
+            frictionless as possible, and in certain cases should be able to take knowledge of your app
+            to make common proofs and assertions as simple as possible.
+        </p>
+    </section>
+
+    <section>
+        <h2>Dev Tools</h2>
+
+        <p>
+            Native development UIs, improved logging/error reporting, and staging environments.
+        </p>
+    </section>
+</article>
+
+{{/content}}
+{{/layout}}
