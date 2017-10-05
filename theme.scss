@@ -178,6 +178,19 @@ article header p:last-child{
   padding-left: 1.2rem;
 }
 
+.sidebar nav ul{
+  height: 0px;
+}
+
+.sidebar nav ul.open{
+  height:auto;
+  -webkit-transition:height, 0.5s linear;
+  -moz-transition: height, 0.5s linear;
+  -ms-transition: height, 0.5s linear;
+  -o-transition: height, 0.5s linear;
+  transition: height, 0.5s linear;
+}
+
 .sidebar nav h1 svg{
   vertical-align: text-bottom;
 }
