@@ -31,7 +31,7 @@
                     <li><a class="nav-link" href="/quickstart">Quickstart</a></li>
                     -->
                 </ul>
-                <h1 ><a class="nav-category">{{>icon-target-sm}} Routing</a></h1>
+                <h1 class="nav-category">{{>icon-target-sm}} Routing</h1>
                 <ul class="d-none">
                     <li><a class="nav-link" href="/routing/">Overview</a></li>
                     <li><a class="nav-link" href="/routing/js">JavaScript</a></li>
@@ -92,7 +92,8 @@
     var categories = document.getElementsByClassName('nav-category');
     for (var i = 0; i < categories.length; i++){
         categories[i].addEventListener("click", function( event ) {
-            event.target.parentElement.nextElementSibling.classList.toggle('d-none');
+            //event.
+                    categories[i].nextElementSibling.classList.toggle('d-none');
             event.stopPropagation();
         }, false);
 
