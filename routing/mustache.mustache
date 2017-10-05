@@ -1,0 +1,148 @@
+
+{{% partial /_partials/ }}
+
+{{<layout}}
+{{$content}}
+
+<article>
+    <header>
+        <h1>Mustache Endpoints</h1>
+
+        <p>
+           Learn how to use Mustache to create HTML views.
+        </p>
+    </header>
+
+    <section>
+        <p>
+            Stacklane uses Mustache, combined with additional extensions (pragmas),
+            to create dynamic HTML views.
+        </p>
+        <p>
+            Mustache views may be populated with data or other scripted variables
+            by using <a href="/routing/suppliers">Suppliers</a>.
+        </p>
+    </section>
+
+    <section>
+        <h2>Routing</h2>
+
+        <p>
+            Mustache endpoints are routed according to their file name.
+        </p>
+        <p>
+            For example, <code>/hello/world.mustache</code>
+            responds to requests for <code>GET /hello/world</code>.
+        </p>
+        <p>
+            <code>index.mustache</code> may be used in the case where
+            the routing should be directory based.  <code>/hello/index.mustache</code>
+            responses to requests for <code>GET /hello/</code>.
+        </p>
+    </section>
+
+    <section>
+        <h2>Partials</h2>
+
+        <p>
+            Mustache partials may be thought of as file includes.
+            The syntax for including a partial <code>&#123&#123> nameOfPartial&#125&#125</code>.
+        </p>
+        <p>
+            By default there are no partials available.  Stacklane uses pragmas to
+            instruct what partials are available, and how they are named.
+        </p>
+
+        <h3>Directory of Partials</h3>
+        <p>
+            Name the directory with a leading underscore to indicate it is private.
+            <code>/_partials/</code>.  To allow the individual Mustache files in the directory
+            to be used as partials, use the pragma <code>&#123&#123% partial /_partials/ &#125&#125</code>
+            (note the trailing slash).  Given a file in this directory <code>/_partials/something.mustache</code>,
+            it may then be included via the standard syntax <code>&#123&#123> something&#125&#125</code>.
+        </p>
+        <p>
+            A directory of partials may optionally be given a prefix.  Using the above example,
+            <code>&#123&#123% partial /_partials/ as my&#125&#125</code>
+            brings in those partials with the "my" prefix.  The same partial is now include using
+            <code>&#123&#123> my-something&#125&#125</code>
+        </p>
+
+        <h3>Single Files</h3>
+        <p>
+            A single partial may be imported by referencing its full path name without the trailing
+            ".mustache" extension.  <code>&#123&#123% partial /_partials/something &#125&#125</code>
+            is now accessible via <code>&#123&#123> something&#125&#125</code>.
+        </p>
+        <p>
+            Single file partials also support aliases.
+            <code>&#123&#123% partial /_partials/something as somethingElse &#125&#125</code>
+            is accessible via <code>&#123&#123> somethingElse&#125&#125</code>.
+        </p>
+    </section>
+
+    <section>
+        <h2>SVG</h2>
+        <p>
+            SVG files may be included/inlined using the same nomenclature as Mustache partials.
+            The only difference is the initial pragma. Given a directory of SVG icons,
+             <code>&#123&#123% svg /_icons/ as ic &#125&#125</code> which would be
+            used in the file as <code>&#123&#123> ic-gear&#125&#125</code>.
+        </p>
+    </section>
+
+    <section>
+        <h2>Layout</h2>
+
+        <p>
+            TODO
+        </p>
+    </section>
+
+    <section>
+        <h2>JSON</h2>
+
+        <p>
+            TODO
+        </p>
+    </section>
+
+    <section>
+        <h2>Variable Imports</h2>
+
+        <p>
+            Mustache views may import variables which were exported by <a href="/routing/suppliers">Suppliers</a>.
+            This uses a JavaScript syntax within a pragma:
+        </p>
+        <p>
+            <code>&#123&#123% import {SomeVar} from '📤' &#125&#125</code>
+        </p>
+        <p>
+            After importing, <code>&#123&#123SomeVar&#125&#125</code> may then be used anywhere within the Mustache view.
+
+            As mentioned in the documentation on  <a href="/routing/suppliers">Suppliers</a>,
+            all variables exported exist in the module '📤'.
+        </p>
+    </section>
+
+    <section>
+        <h2>Separation of Concerns</h2>
+
+        <p>
+            If there are developers who are strictly working on Mustache views, it may be useful to
+            limit their access to specific <a href="/routing/suppliers">Supplier</a> variables.
+        </p>
+        <p>
+            This can be accomplished by creating a Supplier file within the same directory and name
+            as the Mustache view.
+        </p>
+        <p>
+            For example, given a Mustache view of <code>/hello/world.mustache</code>, and a Supplier file of
+            <code>/hello/📤world.js</code>, the Mustache view will only have access to
+            variables exported by <code>/hello/📤world.js</code>, regardless of any other Supplier's in the path.
+        </p>
+    </section>
+</article>
+
+{{/content}}
+{{/layout}}
