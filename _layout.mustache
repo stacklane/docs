@@ -93,8 +93,8 @@
     for (var i = 0; i < categories.length; i++){
         categories[i].addEventListener("click", function( event ) {
             //event.
-                    categories[i].nextElementSibling.classList.toggle('d-none');
-            event.stopPropagation();
+                    event.target.nextElementSibling.classList.toggle('d-none');
+            //event.stopPropagation();
         }, false);
 
         // svg needs its own click
