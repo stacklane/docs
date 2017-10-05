@@ -90,7 +90,7 @@
     var categories = document.getElementsByClassName('nav-category');
     for (var i = 0; i < categories.length; i++){
         categories[i].addEventListener("click", function( event ) {
-            event.target.nextElementSibling.toggle('open');
+            event.target.nextElementSibling.classList.toggle('open');
         }, false);
     }
 </script>
