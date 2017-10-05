@@ -91,17 +91,11 @@
 
     var categories = document.getElementsByClassName('nav-category');
     for (var i = 0; i < categories.length; i++){
-        var category = categories[i];
-        category.addEventListener("click", function( event ) {
+        categories[i].addEventListener("click", function( event ) {
             var et = event.target;
             var cat = et.classList.contains('nav-category') ? et : findAncestor(et, 'nav-category');
-            cat.classList.toggle('d-none');
+            cat.nextElementSibling.classList.toggle('d-none');
         }, false);
-
-        // svg needs its own click
-      //  categories[i].firstElementChild.addEventListener('click', function(event){
-       //     event.target.parentElement.nextElementSibling.classList.toggle('d-none');
-        //});
     }
 
     function findAncestor (el, cls) {
