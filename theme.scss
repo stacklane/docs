@@ -177,12 +177,16 @@ article header p:last-child{
 }
 
 .sidebar nav ul {
-  margin-bottom: 20px;
+ // margin-bottom: 20px;
   padding-left: 1.2rem;
 }
 
 .sidebar .nav-category{
   cursor:pointer;
+}
+
+.sidebar .nav-category:not(:first-child) {
+  margin-top: 1rem;
 }
 
 .sidebar nav h1 svg{
