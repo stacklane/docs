@@ -91,10 +91,13 @@
 
     var categories = document.getElementsByClassName('nav-category');
     for (var i = 0; i < categories.length; i++){
-        categories[i].addEventListener("click", function( event ) {
+        var category = categories[i];
+        category.addEventListener("click", function( event ) {
             //event.
             console.log(event.target);
-                    event.target.nextElementSibling.classList.toggle('d-none');
+            console.log(category);
+
+            category.nextElementSibling.classList.toggle('d-none');
             //event.stopPropagation();
         }, false);
 
