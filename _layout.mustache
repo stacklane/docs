@@ -24,13 +24,13 @@
             <div class="nav-border"></div>
             <nav class="mt-4">
                 <h1 class="nav-category">{{>icon-cloud-sm}} Basics</h1>
-                <ul>
+                <ul class="d-none">
                     <li class="nav-item"><a class="nav-link" href="/">Overview</a></li>
                     <li class="nav-item"><a class="nav-link" href="/roadmap">Roadmap</a></li>
                     <li class="nav-item"><a class="nav-link" href="/quickstart">Quickstart</a></li>
                 </ul>
                 <h1 class="nav-category">{{>icon-target-sm}} Routing</h1>
-                <ul>
+                <ul class="d-none">
                     <li class="nav-item"><a class="nav-link" href="/routing/">Overview</a></li>
                     <li class="nav-item"><a class="nav-link" href="/routing/js">JavaScript</a></li>
                     <li class="nav-item"><a class="nav-link" href="/routing/mustache">Mustache</a></li>
@@ -40,19 +40,19 @@
                     <li class="nav-item"><a class="nav-link" href="/routing/csp">CSP</a></li>
                 </ul>
                 <h1 class="nav-category">{{>icon-spreadsheet-sm}} Data</h1>
-                <ul>
+                <ul class="d-none">>
                     <li class="nav-item"><a class="nav-link" href="/data/">Overview</a></li>
                     <li class="nav-item"><a class="nav-link" href="/data/types">Types</a></li>
                     <li class="nav-item"><a class="nav-link" href="/data/fields">Fields</a></li>
                     <li class="nav-item"><a class="nav-link" href="/data/container">Containers</a></li>
                 </ul>
                 <h1 class="nav-category">{{>icon-document-sm}} Scripting</h1>
-                <ul>
+                <ul class="d-none">>
                     <li class="nav-item"><a class="nav-link" href="/script/">Overview</a></li>
                     <li class="nav-item"><a class="nav-link" href="/script/libraries">Libraries</a></li>
                 </ul>
                 <h1 class="nav-category">{{>icon-browser-sm}} Development</h1>
-                <ul>
+                <ul class="d-none">>
                     <li class="nav-item"><a class="nav-link" href="/dev/">Overview</a></li>
                     <li class="nav-item"><a class="nav-link" href="/dev/playground">Playground</a></li>
                 </ul>
@@ -83,14 +83,14 @@
     for (var i = 0; i < elements.length; i++){
         if (elements[i].getAttribute('href') == loc){
             elements[i].classList.add('active');
-            elements[i].parentElement.parentElement.classList.toggle('open', true);
+            elements[i].parentElement.parentElement.classList.toggle('d-none', fals);
         }
     }
 
     var categories = document.getElementsByClassName('nav-category');
     for (var i = 0; i < categories.length; i++){
         categories[i].addEventListener("click", function( event ) {
-            event.target.nextElementSibling.classList.toggle('open');
+            event.target.nextElementSibling.classList.toggle('d-none');
         }, false);
     }
 </script>

@@ -84,6 +84,9 @@ $sl-logo-secondary: #13bdce;
 .logo{
   @include sl-logo-color($gray-900, $gray-900);
 }
+.logo svg{
+  height: 1rem;
+}
 
 /*
 h1 {
@@ -178,22 +181,8 @@ article header p:last-child{
   padding-left: 1.2rem;
 }
 
-.sidebar nav ul{
-  height: 0px;
-  overflow:hidden;
-}
-
 .sidebar .nav-category{
   cursor:pointer;
-}
-
-.sidebar nav ul.open{
-  height:auto;
-  -webkit-transition:height, 0.5s linear;
-  -moz-transition: height, 0.5s linear;
-  -ms-transition: height, 0.5s linear;
-  -o-transition: height, 0.5s linear;
-  transition: height, 0.5s linear;
 }
 
 .sidebar nav h1 svg{
