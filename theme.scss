@@ -81,11 +81,6 @@ $sl-logo-secondary: #13bdce;
 
 ///
 
-.svg-icon svg{
-  height: 1em !important;
-  width: 1em !important;
-}
-
 .logo{
   @include sl-logo-color($gray-900, $gray-900);
 }
@@ -175,10 +170,18 @@ article header p:last-child{
 .sidebar {
   padding-left: 0;
   padding-right: 0;
+  font-size: .8rem;
 }
 
 .sidebar .nav {
   margin-bottom: 20px;
+}
+
+.sidebar ul{
+  padding-left: 1rem;
+}
+.sidebar .nav h1 svg{
+  vertical-align: text-bottom;
 }
 
 .sidebar .nav-item {
