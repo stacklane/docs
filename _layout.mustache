@@ -98,7 +98,7 @@
     }
 
     function findCategory(el, cls) {
-        if (el.contains(cls)) return el;
+        if (el.classList.contains(cls)) return el;
         while ((el = el.parentElement) && !el.classList.contains(cls));
         return el;
     }
