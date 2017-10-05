@@ -141,6 +141,9 @@ article pre code{
   font-size: 13px !important;
   line-height: 19px !important;
 }
+article code{
+  white-space:nowrap;
+}
 article .code>pre{
   margin:0;
 }
@@ -177,7 +180,6 @@ article header p:last-child{
 }
 
 .sidebar nav ul {
- // margin-bottom: 20px;
   padding-left: 1.2rem;
 }
 
