@@ -32,7 +32,7 @@
                 </ul>
                 <h1>{{>icon-target-sm}} Routing</h1>
                 <ul class=" flex-column">
-                    <li class="nav-item"><a class="nav-link" href="/routing/">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/routing">Overview</a></li>
                     <li class="nav-item"><a class="nav-link" href="/routing/js">JavaScript</a></li>
                     <li class="nav-item"><a class="nav-link" href="/routing/mustache">Mustache</a></li>
                     <li class="nav-item"><a class="nav-link" href="/routing/sass">SASS</a></li>
@@ -42,7 +42,7 @@
                 </ul>
                 <h1>{{>icon-spreadsheet-sm}} Data</h1>
                 <ul class="  flex-column">
-                    <li class="nav-item"><a class="nav-link" href="/data/">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/data">Overview</a></li>
                     <li class="nav-item"><a class="nav-link" href="/data/types">Types</a></li>
                     <li class="nav-item"><a class="nav-link" href="/data/fields">Fields</a></li>
                     <li class="nav-item"><a class="nav-link" href="/data/container">Containers</a></li>
@@ -57,23 +57,18 @@
     </div>
 
 </div>
+
 <!--
-<div id="docs">
-<div id="sidebar">
-
-</div>
-
-<div id="content-wrapper">
-<div id="content">
-
-</div>
-</div>
-</div>
+    Syntax highlighting library
 -->
-        <!--
+<!--
 <script src="https://cdn.jsdelivr.net/combine/npm/prismjs@1.8.1/components/prism-core.min.js,npm/prismjs@1.8.1/components/prism-clike.min.js,npm/prismjs@1.8.1/components/prism-markdown.min.js,npm/prismjs@1.8.1/components/prism-markup.min.js,npm/prismjs@1.8.1/components/prism-json.min.js,npm/prismjs@1.8.1/components/prism-javascript.min.js,npm/prismjs@1.8.1/components/prism-sass.min.js,npm/prismjs@1.8.1/components/prism-css.min.js"></script>
 -->
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.8.1/prism.min.js"></script>
+
+<!--
+    Select the current nav link.
+-->
 <script>
     var elements = document.getElementsByClassName('nav-link');
     var loc = window.location.pathname;
@@ -83,5 +78,6 @@
         }
     }
 </script>
+
 </body>
 </html>

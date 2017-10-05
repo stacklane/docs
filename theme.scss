@@ -21,17 +21,17 @@ $enable-print-styles: false;
 @import "bootstrap/input-group";
 //@import "bootstrap/custom-forms";
 @import "bootstrap/nav";
-@import "bootstrap/navbar";
+//@import "bootstrap/navbar";
 @import "bootstrap/card";
 //@import "bootstrap/breadcrumb";
 //@import "bootstrap/pagination";
 @import "bootstrap/badge";
-@import "bootstrap/jumbotron";
-@import "bootstrap/alert";
+//@import "bootstrap/jumbotron";
+//@import "bootstrap/alert";
 //@import "bootstrap/progress";
-@import "bootstrap/media";
+//@import "bootstrap/media";
 @import "bootstrap/list-group";
-@import "bootstrap/close";
+//import "bootstrap/close";
 
 // JS @import "bootstrap/modal";
 // JS depends on popper: @import "bootstrap/tooltip";
@@ -114,6 +114,7 @@ article header h1{
 }
 article section h2{
   font-size: $h4-font-size;
+  margin-bottom: 1rem;
 }
 article section h3{
   font-size: $h6-font-size;
@@ -174,7 +175,7 @@ article header p:last-child{
 
 .sidebar nav ul {
   margin-bottom: 20px;
-  padding-left: 1rem;
+  padding-left: 1.2rem;
 }
 
 .sidebar nav h1 svg{

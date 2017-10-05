@@ -1,5 +1,5 @@
 
-{{% partial /_partials/ }}
+{{% partial /_layout }}
 
 {{<layout}}
 {{$content}}
@@ -11,7 +11,7 @@
         <p>
             Stacklane is going places.  Here are the broad strokes, in no specific order.
             In general we strive to distill common and time-tested best practices.
-            We do not want to reinvent the wheel, but make it easier to pull off the shelf and drive.
+            We do not want to reinvent the wheel, but make the wheel easier to pull off the shelf and drive.
         </p>
     </header>
 
@@ -47,7 +47,7 @@
             <li>Has built in IETF BCP 47 compatible "lang" field.</li>
             <li>May be a singleton.</li>
             <li>May <b>not</b> be a container.</li>
-            <li>Unique values are not allowed (except for slug/uid)</li>.
+            <li>Unique values are not allowed (except for slug/uid).</li>
             <li>May not be created/edited from API -- or can only be "authored" within the context of a "user".</li>
         </ul>
     </section>
@@ -59,7 +59,7 @@
             for every one of your projects.  These will be a first class field type supporting:
 
             <ul>
-                <li>Quickly accessible list of all currently defined tags, independent of documents</li>.
+                <li>Quickly accessible list of all currently defined tags, independent of documents</li>
                 <li>Deletion/removal</li>
                 <li>Merge/combine (effectively a delete / replace)</li>
                 <li>Explicit and implicit tagging modes</li>
