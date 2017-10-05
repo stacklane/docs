@@ -145,6 +145,13 @@
             (As mentioned in the documentation on <a href="/routing/suppliers">Suppliers</a>,
             all variables exported exist in the module '📤'.)
         </p>
+
+        <h3>HTML Encoding/Escapes</h3>
+        <p>
+            Mustache escapes / encodes special HTML characters by default when they
+            are included from a variable or model field.  If <code>&#123&#123%company.name&#125&#125</code>
+            is "ABC &amp; Co.", then this will become the encoded HTML equivalent  <code>ABC &amp;amp Co.</code>.
+        </p>
     </section>
 
     <section>
