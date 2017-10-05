@@ -1,0 +1,90 @@
+
+{{% partial /_layout }}
+
+{{<layout}}
+{{$content}}
+
+<article>
+    <header>
+        <h1>Assets</h1>
+
+        <p>
+            Learn how to use SASS/SCSS, CSS, static HTML, and client side JS.
+        </p>
+    </header>
+
+    <section>
+        <h2>SASS/SCSS</h2>
+
+        <p>
+            Stacklane includes native support for <code>.scss</code> files.
+            They become similarly named <code>.css</code> files in terms of the resulting endpoint.
+            If you have a SCSS file at <code>/theme.scss</code>, then reference this
+            in your HTML or Mustache file as you would any CSS file:
+
+        <pre><code class="language-html">
+&lt;link rel="stylesheet" href="/theme.css" ... &gt;
+            </code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2>HTML</h2>
+
+        <p>
+            If you do not need the extra capabilities of <a href="/routing/mustache">Mustache</a>
+            templates, then a plain HTML file may be used.  It follows the same routing conventions
+            as Mustache files including putting <code>index.html</code> into a route with a
+            trailing slash. Therefore if you decide to rename your file extension to use Mustache
+            in the future, there is no change to the public endpoint/URL.
+        </p>
+    </section>
+
+    <section>
+        <h2>CSS</h2>
+
+        <p>
+            You can include a <code>.css</code> anywhere,
+            however in general we recommend SASS/SCSS (<code>.scss</code>) files
+            due to the additional capabilities offered.
+            There is no performance benefit to using plain CSS over SCSS.
+        </p>
+    </section>
+
+    <section>
+        <h2>Third Party JavaScript Libraries</h2>
+
+        <p>
+            We like to think of third party JS libraries as part of the browser's stack
+            -- something that extends the native functionality of the browser, and that your
+            app can put to use.
+
+            We generally do not recommend hosting these
+            along with your other Stacklane files,
+            as it brings no benefit.
+
+            There are many excellent content delivery networks these days, where
+            third party libraries are dependable, static, and versioned.
+
+            <a href="https://www.jsdelivr.com/">jsDelivr</a> is one such service,
+            which supports combining several files, among other features.
+        </p>
+    </section>
+
+    <section>
+        <h2>Custom JavaScript</h2>
+
+        <h3>Inline</h3>
+        <p>
+            An approach we've found that works well is using third party JavaScript libraries
+            for major functionality.  This generally leaves custom client side JavaScript to
+            a minimum, and in many cases it may make sense to simply inline the JavaScript
+            within the page.  For smaller page-specific JavaScript this has a performance benefit.
+            Our automatic <a href="/routing/csp">CSP</a> handling will create a hash source
+            for allowing any inline JavaScript.
+        </p>
+    </section>
+</article>
+
+{{/content}}
+{{/layout}}
