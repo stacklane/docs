@@ -92,12 +92,13 @@
     var categories = document.getElementsByClassName('nav-category');
     for (var i = 0; i < categories.length; i++){
         categories[i].addEventListener("click", function( event ) {
-            if (event.target.localName == 'svg'){
-                event.target.parentElement.nextElementSibling.classList.toggle('d-none');
-            } else {
-                event.target.nextElementSibling.classList.toggle('d-none');
-            }
+            event.target.nextElementSibling.classList.toggle('d-none');
         }, false);
+
+        // svg needs its own click
+        categories[i].firstElementChild.addEventListener('click', function(event){
+            event.target.parentElement.nextElementSibling.classList.toggle('d-none');
+        });
     }
 </script>
 
