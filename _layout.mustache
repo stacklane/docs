@@ -92,13 +92,13 @@
     var categories = document.getElementsByClassName('nav-category');
     for (var i = 0; i < categories.length; i++){
         categories[i].addEventListener("click", function( event ) {
-            var et = event.target;
-            var cat = et.classList.contains('nav-category') ? et : findAncestor(et, 'nav-category');
+            var cat = findCategory(event.target, 'nav-category');
             cat.nextElementSibling.classList.toggle('d-none');
         }, false);
     }
 
-    function findAncestor (el, cls) {
+    function findCategory(el, cls) {
+        if (el.contains(cls)) return el;
         while ((el = el.parentElement) && !el.classList.contains(cls));
         return el;
     }
