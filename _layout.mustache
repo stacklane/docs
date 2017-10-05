@@ -25,36 +25,38 @@
             <nav class="mt-4">
                 <h1 class="nav-category">{{>icon-cloud-sm}} Basics</h1>
                 <ul class="d-none">
-                    <li class="nav-item"><a class="nav-link" href="/">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/roadmap">Roadmap</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/quickstart">Quickstart</a></li>
+                    <li><a class="nav-link" href="/">Overview</a></li>
+                    <li><a class="nav-link" href="/roadmap">Roadmap</a></li>
+                    <!--
+                    <li><a class="nav-link" href="/quickstart">Quickstart</a></li>
+                    -->
                 </ul>
                 <h1 class="nav-category">{{>icon-target-sm}} Routing</h1>
                 <ul class="d-none">
-                    <li class="nav-item"><a class="nav-link" href="/routing/">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/routing/js">JavaScript</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/routing/mustache">Mustache</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/routing/assets">Assets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/routing/suppliers">Suppliers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/routing/errors">Errors</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/routing/csp">CSP</a></li>
+                    <li><a class="nav-link" href="/routing/">Overview</a></li>
+                    <li><a class="nav-link" href="/routing/js">JavaScript</a></li>
+                    <li><a class="nav-link" href="/routing/mustache">Mustache</a></li>
+                    <li><a class="nav-link" href="/routing/assets">Assets</a></li>
+                    <li><a class="nav-link" href="/routing/suppliers">Suppliers</a></li>
+                    <li><a class="nav-link" href="/routing/errors">Errors</a></li>
+                    <li><a class="nav-link" href="/routing/csp">CSP</a></li>
                 </ul>
                 <h1 class="nav-category">{{>icon-spreadsheet-sm}} Data</h1>
                 <ul class="d-none">
-                    <li class="nav-item"><a class="nav-link" href="/data/">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/data/types">Types</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/data/fields">Fields</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/data/container">Containers</a></li>
+                    <li><a class="nav-link" href="/data/">Overview</a></li>
+                    <li><a class="nav-link" href="/data/types">Types</a></li>
+                    <li><a class="nav-link" href="/data/fields">Fields</a></li>
+                    <li><a class="nav-link" href="/data/container">Containers</a></li>
                 </ul>
                 <h1 class="nav-category">{{>icon-document-sm}} Scripting</h1>
                 <ul class="d-none">
-                    <li class="nav-item"><a class="nav-link" href="/script/">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/script/libraries">Libraries</a></li>
+                    <li><a class="nav-link" href="/script/">Overview</a></li>
+                    <li ><a class="nav-link" href="/script/libraries">Libraries</a></li>
                 </ul>
                 <h1 class="nav-category">{{>icon-browser-sm}} Development</h1>
                 <ul class="d-none">
-                    <li class="nav-item"><a class="nav-link" href="/dev/">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/dev/playground">Playground</a></li>
+                    <li><a class="nav-link" href="/dev/">Overview</a></li>
+                    <li><a class="nav-link" href="/dev/playground">Playground</a></li>
                 </ul>
             </nav>
             </div>
@@ -90,7 +92,11 @@
     var categories = document.getElementsByClassName('nav-category');
     for (var i = 0; i < categories.length; i++){
         categories[i].addEventListener("click", function( event ) {
-            event.target.nextElementSibling.classList.toggle('d-none');
+            if (event.target.localName == 'svg'){
+                event.target.parentElement.nextElementSibling.classList.toggle('d-none');
+            } else {
+                event.target.nextElementSibling.classList.toggle('d-none');
+            }
         }, false);
     }
 </script>
