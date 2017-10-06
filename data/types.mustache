@@ -14,7 +14,96 @@
     </header>
 
     <section>
+        <h2><a name="universal">Universal Type</a></h2>
 
+        <p>
+            This is a general purpose type, suitable for a wide range of entities and concepts.
+            Examples include:  <i>Account, Customer, User, Site, Contact, License, Address</i>, etc.
+            It supports unique values, and may be a singleton.
+        </p>
+
+        <p>
+            The Universal type may optionally be a <a href="/data/containers/">Container</a> for other types.
+            For example, an <i>List</i> might be defined as a <a href="/data/containers/">Container</a>
+            for <i>Task</i>'s.
+        </p>
+
+        <p>
+            This type is not for cases covered by other model types.  It should not be
+            used for extremely unbounded data, such as <i>Orders</i> or <i>Comments</i>
+            (better suited for the Event type).  It does not allow large text fields,
+            and is therefore not suitable for an article, blog post, or product description.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="event">Event Type</a></h2>
+
+        <p>
+            This time is for events, time-series data, activity, or logging.
+            Events accumulate (in a healthy business), as time goes by, at a potentially high frequency.
+            Events are not "crafted" or "authored" -- they "occur".
+        </p>
+        <p>
+            Orders, comments, and twitter posts are considered "events", from the standpoint of their
+            potentially high frequency, their small size, and their permanence/low-mutability.
+            Once created they are usually not modified again.
+        </p>
+        <p>
+            Another distinguishing characteristic is that newer Events are generally more relevant than older events,
+            with very old Events having little to no relevance.
+        </p>
+        <p>
+            Events have a "useful time horizon" for queries, of either yearly, monthly, or daily.
+            The default of one year should be suitable for most cases, and is easiest to develop against.
+            A query for events may only span two time partitions.  So in the case of the default
+            yearly horizon, a single query could span two years.
+        </p>
+
+        <h3>Advantages</h3>
+        <p>
+            <ul>
+                <li>
+                    Automatic partitioning over time. There is no "performance penalty" to a business that has
+                    events growing over time, where newer events are generally more relevant than previous events.
+                </li>
+            </ul>
+        </p>
+
+        <h3>Limitations</h3>
+        <p>
+            <ul>
+                <li>Unique values are not allowed.</li>
+                <li>Must always exist within a <a href="/data/containers/">Container</a></li>
+                <li>All queries must include date/time range (it is not possible to query for all Events).</li>
+                <li><a href="#embedded">Embedded</a> models must be "local" to the Event type --
+                    thereby enforcing they are "purpose built" for that Event type.</li>
+            </ul>
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="content">Content Type</a></h2>
+        <p>
+            In progress.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="embedded">Embedded Type</a></h2>
+
+        <p>
+            Embedded models create a complex value (or sub-document) that can be used as a field type for another model type.
+            It may also be used for lists, where for example "Order.items" is a list of "OrderItem" embedded values.
+            Models to be embedded take on the field limitations of whatever type they are embedded on.
+        </p>
+
+        <h3>Local vs. Global</h3>
+        <p>
+            Global Embedded types may be used and embedded within any other type,
+            as long as their fields are compatible with that type.
+            Local Embedded types may only be used and embedded within a single model type.
+        </p>
     </section>
 </article>
 

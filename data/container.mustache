@@ -1,0 +1,72 @@
+{{% partial /_layout }}
+
+{{<layout}}
+{{$content}}
+
+<article>
+    <header>
+        <h1>Containers</h1>
+
+        <p>
+            Learn about designing data models with containers.
+        </p>
+    </header>
+
+    <section>
+        <h2>Overview</h2>
+
+        <p>
+            Containers are a kind of <a href="/data/types#universal">Universal</a> model type,
+            and inherit all of the capabilities of that type.
+        </p>
+        <p>
+            Use containers whenever there is a strong one-to-many, or parent/child relationship.
+            A container may have many kinds of children, but a child may only have one kind of container/parent.
+            For example, "Account/X" and "Account/Y", but there would never be another parent for "X" besides "Account".
+        </p>
+        <p>
+            Containers may be deeply nested, such as Account ▶ Site ▶ Order, or User ▶ List ▶ Task.
+        </p>
+    </section>
+
+    <section>
+        <h2>Query Scope</h2>
+
+        <p>
+            By the default the first container starts a new "query isolation" scope.  In the following example,
+            "User" is the first container and therefore the root of query isolation.
+        </p>
+        <p>
+            Given the example hierarchy User ▶︎ List ▶︎ Task, and a query for "Tasks by Name" defined
+            on Task, the scope of Tasks that will be queried varies depending on which of the two possible
+            ancestor containers are selected.
+        </p>
+        <p>
+            If the "Tasks by Name" query is executed in the scope of the User, then all Tasks across
+            all Lists by that single User will be queried by name.
+        </p>
+        <p>
+            If the "Tasks by Name" query is executed in the scope of a List, then only Tasks within
+            the single List will be queried by name.
+        </p>
+        <p>
+            When <a href="/data/queries">queries</a> are defined for a model type that is within a
+            container, there are certain
+        </p>
+        <p>
+            Because query isolation is in effect starting at a single User,
+            it is not possible to search for all Tasks's across all User's.
+        </p>
+
+        <h3>Event Scope</h3>
+        <p>
+            The <a href="/data/types#event">Event</a> type does not use an ancestor for its query scope,
+            only the direct parent.  Given Account ▶︎ Site ▶︎ Orders, the Orders Event type must always
+            be queried in the context of a single Site.
+        </p>
+    </section>
+</article>
+
+
+{{/content}}
+{{/layout}}
