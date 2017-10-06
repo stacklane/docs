@@ -14,7 +14,9 @@
 
     <section>
         <p>
-            Note: Not all field types are available for all <a href="/data/types">model types</a>.
+            Note: Not all field types are available for all <a href="/data/types">model types</a>,
+            and there is a maximum of 15 fields per model type
+            (however this may be effectively extended with embedded values)
         </p>
     </section>
 
@@ -27,12 +29,24 @@
         </p>
     </section>
 
+    <section>
+        <h2><a name="embedded">Embedded</a></h2>
+
+        <p>
+            This is the field type corresponding to a complex value defined by an
+            <a href="/data/types#embedded">Embedded</a> model type.
+        </p>
+        <p>
+            It may be a many valued array/list, in which case there is a limit of <b>20</b>
+            embedded entries.
+        </p>
+    </section>
 
     <section>
         <h2><a name="uid">UID (Slug)</a></h2>
 
         <p>
-            Used for unique identifiers destined for use in URL paths.
+            Used for "user friendly" unique identifiers destined for URL paths.
         </p>
         <p>
             This field is unique always, and is available for the <a href="/data/types#universal">Universal</a>
@@ -50,6 +64,10 @@
             Therefore a single model may have multiple unique UID values associated with it,
             however at any given time only one is "current" or "primary".
         </p>
+        <p>
+            In an ideal scenario from an SEO standpoint, if the visitor has reached a URL by an older UID,
+            then it's recommended you redirect to the current/primary UID value.
+        </p>
     </section>
 
     <section>
@@ -57,7 +75,15 @@
 
         <p>
             The <i>String</i> field type may be marked as unique for the <a href="/data/types#universal">Universal</a>
-            model type only.  Unique values are constrained to the nearest <a href="/data/containers">Container</a>.
+            model type only.  Unique values are constrained/scoped to the nearest <a href="/data/containers">Container</a>.
+        </p>
+        <p>
+            Deleting/removing a document will delete all associated unique values.
+        </p>
+        <p>
+            Warning: Commits will fail / throw an exception if there is a unique value violation.
+            Therefore it's highly recommended that if a unique value is being created or changing,
+            that there exists logic to check whether the unique value is available.
         </p>
     </section>
 </article>

@@ -87,6 +87,15 @@ $sl-logo-secondary: #13bdce;
 .logo svg{
   height: 1rem;
 }
+.logo .stacklane-logo .logo-graphic{
+  display:none;
+}
+.logo .ext{
+  display: inline-block;
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
+}
 
 /**
  * Article
@@ -189,11 +198,10 @@ $sidebar-padding: 1rem;
   margin-top: 1rem;
   padding-top: 1rem;
   margin-right: -$sidebar-padding;
-
-  text-decoration: none;
-  color: black;
 }
-.sidebar .nav-separator:active,.sidebar .nav-separator:visited{
+.sidebar .nav-separator a,
+.sidebar .nav-separator a:active,
+.sidebar .nav-separator a:visited{
   text-decoration: none;
   color: black;
 }
