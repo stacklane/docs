@@ -1,0 +1,20 @@
+[
+  {
+    "title":"TodoMVC (Angular)",
+    "desc":"Starting with the Angular flavor of TodoMVC, adds in server side storage and API.",
+    "src":"https://github.com/stacklane-examples/todomvc-angular.git/",
+    "load":"github.com/stacklane-examples/todomvc-angular.git/"
+  },
+  {
+    "title":"Bootstrap Hello",
+    "desc":"Say hello with Bootstrap.  Fork and use as a starter template.",
+    "src":"https://github.com/stacklane-examples/bootstrap-hello.git",
+    "load":"github.com/stacklane-examples/bootstrap-hello.git/"
+  },
+  {
+    "title":"(This) Playground",
+    "desc":"Make your head spin, and run this documentation site + playground from inside of itself.",
+    "src":"https://github.com/stacklane/playground.git",
+    "load":"github.com/stacklane/docs.git/"
+  }
+]

@@ -1,0 +1,50 @@
+{{% json /_examples as examples}}
+
+{{% partial /_layout }}
+
+{{<layout}}
+{{$content}}
+
+<article>
+    <header>
+        <h1>Playground</h1>
+
+        <p>
+            Get started with an example, or fork and create your own.
+        </p>
+    </header>
+
+    <section>
+
+    </section>
+
+    <section>
+        <h2>Examples</h2>
+
+        <!--
+            Data is loaded/imported from _examples.json
+         -->
+        {{#examples by 2 as grp}}
+            <div class="card-deck small">
+                {{#grp as example}}
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h6 class="card-title">{{title}}</h6>
+                            <p class="card-text">
+                                {{desc}}
+                            </p>
+                        </div>
+                        <div class="card-footer text-right">
+                            <a href="{{src}}" class="card-link">Source</a>
+                            <a href="{{load}}" class="card-link">Load</a>
+                        </div>
+                    </div>
+                {{/grp}}
+            </div>
+        {{/examples}}
+
+    </section>
+</article>
+
+{{/content}}
+{{/layout}}

@@ -1,0 +1,133 @@
+
+{{% import {RepoUrl, SiteId} from '📤' }}
+
+{{% partial /_layout }}
+
+{{<layout}}
+{{$content}}
+
+<link itemprop="content-security-policy" data-connect-self="true">
+
+<article>
+    <h1>
+        {{RepoUrl}}
+    </h1>
+
+    <span id="repo-display" class="d-none">
+        <button id="repo-edit-action" class="btn btn-light btn-sm">Edit</button>
+        <button id="repo-refresh-action" class="btn btn-light btn-sm">Refresh</button>
+    </span>
+
+    <span id="repo-edit" class="d-none">
+        <div class="input-group">
+            <div class="input-group-addon line-height-svg">{{> logo-github}}</div>
+            <input id="repo-url-input" type="search" class="form-control" value="{{Repository.url}}">
+            <div class="input-group-addon"><button id="repo-load-action" class="btn btn-light btn-sm">Load</button></div>
+        </div>
+    </span>
+
+    <div class="border rounded p-1 border-secondary mt-4">
+        <ul class="list-group" id="status">
+            <li class="list-group-item list-group-item-warning">Initializing</li>
+        </ul>
+    </div>
+
+    <div id="launch" class="d-none mt-4">
+        <a id="launch-link" href="#" class="btn btn-primary">Launch</a>
+    </div>
+</div>
+
+</article>
+
+<script src="https://cdn.jsdelivr.net/combine/npm/zepto@1.2.0"></script>
+
+<script>
+
+    function clearStatus(){
+        $("#status").empty();
+    }
+
+    function addStatus(html, cls){
+        var newItem = $(
+                "<li class='" + cls + "'>"
+                + html
+                + "</li>"
+        );
+        $("#status").append(newItem);
+        $("#status").scrollTop($("#status")[0].scrollHeight);
+    };
+
+    function logLevelToClass(level){
+        if (level == null) level = 'debug';
+        switch (level){
+            case 'error': return 'danger';
+            case 'warn': return 'warning';
+            case 'info': return 'info';
+            case 'debug': return 'light';
+            default: return level;
+        }
+    }
+
+    function init(branch){
+        addStatus('Initializing', 'list-group-item list-group-item-warning pt-1 pb-1');
+
+        var init = new EventSource('build?branch=' + branch);
+
+        init.onerror = function(e){
+            // Unfortunately this appears to be called when server closes connection *even intentionally*.
+            // In other words, there is no difference between intentional and unintentional server connection close.
+            // addStatus('Connection failed: ' + e.message, "list-group-item pt-1 pb-1 list-group-item-danger");
+        };
+
+        init.onmessage = function(e){
+            if (e.data.startsWith("{")){
+                var obj = JSON.parse(e.data);
+                addStatus(obj.value, "list-group-item pt-1 pb-1 list-group-item-" + logLevelToClass(obj.level));
+            } else {
+                addStatus(e.data, "list-group-item pt-1 pb-1 list-group-item-warn");
+            }
+        }
+
+        init.addEventListener('completed', function(e) {
+            addStatus("Done", "list-group-item pt-1 pb-1 list-group-item-success");
+            var obj = JSON.parse(e.data);
+            $("#launch-link").attr('href', "/site/{{SiteId}}/" + branch + "/");
+            $("#launch").removeClass('d-none');
+            init.close();
+        });
+
+        init.addEventListener('exception', function(e) {
+            addStatus(e.data, "list-group-item pt-1 pb-1 list-group-item-error");
+            init.close();
+        });
+    }
+
+    $(function(){
+        //$("time.timeago").timeago();
+
+        $('#repo-edit-action').on('click', function(){
+            $('#repo-edit').removeClass('d-none');
+            $('#repo-display').addClass('d-none');
+        });
+
+        $('#repo-load-action').on("click", function(){
+            var url = $('#repo-url-input').val();
+            // TODO simple URL validation.
+            var result = url.replace("https://", "");
+            $(location).attr('href', '/' + result  + '/');
+        });
+
+        $('#repo-refresh-action').on('click', function(){
+            clearStatus();
+            init('master');
+        });
+
+        clearStatus();
+        init('master');
+    });
+
+</script>
+
+
+{{/content}}
+{{/layout}}
