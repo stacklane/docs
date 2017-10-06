@@ -83,9 +83,15 @@ $sl-logo-secondary: #13bdce;
 
 .logo{
   @include sl-logo-color($gray-900, $gray-900);
+
+  margin-left: -1.2rem;
 }
-.logo svg{
+.logo a, .logo a:visited, .logo a:hover{
+  text-decoration: none;
+}
+.logo svg.stacklane-logo{
   height: 1rem;
+  vertical-align:text-bottom;
 }
 .logo .stacklane-logo .logo-graphic{
   display:none;
@@ -93,7 +99,6 @@ $sl-logo-secondary: #13bdce;
 .logo .ext{
   display: inline-block;
   font-weight: 500;
-  text-decoration: none;
   color: black;
 }
 
