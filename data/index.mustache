@@ -15,10 +15,25 @@
 
     <section>
         <p>
-
+            Models represent structured data. Model <a href="/data/types">types</a> describe the overarching
+            use case for the data, and the system determines the best underlying way to carry out that use case.
+            Model types have defining characteristics, advantages, and disadvantages,
+            that facilitate choosing one over the other.
         </p>
 
+        <p>
+            Modeling best practices follow those of document based databases, such as MongoDB.
+            Document based modeling usually calls for much more denormalization than relational databases.
+            For example, the classic Order/OrderItem two table relationship, would likely be come a single
+            Order document with nested/embedded OrderItems.
+            In a document based world there is no joining or foreign keys, only documents (Models) of a given type.
+        </p>
+    </section>
 
+    <section>
+        <div class="alert alert-primary" role="alert">
+            Next: Learn about <a href="/data/types">Model types</a>.
+        </div>
     </section>
 </article>
 
