@@ -156,6 +156,8 @@ article header p:last-child{
  * Sidebar
  */
 
+$sidebar-padding: 1rem;
+
 .sidebar ul{
   list-style-type: none;
 }
@@ -171,7 +173,7 @@ article header p:last-child{
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
   border-right: 1px solid #eee;
   padding-left: 0;
-  padding-right: 0;
+  padding-right: $sidebar-padding;
   font-size: .8rem;
 }
 
@@ -192,7 +194,10 @@ article header p:last-child{
 }
 
 .sidebar .nav-separator{
-  border-top: 1px solid $gray-500;
+  border-top: 1px solid $gray-300;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  margin-left: -$sidebar-padding;
 }
 
 .sidebar nav h1 svg{
