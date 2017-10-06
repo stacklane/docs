@@ -15,7 +15,7 @@ $enable-print-styles: false;
 @import "bootstrap/tables";
 @import "bootstrap/forms";
 @import "bootstrap/buttons";
-@import "bootstrap/transitions";
+//@import "bootstrap/transitions";
 //@import "bootstrap/dropdown";
 //@import "bootstrap/button-group";
 //@import "bootstrap/input-group";
@@ -87,13 +87,6 @@ $sl-logo-secondary: #13bdce;
 .logo svg{
   height: 1rem;
 }
-
-/*
-h1 {
-  margin-bottom: 20px;
-  padding-bottom: 9px;
-  border-bottom: 1px solid #eee;
-}*/
 
 /**
  * Article
@@ -168,12 +161,10 @@ $sidebar-padding: 1rem;
   bottom: 0;
   left: 0;
   z-index: 1000;
-  padding: 20px;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
   border-right: 1px solid #eee;
-  padding-left: 0;
-  padding-right: $sidebar-padding;
+  padding: 20px $sidebar-padding 20px 0;
   font-size: .8rem;
 }
 
@@ -194,10 +185,17 @@ $sidebar-padding: 1rem;
 }
 
 .sidebar .nav-separator{
-  border-top: 1px solid $gray-300;
+  border-top: 1px solid $gray-200;
   margin-top: 1rem;
   padding-top: 1rem;
-  margin-left: -$sidebar-padding;
+  margin-right: -$sidebar-padding;
+
+  text-decoration: none;
+  color: black;
+}
+.sidebar .nav-separator:active,.sidebar .nav-separator:visited{
+  text-decoration: none;
+  color: black;
 }
 
 .sidebar nav h1 svg{
@@ -226,4 +224,3 @@ $sidebar-padding: 1rem;
 .sidebar .nav-link.active{
   color: #0099e5
 }
-
