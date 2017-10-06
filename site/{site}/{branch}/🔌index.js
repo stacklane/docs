@@ -1,8 +1,9 @@
 
 import {PlaySite} from "🔌";
-import {RepoUrl} from "📤";
+import {Mapping} from "📦";
 
+let url = Mapping.unique().key($site).url;
 
-new PlaySite(RepoUrl)
+new PlaySite(url)
     .branch($branch)
     .at({site: $site, branch: $branch});
