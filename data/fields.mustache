@@ -1,0 +1,67 @@
+{{% partial /_layout }}
+
+{{<layout}}
+{{$content}}
+
+<article>
+    <header>
+        <h1>Fields</h1>
+
+        <p>
+            Learn about available field types for your models.
+        </p>
+    </header>
+
+    <section>
+        <p>
+            Note: Not all field types are available for all <a href="/data/types">model types</a>.
+        </p>
+    </section>
+
+    <section>
+        <h2>String</h2>
+
+        <p>
+            The workhorse field type.  Maximum length: 100 characters.
+            May be marked as <a href="#unique">unique</a>.
+        </p>
+    </section>
+
+
+    <section>
+        <h2><a name="uid">UID (Slug)</a></h2>
+
+        <p>
+            Used for unique identifiers destined for use in URL paths.
+        </p>
+        <p>
+            This field is unique always, and is available for the <a href="/data/types#universal">Universal</a>
+            and <a href="/data/types#universal">Content</a> type's.
+        </p>
+        <p>
+            To keep URLs formatted according to best practices, it must start and end with
+            any character a-z, A-Z, or 0-9.  Between the start and end, dash characters are also allowed.
+            Minimum length is 2 characters.  Maximum length is 100 characters.
+        </p>
+        <p>
+            <b>Note:</b> UID's behave differently than other unique values.  Because they are destined
+            for URLs, it's implied that when they are modified the previous value is not lost
+            (otherwise any previously published URL would be result in a broken link).
+            Therefore a single model may have multiple unique UID values associated with it,
+            however at any given time only one is "current" or "primary".
+        </p>
+    </section>
+
+    <section>
+        <h2>Unique Values</h2>
+
+        <p>
+            The <i>String</i> field type may be marked as unique for the <a href="/data/types#universal">Universal</a>
+            model type only.  Unique values are constrained to the nearest <a href="/data/containers">Container</a>.
+        </p>
+    </section>
+</article>
+
+
+{{/content}}
+{{/layout}}
