@@ -129,6 +129,36 @@
     </section>
 
     <section>
+        <h2>Iteration Extensions</h2>
+        <p>
+            We've extended Mustache iteration with a couple of helpful utilities.
+            Standard mustache iteration looks like
+            <code>&#123&#123%#SomeList&#125&#125 ... &#123&#123%/SomeList&#125&#125</code>
+        </p>
+        <h3>as</h3>
+        <p>
+            Use 'as' to rename the internal variable available in each iteration:
+
+            <code>&#123&#123%#SomeList as item&#125&#125 &#123&#123%item.prop&#125&#125 &#123&#123%/SomeList&#125&#125</code>
+        </p>
+        <h3>by</h3>
+        <p>
+            Use 'by' to iterate the collection in groups of N (up to 10.
+
+            This is most useful when working with various CSS grid layouts.
+
+            <pre><code class="language-html">
+&#123&#123%#SomeList by 2 as grp&#125&#125
+    &#123&#123%#grp as item&#125&#125
+        &#123&#123%item.prop&#125&#125
+    &#123&#123%/grp&#125&#125
+&#123&#123%/SomeList&#125&#125
+    </code></pre>
+
+        </p>
+    </section>
+
+    <section>
         <h2>Variable Imports</h2>
 
         <p>
