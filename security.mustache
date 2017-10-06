@@ -1,0 +1,51 @@
+
+{{% partial /_layout }}
+
+{{<layout}}
+{{$content}}
+
+<article>
+    <header>
+        <h1>Security</h1>
+
+        <p>
+            Learn how Stacklane protects data and encourages security best practices.
+        </p>
+    </header>
+
+    <section>
+        <h2>Data Encryption</h2>
+
+        <p>
+            All data hosted through Stacklane is encrypted in transit, and at rest.
+        </p>
+    </section>
+
+    <section>
+        <h2>Data Integrity</h2>
+
+        <p>
+            Data is stored simultaneously in multiple regions throughout the North America.
+        </p>
+    </section>
+
+    <section>
+        <h2>Content Security Policies</h2>
+        <p>
+            All pages served by Stacklane use a Content Security Policy (CSP).
+            <a target="_blank" href="https://en.wikipedia.org/wiki/Content_Security_Policy">Content Security Policies</a>
+            are a security standard which helps prevent common techniques for cross-site scripting (XSS), clickjacking, and other
+            code injection attacks.
+        </p>
+        <p>
+            The CSP header allows a host to declare trusted sources of content (JS execution, CSS styles, images etc).
+            They are a best practice followed by many large sites.
+            Stacklane makes using CSP easy through a combination of automatic behavior and custom declarations.
+        </p>
+    </section>
+
+</article>
+
+
+{{/content}}
+{{/layout}}

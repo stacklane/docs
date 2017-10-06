@@ -250,3 +250,12 @@ $sidebar-padding: 1rem;
   /*text-transform: lowercase;*/
   font-size: 80%;
 }
+
+/**
+ * Bootstrap changes
+ */
+
+.card-footer{
+  background:none;
+  border-top:none;
+}

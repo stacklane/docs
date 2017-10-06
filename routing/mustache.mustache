@@ -20,7 +20,8 @@
         </p>
         <p>
             Mustache views may be populated with data or other scripted variables
-            by using <a href="/routing/suppliers">Suppliers</a>.
+            by importing <a href="#variables">variables</a> previously exported by
+            <a href="/routing/suppliers">Suppliers</a>.
         </p>
     </section>
 
@@ -116,7 +117,7 @@
         <h2>Layout</h2>
 
         <p>
-            TODO
+            TODO - document "super" partials.
         </p>
     </section>
 
@@ -124,7 +125,13 @@
         <h2>JSON</h2>
 
         <p>
-            TODO
+            In certain cases it helps to keep structured data outside of your Mustache file,
+            and then include this for processing as any other variable.
+            This might make sense when a <a href="/data/type">model type</a> is overkill,
+            or its specs are still being mocked up.
+        </p>
+        <p>
+            TODO - document an example JSON file, and then iterating it.
         </p>
     </section>
 
@@ -133,13 +140,13 @@
         <p>
             We've extended Mustache iteration with a couple of helpful utilities.
             Standard mustache iteration looks like
-            <code>&#123&#123%#SomeList&#125&#125 ... &#123&#123%/SomeList&#125&#125</code>
+            <code>&#123&#123#SomeList&#125&#125 ... &#123&#123/SomeList&#125&#125</code>
         </p>
         <h3>as</h3>
         <p>
             Use 'as' to rename the internal variable available in each iteration:
 
-            <code>&#123&#123%#SomeList as item&#125&#125 &#123&#123%item.prop&#125&#125 &#123&#123%/SomeList&#125&#125</code>
+            <code>&#123&#123#SomeList as item&#125&#125 &#123&#123item.prop&#125&#125 &#123&#123/SomeList&#125&#125</code>
         </p>
         <h3>by</h3>
         <p>
@@ -148,18 +155,18 @@
             This is most useful when working with various CSS grid layouts.
 
             <pre><code class="language-html">
-&#123&#123%#SomeList by 2 as grp&#125&#125
-    &#123&#123%#grp as item&#125&#125
-        &#123&#123%item.prop&#125&#125
-    &#123&#123%/grp&#125&#125
-&#123&#123%/SomeList&#125&#125
+&#123&#123#SomeList by 2 as grp&#125&#125
+    &#123&#123#grp as item&#125&#125
+        &#123&#123item.prop&#125&#125
+    &#123&#123/grp&#125&#125
+&#123&#123/SomeList&#125&#125
     </code></pre>
 
         </p>
     </section>
 
     <section>
-        <h2>Variable Imports</h2>
+        <h2><a name="variables">Variable Imports</a></h2>
 
         <p>
             Mustache views may import variables which were exported by <a href="/routing/suppliers">Suppliers</a>.
@@ -199,6 +206,57 @@
             For example, given a Mustache view of <code>/hello/world.mustache</code>, and a Supplier file of
             <code>/hello/📤world.js</code>, the Mustache view will only have access to
             variables exported by <code>/hello/📤world.js</code>, regardless of any other Supplier's in the path.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="csp">Content Security Policies (CSP)</a></h2>
+
+        <p>
+            All pages served by Stacklane are given a Content Security Policy (CSP).
+            The CSP header allows a host to declare trusted sources of content (JS execution, CSS styles, images etc).
+            They are a best practice followed by many large sites.
+        </p>
+
+        <h3>Recommendations</h3>
+        <p>
+        <ul>
+            <li>
+                Avoid using inline style attributes <code>style="..."</code>.
+                To make certain development quicker Stacklane allows this by setting
+                "unsafe-inline".  However in general (as the name implies),
+                class names should be used.
+            </li>
+        </ul>
+        </p>
+
+        <h3>Automatic Behavior</h3>
+
+        <p>
+            Files are analyzed to create a reasonable CSP file.
+
+        <ul>
+            <li><code>&lt;script src=" ... &gt;</code></li>
+            <li><code>&lt;link rel="stylesheet" href=" ... &gt;</code></li>
+            <li>Inline <code>&lt;script&gt;</code> becomes a CSP hash source.</li>
+        </ul>
+        </p>
+
+        <h3>Custom Declarations</h3>
+
+        <p>
+            Include the following tag anywhere in the body:
+
+        <pre><code class="language-html">
+&lt;link itemprop="content-security-policy" ... &gt;
+        </code></pre>
+
+        This tag supports the following properties:
+
+        <ul>
+            <li><code>data-connect-self="true"</code> - allows AJAX connections to the same web app.</li>
+            <li><code>data-img-src-data="true"</code> - allows "data:" as an image source in CSS.</li>
+        </ul>
         </p>
     </section>
 </article>
