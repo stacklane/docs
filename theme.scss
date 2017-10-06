@@ -88,6 +88,7 @@ $sl-logo-secondary: #13bdce;
 }
 .logo a, .logo a:visited, .logo a:hover{
   text-decoration: none;
+  display:inline-block;
 }
 .logo svg.stacklane-logo{
   height: 1rem;
@@ -97,7 +98,6 @@ $sl-logo-secondary: #13bdce;
   display:none;
 }
 .logo .ext{
-  display: inline-block;
   font-weight: 500;
   color: black;
 }
