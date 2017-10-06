@@ -10,22 +10,10 @@
 
 <article>
     <h1>
-        {{RepoUrl}}
+        {{RepoUrl}} <button id="repo-refresh-action" class="btn btn-light btn-sm">Refresh</button>
     </h1>
 
-    <span id="repo-display" class="d-none">
-        <button id="repo-edit-action" class="btn btn-light btn-sm">Edit</button>
-        <button id="repo-refresh-action" class="btn btn-light btn-sm">Refresh</button>
-    </span>
-
-    <span id="repo-edit" class="d-none">
-        <div class="input-group">
-            <div class="input-group-addon line-height-svg">{{> logo-github}}</div>
-            <input id="repo-url-input" type="search" class="form-control" value="{{Repository.url}}">
-            <div class="input-group-addon"><button id="repo-load-action" class="btn btn-light btn-sm">Load</button></div>
-        </div>
-    </span>
-
+    <section>
     <div class="border rounded p-1 border-secondary mt-4">
         <ul class="list-group" id="status">
             <li class="list-group-item list-group-item-warning">Initializing</li>
@@ -35,6 +23,7 @@
     <div id="launch" class="d-none mt-4">
         <a id="launch-link" href="#" class="btn btn-primary">Launch</a>
     </div>
+    </section>
 </div>
 
 </article>
@@ -105,6 +94,7 @@
     $(function(){
         //$("time.timeago").timeago();
 
+        /*
         $('#repo-edit-action').on('click', function(){
             $('#repo-edit').removeClass('d-none');
             $('#repo-display').addClass('d-none');
@@ -116,6 +106,7 @@
             var result = url.replace("https://", "");
             $(location).attr('href', '/' + result  + '/');
         });
+        */
 
         $('#repo-refresh-action').on('click', function(){
             clearStatus();
