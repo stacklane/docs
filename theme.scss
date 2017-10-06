@@ -191,6 +191,10 @@ article header p:last-child{
   margin-top: 1rem;
 }
 
+.sidebar .nav-separator{
+  border-top: 1px solid $gray-500;
+}
+
 .sidebar nav h1 svg{
   vertical-align: text-bottom;
 }
