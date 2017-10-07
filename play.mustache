@@ -125,8 +125,9 @@
 
     init();
 
-    window.addEventListener('popstate', function(event) {
+    window.addEventListener('pageshow', function(event) {
         init(); // back button
+        console.log('pageshow');
     });
 </script>
 
