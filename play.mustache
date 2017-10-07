@@ -72,7 +72,7 @@
     }
 
     document.getElementById('form').addEventListener("submit", function( event ) {
-        if (!validateForm()) event.stopPropagation();
+        if (!validateForm()) event.preventDefault();
     }, false);
 </script>
 
