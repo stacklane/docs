@@ -115,6 +115,9 @@ $sl-logo-secondary: #13bdce;
 article, footer{
   font-size: 90%;
 }
+footer svg{
+  height: 1rem;
+}
 article header{
   padding-top: 8px;
   padding-bottom: 39px;
@@ -158,9 +161,6 @@ article .code>pre{
 article section p:last-child,
 article header p:last-child{
   margin-bottom: 0;
-}
-footer svg{
-  height: 1rem;
 }
 
 /*
@@ -262,4 +262,7 @@ $sidebar-padding: 1rem;
 .card-footer{
   background:none;
   border-top:none;
+}
+.card-body{
+  padding-bottom: .5rem;
 }

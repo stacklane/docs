@@ -1,7 +1,5 @@
 {{% json /_examples as examples}}
-
 {{% svg /_logos/ as logo }}
-
 {{% partial /_layout }}
 
 {{<layout}}
@@ -20,18 +18,22 @@
         <h2>Load from GitHub.com</h2>
 
         <p>
-            A public GitHub.com repository may be loaded and run.
+            A public GitHub.com repository may be loaded and run. Paste your .git URL here.
             We'll check it for Stacklane compatible files and let you know of any problems.
             (Note: Playground data expires 48 hours after created.)
         </p>
 
         <p>
-        <div class="input-group">
-            <div class="input-group-addon line-height-svg">{{> logo-github}}</div>
-            <input type="search" class="form-control"
-                   placeholder="https://github.com/your/stacklane-repo.git">
-            <div class="input-group-addon"><button class="btn btn-light btn-sm">Load</button></div>
-        </div>
+            <form id="form" method="post" action="/site" >
+            <div class="input-group">
+                <div class="input-group-addon">{{> logo-github}}</div>
+                <input type="search" class="form-control" placeholder="https://github.com/your/stacklane-repo.git">
+                <div class="input-group-addon"><button class="btn btn-light btn-sm">Load</button></div>
+            </div>
+            </form>
+            <div id="formAlert" class="alert alert-danger d-none" role="alert">
+                This is a danger alert—check it out!
+            </div>
         </p>
     </section>
 
@@ -62,6 +64,17 @@
 
     </section>
 </article>
+
+<script>
+    function validateForm(){
+        document.getElementById('formAlert').classList.toggle('d-none');
+        return false;
+    }
+
+    document.getElementById('form').addEventListener("submit", function( event ) {
+        if (!validateForm()) event.stopPropagation();
+    }, false);
+</script>
 
 {{/content}}
 {{/layout}}
