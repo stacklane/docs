@@ -159,6 +159,9 @@ article section p:last-child,
 article header p:last-child{
   margin-bottom: 0;
 }
+article footer svg{
+  height: 1rem;
+}
 
 /*
  * Sidebar
@@ -238,6 +241,7 @@ $sidebar-padding: 1rem;
 .sidebar .nav-link.active{
   color: #0099e5
 }
+
 
 /**
  * Build
