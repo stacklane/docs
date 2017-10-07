@@ -31,7 +31,7 @@
                 <div class="input-group-addon"><input type="submit" class="btn btn-light btn-sm" value="Load"></div>
             </div>
             </form>
-            <div id="formAlert" class="alert alert-danger d-none" role="alert"></div>
+            <div id="form-alert" class="alert alert-danger d-none" role="alert"></div>
         </p>
     </section>
 
@@ -65,7 +65,7 @@
 
 <script>
     function updateAlert(msg){
-        document.getElementById('formAlert').innerHTML = msg;
+        document.getElementById('form-alert').innerHTML = msg;
     }
 
     function validateForm(){
@@ -74,7 +74,7 @@
             updateAlert('Enter a Github.com URL');
             return false;
         }
-        if (!url.startsWith("https://") || url.endsWith(".git")){
+        if (!url.startsWith("https://") || !url.endsWith(".git")){
             updateAlert('This does not appear to be a valid Github.com repository URL.');
             return false;
         }
@@ -82,14 +82,18 @@
     }
 
     document.getElementById('github-url').addEventListener("keypress", function( event ) {
-        document.getElementById('formAlert').classList.add('d-none');
+        document.getElementById('form-alert').classList.add('d-none');
     }, false);
 
     document.getElementById('form').addEventListener("submit", function( event ) {
         if (!validateForm()) {
-            document.getElementById('formAlert').classList.remove('d-none');
+            document.getElementById('form-alert').classList.remove('d-none');
             event.preventDefault();
         }
+
+        var c = document.getElementById('form').getAttribute('action');
+        var u = document.getElementById('github-url').value;
+        document.getElementById('form').setAttribute('action?url=' + encodeURIComponent(u));
     }, false);
 </script>
 
