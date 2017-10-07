@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.8.1/themes/prism.min.css" defer>
     <link rel="stylesheet" href="/theme.css">
 
+    <script src="/_dom.js"></script>
+
     <!-- Imports -->
     {{% svg /_logos/ as logo }}
     {{% svg /_icons/ as icon }}
@@ -52,28 +54,17 @@
     Select the current nav link, and enable category expansion.
 -->
 <script>
-    var elements = document.getElementsByClassName('nav-link');
-    var loc = window.location.pathname;
-    for (var i = 0; i < elements.length; i++){
-        if (elements[i].getAttribute('href') == loc){
-            elements[i].classList.add('active');
-            elements[i].parentElement.parentElement.classList.toggle('d-none', false);
+    $get('.nav-link', function(e){
+        if (e.getAttribute('href') == loc){
+            e.classList.add('active');
+            e.parentElement.parentElement.classList.toggle('d-none', false);
         }
-    }
+    });
 
-    var categories = document.getElementsByClassName('nav-category');
-    for (var i = 0; i < categories.length; i++){
-        categories[i].addEventListener("click", function( event ) {
-            var cat = findCategory(event.target, 'nav-category');
-            cat.nextElementSibling.classList.toggle('d-none');
-        }, false);
-    }
-
-    function findCategory(el, cls) {
-        if (el.classList.contains(cls)) return el;
-        while ((el = el.parentElement) && !el.classList.contains(cls));
-        return el;
-    }
+    $on('.nav-category', 'click', function(e){
+        var cat = $up(event.target, '.nav-category');
+        cat.nextElementSibling.classList.toggle('d-none');
+    });
 </script>
 
 

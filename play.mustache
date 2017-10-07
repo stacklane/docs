@@ -65,9 +65,6 @@
 </article>
 
 <script>
-    $get = function(id, cb){ return id.startsWith('.') ? Array.prototype.forEach.call(document.getElementsByClassName(id.substring(1)), cb) : document.getElementById(id); }
-    $on = function(id, name, cb) { id.startsWith('.') ?  $get(id, function(e){ e.addEventListener(name, cb) }) : $get(id).addEventListener(name, cb) }
-
     function updateAlert(msg){
         $get('form-alert').innerHTML = msg;
     }
