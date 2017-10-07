@@ -124,6 +124,10 @@
     });
 
     init();
+
+    window.addEventListener('pageshow', function(event) {
+        init(); // back button
+    });
 </script>
 
 {{/content}}
