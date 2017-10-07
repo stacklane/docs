@@ -22,12 +22,12 @@ try {
 
     var existing = Mapping.unique().url(url);
 
-    '/site/' + existing.key  + '/'; // redirect
+    `/site/${existing.key}/`; // redirect
 
 } catch ($ModelNotFound){
 
     var created = new Mapping().url(url).key(idCreator());
 
-    '/site/' + created.key  + '/'; // redirect
+    `/site/${created.key}/`; // redirect
 
 }
