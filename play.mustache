@@ -65,7 +65,7 @@
 </article>
 
 <script>
-    $get = function(id){ return id.startsWith('.') ? document.getElementsByClassName(id) : document.getElementById(id); }
+    $get = function(id, cb){ return id.startsWith('.') ? Array.prototype.forEach.call(document.getElementsByClassName(id), cb) : document.getElementById(id); }
 
     function updateAlert(msg){
        $get('form-alert').innerHTML = msg;
@@ -84,12 +84,14 @@
         return true;
     }
 
-    $get('.playground-example-loader').addEventListener('click', function( event ) {
-        var href = event.target.getAttribute('href');
-        $get('github-url').value=href;
-        $get('form').submit();
-        event.preventDefault();
-    }, false);
+    $get('.playground-example-loader', function(e){
+        e.addEventListener('click', function( event ) {
+            var href = event.target.getAttribute('href');
+            $get('github-url').value=href;
+            $get('form').submit();
+            event.preventDefault();
+        }, false);
+    });
 
     $get('github-url').addEventListener("keypress", function( event ) {
         $get('form-alert').classList.add('d-none');
