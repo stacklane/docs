@@ -16,17 +16,16 @@
     </h1>
 
     <section>
-    <div class="border rounded p-1 border-secondary mt-4">
-        <ul class="list-group" id="status">
-            <li class="list-group-item list-group-item-warning">Initializing</li>
-        </ul>
-    </div>
+        <div class="border rounded p-1 border-secondary mt-4">
+            <ul class="list-group" id="status">
+                <li class="list-group-item list-group-item-warning">Initializing</li>
+            </ul>
+        </div>
 
-    <div id="launch" class="d-none mt-4">
-        <a id="launch-link" href="#" class="btn btn-primary">Launch</a>
-    </div>
+        <div id="launch" class="d-none mt-4">
+            <a id="launch-link" href="#" class="btn btn-primary">Launch</a>
+        </div>
     </section>
-</div>
 
 </article>
 
@@ -83,7 +82,7 @@
             addStatus("Done", "list-group-item pt-1 pb-1 list-group-item-success");
             var obj = JSON.parse(e.data);
             var siteId = document.getElementById('SiteId').value;
-            $("#launch-link").attr('href', "/site/" + siteId + branch + "/");
+            $("#launch-link").attr('href', "/site/" + siteId + '/' + branch + "/");
             $("#launch").removeClass('d-none');
             init.close();
         });
