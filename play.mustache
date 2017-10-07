@@ -93,7 +93,7 @@
 
         var c = document.getElementById('form').getAttribute('action');
         var u = document.getElementById('github-url').value;
-        document.getElementById('form').setAttribute('action?url=' + encodeURIComponent(u));
+        document.getElementById('form').setAttribute('action', c + '?url=' + encodeURIComponent(u));
     }, false);
 </script>
 

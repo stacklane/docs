@@ -9,8 +9,8 @@ if (url == null || url.length == 0 || !url.startsWith('https://github.com'))  th
  * Reasonable counter for this purpose -- 1 per second.
  */
 let idCreator = ()=>{
-    var base = Math.round(new Date(2017, 10, 1) / 1000);
-    var counter = Math.round(new Date() / 1000) - base;
+    let base = Math.round(new Date(2017, 10, 1) / 1000);
+    let counter = Math.round(new Date() / 1000) - base;
 
     let finalId = Encoding.base64Url().encodeNum(counter);
 
