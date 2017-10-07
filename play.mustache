@@ -86,8 +86,8 @@
     $get('.playground-example-loader', function(e){
         e.addEventListener('click', function( event ) {
             var href = event.target.getAttribute('href');
-            console.log(event.target);
             $get('github-url').value=href;
+            console.log(href);
             $get('form').submit();
             event.preventDefault();
         }, false);
