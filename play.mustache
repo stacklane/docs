@@ -70,6 +70,10 @@
        $get('form-alert').innerHTML = msg;
     }
 
+    function showAlert() {
+        $get('form-alert').classList.remove('d-none');
+    }
+
     function validateForm(){
         var url = $get('github-url').value;
         if (url == null || url.length == 0 || url.indexOf('github.com') < 0) {
@@ -80,15 +84,20 @@
             updateAlert('This does not appear to be a valid Github.com repository URL.');
             return false;
         }
+        var c = $get('form').getAttribute('action');
+        $get('form').setAttribute('action', c + '?url=' + encodeURIComponent(url));
         return true;
     }
 
     $get('.playground-example-loader', function(e){
         e.addEventListener('click', function( event ) {
             event.preventDefault();
-            var href = event.target.getAttribute('href');
-            $get('github-url').value=href;
-            $get('form').submit();
+            $get('github-url').value=event.target.getAttribute('href');
+            if (!validateForm()) {
+                showAlert();
+            } else {
+                $get('form').submit();
+            }
         }, false);
     });
 
@@ -98,13 +107,9 @@
 
     $get('form').addEventListener("submit", function( event ) {
         if (!validateForm()) {
-            $get('form-alert').classList.remove('d-none');
+            showAlert();
             event.preventDefault();
         }
-
-        var c = $get('form').getAttribute('action');
-        var u = $get('github-url').value;
-        $get('form').setAttribute('action', c + '?url=' + encodeURIComponent(u));
     }, false);
 </script>
 
