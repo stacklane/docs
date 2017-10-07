@@ -27,12 +27,12 @@
             <form id="form" method="post" action="/site" >
             <div class="input-group">
                 <div class="input-group-addon">{{> logo-github}}</div>
-                <input type="search" class="form-control" placeholder="https://github.com/your/stacklane-repo.git">
-                <div class="input-group-addon"><button class="btn btn-light btn-sm">Load</button></div>
+                <input id="github-url" type="search" class="form-control" placeholder="https://github.com/your/stacklane-repo.git">
+                <div class="input-group-addon"><input type="submit" class="btn btn-light btn-sm" value="Load"></div>
             </div>
             </form>
             <div id="formAlert" class="alert alert-danger d-none" role="alert">
-                This is a danger alert—check it out!
+
             </div>
         </p>
     </section>
@@ -66,13 +66,28 @@
 </article>
 
 <script>
-    function validateForm(){
-        document.getElementById('formAlert').classList.toggle('d-none');
-        return false;
+    function updateAlert(msg){
+        document.getElementById('formAlert').innerHTML = msg;
     }
 
+    function validateForm(){
+        var url = document.getElementById('github-url').value;
+        if (url == null || url.length == 0 || url.indexOf('github.com') < 0) {
+            updateAlert('Enter a Github.com URL');
+            return false;
+        }
+        return true;
+    }
+
+    document.getElementById('github-url').addEventListener("change", function( event ) {
+        document.getElementById('formAlert').classList.add('d-none');
+    }, false);
+
     document.getElementById('form').addEventListener("submit", function( event ) {
-        if (!validateForm()) event.preventDefault();
+        if (!validateForm()) {
+            document.getElementById('formAlert').classList.remove('d-none');
+            event.preventDefault();
+        }
     }, false);
 </script>
 
