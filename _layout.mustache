@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.8.1/themes/prism.min.css" defer>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.8.1/themes/prism.min.css">
     <link rel="stylesheet" href="/theme.css">
 
     <script src="/_dom.js"></script>
@@ -54,7 +54,7 @@
     Select the current nav link, and enable category expansion.
 -->
 <script>
-    $get('.nav-link', function(e){
+    $each('.nav-link', function(e){
         if (e.getAttribute('href') == loc){
             e.classList.add('active');
             e.parentElement.parentElement.classList.toggle('d-none', false);

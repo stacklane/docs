@@ -34,22 +34,18 @@
 
 </article>
 
-<script src="https://cdn.jsdelivr.net/combine/npm/zepto@1.2.0"></script>
-
 <script>
 
     function clearStatus(){
-        $("#status").empty();
+        $get('status').innerHTML = '';
     }
 
     function addStatus(html, cls){
-        var newItem = $(
-                "<li class='" + cls + "'>"
-                + html
-                + "</li>"
-        );
-        $("#status").append(newItem);
-        $("#status").scrollTop($("#status")[0].scrollHeight);
+        var node = document.createElement("li");
+        node.setAttribute("class", cls);
+        node.innerHTML = html;
+        $get('status').appendChild(node);
+        // TODO $("#status").scrollTop($("#status")[0].scrollHeight);
     };
 
     function logLevelToClass(level){
@@ -86,9 +82,9 @@
         init.addEventListener('completed', function(e) {
             addStatus("Done", "list-group-item pt-1 pb-1 list-group-item-success");
             var obj = JSON.parse(e.data);
-            var siteId = document.getElementById('SiteId').value;
-            $("#launch-link").attr('href', "/site/" + siteId + '/' + branch + "/");
-            $("#launch").removeClass('d-none');
+            var siteId = $get('SiteId').value;
+            $get("launch-link").setAttribute('href', "/site/" + siteId + '/' + branch + "/");
+            $get("launch").classList.remove('d-none');
             init.close();
         });
 
@@ -98,31 +94,13 @@
         });
     }
 
-    $(function(){
-        //$("time.timeago").timeago();
-
-        /*
-        $('#repo-edit-action').on('click', function(){
-            $('#repo-edit').removeClass('d-none');
-            $('#repo-display').addClass('d-none');
-        });
-
-        $('#repo-load-action').on("click", function(){
-            var url = $('#repo-url-input').val();
-            // TODO simple URL validation.
-            var result = url.replace("https://", "");
-            $(location).attr('href', '/' + result  + '/');
-        });
-        */
-
-        $('#repo-refresh-action').on('click', function(){
-            clearStatus();
-            init('master');
-        });
-
+    $on('repo-refresh-action', 'click', function(){
         clearStatus();
         init('master');
     });
+
+    clearStatus();
+    init('master');
 
 </script>
 
