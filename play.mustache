@@ -71,7 +71,11 @@
 </article>
 
 <script>
-    $get('github-url').value = '';
+    function init(){
+        $get('github-url').value = '';
+        $get('loading').classList.add('d-none');
+        $get('form').classList.remove('d-none');
+    }
 
     function updateAlert(msg){
         $get('form-alert').innerHTML = msg;
@@ -93,6 +97,8 @@
         }
         var c = $get('form').getAttribute('action');
         $get('form').setAttribute('action', c + '?url=' + encodeURIComponent(url));
+        $get('form').classList.add('d-none');
+        $get('progress').classList.remove('d-none');
         return true;
     }
 
@@ -116,6 +122,8 @@
             event.preventDefault();
         }
     });
+
+    init();
 </script>
 
 {{/content}}
