@@ -10,6 +10,11 @@
 
     <script src="/_dom.js"></script>
 
+    <script>
+        window.addEventListener('pageshow', function(event) {
+            console.log('pageshow');
+        });
+    </script>
     <!-- Imports -->
     {{% svg /_logos/ as logo }}
     {{% svg /_icons/ as icon }}
