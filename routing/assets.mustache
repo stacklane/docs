@@ -81,15 +81,31 @@
     <section>
         <h2>Custom JavaScript</h2>
 
-        <h3>Inline</h3>
         <p>
             Unless you're building Angular-style single page applications, then
             we recommend keeping your client-side JavaScript to a minimum.
-            Provided any major functionality as been brought in via a third party JS library,
-            in many cases it may make sense to simply inline your JavaScript.
-            Consider using native
+            Whenever possible consider using native
             <a target="_blank"  href="https://developer.mozilla.org/en-US/docs/Web/API/Element">DOM</a>
             methods, or the tongue-in-cheek <a target="_blank" href="http://vanilla-js.com/">VanillaJS</a>.
+        </p>
+
+        <h3>Inlining</h3>
+        <p>
+            Provided any major functionality has been brought in via a third party JS library,
+            in many cases it may make sense to simply inline your JavaScript.
+        </p>
+        <p>
+            Inline in the normal way using <code>&lt;script&gt;...&lt;/script&gt;</code>.
+        </p>
+        <p>
+            Alternatively you may inline a <a href="/routing/#private">private</a> file by
+            referencing it like any external script:
+            <code>&lt;script src="/_myCode.js"&gt;&lt;/script&gt;</code>.
+            Because of the underscore marking it as a private file,
+            Stacklane inlines the JS into the page.
+        </p>
+        <p>
+            In either case Stacklane produces an appropriate <a href="/security#csp">CSP</a>.
         </p>
     </section>
 </article>
