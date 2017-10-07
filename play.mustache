@@ -53,7 +53,8 @@
                         </div>
                         <div class="card-footer text-right">
                             <a href="{{src}}" class="btn btn-sm btn-light">Source</a>
-                            <a href="{{load}}" class="btn btn-sm btn-light">Load</a>
+                            <a href="{{src}}" class="playground-example-loader"
+                               class="btn btn-sm btn-light">Load</a>
                         </div>
                     </div>
                 {{/grp}}
@@ -64,12 +65,14 @@
 </article>
 
 <script>
+    $get = function(id){ return id.startsWith('.') ? document.getElementsByClassName(id) : document.getElementById(id); }
+
     function updateAlert(msg){
-        document.getElementById('form-alert').innerHTML = msg;
+       $get('form-alert').innerHTML = msg;
     }
 
     function validateForm(){
-        var url = document.getElementById('github-url').value;
+        var url = $get('github-url').value;
         if (url == null || url.length == 0 || url.indexOf('github.com') < 0) {
             updateAlert('Enter a Github.com URL');
             return false;
@@ -81,19 +84,26 @@
         return true;
     }
 
-    document.getElementById('github-url').addEventListener("keypress", function( event ) {
-        document.getElementById('form-alert').classList.add('d-none');
+    $get('.playground-example-loader').addEventListener('click', function( event ) {
+        var href = event.target.getAttribute('href');
+        $get('github-url').value=href;
+        $get('form').submit();
+        event.preventDefault();
     }, false);
 
-    document.getElementById('form').addEventListener("submit", function( event ) {
+    $get('github-url').addEventListener("keypress", function( event ) {
+        $get('form-alert').classList.add('d-none');
+    }, false);
+
+    $get('form').addEventListener("submit", function( event ) {
         if (!validateForm()) {
-            document.getElementById('form-alert').classList.remove('d-none');
+            $get('form-alert').classList.remove('d-none');
             event.preventDefault();
         }
 
-        var c = document.getElementById('form').getAttribute('action');
-        var u = document.getElementById('github-url').value;
-        document.getElementById('form').setAttribute('action', c + '?url=' + encodeURIComponent(u));
+        var c = $get('form').getAttribute('action');
+        var u = $get('github-url').value;
+        $get('form').setAttribute('action', c + '?url=' + encodeURIComponent(u));
     }, false);
 </script>
 
