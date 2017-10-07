@@ -31,9 +31,7 @@
                 <div class="input-group-addon"><input type="submit" class="btn btn-light btn-sm" value="Load"></div>
             </div>
             </form>
-            <div id="formAlert" class="alert alert-danger d-none" role="alert">
-
-            </div>
+            <div id="formAlert" class="alert alert-danger d-none" role="alert"></div>
         </p>
     </section>
 
@@ -76,10 +74,14 @@
             updateAlert('Enter a Github.com URL');
             return false;
         }
+        if (!url.startsWith("https://") || url.endsWith(".git")){
+            updateAlert('This does not appear to be a valid Github.com repository URL.');
+            return false;
+        }
         return true;
     }
 
-    document.getElementById('github-url').addEventListener("change", function( event ) {
+    document.getElementById('github-url').addEventListener("keypress", function( event ) {
         document.getElementById('formAlert').classList.add('d-none');
     }, false);
 
