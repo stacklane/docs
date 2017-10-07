@@ -55,7 +55,7 @@
 -->
 <script>
     $each('.nav-link', function(e){
-        if (e.getAttribute('href') == loc){
+        if (e.getAttribute('href') == window.location.pathname){
             e.classList.add('active');
             e.parentElement.parentElement.classList.toggle('d-none', false);
         }
