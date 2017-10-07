@@ -27,7 +27,8 @@
             <form id="form" method="post" action="/site" >
             <div class="input-group">
                 <div class="input-group-addon">{{> logo-github}}</div>
-                <input id="github-url" type="search" class="form-control" placeholder="https://github.com/your/stacklane-repo.git">
+                <input id="github-url" name="gh-url" type="search"
+                       class="form-control" placeholder="https://github.com/your/stacklane-repo.git">
                 <div class="input-group-addon"><input type="submit" class="btn btn-light btn-sm" value="Load"></div>
             </div>
             </form>
@@ -65,9 +66,10 @@
 
 <script>
     $get = function(id, cb){ return id.startsWith('.') ? Array.prototype.forEach.call(document.getElementsByClassName(id.substring(1)), cb) : document.getElementById(id); }
+    $on = function(id, name, cb) { id.startsWith('.') ?  $get(id, function(e){ e.addEventListener(name, cb) }) : $get(id).addEventListener(name, cb) }
 
     function updateAlert(msg){
-       $get('form-alert').innerHTML = msg;
+        $get('form-alert').innerHTML = msg;
     }
 
     function showAlert() {
@@ -89,28 +91,26 @@
         return true;
     }
 
-    $get('.playground-example-loader', function(e){
-        e.addEventListener('click', function( event ) {
-            event.preventDefault();
-            $get('github-url').value=event.target.getAttribute('href');
-            if (!validateForm()) {
-                showAlert();
-            } else {
-                $get('form').submit();
-            }
-        }, false);
+    $on('.playground-example-loader', 'click', function( event ) {
+        event.preventDefault();
+        $get('github-url').value=event.target.getAttribute('href');
+        if (!validateForm()) {
+            showAlert();
+        } else {
+            $get('form').submit();
+        }
     });
 
-    $get('github-url').addEventListener("keypress", function( event ) {
+    $on('github-url', 'keypress', function( event ) {
         $get('form-alert').classList.add('d-none');
-    }, false);
+    });
 
-    $get('form').addEventListener("submit", function( event ) {
+    $on('form', 'submit', function( event ) {
         if (!validateForm()) {
             showAlert();
             event.preventDefault();
         }
-    }, false);
+    });
 </script>
 
 {{/content}}
