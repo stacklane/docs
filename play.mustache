@@ -98,7 +98,7 @@
         var c = $get('form').getAttribute('action');
         $get('form').setAttribute('action', c + '?url=' + encodeURIComponent(url));
         $get('form').classList.add('d-none');
-        $get('progress').classList.remove('d-none');
+        $get('loading').classList.remove('d-none');
         return true;
     }
 
