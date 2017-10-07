@@ -108,11 +108,11 @@ $sl-logo-secondary: #13bdce;
  */
 
 @media (min-width: map-get($grid-breakpoints, md) )  {
-  article {
+  article, footer {
     max-width: 75%;
   }
 }
-article{
+article, footer{
   font-size: 90%;
 }
 article header{
@@ -159,7 +159,7 @@ article section p:last-child,
 article header p:last-child{
   margin-bottom: 0;
 }
-article footer svg{
+footer svg{
   height: 1rem;
 }
 
