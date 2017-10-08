@@ -58,7 +58,7 @@
         }
     });
 
-    $on('.nav-category', 'click', function(e){
+    $on('.nav-category', 'click', function(event){
         var cat = $up(event.target, '.nav-category');
         cat.nextElementSibling.classList.toggle('d-none');
     });
