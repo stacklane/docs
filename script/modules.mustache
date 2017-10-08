@@ -43,7 +43,28 @@ import * as Params from '&';
 
 /* or, individual parameters */
 
-import {specific, param, here as Other}  from '&';
+import {specific, param, here as Other} from '&';
+            </code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2>Form Parameters</h2>
+
+        <p>
+            Access form parameters via the 'form' module.
+            If your form parameter contains a dash (or any other incompatible identifier character),
+            such as <code>this-that</code>, then import it with an underscore instead: <code>this_that</code>.
+        </p>
+        <p>
+        <pre><code class="language-javascript">
+/* import all at a prefix */
+
+import * as Form from 'form';
+
+/* or, individual parameters */
+
+import {specific, param, here as Other} from 'form';
             </code></pre>
         </p>
     </section>

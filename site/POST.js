@@ -1,5 +1,5 @@
 
-import {url} from '&';
+import {url} from 'form';
 import {Encoding} from "⚙️";
 import {Mapping} from "📦";
 

@@ -24,10 +24,10 @@
         </p>
 
         <p>
-            <form id="form" method="post" action="/site" >
+            <form id="form" method="post" action="/site">
             <div class="input-group">
                 <div class="input-group-addon">{{> logo-github}}</div>
-                <input id="github-url" name="gh-url" type="search"
+                <input id="github-url" name="url" type="search"
                        class="form-control" placeholder="https://github.com/your/stacklane-repo.git">
                 <div class="input-group-addon"><input type="submit" class="btn btn-light btn-sm" value="Load"></div>
             </div>
@@ -96,7 +96,6 @@
             return false;
         }
         var c = $get('form').getAttribute('action');
-        $get('form').setAttribute('action', c + '?url=' + encodeURIComponent(url));
         $get('form').classList.add('d-none');
         $get('loading').classList.remove('d-none');
         return true;
@@ -123,11 +122,8 @@
         }
     });
 
-    init();
-
     window.addEventListener('pageshow', function(event) {
-        init(); // back button
-        console.log('pageshow');
+        init(); // back button / load from cache.
     });
 </script>
 
