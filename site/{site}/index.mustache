@@ -16,20 +16,22 @@
         Playground
     </h1>
     <h6>
-        {{RepoUrl}} <button id="repo-refresh-action" class="btn btn-light btn-sm">Refresh</button>
+        {{RepoUrl}}
     </h6>
     </header>
 
     <section>
-        <div class="border rounded p-1 border-secondary">
-            <ul class="list-group" id="status">
-                <li class="list-group-item list-group-item-warning">Initializing</li>
-            </ul>
-        </div>
+        <button id="repo-refresh-action" class="btn btn-light btn-sm">Refresh</button>
 
-        <div id="launch" class="d-none mt-4">
-            <a id="launch-link" href="#" class="btn btn-primary">Launch</a>
-        </div>
+        <!-- TODO make disabled instead of d-none -->
+        <a id="launch-link d-none" href="#" class="btn btn-primary">Launch</a>
+    </section>
+
+    <section>
+        <h2>Build</h2>
+        <ul class="list-group" id="status">
+            <li class="list-group-item list-group-item-warning">Initializing</li>
+        </ul>
     </section>
 
 </article>

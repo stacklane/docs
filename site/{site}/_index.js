@@ -21,6 +21,24 @@ function logLevelToClass(level){
     }
 }
 
+function createProblemHtml(value){
+    var out = '';
+
+    if (value.path) {
+        out += $esc(value.path);
+        out += '<br>';
+        out += value.message;
+
+        if (value.snip){
+            out += '<pre><code class="language-' + value.snip.lang + '">';
+            out += $esc(value.snip.source);
+            out += '</code></pre>';
+        }
+    }
+
+    return out;
+}
+
 function init(branch){
     addStatus('Initializing', 'list-group-item list-group-item-warning pt-1 pb-1');
 
@@ -35,9 +53,9 @@ function init(branch){
     init.onmessage = function(e){
         if (e.data.startsWith("{")){
             var obj = JSON.parse(e.data);
-            addStatus(obj.value, "list-group-item pt-1 pb-1 list-group-item-" + logLevelToClass(obj.level));
+            addStatus(createProblemHtml(obj.value), "list-group-item pt-1 pb-1 list-group-item-" + logLevelToClass(obj.level));
         } else {
-            addStatus(e.data, "list-group-item pt-1 pb-1 list-group-item-warn");
+            addStatus(e.data, "list-group-item pt-1 pb-1 list-group-item-warning");
         }
     }
 
@@ -46,12 +64,12 @@ function init(branch){
         var obj = JSON.parse(e.data);
         var siteId = $get('SiteId').value;
         $get("launch-link").setAttribute('href', "/site/" + siteId + '/' + branch + "/");
-        $get("launch").classList.remove('d-none');
+        $get("launch-link").classList.remove('d-none');
         init.close();
     });
 
     init.addEventListener('exception', function(e) {
-        addStatus(e.data, "list-group-item pt-1 pb-1 list-group-item-error");
+        addStatus(e.data, "list-group-item pt-1 pb-1 list-group-item-danger");
         init.close();
     });
 }
