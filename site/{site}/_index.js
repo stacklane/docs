@@ -32,7 +32,14 @@ function createProblemHtml(value){
         out += value.message;
 
         if (value.snip){
-            out += '<pre><code class="language-' + value.snip.lang + '">';
+            var lines = '';
+            var offset = '';
+            if (value.beginLine){
+                lines = value.beginLine + "-" + value.endLine;
+                offset = value.offset;
+            }
+            out += '<pre ' + 'data-line="' + lines  + '" data-line-offset="' + offset  + '>";
+            out += '<code class="language-' + value.snip.lang + '">';
             out += $esc(value.snip.source);
             out += '</code></pre>';
         }
