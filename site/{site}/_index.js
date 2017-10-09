@@ -26,7 +26,7 @@ function createProblemHtml(value){
 
     var out = '';
 
-    if (value === Object(obj) && value.path) {
+    if (value === Object(value) && value.path) {
         out += $esc(value.path);
         out += '<br>';
         out += value.message;
