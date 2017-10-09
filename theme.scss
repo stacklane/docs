@@ -259,5 +259,5 @@ $sidebar-padding: 1rem;
  * Prism
  */
 .line-highlight{
-//  margin-top: .5rem; // unclear why -- bootstrap compat?
+  margin-top: .5em; // unclear why adjustment needed -- bootstrap compat? orig value is 1em;
 }
