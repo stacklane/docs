@@ -244,18 +244,6 @@ $sidebar-padding: 1rem;
 
 
 /**
- * Build
- */
-
-#status{
-  //height: 10em;
-  //overflow: scroll;
-  //overflow-x: hidden;
-  /*text-transform: lowercase;*/
-  font-size: 80%;
-}
-
-/**
  * Bootstrap changes
  */
 
@@ -265,4 +253,11 @@ $sidebar-padding: 1rem;
 }
 .card-body{
   padding-bottom: .5rem;
+}
+
+/**
+ * Prism
+ */
+.line-highlight{
+//  margin-top: .5rem; // unclear why -- bootstrap compat?
 }

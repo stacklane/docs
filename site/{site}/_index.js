@@ -52,9 +52,11 @@ function createProblemHtml(value){
                     lines = value.beginLine + "-" + value.endLine;
                 offset = value.offset;
             }
+            var lang = langFromPath(value.path);
 
-            out += '<pre ' + 'data-line="' + lines  + '" data-line-offset="' + offset  + '">';
-            out += '<code class="language-' + langFromPath(value.path) + '">';
+            // yes, put lang on both. long story.
+            out += '<pre ' + 'data-line="' + lines  + '" data-line-offset="' + offset  + '" class="language-' + lang + '">';
+            out += '<code class="language-' + lang + '">';
             out += $esc(value.source);
             out += '</code></pre>';
         }
