@@ -21,6 +21,12 @@ function logLevelToClass(level){
     }
 }
 
+function langFromPath(path){
+    if (path.endsWith(".css") || path.endsWith(".scss")) return "css";
+    if (path.endsWith(".js")) return "javascript";
+    return "html";
+}
+
 function createProblemHtml(value){
     if (typeof value === 'string') return $esc(value);
 
@@ -31,18 +37,18 @@ function createProblemHtml(value){
         out += '<br>';
         out += value.message;
 
-        if (value.snip){
+        if (value.source){
             var lines = '';
             var offset = '';
 
             if (value.beginLine){
                 lines = value.beginLine + "-" + value.endLine;
-                offset = value.snip.offset;
+                offset = value.offset;
             }
 
             out += '<pre ' + 'data-line="' + lines  + '" data-line-offset="' + offset  + '">';
-            out += '<code class="language-' + value.snip.lang + '">';
-            out += $esc(value.snip.source);
+            out += '<code class="language-' + langFromPath(value.path) + '">';
+            out += $esc(value.source);
             out += '</code></pre>';
         }
     }
