@@ -7,9 +7,10 @@ function addStatus(html, cls){
     node.setAttribute("class", cls);
     node.innerHTML = html;
     $get('status').appendChild(node);
-    if (html.contains("language-")){
-        Prism.highlightAll(); // rerun
-    }
+
+    // TODO use Prism.highlightElement...
+    if (html.indexOf("language-") > -1) Prism.highlightAll(); // rerun
+
     // TODO $("#status").scrollTop($("#status")[0].scrollHeight);
 };
 
