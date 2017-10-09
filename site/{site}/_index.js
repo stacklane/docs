@@ -42,7 +42,7 @@ function createProblemHtml(value){
             var offset = '';
 
             if (value.beginLine){
-                lines = value.beginLine + "-" + value.endLine;
+                lines = value.beginLine - value.offset + "-" + value.endLine - value.offset;
                 offset = value.offset;
             }
 
