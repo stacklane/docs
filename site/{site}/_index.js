@@ -22,9 +22,11 @@ function logLevelToClass(level){
 }
 
 function createProblemHtml(value){
+    if (typeof value === 'string') return $esc(value);
+
     var out = '';
 
-    if (value.path) {
+    if (value === Object(obj) && value.path) {
         out += $esc(value.path);
         out += '<br>';
         out += value.message;
