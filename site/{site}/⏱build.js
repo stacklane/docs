@@ -48,7 +48,7 @@ new PlaySite(RepoUrl)
  * The following code explicitly sets the last event explicitly.
  */
 
-(lastEventId)=>
+(lastEventId)=>{
 
     /**
      * We do not modify the buffer since it may be written to
