@@ -55,7 +55,7 @@ new PlaySite(RepoUrl)
      * as we are reading more available events from it.
      */
     let lastIndex = buffered.length;
-    let next = buffered.slice bufferedIndex, lastIndex);
+    let next = buffered.slice(bufferedIndex, lastIndex);
     bufferedIndex = lastIndex;
 
     if (finished) {
