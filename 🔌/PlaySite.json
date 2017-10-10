@@ -1,4 +1,5 @@
 {
   "data":{"expires": "2 days"},
-  "at":"/site/{site}/{branch}/"
+  "at":"/site/{site}/{branch}/",
+  "insert": "Insert.html"
 }
