@@ -9,8 +9,12 @@
     padding:0;
     border:none;
     overflow:scroll;
+    transition: height 0.5s;
 }
 .stacklane-tool-frame:hover{
-    height: 400px;
-    width: 200px;
+    height: 300px;
+    width: 150px;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.05);
 }

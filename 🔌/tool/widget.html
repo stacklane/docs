@@ -8,26 +8,25 @@
         }
 
         #tools{
-            transition: height 0.5s;
-            height: 0px;
-            overflow: hidden;
+            height: 200px;
+            position: absolute;
+            bottom: 48px;
+            right: 0px;
         }
-        .show #tools{
-            height: 300px;
-        }
+
         #gear{
-            cursor: pointer;
+            //cursor: pointer;
             display: inline-block;
             transition: transform 0.5s ease;
             position: absolute;
             bottom:0px;
             right:0px;
+            width: 32px;
+            height: 32px;
         }
+
         #gear:hover{
             transform: rotate(10deg)
-        }
-        .show #gear{
-
         }
     </style>
 
@@ -52,9 +51,9 @@
 </svg>
 
 <script>
-    document.getElementById('gear').addEventListener('click', function(e){
-        document.getElementById('body').classList.toggle('show');
-    });
+    //document.getElementById('gear').addEventListener('click', function(e){
+    //    document.getElementById('body').classList.toggle('show');
+    //});
 </script>
 
 </body>
