@@ -5,27 +5,42 @@
     <style>
         body,html{
             margin: 0px;
-            pointer-events:none;
         }
 
         #tools{
             transition: height 0.5s;
             height: 0px;
             overflow:hidden;
-            pointer-events: visible;
         }
-        #tools.show{
+        .show #tools{
             height: 300px;
         }
         #gear{
-            pointer-events: visible;
             cursor:pointer;
+        }
+        .show #gear{
+            animation-name: ckw;
+            animation-duration: 15.5s;
+            /* Things added */
+            animation-iteration-count: 1;
+            transform-origin: 50% 50%;
+            display: inline-block;
+            /* <--- */
+        }
+
+        @keyframes ckw {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(45deg);
+            }
         }
     </style>
 
 </head>
 
-<body>
+<body id="body">
 
 <div id="tools">
     <ul>
@@ -46,7 +61,7 @@
 
 <script>
     document.getElementById('gear').addEventListener('click', function(e){
-        document.getElementById('tools').classList.add('show');
+        document.getElementById('body').classList.toggle('show');
     });
 </script>
 
