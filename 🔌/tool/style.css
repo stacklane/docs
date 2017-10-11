@@ -1,0 +1,11 @@
+.stacklane-tool-frame{
+    height:50px;
+    width:50px;
+    z-index: 10000;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    margin:0;padding:0;
+    border:none;
+    overflow:hidden
+}
