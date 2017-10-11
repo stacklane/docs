@@ -5,20 +5,19 @@
     <style>
         body,html{
             margin: 0px;
-            pointer-events: none;
         }
 
         #tools{
             transition: height 0.5s;
             height: 0px;
             overflow:hidden;
-            pointer-events: auto;
+            pointer-events: visible;
         }
         #tools.show{
             height: 300px;
         }
         #gear{
-            pointer-events: auto;
+            pointer-events: visible;
             cursor:pointer;
         }
     </style>
@@ -45,11 +44,10 @@
 
 
 <script>
-    document.getElementById('gear').addEventListener('hover', function(e){
+    document.getElementById('gear').addEventListener('click', function(e){
         document.getElementById('tools').classList.add('show');
     });
 </script>
-
 
 </body>
 
