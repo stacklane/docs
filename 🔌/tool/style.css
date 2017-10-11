@@ -1,6 +1,6 @@
 .stacklane-tool-frame{
-    height:36px;
-    width:36px;
+    height:40px;
+    width:40px;
     z-index: 10000;
     position: fixed;
     right: 15px;
@@ -13,8 +13,8 @@
     transition: height 0.5s;
 }
 .stacklane-tool-frame:hover{
-    height: 120px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     border-color: rgba(0,0,0,0.05);
     box-shadow: 1px 1px 1px rgba(0,0,0,0.05);
 }
