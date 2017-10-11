@@ -1,17 +1,12 @@
 .stacklane-tool-frame{
-    height:32px;
-    width:32px;
+    height:400px;
+    width:200px;
     z-index: 10000;
     position: fixed;
     right: 15px;
     bottom: 15px;
-    margin:0;padding:0;
+    margin:0;
+    padding:0;
     border:none;
-    overflow:hidden;
-    transition: all 0.5s;
-}
-.stacklane-tool-frame:hover{
-    height:400px;
-    width:400px;
-    opacity: 0;
+    overflow:scroll;
 }
