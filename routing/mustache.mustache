@@ -216,19 +216,6 @@
         <p>
             All pages served by Stacklane are given a Content Security Policy (CSP).
             The CSP header allows a host to declare trusted sources of content (JS execution, CSS styles, images etc).
-            They are a best practice followed by many large sites.
-        </p>
-
-        <h3>Recommendations</h3>
-        <p>
-        <ul>
-            <li>
-                Avoid using inline style attributes <code>style="..."</code>.
-                To make certain development quicker Stacklane allows this by setting
-                "unsafe-inline".  However in general (as the name implies),
-                class names should be used.
-            </li>
-        </ul>
         </p>
 
         <h3>Automatic Behavior</h3>
@@ -239,7 +226,8 @@
         <ul>
             <li><code>&lt;script src=" ... &gt;</code></li>
             <li><code>&lt;link rel="stylesheet" href=" ... &gt;</code></li>
-            <li>Inline <code>&lt;script&gt;</code> becomes a CSP hash source.</li>
+            <li>Inline <code>&lt;script&gt;</code> elements become a CSP hash source.</li>
+            <li>Inline <code>&lt;style&gt;</code> elements become a CSP hash source.</li>
         </ul>
         </p>
 
@@ -257,6 +245,18 @@
         <ul>
             <li><code>data-connect-self="true"</code> - allows AJAX connections to the same web app.</li>
             <li><code>data-img-src-data="true"</code> - allows "data:" as an image source in CSS.</li>
+        </ul>
+        </p>
+
+        <h3>Restrictions</h3>
+        <p>
+        <ul>
+            <li>
+                Inline style attributes <code>style="..."</code> are not allowed.
+            </li>
+            <li>
+                Inline JavaScript via attributes <code>onclick="..."</code>, etc, are not allowed.
+            </li>
         </ul>
         </p>
     </section>
