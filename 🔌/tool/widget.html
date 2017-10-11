@@ -13,7 +13,7 @@
             transition: all 0.5s ease;
             padding: 16px 8px 8px;
             font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-            font-size: 1rem;
+            font-size: 0.85rem;
             line-height: 1.5;
         }
         body:hover{
@@ -22,14 +22,20 @@
         body:hover > #gear{
             transform: rotate(15deg)
         }
+        body:hover > #tools{
+            visibility: visible;
+        }
         #tools{
             /*position: absolute;
             bottom: 50px;
             right: 4px;*/
             text-align:right;
+            text-align: center;
+            visibility: hidden;
         }
         #tools a{
             text-decoration: none;
+            color:black !important;
         }
         #gear{
             display: inline-block;

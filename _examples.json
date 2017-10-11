@@ -5,11 +5,6 @@
     "src":"https://github.com/stacklane-examples/todomvc-angular.git"
   },
   {
-    "title":"Bootstrap Hello",
-    "desc":"Say hello with Bootstrap.  Fork and use as a starter template.",
-    "src":"https://github.com/stacklane-examples/bootstrap-hello.git"
-  },
-  {
     "title":"(This) Playground",
     "desc":"Make your head spin, and run this documentation site + playground from inside of itself.",
     "src":"https://github.com/stacklane/docs.git"
