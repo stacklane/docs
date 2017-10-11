@@ -11,7 +11,10 @@
         body{
             background: transparent;
             transition: all 0.5s ease;
-            padding: 8px;
+            padding: 16px 8px 8px;
+            font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+            font-size: 1rem;
+            line-height: 1.5;
         }
         body:hover{
             background: rgba(0,0,0,0.09);
@@ -20,9 +23,13 @@
             transform: rotate(15deg)
         }
         #tools{
-            position: absolute;
+            /*position: absolute;
             bottom: 50px;
-            right: 4px;
+            right: 4px;*/
+            text-align:right;
+        }
+        #tools a{
+            text-decoration: none;
         }
         #gear{
             display: inline-block;
@@ -34,7 +41,6 @@
             height: 36px;
         }
     </style>
-
 </head>
 
 <body id="body">
@@ -42,10 +48,10 @@
 <div id="tools">
     <!--
         From playground, this HTML frame is mounted at:
-        [SITE-DASHBOARD]/master/_inserts/_SW2xiGx8IIVg12UHvPk_9fkt3-3Afqm2BRHwE8MBZos=.html
-        so we are linking back to [SITE-DASHBOARD]/
+        [SITE-DASHBOARD]/[BRANCH]/_inserts/[INSERT-ID].html
+        so below is linking back to [SITE-DASHBOARD]/
     -->
-    <a href="../../" target="_top">Rebuild</a>
+    <a href="../../" target="_top">Back to Playground</a>
 </div>
 
 <svg id="gear" xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="32" data-icon="cog" viewBox="0 0 32 32">
