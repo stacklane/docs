@@ -5,12 +5,18 @@
     <style>
         body,html{
             margin: 0px;
-            background: transparent;
-            transition: background 0.5s ease;
         }
 
+        body{
+            background: transparent;
+            transition: all 0.5s ease;
+            padding: 8px;
+        }
         body:hover{
-            background: gray;
+            background: rgba(0,0,0,0.09);
+        }
+        body:hover > #gear{
+            transform: rotate(15deg)
         }
 
         #tools{
@@ -21,7 +27,6 @@
         }
 
         #gear{
-            //cursor: pointer;
             display: inline-block;
             transition: transform 0.5s ease;
             position: absolute;
@@ -29,10 +34,6 @@
             right:0px;
             width: 32px;
             height: 32px;
-        }
-
-        body:hover > #gear{
-            transform: rotate(10deg)
         }
     </style>
 
