@@ -10,31 +10,21 @@
         #tools{
             transition: height 0.5s;
             height: 0px;
-            overflow:hidden;
+            overflow: hidden;
         }
         .show #tools{
             height: 300px;
         }
         #gear{
-            cursor:pointer;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.5s ease;
+        }
+        #gear:hover{
+            transform: rotate(5deg)
         }
         .show #gear{
-            animation-name: ckw;
-            animation-duration: 15.5s;
-            /* Things added */
-            animation-iteration-count: 1;
-            transform-origin: 50% 50%;
-            display: inline-block;
-            /* <--- */
-        }
 
-        @keyframes ckw {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(45deg);
-            }
         }
     </style>
 
