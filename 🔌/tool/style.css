@@ -6,15 +6,15 @@
     right: 15px;
     bottom: 15px;
     margin:0;
-    padding:0;
-    border:none;
+    padding:4px;
+    border:1px solid rgba(0,0,0,0);
+    border-radius: 3px;
     overflow:scroll;
     transition: height 0.5s;
 }
 .stacklane-tool-frame:hover{
     height: 300px;
     width: 150px;
-    border: 1px solid rgba(0,0,0,0.05);
-    border-radius: 3px;
+    border-color: rgba(0,0,0,0.05);
     box-shadow: 1px 1px 1px rgba(0,0,0,0.05);
 }

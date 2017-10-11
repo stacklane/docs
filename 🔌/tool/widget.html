@@ -5,6 +5,12 @@
     <style>
         body,html{
             margin: 0px;
+            background: transparent;
+            transition: background 0.5s ease;
+        }
+
+        body:hover{
+            background: gray;
         }
 
         #tools{
@@ -25,7 +31,7 @@
             height: 32px;
         }
 
-        #gear:hover{
+        body:hover > #gear{
             transform: rotate(10deg)
         }
     </style>
