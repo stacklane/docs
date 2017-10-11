@@ -38,3 +38,20 @@
 <div class="nav-separator">
     <a href="/play"><h1 class="">{{>icon-browser-sm}} Playground</h1></a>
 </div>
+
+<!--
+    At earliest possible moment, select the current nav link, and enable category expansion.
+-->
+<script>
+    $each('.nav-link', function(e){
+        if (e.getAttribute('href') == window.location.pathname){
+            e.classList.add('active');
+            e.parentElement.parentElement.classList.toggle('d-none', false);
+        }
+    });
+
+    $on('.nav-category', 'click', function(event){
+        var cat = $up(event.target, '.nav-category');
+        cat.nextElementSibling.classList.toggle('d-none');
+    });
+</script>
