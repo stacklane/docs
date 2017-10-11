@@ -227,18 +227,18 @@ $sidebar-padding: 1rem;
   margin-left: 0;
 }
 
-.sidebar .nav-link {
+.sidebar ul a {
   border-radius: 0;
   padding: 0;
   color: #4c555a;
 }
-.sidebar .nav-link:visited {
+.sidebar ul a:visited {
   color: #4c555a;
 }
-.sidebar .nav-link:hover {
+.sidebar ul a:hover {
   color: black;
 }
-.sidebar .nav-link.active{
+.sidebar ul a.active{
   color: #0099e5
 }
 
