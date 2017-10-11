@@ -174,13 +174,13 @@ $sidebar-padding: 1rem;
 }
 
 .sidebar {
-  position: fixed;
+  /*position: fixed;
   top: 0px;
   bottom: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 1000;*/
   overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  overflow-y: hidden; ///auto; /* Scrollable contents if viewport is shorter than content. */
   border-right: 1px solid #eee;
   padding: 20px $sidebar-padding 20px 0;
   font-size: .8rem;
