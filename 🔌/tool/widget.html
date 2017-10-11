@@ -3,13 +3,23 @@
 
 <head>
     <style>
-        body{ margin: 0px; }
+        body{
+            margin: 0px;
+            pointer-events: none;
+        }
 
         #tools{
             transition: height 0.5s;
+            height: 0px;
+            overflow:hidden;
+            pointer-events: auto;
         }
         #tools.show{
             height: 300px;
+        }
+        #gear{
+            pointer-events: auto;
+            cursor:pointer;
         }
     </style>
 
