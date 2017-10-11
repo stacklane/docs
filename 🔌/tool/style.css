@@ -13,7 +13,7 @@
     transition: height 0.5s;
 }
 .stacklane-tool-frame:hover{
-    height: 100px;
+    height: 85px;
     width: 170px;
     border-color: rgba(0,0,0,0.05);
     box-shadow: 1px 1px 1px rgba(0,0,0,0.05);
