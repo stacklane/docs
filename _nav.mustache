@@ -1,5 +1,6 @@
 {{% svg /_icons/ as icon }}
 
+<div id="all-nav" class="d-none">
 <h1 class="nav-category">{{>icon-cloud-sm}} Basics</h1>
 <ul class="d-none">
     <li><a class="nav-link" href="/">Overview</a></li>
@@ -38,6 +39,7 @@
 <div class="nav-separator">
     <a href="/play"><h1 class="">{{>icon-browser-sm}} Playground</h1></a>
 </div>
+</div>
 
 <!--
     At earliest possible moment, select the current nav link, and enable category expansion.
@@ -54,4 +56,6 @@
         var cat = $up(event.target, '.nav-category');
         cat.nextElementSibling.classList.toggle('d-none');
     });
+
+    $get('all-nav').classList.remove('d-none');
 </script>
