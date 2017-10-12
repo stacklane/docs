@@ -9,7 +9,7 @@
         <h1>Model Scripting</h1>
 
         <p>
-            Learn about scripting with <a href="/data/">data models and queries</a>.
+            Learn about scripting with <a href="/data/">data models</a>.
         </p>
     </header>
 
@@ -76,51 +76,6 @@ let titleStream = myList(()=>{
 // Assuming a GET.js, this will result in JSON of Note titles:
 titleStream;
             </code></pre>
-        </p>
-    </section>
-
-    <section>
-        <h2>Unique Values</h2>
-
-        <p>
-            <a href="/data/fields#unique">Unique</a> fields and <a href="/data/fields#uid">UID</a>
-            fields are given a same-named factory method for loading the single unique model (if any).
-            Assuming a model named <i>Article</i> and a UID field named "slug":
-        </p>
-        <p>
-        <pre><code class="language-javascript">
-// Where $slugId is from a URL path parameter:
-let found = Article.slug($slugId);
-// Because of error handling, 'found' is always defined at this point
-        </code></pre>
-        </p>
-    </section>
-
-    <section>
-        <h2>Queries</h2>
-
-        <p>
-            <a href="/data/queries">Queries</a> are always <a href="/data/definition#queries">pre-defined</a>.
-            They have a name unique to a model type,
-            and parameters that must be set before the query can be executed.
-            These are then exposed to scripting as regular method calls.
-            The result of a query is always a <a href="/script/stream">stream</a>.
-        </p>
-        <p>
-        <pre><code class="language-javascript">
-// Simple query (previously defined) which finds Note's starting with X.
-// The query was defined with the name "byTitle",
-// and "titlePrefix" is a named parameter of the query.
-let thePrefix = 'ABC';
-let notesByTitle = Note.byTitle().titlePrefix(thePrefix);
-        </code></pre>
-        </p>
-        <p>
-            Additionally there is the built-in query named <code>all()</code>,
-            e.g. <code>Note.all()</code>.
-            <code>all()</code> supports the options <code>limit(N)</code>,
-            <code>asc()</code> (default), or <code>desc()</code>.
-            As with any query the result is a <a href="/script/stream">stream</a>.
         </p>
     </section>
 
