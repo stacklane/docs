@@ -22,7 +22,7 @@ let idCreator = ()=>{
  */
 try {
 
-    let existing = Mapping.unique().url(url);
+    let existing = Mapping.url(url);
 
     `/site/${existing.key}/`; // redirect
 
