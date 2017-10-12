@@ -68,27 +68,27 @@ new List().title('new title').otherField('value'); // fluent setter
 // Load the container 'List', using URL path $listId:
 let myList = List.load($listId);
 
-// Select myList, and get all the of the Note titles for myList:
+// Select myList, and get all Note titles for myList:
 let titleStream = myList(()=>{
    return Note.all().map((n)=>n.title));
 });
 
-// Assuming a GET.js, this will result in JSON of Note titles:
+// Assuming GET.js, this will result in JSON of Note titles:
 titleStream;
             </code></pre>
         </p>
     </section>
 
     <section>
-        <h2>Error Handling</h2>
+        <h2>Common Error Handling</h2>
 
         <p>
-            In several examples above, note that the <code>null</code> or <code>undefined</code>
-            is not used to represent the absence of a value -- for example <code>List.load</code>
-            <code>Article.slug</code> never return a null value.
+            In several examples above, note that <code>null</code> or <code>undefined</code>
+            is not used to represent the absence of a result -- for example <code>List.load</code>
+            <code>Article.slug</code> never return a null/undefined value.
         </p>
         <p>
-            Instead, an exception is thrown if no value is found.  This exception can be left "uncaught"
+            Instead, an exception is thrown if there is no result.  This exception can be left "uncaught"
             and therefore propagated up to a view setup for <a href="/routing/errors">routing errors</a>.
             Or it can be specifically caught using a special nomenclature:
         </p>
@@ -102,7 +102,7 @@ try {
     // as opposed to catching some unrelated error/exception.
     thing = new Thing();
 }
-// At this point 'thing' is defined.
+// At this point 'thing' is always defined.
 thing.updateField = 'x';
         </code></pre>
         </p>
