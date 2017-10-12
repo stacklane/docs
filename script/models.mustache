@@ -1,0 +1,159 @@
+
+{{% partial /_layout }}
+
+{{<layout}}
+{{$content}}
+
+<article>
+    <header>
+        <h1>Model Scripting</h1>
+
+        <p>
+            Learn about scripting with <a href="/data/">data models and queries</a>.
+        </p>
+    </header>
+
+    <section>
+        <h2>CRUD</h2>
+
+        <h3>Create</h3>
+        <p>
+        <pre><code class="language-javascript">
+let newList = new List();
+        </code></pre>
+        </p>
+
+        <h3>Read</h3>
+        <p>
+        <pre><code class="language-javascript">
+// Where $listId is a URL path parameter
+let list = List.load($listId);
+// Because of error handling, 'list' is always defined at this point
+let listTitle = list.title;
+        </code></pre>
+        </p>
+
+        <h3>Update</h3>
+        <p>
+        <pre><code class="language-javascript">
+List.load($listId).title = 'new title'; // field/property setter
+new List().title('new title').otherField('value'); // fluent setter
+        </code></pre>
+        </p>
+
+        <h3>Delete</h3>
+        <p>
+        <pre><code class="language-javascript">
+ List.load($listId).remove();
+        </code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2>Containers</h2>
+
+        <p>
+            Since <a href="/data/containers">containers</a> create a "scope" for
+            working with other data, a container must be selected or chosen
+            before any other operations on its contained data.
+        </p>
+        <p>
+            To execute code in the context of selected container, pass a function
+            to the container's variable.  The return value of the function
+            will be passed back as the return value of selecting the container.
+            Example:
+        </p>
+        <p>
+        <pre><code class="language-javascript">
+// Load the container 'List', using URL path $listId:
+let myList = List.load($listId);
+
+// Select myList, and get all the of the Note titles for myList:
+let titleStream = myList(()=>{
+   return Note.all().map((n)=>n.title));
+});
+
+// Assuming a GET.js, this will result in JSON of Note titles:
+titleStream;
+            </code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2>Unique Values</h2>
+
+        <p>
+            <a href="/data/fields#unique">Unique</a> fields and <a href="/data/fields#uid">UID</a>
+            fields are given a same-named factory method for loading the single unique model (if any).
+            Assuming a model named <i>Article</i> and a UID field named "slug":
+        </p>
+        <p>
+        <pre><code class="language-javascript">
+// Where $slugId is from a URL path parameter:
+let found = Article.slug($slugId);
+// Because of error handling, 'found' is always defined at this point
+        </code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2>Queries</h2>
+
+        <p>
+            <a href="/data/queries">Queries</a> are always <a href="/data/definition#queries">pre-defined</a>.
+            They have a name unique to a model type,
+            and parameters that must be set before the query can be executed.
+            These are then exposed to scripting as regular method calls.
+            The result of a query is always a <a href="/script/stream">stream</a>.
+        </p>
+        <p>
+        <pre><code class="language-javascript">
+// Simple query (previously defined) which finds Note's starting with X.
+// The query was defined with the name "byTitle",
+// and "titlePrefix" is a named parameter of the query.
+let thePrefix = 'ABC';
+let notesByTitle = Note.byTitle().titlePrefix(thePrefix);
+        </code></pre>
+        </p>
+        <p>
+            Additionally there is the built-in query named <code>all()</code>,
+            e.g. <code>Note.all()</code>.
+            <code>all()</code> supports the options <code>limit(N)</code>,
+            <code>asc()</code> (default), or <code>desc()</code>.
+            As with any query the result is a <a href="/script/stream">stream</a>.
+        </p>
+    </section>
+
+    <section>
+        <h2>Error Handling</h2>
+
+        <p>
+            In several examples above, note that the <code>null</code> or <code>undefined</code>
+            is not used to represent the absence of a value -- for example <code>List.load</code>
+            <code>Article.slug</code> never return a null value.
+        </p>
+        <p>
+            Instead, an exception is thrown if no value is found.  This exception can be left "uncaught"
+            and therefore propagated up to a view setup for <a href="/routing/errors">routing errors</a>.
+            Or it can be specifically caught using a special nomenclature:
+        </p>
+        <p>
+        <pre><code class="language-javascript">
+let thing = null;
+try {
+    thing = Thing.load($thingId);
+} catch ($NotFound){
+    // At this point we've specifically caught $NotFound,
+    // as opposed to catching some unrelated error/exception.
+    thing = new Thing();
+}
+// At this point 'thing' is defined.
+thing.updateField = 'x';
+        </code></pre>
+        </p>
+    </section>
+</article>
+
+
+{{/content}}
+{{/layout}}

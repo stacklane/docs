@@ -9,6 +9,6 @@
 import {Mapping} from "📦";
 
 let site = $site;
-let url = Mapping.unique().key($site).url;
+let url = Mapping.key($site).url;
 
 export {url as RepoUrl, site as SiteId};
