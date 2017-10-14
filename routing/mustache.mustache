@@ -193,20 +193,20 @@
     </section>
 
     <section>
-        <h2>Separation of Concerns</h2>
+        <h2><a name="soc">Separation of Concerns</a></h2>
 
         <p>
             If there are developers on a team who are strictly working on Mustache views, it may be useful to
-            limit their access to specific <a href="/routing/suppliers">Supplier</a> variables.
+            limit their access to specific <a href="/routing/suppliers">Supplier</a> values.
         </p>
         <p>
-            This can be accomplished by creating a Supplier file within the same directory and name
-            as the Mustache view.
+            This can be accomplished by creating a <a href="/routing/suppliers#strict">pinned supplier</a> file
+            within the same directory as the Mustache view.
         </p>
         <p>
             For example, given a Mustache view of <code>/hello/world.mustache</code>, and a Supplier file of
-            <code>/hello/📤world.js</code>, the Mustache view will only have access to
-            variables exported by <code>/hello/📤world.js</code>, regardless of any other Supplier's in the path.
+            <code>/hello/📤📌world.js</code>, the Mustache view will only have access to
+            values exported by <code>/hello/📤📌world.js</code>, regardless of any other Supplier's in the path.
         </p>
     </section>
 

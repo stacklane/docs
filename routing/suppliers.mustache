@@ -14,15 +14,129 @@
     </header>
 
     <section>
-
-        - mention path as "scope"
-        - infinity
-        - allowed exports
-        - overriding
-        -
-
+        <p>
+        Suppliers are scripts which export one or more named values, for the sole purpose of
+        having those values imported by another script -- either by another supplier,
+        or by an <a href="/routing/js">endpoint</a>.
+        Suppliers allow for reusing values and functions, as well as <a href="#caching">caching</a>.
+        All values exported by suppliers exist in a flat namespace.
+        </p>
+        <p>
+            Unless <a name="caching">caching</a>, suppliers may not make stateful changes.
+            For example a supplier may not create newly persisted model data,
+            and it may not load model data and then modify it.
+        </p>
     </section>
 
+    <section>
+        <h1>Name and Location</h1>
+        <p>
+            All supplier scripts begin with <code>📤</code> and end with <code>.js</code>.
+            The file name itself is for documentation/annotation purposes only.
+            Typically the file name would related to what is being exported.
+        </p>
+        <p>
+            The path location of a supplier file influences the scope
+            of where its exported values are visible.
+            Only scripts in the same directory, <i>or</i> descendant
+            directories, have access to the exported values of a supplier.
+        </p>
+        <p>
+            <code>/product/{productSlug}/📤GetProduct.js</code>
+            <pre><code class="language-javascript">
+let product = Product.slug($productSlug);
+
+export {product as Product};
+            </code></pre>
+        </p>
+        <p>
+            In the above example <code>Product</code> is the resulting value exported,
+            It is available from the module named '📤', for all scripts
+            inside <code>/product/{productSlug}/*</code>, <i>and</i> any descendant directories.
+            For example the Mustache file <code>/product/{productSlug}/related/index.mustache</code>
+            would be able import the <code>Product</code> value.
+        </p>
+    </section>
+
+    <section>
+        <h1>Importing Values</h1>
+
+        <p>
+            Regardless of where the supplier exists in the path hierarchy, and regardless of the supplier's file name,
+            all supplier values are located in the module named '📤'.
+        </p>
+
+        <p>
+        <pre><code class="language-javascript">
+// Importing specific values:
+import {Something, Other, That} from '📤';
+        </code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h1>Caching Suppliers</h1>
+
+        <p>
+            By default suppliers are evaluated on every request. A supplier file name may use the emoji
+            <code>∞</code> (e.g. <code>📤∞MySupplier.js</code>) to indicate that its exported values
+            are "long lived".  This enables caching and other performance improvements.
+            This can be a significant performance improvement depending on the situation.
+        </p>
+
+        <h3>Allowed Export Values</h3>
+        <p>
+            Because caching may be involved, allowed exported values are restricted compared to regular suppliers.
+
+            <ul>
+                <li>Primitives -- string, number, boolean.</li>
+                <li>Map / object literal of primitives, including nested.</li>
+                <li>Model</li>
+                <li>Query stream</li>
+            </ul>
+        </p>
+
+        <h3>Persistence Option</h3>
+        <p>
+            Caching suppliers have the option of returning a function which, unlike regular suppliers,
+            may perform persistence.  The result of the function is the supplied value.
+        </p>
+
+        <h3>Path Scope</h3>
+        <p>
+            Suppliers are based on paths, including dynamic paths.  This extends to cached values as well.
+            For example, a supplier at <code>/account/{account}/📤∞MySupplier.js</code>, would export and cache
+            different values for <code>GET /account/1234/something</code> versus
+            <code>GET /account/5678/something</code>.  If for some reason this is not desired, simply
+            place the supplier at an earlier path, for example <code>/account/📤∞MySupplier.js</code>.
+        </p>
+    </section>
+
+    <section>
+        <h1>Endpoint Specific and Pinned Suppliers</h1>
+
+        <h3>Endpoint Specific Supplier</h3>
+        <p>
+            Because suppliers follow the hierarchical REST structure, they have varying levels of specificity for an endpoint.
+            The most specific supplier is one with the same name as the endpoint itself.
+            For example, an endpoint named <code>index.mustache</code>
+            may also have a supplier named <code>📤index.js</code>.
+            As the most specific supplier, only <code>index.mustache</code> may access values exported by <code>📤index.js</code>.
+        </p>
+
+        <h3><a name="strict">Pinned Supplier</a></h3>
+        <p>
+            An extension to an endpoint specific supplier is a "pinned" supplier.
+            Indicate a pinned supplier use the pin emoji, e.g. <code>📤📌index.js</code>.
+            Pinned suppliers may be used to hide <i>or</i> re-expose broader/earlier supplied values.
+        </p>
+        <p>
+            This is especially useful where more strict <a name="/routing/mustache#soc">separation of concerns</a>
+            are desired, for example in the case of Mustache endpoints.
+            The JavaScript developer may want to ensure that regardless of any suppliers along the REST path,
+            only very explicit / strictly supplied values are visible to the Mustache file.
+        </p>
+    </section>
 
 </article>
 

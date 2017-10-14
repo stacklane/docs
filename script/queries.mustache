@@ -35,8 +35,9 @@ let notesByTitle = Note.byTitle().titlePrefix(thePrefix);
         <p>
             Additionally there is the built-in query named <code>all()</code>,
             e.g. <code>Note.all()</code>.
-            <code>all()</code> supports the options <code>limit(N)</code>,
-            <code>asc()</code> (default), or <code>desc()</code>.
+            <code>all()</code> supports the options,
+            <code>asc()</code> (default), or <code>desc()</code>, which provide
+            ordering by creation timestamp.
             As with any query the result is a <a href="/script/stream">stream</a>.
         </p>
     </section>
