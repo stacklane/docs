@@ -22,7 +22,7 @@
         All values exported by suppliers exist in a flat namespace.
         </p>
         <p>
-            Unless <a name="caching">caching</a>, suppliers may not make stateful changes.
+            Unless <a href="#caching">caching</a>, suppliers may not make stateful changes.
             For example a supplier may not create newly persisted model data,
             and it may not load model data and then modify it.
         </p>
@@ -32,8 +32,8 @@
         <h1>Name and Location</h1>
         <p>
             All supplier scripts begin with <code>📤</code> and end with <code>.js</code>.
-            The file name itself is for documentation/annotation purposes only.
-            Typically the file name would related to what is being exported.
+            The filename itself is for documentation/annotation purposes only.
+            Typically the filename would related to what is being exported or why.
         </p>
         <p>
             The path location of a supplier file influences the scope
@@ -50,7 +50,7 @@ export {product as Product};
             </code></pre>
         </p>
         <p>
-            In the above example <code>Product</code> is the resulting value exported,
+            In the above example <code>Product</code> is the resulting value exported.
             It is available from the module named '📤', for all scripts
             inside <code>/product/{productSlug}/*</code>, <i>and</i> any descendant directories.
             For example the Mustache file <code>/product/{productSlug}/related/index.mustache</code>
@@ -63,7 +63,8 @@ export {product as Product};
 
         <p>
             Regardless of where the supplier exists in the path hierarchy, and regardless of the supplier's file name,
-            all supplier values are located in the module named '📤'.
+            all supplier values are located in the module named '📤'.  This creates a simple flat namespace for
+            importing named values.
         </p>
 
         <p>
@@ -75,7 +76,7 @@ import {Something, Other, That} from '📤';
     </section>
 
     <section>
-        <h1>Caching Suppliers</h1>
+        <h1><a name="caching">Caching Suppliers</a></h1>
 
         <p>
             By default suppliers are evaluated on every request. A supplier file name may use the emoji
@@ -91,8 +92,7 @@ import {Something, Other, That} from '📤';
             <ul>
                 <li>Primitives -- string, number, boolean.</li>
                 <li>Map / object literal of primitives, including nested.</li>
-                <li>Model</li>
-                <li>Query stream</li>
+                <li>A <a href="/data/">data model</a> which was previously loaded.</li>
             </ul>
         </p>
 
@@ -127,7 +127,7 @@ import {Something, Other, That} from '📤';
         <h3><a name="strict">Pinned Supplier</a></h3>
         <p>
             An extension to an endpoint specific supplier is a "pinned" supplier.
-            Indicate a pinned supplier use the pin emoji, e.g. <code>📤📌index.js</code>.
+            Indicate a pinned supplier with the pin emoji, e.g. <code>📤📌index.js</code>.
             Pinned suppliers may be used to hide <i>or</i> re-expose broader/earlier supplied values.
         </p>
         <p>
