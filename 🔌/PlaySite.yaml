@@ -3,7 +3,7 @@ at: /site/{site}/{branch}/
 data:
   expires: 2 days
 
-inserts:
+insert:
 - tool/style.css
 - tool/script.js
 - tool/widget.html
