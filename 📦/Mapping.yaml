@@ -1,0 +1,7 @@
+url:
+  type: string
+  unique: true
+
+key:
+  type: string
+  unique: true

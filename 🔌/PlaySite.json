@@ -1,9 +1,0 @@
-{
-  "data":{"expires": "2 days"},
-  "at":"/site/{site}/{branch}/",
-  "inserts": [
-    "tool/style.css",
-    "tool/script.js",
-    "tool/widget.html"
-  ]
-}
