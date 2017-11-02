@@ -30,26 +30,17 @@
     </section>
 
     <section>
-        <h2>Unique Values</h2>
-        <p>
-            If a model type within a container defines unique values, then those
-            unique values are local/specific to a given container.
-        </p>
-        <p>
-            For example, given Blog ▶ Post, where Post has a <a href="/data/fields#uid">UID</a> field named "slug".
-            If there are many Blog's, and many Posts within any given Blog, then the two Posts may have
-            same UID if they are in <b>separate</b> Blog's.
-        </p>
-    </section>
-
-    <section>
-        <h2>Query Scope</h2>
+        <h2>Multi-Tenant Containers</h2>
 
         <p>
-            By the default the first container starts a new "query isolation" scope.  In the following example,
-            "User" is the first container and therefore the root of query isolation.
+            The topmost container may be declared as a "Tenant" container.  Use for scenarios
+            where there is a clear case to silo or strongly isolate all of the descendant data models.
+            "User", "Account", "Project", etc.  Any top-level container whose data is highly specific to it.
         </p>
+
+        <h3>Query Considerations</h3>
         <p>
+            A Tenant container starts a new "query isolation" scope.
             Given the example hierarchy User ▶︎ List ▶︎ Task, and a query for "Tasks by Name" defined
             on Task, the scope of Tasks that will be queried varies depending on which of the two possible
             ancestor containers are selected.
@@ -63,19 +54,32 @@
             the single List will be queried by name.
         </p>
         <p>
-            When <a href="/data/queries">queries</a> are defined for a model type that is within a
-            container, there are certain
-        </p>
-        <p>
             Because query isolation is in effect starting at a single User,
             it is not possible to search for all Tasks's across all User's.
         </p>
+    </section>
 
-        <h3>Event Scope</h3>
+    <section>
+        <h2>Event Container and Query Scope</h2>
+
         <p>
-            The <a href="/data/types#event">Event</a> type does not use an ancestor for its query scope,
-            only the direct parent.  Given Account ▶︎ Site ▶︎ Orders, the Orders Event type must always
-            be queried in the context of a single Site.
+            The <a href="/data/types#event">Event</a> type is always isolated to its direct parent for query scope.
+            Given Account ▶︎ Site ▶︎ Orders, the Orders Event type must always be queried in the context of a single Site.
+        </p>
+    </section>
+
+    <section>
+        <h2>Behavior of Unique Values</h2>
+
+        <p>
+            If a model type within a container defines unique values, then those
+            unique values are local/specific to a given container.
+        </p>
+
+        <p>
+            For example, given Blog ▶ Post, where Post has a <a href="/data/fields#uid">UID</a> field named "slug".
+            If there are many Blog's, and many Posts within any given Blog, then the two Posts may have
+            same UID if they are in <b>separate</b> Blog's.
         </p>
     </section>
 </article>
