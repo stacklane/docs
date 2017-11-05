@@ -1,9 +1,10 @@
 
 {{% partial /_layout }}
 
+{{<layout}}
+
 {{$title}}Mustache{{/title}}
 
-{{<layout}}
 {{$content}}
 
 <article>
@@ -133,12 +134,12 @@
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-&#123;&#123;$title&#125;&#125;Title inserted here&#123;&#123;/title&#125;&#125;
+&lt;title&gt;&#123;&#123;$title&#125;&#125;Title&#123;&#123;/title&#125;&#125;&lt;/title&gt;
 ...
 &lt;/head&gt;
 &lt;body&gt;
 ...
-&#123;&#123;$content&#125;&#125;Content inserted here&#123;&#123;/content&#125;&#125;
+&#123;&#123;$content&#125;&#125;Content&#123;&#123;/content&#125;&#125;
 ...
 &lt;/body&gt;
 &lt;/html&gt;
@@ -153,6 +154,7 @@
 &#123;&#123;% partial /_layout&#125;&#125;
 
 &#123;&#123;&lt;layout&#125;&#125;
+&#123;&#123;$title&#125;&#125;My Title&#123;&#123;/title&#125;&#125;
 &#123;&#123;$content&#125;&#125;
 .. Custom Content Here ..
 &#123;&#123;/content&#125;&#125;
