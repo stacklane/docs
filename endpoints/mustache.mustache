@@ -1,6 +1,8 @@
 
 {{% partial /_layout }}
 
+{{$title}}Mustache{{/title}}
+
 {{<layout}}
 {{$content}}
 
@@ -130,9 +132,15 @@
         <pre><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
+&lt;head&gt;
+&#123;&#123;$title&#125;&#125;Title inserted here&#123;&#123;/title&#125;&#125;
+...
+&lt;/head&gt;
+&lt;body&gt;
 ...
 &#123;&#123;$content&#125;&#125;Content inserted here&#123;&#123;/content&#125;&#125;
 ...
+&lt;/body&gt;
 &lt;/html&gt;
         </code></pre>
         </p>
