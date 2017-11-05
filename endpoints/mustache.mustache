@@ -39,6 +39,8 @@
             <code>index.mustache</code> may be used in the case where
             the routing should be directory based.  <code>/hello/index.mustache</code>
             responses to requests for <code>GET /hello/</code>.
+            <i>Note: It will also respond to requests for <code>GET /hello</code> (no trailing slash),
+            and redirect to the actual endpoint of <code>/hello/</code> (trailing slash).</i>
         </p>
     </section>
 
@@ -126,7 +128,7 @@
         <h3>Master Template</h3>
         <p>
         <pre><code class="language-html">
-<!DOCTYPE html>
+&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 ...
 &#123;&#123;$content&#125;&#125;Content inserted here&#123;&#123;/content&#125;&#125;

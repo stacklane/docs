@@ -21,29 +21,40 @@
     </section>
 
     <section>
-        <h2>String</h2>
+        <h2>String <code>type: string</code></h2>
 
         <p>
             The workhorse field type.  Maximum length: 100 characters.
-            May be marked as <a href="#unique">unique</a>.
+            May be marked as <a href="#unique">unique: true</a>.
         </p>
     </section>
 
     <section>
-        <h2><a name="embedded">Embedded</a></h2>
+        <h2>Boolean <code>type: boolean</code></h2>
 
         <p>
-            This is the field type corresponding to a complex value defined by an
-            <a href="/models/types#embedded">Embedded</a> model type.
-        </p>
-        <p>
-            It may be a many valued array/list, in which case there is a limit of <b>20</b>
-            embedded entries.
+            true/false boolean value.
         </p>
     </section>
 
     <section>
-        <h2><a name="uid">UID (Slug)</a></h2>
+        <h2>Integer <code>type: integer</code></h2>
+
+        <p>
+            Non-floating 64 bit integer.
+        </p>
+    </section>
+
+    <section>
+        <h2>Floating-point Number <code>type: double</code></h2>
+
+        <p>
+            64-bit double precision, IEEE 754.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="uid">UID / URL Slug (type: uid)</a></h2>
 
         <p>
             Used for "user friendly" unique identifiers destined for URL paths.
@@ -67,6 +78,19 @@
         <p>
             In an ideal scenario from an SEO standpoint, if the visitor has reached a URL by an older UID,
             then it's recommended you redirect to the current/primary UID value.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="embedded">Embedded</a></h2>
+
+        <p>
+            This is the field type corresponding to a complex value defined by an
+            <a href="/models/types#embedded">Embedded</a> model type.
+        </p>
+        <p>
+            It may be a many valued array/list, in which case there is a limit of <b>20</b>
+            embedded entries.
         </p>
     </section>
 

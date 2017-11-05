@@ -9,20 +9,45 @@
         <h1>Error Handling</h1>
 
         <p>
-            Learn about setting up a view for handling unexpected errors.
+            Learn about views for handling expected and unexpected errors.
         </p>
     </header>
 
     <section>
-
-
-        - scoping
-        - NotFound vs nothing
-
-
+        <p>
+            Error views/endpoints are Mustache files prefixed with "⚡️".
+            They support Mustache layouts, however beyond layouts they are very restricted.
+            For example you may not load data into a Mustache error view.
+        </p>
     </section>
 
+    <section>
+        <h2>Routing</h2>
+        <p>
+            Multiple error views may be defined.  The nearest error view to the endpoint causing the error
+            will be served.  For example, given an endpoint generating an error at
+            <code>/here/{there}/everywhere.js</code>,
+            the error view <code>/here/⚡️.mustache</code> will be served instead of the earlier error view at
+            <code>/⚡️.mustache</code>.
+        </p>
+    </section>
 
+    <section>
+        <h2>Types</h2>
+
+        <h3>Default / Catch-All</h3>
+        <p>
+            The default error view used when a more specific error view is not defined is called
+            <code>⚡️.mustache</code>.
+        </p>
+
+        <h3>Not Found</h3>
+        <p>
+            Naming the error view <code>⚡NotFound️.mustache</code> will cause this to be selected
+            over the default error view in cases that are "Not Found-Like".  This includes simple
+            missing endpoints, as well as uncaught cases where a loaded Model was not found.
+        </p>
+    </section>
 </article>
 
 
