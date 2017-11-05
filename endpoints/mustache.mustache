@@ -121,9 +121,20 @@
             This file contains the <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>,
             and <code>&lt;body&gt;</code> tags.  Within the file there is at least one
             placeholder which denotes where to "insert" a section of HTML from another Mustache file
-            (the file which uses this master layout template). Insert example:
-            <code>&#123;&#123;$content&#125;&#125;Content&#123;&#123;/content&#125;&#125;</code>
+            (the file which uses this master layout template).
         </p>
+        <h3>Master Template</h3>
+        <p>
+        <pre><code class="language-html">
+<!DOCTYPE html>
+&lt;html&gt;
+...
+&#123;&#123;$content&#125;&#125;Content inserted here&#123;&#123;/content&#125;&#125;
+...
+&lt;/html&gt;
+        </code></pre>
+        </p>
+        <h3>Template Using Layout</h3>
         <p>
             The file using the master layout template will include it similar to a partial.
             Assuming a layout file named <code>/_layout.mustache</code>, another file
