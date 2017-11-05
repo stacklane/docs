@@ -5,5 +5,5 @@ data:
 
 insert:
 - tool/style.css
-- tool/script.js
+- tool/scripting.js
 - tool/widget.html

@@ -15,7 +15,7 @@
 
     <section>
         Stacklane provides chainable, streaming methods on collection-like results.
-        This includes <a href="/data/queries">queries</a> and <a href="/data/fields#embedded">embedded</a> values.
+        This includes <a href="/models/queries">queries</a> and <a href="/models/fields#embedded">embedded</a> values.
         Use streaming methods to filter, transform, and count collection results.
     </section>
 
@@ -48,7 +48,7 @@ let titlesOnly = Article.all().map(article=>({title:article.title}));
             that indicates whether the
             item should be included in the stream.
             Keep in mind however that most filtering is better suited in the
-            <a href="/data/queries">query definition</a>.
+            <a href="/models/queries">query definition</a>.
         </p>
 
     </section>
@@ -59,7 +59,7 @@ let titlesOnly = Article.all().map(article=>({title:article.title}));
         <p>
             These methods process or iterate the previously setup stream.
             However note that often processing a stream takes place outside of
-            a script -- for example, when a script returns something <a href="/routing/js#json">JSON-like</a>
+            a script -- for example, when a script returns something <a href="/endpoints/js#json">JSON-like</a>
             which includes a previously setup stream, it is the system that will
             complete / process the stream outside of the script.
             Another example is a Mustache file which iterates over a stream.
@@ -69,8 +69,8 @@ let titlesOnly = Article.all().map(article=>({title:article.title}));
         What is the use case for forEach -- seems if you are iterating, you usually
         want mutability of modify.
 
-        The system uses forEach internally, for output in Mustache, or results from a script,
-        but what use is forEach within a script?
+        The system uses forEach internally, for output in Mustache, or results from a scripting,
+        but what use is forEach within a scripting?
 
         <h3>forEach(function)</h3>
         <p>

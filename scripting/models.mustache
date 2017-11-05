@@ -9,7 +9,7 @@
         <h1>Model Scripting</h1>
 
         <p>
-            Learn about scripting with <a href="/data/">data models</a>.
+            Learn about scripting with <a href="/models/">data models</a>.
         </p>
     </header>
 
@@ -53,7 +53,7 @@ List.load($listId).remove();
         <h2>Containers</h2>
 
         <p>
-            Since <a href="/data/containers">containers</a> create a "scope" for
+            Since <a href="/models/containers">containers</a> create a "scope" for
             working with other data, a container must be selected
             before any other operations on its contained data.
         </p>
@@ -89,14 +89,14 @@ titleStream;
         </p>
         <p>
             Instead, an exception is thrown if there is no result.  This exception can be left "uncaught"
-            and therefore propagated up to a view setup for <a href="/routing/errors">routing errors</a>.
+            and therefore propagated up to a view setup for <a href="/endpoints/errors">routing errors</a>.
             Or it can be specifically caught using a special nomenclature:
         </p>
         <p>
         <pre><code class="language-javascript">
 let thing = null;
 try {
-    thing = Thing.load($thingId);
+    thing = Thing.get($thingId);
 } catch ($NotFound){
     // At this point we've specifically caught $NotFound,
     // as opposed to catching some unrelated error/exception.

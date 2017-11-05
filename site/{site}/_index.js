@@ -55,7 +55,7 @@ function createProblemHtml(value){
             var lang = langFromPath(value.path);
 
             // yes, put lang on both. long story.
-            out += '<pre ' + 'data-line="' + lines  + '" data-line-offset="' + offset  + '" class="language-' + lang + '">';
+            out += '<pre ' + 'models-line="' + lines  + '" models-line-offset="' + offset  + '" class="language-' + lang + '">';
             out += '<code class="language-' + lang + '">';
             out += $esc(value.source);
             out += '</code></pre>';

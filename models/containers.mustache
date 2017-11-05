@@ -17,7 +17,7 @@
 
         <p>
             Use containers whenever there is a strong one-to-many, or parent/child relationship.
-            Containers are a kind of <a href="/data/types#universal">Universal</a> model type,
+            Containers are a kind of <a href="/models/types#universal">Universal</a> model type,
             and inherit all capabilities of that type.
         </p>
         <p>
@@ -63,7 +63,7 @@
         <h2>Event Container and Query Scope</h2>
 
         <p>
-            The <a href="/data/types#event">Event</a> type is always isolated to its direct parent for query scope.
+            The <a href="/models/types#event">Event</a> type is always isolated to its direct parent for query scope.
             Given Account ▶︎ Site ▶︎ Orders, the Orders Event type must always be queried in the context of a single Site.
         </p>
     </section>
@@ -77,7 +77,7 @@
         </p>
 
         <p>
-            For example, given Blog ▶ Post, where Post has a <a href="/data/fields#uid">UID</a> field named "slug".
+            For example, given Blog ▶ Post, where Post has a <a href="/models/fields#uid">UID</a> field named "slug".
             If there are many Blog's, and many Posts within any given Blog, then the two Posts may have
             same UID if they are in <b>separate</b> Blog's.
         </p>

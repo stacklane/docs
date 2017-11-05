@@ -9,7 +9,7 @@
         <h1>Query Scripting</h1>
 
         <p>
-            Learn about scripting with <a href="/data/queries">queries</a>.
+            Learn about scripting with <a href="/models/queries">queries</a>.
         </p>
     </header>
 
@@ -17,11 +17,11 @@
         <h2>Pre-Defined Queries</h2>
 
         <p>
-            <a href="/data/queries">Queries</a> are always <a href="/data/definition#queries">pre-defined</a>.
+            <a href="/models/queries">Queries</a> are always <a href="/models/definition#queries">pre-defined</a>.
             They have a name unique to a model type,
             and parameters that must be set before the query can be executed.
             These are then exposed to scripting as regular method calls.
-            The result of a query is always a <a href="/script/stream">stream</a>.
+            The result of a query is always a <a href="/scripting/stream">stream</a>.
         </p>
         <p>
         <pre><code class="language-javascript">
@@ -38,7 +38,7 @@ let notesByTitle = Note.byTitle().titlePrefix(thePrefix);
             <code>all()</code> supports the options,
             <code>asc()</code> (default), or <code>desc()</code>, which provide
             ordering by creation timestamp.
-            As with any query the result is a <a href="/script/stream">stream</a>.
+            As with any query the result is a <a href="/scripting/stream">stream</a>.
         </p>
     </section>
 
@@ -47,14 +47,14 @@ let notesByTitle = Note.byTitle().titlePrefix(thePrefix);
         <h2>Unique Value Queries</h2>
 
         <p>
-            <a href="/data/fields#unique">Unique</a> fields and <a href="/data/fields#uid">UID</a>
-            fields are given a same-named factory method for loading the single unique model (if any).
+            Query <a href="/models/fields#unique">Unique</a> fields and <a href="/models/fields#uid">UID</a>
+            fields as you would any other type of equality query.
             Assuming a model named <i>Article</i> and a UID field named "slug":
         </p>
         <p>
         <pre><code class="language-javascript">
 // Where $slugId is from a URL path parameter:
-let found = Article.slug($slugId);
+let found = Article.slug($slugId).get();
 // Because of error handling, 'found' is always defined at this point
         </code></pre>
         </p>
@@ -62,7 +62,7 @@ let found = Article.slug($slugId);
 
     <section>
         <div class="alert alert-secondary" role="alert">
-            Next: Learn about <a href="/script/stream">scripting with streams</a>.
+            Next: Learn about <a href="/scripting/stream">scripting with streams</a>.
         </div>
     </section>
 </article>

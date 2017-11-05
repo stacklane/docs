@@ -17,7 +17,7 @@
         <p>
             Suppliers are scripts which export one or more named values, for the sole purpose of
             having those values imported by another script -- either by another supplier,
-            or by an <a href="/routing/js">endpoint</a>.
+            or by an <a href="/endpoints/js">endpoint</a>.
             Suppliers allow for reusing values and functions, as well as caching (via Site Suppliers).
             All values exported by suppliers exist in the module '📤'.
         </p>
@@ -35,7 +35,7 @@
 
         <p>
             There are several types of suppliers.
-            Choosing a supplier type depends on its purpose and especially the allowed values.
+            Choosing a supplier type depends on its purpose and allowed values.
             Supplier .js files always begin with a special prefix for its type.
             The remaining filename is for documentation purposes only, and
             typically indicates what is being exported or why.
@@ -45,7 +45,7 @@
         <p>
             <code>📤∞Name.js</code>.
             Allowed exports: Primitives (String, Number, Boolean), Map/Object of Primitives,
-            a single instance of <a href="/data/">Model data</a>, or a Query stream definition.
+            a single instance of <a href="/models">Model data</a>, or a <a href="/scripting/queries">Query</a>.
         </p>
         <p>
             Because site suppliers are only evaluated when needed (not every request),
@@ -92,7 +92,7 @@
         <p>
             <code>/product/{productSlug}/📤~GetProduct.js</code>
             <pre><code class="language-javascript">
-let product = Product.slug($productSlug);
+let product = Product.slug($productSlug).get();
 
 export {product as Product};
             </code></pre>
@@ -152,7 +152,7 @@ import {Something, Other, That} from '📤';
             Pinned suppliers may be used to hide <i>or</i> re-expose broader/earlier supplied values.
         </p>
         <p>
-            This is especially useful where more strict <a name="/routing/mustache#soc">separation of concerns</a>
+            This is especially useful where more strict <a name="/endpoints/mustache#soc">separation of concerns</a>
             are desired, for example in the case of Mustache endpoints.
             The JavaScript developer may want to ensure that regardless of any suppliers along the REST path,
             only very explicit / strictly supplied values are visible to the Mustache file.

@@ -14,7 +14,7 @@
 
     <section>
         <p>
-            Note: Not all field types are available for all <a href="/data/types">model types</a>,
+            Note: Not all field types are available for all <a href="/models/types">model types</a>,
             and there is a maximum of 15 fields per model type
             (however this may be effectively extended with embedded values)
         </p>
@@ -34,7 +34,7 @@
 
         <p>
             This is the field type corresponding to a complex value defined by an
-            <a href="/data/types#embedded">Embedded</a> model type.
+            <a href="/models/types#embedded">Embedded</a> model type.
         </p>
         <p>
             It may be a many valued array/list, in which case there is a limit of <b>20</b>
@@ -49,8 +49,8 @@
             Used for "user friendly" unique identifiers destined for URL paths.
         </p>
         <p>
-            This field is unique always, and is available for the <a href="/data/types#universal">Universal</a>
-            and <a href="/data/types#universal">Content</a> type's.
+            This field is unique always, and is available for the <a href="/models/types#universal">Universal</a>
+            and <a href="/models/types#universal">Content</a> type's.
         </p>
         <p>
             To keep URLs formatted according to best practices, it must start and end with
@@ -74,8 +74,8 @@
         <h2><a name="unique">Unique Values</a></h2>
 
         <p>
-            The <i>String</i> field type may be marked as unique for the <a href="/data/types#universal">Universal</a>
-            model type only.  Unique values are constrained/scoped to the nearest <a href="/data/containers">Container</a>.
+            The <i>String</i> field type may be marked as unique for the <a href="/models/types#universal">Universal</a>
+            model type only.  Unique values are constrained/scoped to the nearest <a href="/models/containers">Container</a>.
         </p>
         <p>
             Deleting/removing a document will delete all associated unique values.
