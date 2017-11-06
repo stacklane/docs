@@ -270,15 +270,15 @@ $sidebar-padding: 1rem;
   font-size: .875rem;
 }
 
-
+@media (min-width: 768px) {
   .bd-sidebar {
     position: sticky;
     top: 0rem;
     z-index: 1000;
-   // max-height: calc(100vh - 0rem /*top*/);
+    //max-height: calc(100vh - 0rem /*top*/);
     height: calc(100vh - 0rem);
   }
-
+}
 
 
 /**
