@@ -22,7 +22,7 @@
 <body>
 <div class="container-fluid">
     <div class="row"> <!--flex-xl-nowrap-->
-        <div class="col-sm-3 bd-sidebar sidebar">
+        <div class="col-sm-3 sidebar">
             <div class="float-right">
             <div class="logo">
                 <a href="http://stacklane.com" title="Stacklane">{{>logo-stacklane}}</a>
@@ -34,14 +34,14 @@
             </nav>
             </div>
         </div>
-        <main class="col-sm-7 py-sm-3 py-md-3 pl-sm-4 pl-md-5 bd-content">
+        <main class="col-sm-7 py-sm-3 py-md-3 pl-sm-4 pl-md-5">
             {{$content}}Content{{/content}}
 
             <footer class="footer text-center mt-4">
                 <p>{{>icon-copyright-sm}} {{>logo-stacklane}}</p>
             </footer>
         </main>
-        <div class="d-none d-lg-block col-lg-2 bd-toc" id="subnav"></div>
+        <div class="d-none d-lg-block col-lg-2" id="subnav"></div>
     </div>
 </div>
 
