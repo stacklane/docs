@@ -30,7 +30,7 @@
     </section>
 
     <section>
-        <h2>all()</h2>
+        <h2><a name="all">all()</a></h2>
 
         <p>
             To query all models of a type, without any filters, use the <code>all()</code> method.
@@ -41,7 +41,7 @@
     </section>
 
     <section>
-        <h2>Field Filters</h2>
+        <h2><a name="fields">Field Filters</a></h2>
 
         <p>
             All queries besides <code>all()</code> start with a field filter.
@@ -76,7 +76,7 @@
     </section>
 
     <section>
-        <h2>limit(number)</h2>
+        <h2><a name="limit">limit(number)</a></h2>
 
         <p>
             Limits the results of a query.
@@ -84,7 +84,7 @@
     </section>
 
     <section>
-        <h2>get()</h2>
+        <h2><a name="get">get()</a></h2>
 
         <p>
             Returns a single result (effective <code>limit(1)</code>).
@@ -94,7 +94,7 @@
     </section>
 
     <section>
-        <h2>filter(function)</h2>
+        <h2><a name="filter">filter(function)</a></h2>
         <p>
             The callback function to <code>filter</code> returns a <code>boolean</code>
             that indicates whether the
@@ -105,7 +105,7 @@
     </section>
 
     <section>
-        <h2>map(function)</h2>
+        <h2><a name="map">map(function)</a></h2>
         <p>
             The callback function to <code>map</code> <i>transforms</i> the current stream element
             to something else.  This is often used to transform a model to a JSON object literal.
@@ -119,7 +119,7 @@ let titlesOnly = Article.all().map(article=>({title:article.title}));
     </section>
 
     <section>
-        <h2>Unique Value Queries</h2>
+        <h2><a name="unique">Unique Value Queries</a></h2>
 
         <p>
             Query <a href="/models/fields#unique">unique</a> fields and <a href="/models/fields#uid">UID</a>
