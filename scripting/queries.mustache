@@ -30,7 +30,7 @@
     </section>
 
     <section>
-        <h2><code>all()</code></h2>
+        <h2>all()</h2>
 
         <p>
             To query all models of a type, without any filters, use the <code>all()</code> method.
@@ -76,7 +76,7 @@
     </section>
 
     <section>
-        <h2><code>limit(number)</code></h2>
+        <h2>limit(number)</h2>
 
         <p>
             Limits the results of a query.
@@ -84,16 +84,17 @@
     </section>
 
     <section>
-        <h2><code>get()</code></h2>
+        <h2>get()</h2>
 
         <p>
-            Returns a single result.  If there is no result, then a <code>$ModelNotFound</code>
+            Returns a single result (effective <code>limit(1)</code>).
+            If there is no result, then a <code>$ModelNotFound</code>
             exception is generated, similar to loading a model by GUID.
         </p>
     </section>
 
     <section>
-        <h2><code>filter(function)</code></h2>
+        <h2>filter(function)</h2>
         <p>
             The callback function to <code>filter</code> returns a <code>boolean</code>
             that indicates whether the
