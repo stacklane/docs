@@ -18,6 +18,7 @@
         <p>
             Stacklane's limits are designed to guide and emphasize
             best practices in using the platform, not make your life difficult.
+            In fact we hope you never encounter these limits.
             For every limit there is usually an alternative approach
             with better long term scale and maintenance characteristics.
         </p>
@@ -76,7 +77,7 @@
             </tr>
             <tr>
                 <td>
-                    Model: Universal Type / TPS<sup>1</sup>
+                    Model: Universal Type / Provisioned Size<sup>1</sup>
                 </td>
                 <td>10 KB</td>
             </tr>
@@ -88,7 +89,7 @@
             </tr>
             <tr>
                 <td>
-                    Model: Event Type / TPS<sup>1</sup>
+                    Model: Event Type / Provisioned Size<sup>1</sup>
                 </td>
                 <td>10 KB</td>
             </tr>
@@ -100,7 +101,7 @@
             </tr>
             <tr>
                 <td>
-                    Model: Content Type / TPS<sup>1</sup>
+                    Model: Content Type / Provisioned Size<sup>1</sup>
                 </td>
                 <td>100 KB</td>
             </tr>
@@ -116,11 +117,10 @@
         <p>
             <ol>
                 <li>
-                    "Total Potential Size" (TPS)
-                    is used to emphasize various data field choices, and
-                    most importantly prevent any "gotchas" during commit/write.
-                    Exceeding the TPS of a model type will be determined during <b>compile/build time</b>,
-                    ensuring that during runtime there will be zero surprises.
+                    The "Provisioned Size" of your model is the sum of all
+                    <a href="/models/fields">field type</a> sizes.
+                    Exceeding the Provisioned Size of a model type will be determined during <b>compile/build time</b>,
+                    ensuring that during runtime there are zero surprises.
                 </li>
                 <li>
                     The Event Type is the only type which has unbounded writes.
