@@ -277,3 +277,33 @@ $sidebar-padding: 1rem;
   padding-bottom: 1.5rem;
   font-size: .875rem;
 }
+@media (min-width: 1200px) {
+  .bd-sidebar {
+    max-width: 320px;
+  }
+}
+@media (min-width: 768px) {
+  .bd-sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 4rem;
+    z-index: 1000;
+    max-height: calc(100vh - 4rem);
+  }
+}
+@media (min-width: 768px) {
+  .bd-sidebar {
+    border-right: 1px solid rgba(0, 0, 0, .1);
+  }
+  .bd-sidebar {
+    -ms-flex-order: 0;
+    order: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+  }
+
+}
+
+.bd-content {
+  -ms-flex-order: 1;
+  order: 1;
+}
