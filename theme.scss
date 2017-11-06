@@ -109,7 +109,7 @@ $sl-logo-secondary: #13bdce;
 
 @media (min-width: map-get($grid-breakpoints, md) )  {
   article, footer {
-    max-width: 75%;
+ //   max-width: 75%;
   }
 }
 article, footer{
@@ -174,9 +174,9 @@ $sidebar-padding: 1rem;
 }
 
 .sidebar {
-  position: fixed;
-  top: 0px;
-  bottom: 0;
+  //position: fixed;
+  //top: 0px;
+  //bottom: 0;
   left: 0;
   z-index: 1000;
   overflow-x: hidden;
@@ -266,8 +266,8 @@ $sidebar-padding: 1rem;
 .bd-toc {
   position: -webkit-sticky;
   position: sticky;
-  top: 4rem;
-  max-height: calc(100vh - 4rem);
+  top: 0rem;
+  max-height: calc(100vh - 0rem /*TOP*/);
   overflow-y: auto;
 }
 .bd-toc {
@@ -286,14 +286,14 @@ $sidebar-padding: 1rem;
   .bd-sidebar {
     position: -webkit-sticky;
     position: sticky;
-    top: 4rem;
+    top: 0rem;
     z-index: 1000;
-    max-height: calc(100vh - 4rem);
+    max-height: calc(100vh - 0rem /*top*/);
   }
 }
 @media (min-width: 768px) {
   .bd-sidebar {
-    border-right: 1px solid rgba(0, 0, 0, .1);
+   //border-right: 1px solid rgba(0, 0, 0, .1);
   }
   .bd-sidebar {
     -ms-flex-order: 0;
