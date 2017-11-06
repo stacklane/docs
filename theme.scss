@@ -275,8 +275,8 @@ $sidebar-padding: 1rem;
     position: sticky;
     top: 0rem;
     z-index: 1000;
-    max-height: calc(100vh - 0rem /*top*/);
-    height: 100vh - 0rem;
+   // max-height: calc(100vh - 0rem /*top*/);
+    height: calc(100vh - 0rem);
   }
 
 
