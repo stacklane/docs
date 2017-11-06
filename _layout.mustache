@@ -21,7 +21,7 @@
 
 <body>
 <div class="container-fluid">
-    <div class="row">
+    <div class="row flex-xl-nowrap">
         <div class="col-sm-4 col-md-3 d-none d-sm-block bg-light sidebar">
             <div class="float-right">
             <div class="logo">
@@ -34,6 +34,7 @@
             </nav>
             </div>
         </div>
+        <div class="d-none d-xl-block col-xl-2 bd-toc" id="subnav"></div>
         <main class="col-sm-8 ml-sm-auto col-md-9 pt-3 pl-4">
             {{$content}}Content{{/content}}
 
@@ -41,7 +42,6 @@
                 <p>{{>icon-copyright-sm}} {{>logo-stacklane}}</p>
             </footer>
         </main>
-        <div id="subnav"></div>
     </div>
 </div>
 
