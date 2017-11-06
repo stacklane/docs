@@ -41,8 +41,21 @@
                 <p>{{>icon-copyright-sm}} {{>logo-stacklane}}</p>
             </footer>
         </main>
+        <div id="subnav"></div>
     </div>
 </div>
+
+<script>
+    var html = '';
+    $each('a', function(e){
+        if (e.getAttribute('name') != null && e.getAttribute('name').length > 0){
+            html+='<a href="#' + e.getAttribute('name') + '">' + e.innerHTML + '</a><br>';
+        }
+    });
+    if (html.length > 0){
+        $get('subnav').innerHTML = html;
+    }
+</script>
 
 <!--
     Syntax highlighting library
