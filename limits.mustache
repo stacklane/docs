@@ -30,9 +30,7 @@
             using <a href="/models/containers">containers</a> for cases
             that may call for unbounded entries.  And so on.
         </p>
-    </section>
 
-    <section>
         <table class="table">
             <thead>
             <tr>
@@ -54,6 +52,18 @@
             </tr>
             <tr>
                 <td>
+                    Model: Total Number of Entries
+                </td>
+                <td>Unlimited</td>
+            </tr>
+            <tr>
+                <td>
+                    Model: Field and Model Type Name Length
+                </td>
+                <td>20 chars</td>
+            </tr>
+            <tr>
+                <td>
                     Model: Field Count
                     <br><small>This can be effectively extended using embedded field types.</small>
                 </td>
@@ -64,7 +74,7 @@
                     Model: Embedded List Entries
                     <br><small>The maximum number of embedded entries in a multi-valued field.
                     For unbounded one-to-many associations, use <a href="/models/containers">containers</a>.
-                    </small>
+                </small>
                 </td>
                 <td>20</td>
             </tr>
@@ -115,22 +125,22 @@
         </table>
 
         <p>
-            <ol class="small">
-                <li>
-                    The "Provisioned Size" of your model is the sum of all
-                    <a href="/models/fields">field type</a> sizes.
-                    Exceeding the Provisioned Size of a model type will be determined during <b>compile/build time</b>,
-                    ensuring that during runtime there are zero surprises.
-                </li>
-                <li>
-                    The Event Type is the only type which has unbounded writes.
-                    However the Universal Type and Content Type write limits are not designed to be restrictive --
-                    they should easily fit a very wide variety of cases intended for those types.
-                </li>
-            </ol>
+        <ol class="small">
+            <li>
+                The "Provisioned Size" of your model is the sum of all
+                <a href="/models/fields">field type</a> sizes.
+                Exceeding the Provisioned Size of a model type will be determined during <b>compile/build time</b>,
+                ensuring that during runtime there are zero surprises.
+            </li>
+            <li>
+                The Event Type is the only type which has unbounded writes.
+                However the Universal Type and Content Type write limits are not designed to be restrictive --
+                they should easily fit a very wide variety of cases intended for those types.
+            </li>
+        </ol>
         </p>
-
     </section>
+
 </article>
 
 
