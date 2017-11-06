@@ -49,11 +49,11 @@
     var html = '';
     $each('a', function(e){
         if (e.getAttribute('name') != null && e.getAttribute('name').length > 0){
-            html+='<a href="#' + e.getAttribute('name') + '">' + e.innerHTML + '</a><br>';
+            html+='<li><a href="#' + e.getAttribute('name') + '">' + e.innerHTML + '</a></li>';
         }
     });
     if (html.length > 0){
-        $get('subnav').innerHTML = html;
+        $get('subnav').innerHTML = '<ul>' + html + '</ul>';
     }
 </script>
 
