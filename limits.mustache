@@ -76,42 +76,59 @@
             </tr>
             <tr>
                 <td>
-                    Model: Universal Type / Total Potential Size
+                    Model: Universal Type / TPS<sup>1</sup>
                 </td>
                 <td>10 KB</td>
             </tr>
             <tr>
                 <td>
-                    Model: Universal Type / Write Rate
+                    Model: Universal Type / Write Rate<sup>2</sup>
                 </td>
                 <td>1 per sec</td>
             </tr>
             <tr>
                 <td>
-                    Model: Event Type / Total Potential Size
+                    Model: Event Type / TPS<sup>1</sup>
                 </td>
                 <td>10 KB</td>
             </tr>
             <tr>
                 <td>
-                    Model: Event Type / Write Rate
+                    Model: Event Type / Write Rate<sup>2</sup>
                 </td>
                 <td>Unlimited</td>
             </tr>
             <tr>
                 <td>
-                    Model: Content Type / Total Potential Size
+                    Model: Content Type / TPS<sup>1</sup>
                 </td>
                 <td>100 KB</td>
             </tr>
             <tr>
                 <td>
-                    Model: Content Type / Write Rate
+                    Model: Content Type / Write Rate<sup>2</sup>
                 </td>
                 <td>1 per sec</td>
             </tr>
             </tbody>
         </table>
+
+        <p>
+            <ol>
+                <li>
+                    "Total Potential Size" (TPS)
+                    is used to emphasize various data field choices, and
+                    most importantly prevent any "gotchas" during commit/write.
+                    Exceeding the TPS of a model type will be determined during <b>compile/build time</b>,
+                    ensuring that during runtime there will be zero surprises.
+                </li>
+                <li>
+                    The Event Type is the only type which has unbounded writes.
+                    However the Universal Type and Content Type write limits are not designed to be restrictive --
+                    they should easily fit a very wide variety of cases intended for those types.
+                </li>
+            </ol>
+        </p>
 
     </section>
 </article>

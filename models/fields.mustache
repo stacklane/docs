@@ -16,19 +16,12 @@
     </header>
 
     <section>
-        <p>
-            Note: Not all field types are available for all <a href="/models/types">model types</a>,
-            and there is a maximum of 15 fields per model type
-            (however this may be effectively extended with embedded values)
-        </p>
-    </section>
-
-    <section>
         <h2><code>string</code></h2>
 
         <p>
             The workhorse field type.  Maximum length: 100 <i>characters</i>.
             May be marked as <a href="#unique">unique: true</a>.
+            Total potential size: 400 bytes.
         </p>
     </section>
 
@@ -37,6 +30,7 @@
 
         <p>
             true/false boolean value.
+            Total potential size: 1 byte.
         </p>
     </section>
 
@@ -45,6 +39,7 @@
 
         <p>
             Non-floating 64 bit integer (long).
+            Total potential size: 8 bytes.
         </p>
     </section>
 
@@ -52,7 +47,8 @@
         <h2><code><a name="double">double</a></code></h2>
 
         <p>
-            Floating-point number (64-bit double precision, IEEE 754)
+            Floating-point number (64-bit double precision, IEEE 754).
+            Total potential size: 8 bytes.
         </p>
     </section>
 
@@ -73,14 +69,17 @@
         </p>
         <p>
             <b>Note:</b> UID's behave differently than other unique values.  Because they are destined
-            for URLs, it's implied that when they are modified the previous value is not lost
-            (otherwise any previously published URL would be result in a broken link).
-            Therefore a single model may have multiple unique UID values associated with it,
+            for URLs, it's implied that when modified the previous value is not lost
+            (otherwise any previously published URL would result in a broken link).
+            Therefore a single model field may have multiple unique UID values associated with it,
             however at any given time only one is "current" or "primary".
         </p>
         <p>
             In an ideal scenario from an SEO standpoint, if the visitor has reached a URL by an older UID,
             then it's recommended you redirect to the current/primary UID value.
+        </p>
+        <p>
+            Total potential size: 100 bytes.
         </p>
     </section>
 
@@ -94,6 +93,9 @@
         <p>
             It may be a many valued array/list, in which case there is a limit of <b>20</b>
             embedded entries.
+        </p>
+        <p>
+            Total potential size: sum of potential field sizes * times number of possible entries.
         </p>
     </section>
 
