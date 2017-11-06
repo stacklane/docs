@@ -2,6 +2,9 @@
 {{% partial /_layout }}
 
 {{<layout}}
+
+{{$title}}Suppliers{{/title}}
+
 {{$content}}
 
 <article>
@@ -170,7 +173,8 @@ import {Something, Other, That} from '📤';
             The most specific supplier is one with the same name as the endpoint itself.
             For example, an endpoint named <code>index.mustache</code>
             may also have a supplier named <code>📤~index.js</code>.
-            As the most specific supplier, only <code>index.mustache</code> may access values exported by <code>📤index.js</code>.
+            As the most specific supplier, only <code>index.mustache</code> may access values exported by <code>📤~index.js</code>
+            (however <code>index.mustache</code> may also access other in-scope suppliers).
         </p>
 
         <h3><a name="strict">Pinned Supplier</a></h3>

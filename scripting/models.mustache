@@ -2,6 +2,9 @@
 {{% partial /_layout }}
 
 {{<layout}}
+
+{{$title}}Model Scripting{{/title}}
+
 {{$content}}
 
 <article>
@@ -27,7 +30,7 @@ let newList = new List();
         <p>
         <pre><code class="language-javascript">
 // Where $listId is a URL path parameter
-let list = List.load($listId);
+let list = List.get($listId);
 // Because of error handling, 'list' is always defined at this point
 let listTitle = list.title;
         </code></pre>
@@ -36,7 +39,7 @@ let listTitle = list.title;
         <h3>Update</h3>
         <p>
         <pre><code class="language-javascript">
-List.load($listId).title = 'new title'; // field/property setter
+List.get($listId).title = 'new title'; // field/property setter
 new List().title('new title').otherField('value'); // fluent setter
         </code></pre>
         </p>
@@ -44,7 +47,7 @@ new List().title('new title').otherField('value'); // fluent setter
         <h3>Delete</h3>
         <p>
         <pre><code class="language-javascript">
-List.load($listId).remove();
+List.get($listId).remove();
         </code></pre>
         </p>
     </section>
@@ -66,7 +69,7 @@ List.load($listId).remove();
         <p>
         <pre><code class="language-javascript">
 // Load the container 'List', using URL path $listId:
-let myList = List.load($listId);
+let myList = List.get($listId);
 
 // Select myList, and get all Note titles for myList:
 let titleStream = myList(()=>{
@@ -77,6 +80,14 @@ let titleStream = myList(()=>{
 titleStream;
             </code></pre>
         </p>
+        <p>
+            Or, the most compact form of same above statements:
+        </p>
+        <p>
+        <pre><code class="language-javascript">
+List.get($listId)(()=>Note.all().map((n)=>n.title)));
+        </code></pre>
+        </p>
     </section>
 
     <section>
@@ -84,7 +95,7 @@ titleStream;
 
         <p>
             In several examples above, note that <code>null</code> or <code>undefined</code>
-            is not used to represent the absence of a result -- for example <code>List.load</code>
+            is not used to represent the absence of a result -- for example <code>List.get</code>
             <code>Article.slug</code> never return a null/undefined value.
         </p>
         <p>

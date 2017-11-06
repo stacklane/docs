@@ -2,6 +2,9 @@
 {{% partial /_layout }}
 
 {{<layout}}
+
+{{$title}}Query Scripting{{/title}}
+
 {{$content}}
 
 <article>
@@ -9,47 +12,118 @@
         <h1>Query Scripting</h1>
 
         <p>
-            Learn about scripting with <a href="/models/queries">queries</a>.
+            Learn about querying for models with chainable filters.
         </p>
     </header>
 
     <section>
-        <h2>Pre-Defined Queries</h2>
-
         <p>
-            <a href="/models/queries">Queries</a> are always <a href="/models/definition#queries">pre-defined</a>.
-            They have a name unique to a model type,
-            and parameters that must be set before the query can be executed.
-            These are then exposed to scripting as regular method calls.
-            The result of a query is always a <a href="/scripting/stream">stream</a>.
+            Stacklane uses method chaining to define the criteria of returned query results.
+            In general with method chaining <i>order matters</i> -- for example, equality filters must be defined
+            before calling <code>limit</code>.
         </p>
         <p>
-        <pre><code class="language-javascript">
-// Simple query (previously defined) which finds Note's starting with X.
-// The query was defined with the name "byTitle",
-// and "titlePrefix" is a named parameter of the query.
-let thePrefix = 'ABC';
-let notesByTitle = Note.byTitle().titlePrefix(thePrefix);
-        </code></pre>
-        </p>
-        <p>
-            Additionally there is the built-in query named <code>all()</code>,
-            e.g. <code>Note.all()</code>.
-            <code>all()</code> supports the options,
-            <code>asc()</code> (default), or <code>desc()</code>, which provide
-            ordering by creation timestamp.
-            As with any query the result is a <a href="/scripting/stream">stream</a>.
+            The results of a query are generally "used" outside of the script itself.  For example,
+            a <a href="/endpoints/mustache">Mustache endpoint</a> may iterate over a query given by a
+            <a href="/scripting/suppliers">supplier</a> to display results as HTML.
         </p>
     </section>
 
+    <section>
+        <h2><code>all()</code></h2>
+
+        <p>
+            To query all models of a type, without any filters, use the <code>all()</code> method.
+            For example, <code>Note.all()</code>. By default results will be returned from oldest to newest,
+            however this can be reversed from newest to oldest by adding <code>desc()</code>,
+            e.g. <code>Note.all().desc()</code>.
+        </p>
+    </section>
+
+    <section>
+        <h2>Field Filters</h2>
+
+        <p>
+            All queries besides <code>all()</code> start with a field filter.
+            Multiple field filters may be chained together.
+            Keep in mind that field filters are effectively <b>and</b> conditions.
+        </p>
+
+        <h3>eq</h3>
+        <p>
+            <code>Article.title('theTitle')</code>
+        </p>
+
+        <h3>gt</h3>
+        <p>
+            <code>Article.created_gt(new Date(2000))</code>
+        </p>
+
+        <h3>gte</h3>
+        <p>
+            <code>User.age_gte(30)</code>
+        </p>
+
+        <h3>lt</h3>
+        <p>
+            <code>Article.created_gt(new Date(2000)).created_lt(new Date(2010))</code>
+        </p>
+
+        <h3>lte</h3>
+        <p>
+            <code>User.age_gte(30).age_lte(40)</code>
+        </p>
+    </section>
+
+    <section>
+        <h2><code>limit(number)</code></h2>
+
+        <p>
+            Limits the results of a query.
+        </p>
+    </section>
+
+    <section>
+        <h2><code>get()</code></h2>
+
+        <p>
+            Returns a single result.  If there is no result, then a <code>$ModelNotFound</code>
+            exception is generated, similar to loading a model by GUID.
+        </p>
+    </section>
+
+    <section>
+        <h2><code>filter(function)</code></h2>
+        <p>
+            The callback function to <code>filter</code> returns a <code>boolean</code>
+            that indicates whether the
+            item should be included in the results (return false to exclude an entry).
+            This should generally be used as a last resort -- specific equality and inequality field
+            filters should be preferred both for code compactness and performance.
+        </p>
+    </section>
+
+    <section>
+        <h2>map(function)</h2>
+        <p>
+            The callback function to <code>map</code> <i>transforms</i> the current stream element
+            to something else.  This is often used to transform a model to a JSON object literal.
+            It should be the last method in a chain.
+        </p>
+        <p>
+        <pre><code class="language-javascript">
+let titlesOnly = Article.all().map(article=>({title:article.title}));
+        </code></pre>
+        </p>
+    </section>
 
     <section>
         <h2>Unique Value Queries</h2>
 
         <p>
-            Query <a href="/models/fields#unique">Unique</a> fields and <a href="/models/fields#uid">UID</a>
+            Query <a href="/models/fields#unique">unique</a> fields and <a href="/models/fields#uid">UID</a>
             fields as you would any other type of equality query.
-            Assuming a model named <i>Article</i> and a UID field named "slug":
+            Assuming a model named <code>Article</code> and a UID field named "slug":
         </p>
         <p>
         <pre><code class="language-javascript">
@@ -60,11 +134,6 @@ let found = Article.slug($slugId).get();
         </p>
     </section>
 
-    <section>
-        <div class="alert alert-secondary" role="alert">
-            Next: Learn about <a href="/scripting/stream">scripting with streams</a>.
-        </div>
-    </section>
 </article>
 
 {{/content}}

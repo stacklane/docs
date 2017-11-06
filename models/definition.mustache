@@ -2,6 +2,9 @@
 {{% partial /_layout }}
 
 {{<layout}}
+
+{{$title}}Model Definition{{/title}}
+
 {{$content}}
 
 <article>
@@ -27,8 +30,6 @@
         <p>
             The file name indicates <i>both</i> the name of the model as well as the model's <a href="/models/types">type</a>
             The model's type is denoted with a specific emoji prefix.
-            Within the directory "📦", and given a file name named <code>🌐Article.yaml</code>,
-            a "Universal" model named <code>Article</code> will be available to your scripts.
         </p>
         <p>
             <ul>
@@ -36,6 +37,10 @@
                 <li>Multi-Tenant Container -- prefix file with 🏢</li>
                 <li>Global Embedded -- prefix with 📎</li>
             </ul>
+        </p>
+        <p>
+            Within the directory "📦", and given a file name named <code>🌐Article.yaml</code>,
+            a "Universal" model named <code>Article</code> will be available to your scripts.
         </p>
     </section>
 
@@ -45,7 +50,8 @@
             To define models that are in a container, place them into directories.  Example files and folders in the
             "📦" directory which define 3 model types, two of which are in containers.
         </p>
-        <p><pre><code>
+        <p>
+        <pre><code>
 🏢Account.yaml
 Account/🌐List.yaml
 Account/List/🌐Task.yaml
