@@ -41,16 +41,16 @@
         <h3>Query Considerations</h3>
         <p>
             A Tenant container starts a new "query isolation" scope.
-            Given the example hierarchy User ▶︎ List ▶︎ Task, and a query for "Tasks by Name" defined
-            on Task, the scope of Tasks that will be queried varies depending on which of the two possible
+            Given the example hierarchy User ▶︎ List ▶︎ Task, and a query for <code>Task.name('something')</code>,
+            the scope of Tasks that will be queried varies depending on which of the two possible
             ancestor containers are selected.
         </p>
         <p>
-            If the "Tasks by Name" query is executed in the scope of the User, then all Tasks across
+            If the <code>Task.name('something')</code> query is executed in the scope of the User, then all Tasks across
             all Lists by that single User will be queried by name.
         </p>
         <p>
-            If the "Tasks by Name" query is executed in the scope of a List, then only Tasks within
+            If the <code>Task.name('something')</code> query is executed in the scope of a List, then only Tasks within
             the single List will be queried by name.
         </p>
         <p>

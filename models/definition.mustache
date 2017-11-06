@@ -26,14 +26,15 @@
         <h2>Model Name and Type</h2>
         <p>
             The file name indicates <i>both</i> the name of the model as well as the model's <a href="/models/types">type</a>
+            The model's type is denoted with a specific emoji prefix.
             Within the directory "📦", and given a file name named <code>🌐Article.yaml</code>,
-            and "Universal" model named <code>Article</code> will be available to your scripts.
+            a "Universal" model named <code>Article</code> will be available to your scripts.
         </p>
         <p>
             <ul>
                 <li>Universal -- prefix file with 🌐</li>
-                <li>Multi-Tenant Container -- prefix file with 🏢</li>.
-                <li>Global Embedded -- prefix with 📎</li>.
+                <li>Multi-Tenant Container -- prefix file with 🏢</li>
+                <li>Global Embedded -- prefix with 📎</li>
             </ul>
         </p>
     </section>
@@ -44,11 +45,11 @@
             To define models that are in a container, place them into directories.  Example files and folders in the
             "📦" directory which define 3 model types, two of which are in containers.
         </p>
-        <p><pre>
+        <p><pre><code>
 🏢Account.yaml
 Account/🌐List.yaml
 Account/List/🌐Task.yaml
-        </pre>
+        </code></pre>
         </p>
     </section>
 
@@ -65,8 +66,8 @@ Account/List/🌐Task.yaml
 
         <h2>Short Form</h2>
         <p>
-            The most compact technique, to use all field defaults, is to simply assign a <a href="/models/fields">field type</a>
-            immediately following your field name.  Fi
+            To compactly use all defaults for a field, simply assign a <a href="/models/fields">field type</a>
+            immediately following your field name.
         </p>
         <p>
         <pre class="language-yaml"><code>

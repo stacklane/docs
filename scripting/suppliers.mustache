@@ -17,7 +17,7 @@
         <p>
             Suppliers are scripts which export one or more named values, for the sole purpose of
             having those values imported by another script -- either by another supplier,
-            or by an <a href="/endpoints/js">endpoint</a>.
+            a <a href="/endpoints/js">JS endpoint</a>, or a <a href="/endpoints/mustache">Mustache endpoint</a>.
             Suppliers allow for reusing values and functions, as well as caching (via Site Suppliers).
             All values exported by suppliers exist in the module '📤'.
         </p>
@@ -41,32 +41,31 @@
             typically indicates what is being exported or why.
         </p>
 
+        <p>
+            <i>By default suppliers only allow read only persistence operations.</i>
+        </p>
+
         <h3>Site Supplier</h3>
         <p>
             <code>📤∞Name.js</code>.
             Allowed exports: Primitives (String, Number, Boolean), Map/Object of Primitives,
-            a single instance of <a href="/models">Model data</a>, or a <a href="/scripting/queries">Query</a>.
+            a single instance of a <a href="/scripting/models">Model</a>, or a <a href="/scripting/queries">Query</a>.
         </p>
         <p>
-            Because site suppliers are only evaluated when needed (not every request),
+            Because Site Suppliers are only evaluated when needed (not every request),
             if a Model instance is exported, then its value may not contain the most
             recent data, and it is not modifiable.
-        </p>
-        <p>
-            By default suppliers only allow read only persistence operations.
-            If you need to create or modify model data before supplying the final value,
-            then that operation must be wrapped in a zero arg function.
         </p>
 
         <h3>Request Supplier</h3>
         <p>
             <code>📤~Name.js</code>
-            Request suppliers allow the same exports and capabilities
-            as caching suppliers -- the only difference is they are
+            Request Suppliers allow the same exports and capabilities
+            as Site Suppliers -- the only difference is they are
             evaluated on every request, and are never cached.
         </p>
         <p>
-            Because request suppliers are evaluated on every request,
+            Because Request Suppliers are evaluated on every request,
             if a Model instance is exported, then its value is always "live"
             and modifiable by the endpoint which uses the supplied value.
         </p>
@@ -74,10 +73,40 @@
         <h3>Function Supplier</h3>
         <p>
             <code>📤{}Name.js</code>.
-            Allowed exports: "Utility" functions only.  Function suppliers
+            Allowed exports: "Utility" functions only.  Function Suppliers
              have very limited functionality. They may not import anything (not even other suppliers).
             Their primary purpose is to provide functions that perform <i>calculations or transformations</i>
             on parameters.
+        </p>
+    </section>
+
+    <section>
+        <h2>Persistence Option</h2>
+
+        <p>
+            By default scripting logic inside of a supplier is read only.
+            New models may not be constructed or persisted.
+            There certain cases however when it can be useful to create and persist a model if it doesn't exist.
+            To perform persistence within a supplier, the exported value must be a zero argument callback.
+            The <i>result</i> of the callback will be used as the supplied value.
+        </p>
+
+        <p>
+            In the following example the supplied value will be either an existing or new <code>TheModel</code>.
+        </p>
+        <p>
+        <code>/something/{slug}/📤∞GetOrCreateValue.js</code>
+        <pre><code class="language-javascript">
+let callback = ()=>{
+    try {
+        return TheModel.slug($slug).get();
+    } catch ($NotFound){
+        return new TheModel().slug($slug);
+    }
+};
+
+export {callback as TheValue};
+            </code></pre>
         </p>
     </section>
 
@@ -132,7 +161,6 @@ import {Something, Other, That} from '📤';
         </p>
     </section>
 
-    <!-- rework according to new prefixes.
     <section>
         <h1>Endpoint Specific and Pinned Suppliers</h1>
 
@@ -141,24 +169,23 @@ import {Something, Other, That} from '📤';
             Because suppliers follow the hierarchical REST structure, they have varying levels of specificity for an endpoint.
             The most specific supplier is one with the same name as the endpoint itself.
             For example, an endpoint named <code>index.mustache</code>
-            may also have a supplier named <code>📤index.js</code>.
+            may also have a supplier named <code>📤~index.js</code>.
             As the most specific supplier, only <code>index.mustache</code> may access values exported by <code>📤index.js</code>.
         </p>
 
         <h3><a name="strict">Pinned Supplier</a></h3>
         <p>
             An extension to an endpoint specific supplier is a "pinned" supplier.
-            Indicate a pinned supplier with the pin emoji, e.g. <code>📤📌index.js</code>.
+            Indicate a pinned supplier with the pin emoji, e.g. <code>📤~📌index.js</code>.
             Pinned suppliers may be used to hide <i>or</i> re-expose broader/earlier supplied values.
         </p>
         <p>
-            This is especially useful where more strict <a name="/endpoints/mustache#soc">separation of concerns</a>
-            are desired, for example in the case of Mustache endpoints.
+            This is especially useful where more strict separation of concerns
+            are desired, for example in the case of <a name="/endpoints/mustache#soc">Mustache endpoints</a>.
             The JavaScript developer may want to ensure that regardless of any suppliers along the REST path,
             only very explicit / strictly supplied values are visible to the Mustache file.
         </p>
     </section>
-    -->
 
 </article>
 
