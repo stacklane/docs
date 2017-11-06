@@ -1,0 +1,103 @@
+{{% partial /_layout }}
+
+{{<layout}}
+
+{{$title}}Limits{{/title}}
+
+{{$content}}
+
+<article>
+    <header>
+        <h1>Limits</h1>
+        <p>
+            Learn about the limits which emphasize Stacklane best practices.
+        </p>
+    </header>
+
+    <section>
+        <p>
+            Stacklane's limits are designed to guide and emphasize
+            best practices in using the platform.
+            For every limit there is usually an alternative approach
+            with better long term scale and maintenance characteristics.
+        </p>
+        <p>
+            For example, we limit the size of a repository to emphasize
+            its use as controller + view, and not for example as a way
+            to serve large files, or model-like content.
+            Lists of embedded entries are limited to emphasize
+            using <a href="/models/containers">containers</a> for cases
+            that may call for unbounded entries.  And so on.
+        </p>
+    </section>
+
+    <section>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Limit</th>
+                <th scope="col">Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Repository: Total Size</td>
+                <td>10 MB</td>
+            </tr>
+            <tr>
+                <td>
+                    Repository: Image Count
+                    <br><small>Repository images are primarily for styling / decoration / theme.</small>
+                </td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>
+                    Model: Universal Type Total Size
+                </td>
+                <td>10 KB</td>
+            </tr>
+            <tr>
+                <td>
+                    Model: Event Type Total Size
+                </td>
+                <td>10 KB</td>
+            </tr>
+            <tr>
+                <td>
+                    Model: Content Type Total Size
+                </td>
+                <td>100 KB</td>
+            </tr>
+            <tr>
+                <td>
+                    Model: Field Count
+                    <br><small>This can be effectively extended using embedded field types.</small>
+                </td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>
+                    Model: Embedded List Entries
+                    <br><small>The maximum number of embedded entries in a multi-valued field.
+                    For unbounded one-to-many associations, use <a href="/models/containers">containers</a>.
+                    </small>
+                </td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>
+                    Model: Field Type Size
+                    <br><small>Choose the right field type for the job.</small>
+                </td>
+                <td><a href="/models/fields">Varies</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </section>
+</article>
+
+
+{{/content}}
+{{/layout}}
