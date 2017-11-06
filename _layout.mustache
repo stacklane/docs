@@ -22,7 +22,7 @@
 <body>
 <div class="container-fluid">
     <div class="row flex-xl-nowrap">
-        <div class="col-12 col-md-3 col-xl-2 bd-sidebar sidebar">
+        <div class=" col-sm-3 bd-sidebar sidebar">
             <div class="float-right">
             <div class="logo">
                 <a href="http://stacklane.com" title="Stacklane">{{>logo-stacklane}}</a>
@@ -34,22 +34,26 @@
             </nav>
             </div>
         </div>
-        <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
+        <main class=" col-sm-7 py-md-3 pl-md-5 bd-content">
             {{$content}}Content{{/content}}
 
             <footer class="footer text-center mt-4">
                 <p>{{>icon-copyright-sm}} {{>logo-stacklane}}</p>
             </footer>
         </main>
-        <div class="d-none d-xl-block col-xl-2 bd-toc" id="subnav"></div>
+        <div class="d-none d-lg-block col-lg-2 bd-toc" id="subnav"></div>
     </div>
 </div>
 
+<!--
+  Create sub nav TOC
+  -->
 <script>
     var html = '';
     $each('a', function(e){
         if (e.getAttribute('name') != null && e.getAttribute('name').length > 0){
-            html+='<li><a href="#' + e.getAttribute('name') + '">' + e.innerHTML + '</a></li>';
+            var title = (e.getAttribute('data-sub') != null) ? e.getAttribute('data-sub') : e.innerHTML;
+            html+='<li><a href="#' + e.getAttribute('name') + '">' + title + '</a></li>';
         }
     });
     if (html.length > 0){
@@ -59,9 +63,6 @@
 
 <!--
     Syntax highlighting library
--->
-<!--
-<script src="https://cdn.jsdelivr.net/combine/npm/prismjs@1.8.1,npm/prismjs@1.8.1/plugins/line-highlight/prism-line-highlight.min.js" async></script>
 -->
 <script src="https://cdn.jsdelivr.net/combine/npm/prismjs@1.8.4,npm/prismjs@1.8.4/plugins/line-highlight/prism-line-highlight.min.js,npm/prismjs@1.8.4/components/prism-yaml.min.js" async></script>
 

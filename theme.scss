@@ -177,7 +177,7 @@ $sidebar-padding: 1rem;
   //position: fixed;
   //top: 0px;
   //bottom: 0;
-  left: 0;
+  //left: 0;
   z-index: 1000;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
@@ -254,6 +254,7 @@ $sidebar-padding: 1rem;
   display: block;
   padding: .125rem 1.5rem;
   color: #99979c;
+  font-size:80%;
 }
 
 
@@ -293,7 +294,7 @@ $sidebar-padding: 1rem;
 }
 @media (min-width: 1200px) {
   .bd-sidebar {
-    max-width: 320px;
+   // max-width: 320px;
   }
 }
 @media (min-width: 768px) {
@@ -310,9 +311,9 @@ $sidebar-padding: 1rem;
    //border-right: 1px solid rgba(0, 0, 0, .1);
   }
   .bd-sidebar {
-    -ms-flex-order: 0;
-    order: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, .1);
+   // -ms-flex-order: 0;
+   // order: 0;
+   // border-bottom: 1px solid rgba(0, 0, 0, .1);
   }
 
 }
