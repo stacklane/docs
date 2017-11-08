@@ -8,10 +8,8 @@ function addStatus(html, cls){
     node.innerHTML = html;
     $get('status').appendChild(node);
 
-    // TODO use Prism.highlightElement...
+    // TODO to be more selective, use Prism.highlightElement instead
     if (html.indexOf("language-") > -1) Prism.highlightAll(); // rerun
-
-    // TODO $("#status").scrollTop($("#status")[0].scrollHeight);
 };
 
 function logLevelToClass(level){
@@ -69,11 +67,12 @@ function init(branch){
     addStatus('Initializing', 'list-group-item list-group-item-warning pt-1 pb-1');
 
     var init = new EventSource('build?branch=' + branch);
+    var graceful = false;
 
     init.onerror = function(e){
-        // Unfortunately this appears to be called when server closes connection *even intentionally*.
-        // In other words, there is no difference between intentional and unintentional server connection close.
-        // addStatus('Connection failed: ' + e.message, "list-group-item pt-1 pb-1 list-group-item-danger");
+        if (!graceful) {
+            addStatus('Connection failed: ' + e.message, "list-group-item pt-1 pb-1 list-group-item-danger");
+        }
     };
 
     init.onmessage = function(e){
@@ -98,6 +97,12 @@ function init(branch){
         addStatus(e.data, "list-group-item pt-1 pb-1 list-group-item-danger");
         init.close();
     });
+
+    init.addEventListener('close', function(e) {
+        graceful = true;
+        init.close();
+    });
+
 }
 
 $on('repo-refresh-action', 'click', function(){
