@@ -45,7 +45,7 @@
     </section>
 
     <section>
-        <h2>Containers</h2>
+        <h2><a name="containers">Containers</a></h2>
         <p>
             To define models that are in a container, place them into directories.  Example files and folders in the
             "📦" directory which define 3 model types, two of which are in containers.
@@ -60,7 +60,7 @@ Account/List/🌐Task.yaml
     </section>
 
     <section>
-        <h2>Defining Fields</h2>
+        <h2><a name="fields">Defining Fields</a></h2>
 
         <p>
             Field names must follow "camel case" conventions, e.g. "camel" or "camelCase".
@@ -102,7 +102,7 @@ otherField:
     </section>
 
     <section>
-        <h2>Embedded Values</h2>
+        <h2><a name="embedded">Embedded Values</a></h2>
 
         <h3>Global</h3>
         <p>
@@ -133,6 +133,15 @@ item:
 items[]:
   type:
     price: double
+    </code></pre>
+        </p>
+        <p>
+            If requirements don't call for the maximum of 20 entries, then provision less entries by
+            specifying a number (less than 20) between the brackets.
+        </p>
+        <p>
+        <pre class="language-yaml"><code>
+address[5]: Address
     </code></pre>
         </p>
     </section>

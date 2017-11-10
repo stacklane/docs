@@ -65,15 +65,20 @@
             <tr>
                 <td>
                     Model: Field Count
-                    <br><small>This can be effectively extended using embedded field types.</small>
+                    <br>
+                    <small>This can be effectively extended using embedded field types,
+                    as long as the provisioned size for the type is not exceeded.
+                    </small>
                 </td>
-                <td>15</td>
+                <td>20</td>
             </tr>
             <tr>
                 <td>
                     Model: Embedded List Entries
                     <br><small>The maximum number of embedded entries in a multi-valued field.
-                    For unbounded one-to-many associations, use <a href="/models/containers">containers</a>.
+                    Typically this will be customized to a <a href="/models/definition#embedded">lesser value</a>,
+                    to reduce the total provisioned size.
+                    For unbounded one-to-many associations use <a href="/models/containers">containers</a>.
                 </small>
                 </td>
                 <td>20</td>

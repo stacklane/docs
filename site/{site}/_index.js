@@ -102,6 +102,9 @@ function init(branch){
         init.close();
     });
 
+    init.addEventListener('timeout', function(e) {
+        addStatus('Timeout', "list-group-item pt-1 pb-1 list-group-item-danger");
+    });
 }
 
 $on('repo-refresh-action', 'click', function(){

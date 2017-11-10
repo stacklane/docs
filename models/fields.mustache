@@ -27,9 +27,9 @@
         <h2><code><a name="string">string</a></code></h2>
 
         <p>
-            The workhorse field type.  Maximum length: 100 <i>characters</i>.
+            The workhorse field type.  Maximum length: 100 UTF-8 <i>characters</i>.
             May be marked as <a href="#unique">unique: true</a>.
-            Total potential size: 400 bytes.
+            Provisioned size: 300 bytes (3 bytes per character, although 4 byte UTF-8 is supported).
         </p>
     </section>
 
@@ -38,7 +38,7 @@
 
         <p>
             true/false boolean value.
-            Total potential size: 1 byte.
+            Provisioned size: 1 byte.
         </p>
     </section>
 
@@ -47,7 +47,7 @@
 
         <p>
             Non-floating 64 bit integer (long).
-            Total potential size: 8 bytes.
+            Provisioned size: 8 bytes.
         </p>
     </section>
 
@@ -56,7 +56,7 @@
 
         <p>
             Floating-point number (64-bit double precision, IEEE 754).
-            Total potential size: 8 bytes.
+            Provisioned size: 8 bytes.
         </p>
     </section>
 
@@ -87,7 +87,16 @@
             then it's recommended you redirect to the current/primary UID value.
         </p>
         <p>
-            Total potential size: 100 bytes.
+            Provisioned size: 100 bytes.
+        </p>
+    </section>
+
+    <section>
+        <h2><code><a name="country">country</a></code></h2>
+
+        <p>
+            <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3" target="_blank">ISO 3166-1 alpha-3</a>
+            country code.  Provisioned size: 3 bytes.
         </p>
     </section>
 
@@ -103,7 +112,7 @@
             embedded entries.
         </p>
         <p>
-            Total potential size: sum of potential field sizes * times number of possible entries.
+            Provisioned size: sum of provisioned field sizes * times number of possible entries.
         </p>
     </section>
 
