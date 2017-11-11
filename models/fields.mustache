@@ -16,7 +16,7 @@
     </header>
 
     <section>
-        <h2><a name="default">Default Fields</a></h2>
+        <h2><a name="default">Default</a></h2>
         <p>
             Every type is pre-defined with <code>created</code> and <code>modified</code> timestamp fields.
             These are automatically managed.
@@ -24,36 +24,40 @@
     </section>
 
     <section>
-        <h2><a name="primitive">Primitive Fields</a></h2>
+        <h2><a name="primitive">Primitive</a></h2>
 
         <h3><code>string</code></h3>
         <p>
             Maximum length: 100 UTF-8 <i>characters</i>.
             May be marked as <a href="#unique">unique: true</a>.
+            <br>
             Provisioned size: 400 bytes (4 bytes provisioned per character).
         </p>
 
         <h3><code>boolean</code></h3>
         <p>
             true/false boolean value.
+            <br>
             Provisioned size: 1 byte.
         </p>
 
-        <h2><code>integer</code></h2>
+        <h3><code>integer</code></h3>
         <p>
             Non-floating 64 bit integer (long).
+            <br>
             Provisioned size: 8 bytes.
         </p>
 
-        <h2><code>double</code></h2>
+        <h3><code>double</code></h3>
         <p>
             Floating-point number (64-bit double precision, IEEE 754).
+            <br>
             Provisioned size: 8 bytes.
         </p>
     </section>
 
     <section>
-        <h2><a name="default">Speciality Fields</a></h2>
+        <h2><a name="default">Speciality</a></h2>
 
         <p>
             Speciality fields provide validation, and often lower provisioned sizes.
@@ -62,7 +66,9 @@
         <h3><code>country</code></h3>
         <p>
             <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3" target="_blank">ISO 3166-1 alpha-3</a>
-            country code.  Provisioned size: 3 bytes.
+            country code.
+            <br>
+            Provisioned size: 3 bytes.
         </p>
     </section>
 
@@ -103,8 +109,7 @@
         <h2><a name="uid">URL Identifiers (UID)</a></h2>
 
         <p>
-            <code></code>
-            Used for "user friendly" unique identifiers destined for URL paths (aka URL slugs).
+            <code>uid</code> is used for "user friendly" unique identifiers destined for URL paths (aka URL slugs).
         </p>
         <p>
             This field is always unique, and is available for the <a href="/models/types#universal">Universal</a>
