@@ -24,36 +24,28 @@
     </section>
 
     <section>
-        <h2><code><a name="string">string</a></code></h2>
+        <h2><a name="primitive">Primitive Fields</a></h2>
 
+        <h3><code>string</code></h3>
         <p>
-            The workhorse field type.  Maximum length: 100 UTF-8 <i>characters</i>.
+            Maximum length: 100 UTF-8 <i>characters</i>.
             May be marked as <a href="#unique">unique: true</a>.
-            Provisioned size: 300 bytes (3 bytes per character, although 4 byte UTF-8 is supported).
+            Provisioned size: 400 bytes (4 bytes provisioned per character).
         </p>
-    </section>
 
-    <section>
-        <h2><code><a name="boolean">boolean</a></code></h2>
-
+        <h3><code>boolean</code></h3>
         <p>
             true/false boolean value.
             Provisioned size: 1 byte.
         </p>
-    </section>
 
-    <section>
-        <h2><code><a name="integer">integer</a></code></h2>
-
+        <h2><code>integer</code></h2>
         <p>
             Non-floating 64 bit integer (long).
             Provisioned size: 8 bytes.
         </p>
-    </section>
 
-    <section>
-        <h2><code><a name="double">double</a></code></h2>
-
+        <h2><code>double</code></h2>
         <p>
             Floating-point number (64-bit double precision, IEEE 754).
             Provisioned size: 8 bytes.
@@ -61,39 +53,13 @@
     </section>
 
     <section>
-        <h2><code><a name="uid">uid</a></code></h2>
+        <h2><a name="default">Speciality Fields</a></h2>
 
         <p>
-            Used for "user friendly" unique identifiers destined for URL paths (aka URL slugs).
+            Speciality fields provide validation, and often lower provisioned sizes.
         </p>
-        <p>
-            This field is unique always, and is available for the <a href="/models/types#universal">Universal</a>
-            and <a href="/models/types#universal">Content</a> type's.
-        </p>
-        <p>
-            To keep URLs formatted according to best practices, it must start and end with
-            any character a-z, A-Z, or 0-9.  Between the start and end, dash characters are also allowed.
-            Minimum length is 2 characters.  Maximum length is 100 characters.
-        </p>
-        <p>
-            <b>Note:</b> UID's behave differently than other unique values.  Because they are destined
-            for URLs, it's implied that when modified the previous value is not lost
-            (otherwise any previously published URL would result in a broken link).
-            Therefore a single model field may have multiple unique UID values associated with it,
-            however at any given time only one is "current" or "primary".
-        </p>
-        <p>
-            In an ideal scenario from an SEO standpoint, if the visitor has reached a URL by an older UID,
-            then it's recommended you redirect to the current/primary UID value.
-        </p>
-        <p>
-            Provisioned size: 100 bytes.
-        </p>
-    </section>
 
-    <section>
-        <h2><code><a name="country">country</a></code></h2>
-
+        <h3><code>country</code></h3>
         <p>
             <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3" target="_blank">ISO 3166-1 alpha-3</a>
             country code.  Provisioned size: 3 bytes.
@@ -130,6 +96,38 @@
             Warning: Commits will fail / throw an exception if there is a unique value violation.
             Therefore it's highly recommended that if a unique value is being created or changing,
             that there exists logic to check whether the unique value is available.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="uid">URL Identifiers (UID)</a></h2>
+
+        <p>
+            <code></code>
+            Used for "user friendly" unique identifiers destined for URL paths (aka URL slugs).
+        </p>
+        <p>
+            This field is always unique, and is available for the <a href="/models/types#universal">Universal</a>
+            and <a href="/models/types#universal">Content</a> type's.
+        </p>
+        <p>
+            To keep URLs formatted according to best practices, it must start and end with
+            any character a-z, A-Z, or 0-9.  Between the start and end, dash characters are also allowed.
+            Minimum length is 2 characters.  Maximum length is 100 characters.
+        </p>
+        <p>
+            <b>Note:</b> UID's behave differently than other unique values.  Because they are destined
+            for URLs, it's implied that when modified the previous value is not lost
+            (otherwise any previously published URL would result in a broken link).
+            Therefore a single model field may have multiple unique UID values associated with it,
+            however at any given time only one is "current" or "primary".
+        </p>
+        <p>
+            In an ideal scenario from an SEO standpoint, if the visitor has reached a URL by an older UID,
+            then it's recommended you redirect to the current/primary UID value.
+        </p>
+        <p>
+            Provisioned size: 100 bytes.
         </p>
     </section>
 </article>
