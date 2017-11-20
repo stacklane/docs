@@ -1,6 +1,6 @@
 at: /site/{site}/{branch}/
 
-namespace: ~
+namespace: ~@
 
 # TODO delete this
 data:
