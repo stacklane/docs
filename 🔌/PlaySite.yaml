@@ -1,5 +1,8 @@
 at: /site/{site}/{branch}/
 
+namespace: ~
+
+# TODO delete this
 data:
   expires: 2 days
 
