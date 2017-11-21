@@ -27,7 +27,7 @@
             its use as controller + view, and not for example as a way
             to serve large files, or model-like content.
             Lists of embedded entries are limited to emphasize
-            using <a href="/models/containers">containers</a> for cases
+            using containers for cases
             that may call for unbounded entries.  And so on.
         </p>
 
@@ -46,7 +46,9 @@
             <tr>
                 <td>
                     Repository: Image Count
-                    <br><small>Repository images are primarily for styling / decoration / theme.</small>
+                    <br><small>Repository images are primarily for styling / decoration / theme.
+                    Consider using <a href="/endpoints/mustache#svg">SVG</a> for decoration as well.
+                    </small>
                 </td>
                 <td>50</td>
             </tr>
@@ -78,7 +80,7 @@
                     <br><small>The maximum number of embedded entries in a multi-valued field.
                     Typically this will be customized to a <a href="/models/definition#embedded">lesser value</a>,
                     to reduce the total provisioned size.
-                    For unbounded one-to-many associations use <a href="/models/containers">containers</a>.
+                    For unbounded one-to-many associations use <a href="/models/#containers">containers</a>.
                 </small>
                 </td>
                 <td>20</td>
@@ -90,60 +92,74 @@
                 </td>
                 <td><a href="/models/fields">Varies</a></td>
             </tr>
+
             <tr>
                 <td>
-                    Model: Universal Type / Provisioned Size<sup>1</sup>
+                    Model: Provisioned Size
+                    <p class="small mb-1">
+                        The sum of all
+                        <a href="/models/fields">field type</a> sizes.
+                        Exceeding the Provisioned Size of a model type will be determined during <b>compile/build time</b>,
+                        ensuring that during runtime there are zero surprises.
+                    </p>
+                    <p class="pl-2 small">
+                        Universal Type
+                        <br>
+                        Event Type
+                        <br>
+                        Content Type
+                        <br>
+                        Tenant Type
+                    </p>
                 </td>
-                <td>15 KB</td>
+                <td class="align-bottom">
+                    <p class="small">
+                        20KB
+                        <br>
+                        20KB
+                        <br>
+                        100KB
+                        <br>
+                        20KB
+                    </p>
+                </td>
             </tr>
+
             <tr>
                 <td>
-                    Model: Universal Type / Write Rate<sup>2</sup>
+                    Model: Write Rate
+
+                    <p class="small mb-1">
+                        Write limits are not designed to be restrictive --
+                        they should easily fit the use cases intended for each type.
+                    </p>
+
+                    <p class="pl-2 small">
+                        Universal Type
+                        <br>
+                        Event Type
+                        <br>
+                        Content Type
+                        <br>
+                        Tenant Type
+                    </p>
                 </td>
-                <td>1 per sec</td>
-            </tr>
-            <tr>
-                <td>
-                    Model: Event Type / Provisioned Size<sup>1</sup>
+                <td class="align-bottom">
+                    <p class="small">
+                        1/second
+                        <br>
+                        Unlimited
+                        <br>
+                        1/second
+                        <br>
+                        1/request
+                    </p>
                 </td>
-                <td>15 KB</td>
             </tr>
-            <tr>
-                <td>
-                    Model: Event Type / Write Rate<sup>2</sup>
-                </td>
-                <td>Unlimited</td>
-            </tr>
-            <tr>
-                <td>
-                    Model: Content Type / Provisioned Size<sup>1</sup>
-                </td>
-                <td>100 KB</td>
-            </tr>
-            <tr>
-                <td>
-                    Model: Content Type / Write Rate<sup>2</sup>
-                </td>
-                <td>1 per sec</td>
-            </tr>
+
             </tbody>
         </table>
 
-        <p>
-        <ol class="small">
-            <li>
-                The "Provisioned Size" of your model is the sum of all
-                <a href="/models/fields">field type</a> sizes.
-                Exceeding the Provisioned Size of a model type will be determined during <b>compile/build time</b>,
-                ensuring that during runtime there are zero surprises.
-            </li>
-            <li>
-                The Event Type is the only type which has unbounded writes.
-                However the Universal Type and Content Type write limits are not designed to be restrictive --
-                they should easily fit a very wide variety of cases intended for those types.
-            </li>
-        </ol>
-        </p>
     </section>
 
 </article>

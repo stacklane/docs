@@ -17,17 +17,16 @@
     </header>
 
     <section>
-        <h2><a name="universal">Universal Type</a></h2>
+        <h2><a name="universal">Universal</a></h2>
 
         <p>
             This is a general purpose type, suitable for a wide range of entities and concepts.
-            Examples include:  <i>Account, Customer, User, Site, Contact, License, Address</i>, etc.
             It supports unique values, and may be a singleton.
         </p>
 
         <p>
-            The Universal type may optionally be a <a href="/models/containers">Container</a> for other types.
-            For example, a <i>List</i> might be defined as a <a href="/models/containers">Container</a>
+            The Universal type may optionally be a container for other types.
+            For example, a <i>List</i> might be defined as a container.
             for <i>Task</i>'s.
         </p>
 
@@ -40,7 +39,44 @@
     </section>
 
     <section>
-        <h2><a name="event">Event Type</a></h2>
+        <h2><a name="tenant">Tenant</a></h2>
+
+        <p>
+            Use for top level containers where there is a clear case to silo or
+            strongly isolate all of the descendant data models.
+            "User", "Account", "Project", etc -- any top level container whose data is highly specific to it.
+            Despite its name the Tenant type is also good for used for standalone, top-level profiles or mappings.
+        </p>
+
+        <p>
+            Keep in mind that due to their narrow purpose, Tenant's are highly limited compared to other types.
+            You may only create or update <b>1</b> Tenant in a single request.
+            They can only be retrieved by a field defined as unique, or their ID.
+        </p>
+
+        <h3>Query Considerations</h3>
+        <p>
+            A Tenant container starts a new "query isolation" scope.
+            Given the example hierarchy User ▶︎ List ▶︎ Task, and a query for <code>Task.name('something')</code>,
+            the scope of Tasks that will be queried varies depending on which of the two possible
+            ancestor containers are selected.
+        </p>
+        <p>
+            If the <code>Task.name('something')</code> query is executed in the scope of the User, then all Tasks across
+            all Lists by that single User will be queried by name.
+        </p>
+        <p>
+            If the <code>Task.name('something')</code> query is executed in the scope of a List, then only Tasks within
+            the single List will be queried by name.
+        </p>
+        <p>
+            Because query isolation is in effect starting at a single User,
+            it is not possible to search for all Tasks's across all User's.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="event">Event</a></h2>
 
         <p>
             This type is for events, time-series data, activity, or logging.
@@ -63,6 +99,13 @@
             yearly horizon, a single query could span two years.
         </p>
 
+        <h3>Query Scope</h3>
+        <p>
+            The Event type is always isolated to its immediate parent container for query scope.
+            Given Account ▶︎ Site ▶︎ Orders, the Orders Event type must always be queried in the context of a single Site.
+            In other words, you must first know the Site you want to query before you query for Orders.
+        </p>
+
         <h3>Advantages</h3>
         <p>
             <ul>
@@ -77,7 +120,7 @@
         <p>
             <ul>
                 <li>Unique values are not allowed.</li>
-                <li>Must always exist within a <a href="/models/containers">Container</a></li>
+                <li>Must always exist within a tenant or container.</li>
                 <li>All queries must include date/time range (it is not possible to query for all Events).</li>
                 <li><a href="#embedded">Embedded</a> models must be "local" to the Event type --
                     thereby enforcing they are "purpose built" for that Event type.</li>
@@ -86,14 +129,14 @@
     </section>
 
     <section>
-        <h2><a name="content">Content Type</a></h2>
+        <h2><a name="content">Content</a></h2>
         <p>
             Roadmap.
         </p>
     </section>
 
     <section>
-        <h2><a name="embedded">Embedded Type</a></h2>
+        <h2><a name="embedded">Embedded</a></h2>
 
         <p>
             Embedded models create a complex value (or sub-document) that can be used as a field type for another model type.

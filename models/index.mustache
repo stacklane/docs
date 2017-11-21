@@ -28,13 +28,51 @@
             Model types have defining characteristics, advantages, and disadvantages,
             that facilitate choosing one over the other.
         </p>
+    </section>
 
+    <section>
+        <h2>Denormalized Documents</h2>
         <p>
             Modeling best practices follow those of document based databases, such as MongoDB.
             Document based modeling usually calls for much more denormalization than relational databases.
             For example, the classic Order/OrderItem two table relationship, would likely become a single
             Order document with nested/embedded OrderItems.
             In a document based world there is no joining or foreign keys, only documents (Models) of a given type.
+        </p>
+    </section>
+
+    <section>
+        <h2>Designing with Containers</h2>
+        <p>
+            A key concept in Stacklane is the "container", which creates a strong one-to-many,
+            or parent/child relationship.
+
+            A container may have many kinds of children,
+            but a child may only have one kind of container/parent.
+            For example, "Account/X" and "Account/Y", but there would
+            never be another parent for "X" besides "Account".
+        </p>
+
+        <h3>Types of Containers</h3>
+        <p>
+            Containers may be deeply nested, such as Account ▶ Site ▶ Order, or User ▶ List ▶ Task.
+            However in these examples, there are two kinds of containers.
+            It's recommended that the top level models in these examples (Account and User)
+            be defined as the <a href="/models/types#tenant">Tenant</a> type.
+            Where Site and List are simply <a href="/models/types#universal">Universal</a> containers.
+        </p>
+
+        <h3>Behavior of Unique Values</h3>
+
+        <p>
+            If a model type within a container defines unique values, then those
+            unique values are local/specific to a given container.
+        </p>
+
+        <p>
+            For example, given Blog ▶ Post, where Post has a <a href="/models/fields#uid">UID</a> field named "slug".
+            If there are many Blog's, and many Posts within any given Blog, then the two Posts may have
+            same UID if they are in <b>separate</b> Blog's.
         </p>
     </section>
 
