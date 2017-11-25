@@ -76,24 +76,6 @@
     </section>
 
     <section>
-        <h2><a name="limit">limit(number)</a></h2>
-
-        <p>
-            Limits the results of a query.
-        </p>
-    </section>
-
-    <section>
-        <h2><a name="get">get()</a></h2>
-
-        <p>
-            Returns a single result (effective <code>limit(1)</code>).
-            If there is no result, then a <code>$ModelNotFound</code>
-            exception is generated, similar to loading a model by GUID.
-        </p>
-    </section>
-
-    <section>
         <h2><a name="filter">filter(function)</a></h2>
         <p>
             The callback function to <code>filter</code> returns a <code>boolean</code>
@@ -101,6 +83,14 @@
             item should be included in the results (return false to exclude an entry).
             This should generally be used as a last resort -- specific equality and inequality field
             filters should be preferred both for code compactness and performance.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="limit">limit(number)</a></h2>
+
+        <p>
+            Limits the results of a query.
         </p>
     </section>
 
@@ -115,6 +105,50 @@
         <pre><code class="language-javascript">
 let titlesOnly = Article.all().map(article=>({title:article.title}));
         </code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="get">get()</a></h2>
+
+        <p>
+            Returns a single result (effectively <code>limit(1)</code>).
+            If there is no result, then a <code>$ModelNotFound</code>
+            exception is generated, similar to loading a model by GUID.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="modify">modify(function)</a></h2>
+
+        <p>
+            The callback function to <code>modify</code>
+            receives a <a href="/model/">Model</a> as its parameter,
+            and does not expect any return value.
+            This should only be used to update fields, or <code>remove()</code> models in bulk.
+            It is only available during <code>POST</code>, <code>PUT</code>, <code>DELETE</code>.
+        </p>
+
+        <p>
+            It is not required that every Model be modified, for example if it doesn't satisfy some condition.
+            However consider using <code>filter(...)</code> in the case where there are well defined conditions
+            that must be met before updating a model.  This will also keep your modify function simpler.
+        </p>
+
+        <p>
+            This method works with full Model instances, and should therefore not be used in conjunction with
+            <code>map(..)</code>.
+        </p>
+
+        <h3>Semi-Asynchronous</h3>
+        <p>
+            For bulk operations the first 10 updates will occur synchronously, before the method returns
+            (before the request ends).  From a user standpoint this means that up to 10 results will be modified
+             before they view the results or next page.
+            Any results beyond the first 10 are processed asynchronously in batches, meaning there could be a
+            very short delay for a user to see the result of changes to larger batches.
+            This "semi-asynchronous" approach strikes a balance between user expectations on more common (small) operations,
+            while making sure the request time is at a minimum for larger operations.
         </p>
     </section>
 

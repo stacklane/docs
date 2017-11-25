@@ -35,7 +35,7 @@
     <section>
         <h2>Restrictions</h2>
         <p>
-            The following is <b>not</b> an exhaustive list, but covers the more common cases:
+            The following is not an exhaustive list, but covers common cases:
         </p>
         <p>
         <ul>
@@ -54,9 +54,8 @@
                 <code>const</code> is not supported.
             </li>
             <li>
-                Free-form iteration via <code>for</code> <code>while</code> is not allowed --
-                instead in cases that need iteration-like functionality, we provide
-                callbacks such as <code>...forEach((e)=>{...})</code>
+                Free-form iteration via <code>for</code> <code>while</code> is not allowed.
+                Instead, where cases that require working on items in bulk, special case callback methods are provided.
             </li>
             <li>
                 Once assigned, variables may not change their type -- this works

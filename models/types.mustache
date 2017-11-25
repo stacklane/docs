@@ -80,11 +80,11 @@
 
         <p>
             This type is for events, time-series data, activity, or logging.
-            Events accumulate (in a healthy business), as time goes by, at a potentially high frequency.
+            Events accumulate (in a healthy business), as time goes by, at a potentially high frequency/volume.
             Events are not "crafted" or "authored" -- they "occur".
         </p>
         <p>
-            Orders, comments, and twitter posts are considered "events", from the standpoint of their
+            Orders, comments, and Twitter posts are considered "events", from the standpoint of their
             potentially high frequency, their small size, and their permanence/low-mutability.
             Once created they are usually not modified again.
         </p>
@@ -110,6 +110,9 @@
         <p>
             <ul>
                 <li>
+                    Designed for highest write volume.
+                </li>
+                <li>
                     Automatic partitioning over time. There is no "performance penalty" to a business that has
                     events growing over time, where newer events are generally more relevant than previous events.
                 </li>
@@ -120,7 +123,7 @@
         <p>
             <ul>
                 <li>Unique values are not allowed.</li>
-                <li>Must always exist within a tenant or container.</li>
+                <li>Must always exist within a Tenant or container.</li>
                 <li>All queries must include date/time range (it is not possible to query for all Events).</li>
                 <li><a href="#embedded">Embedded</a> models must be "local" to the Event type --
                     thereby enforcing they are "purpose built" for that Event type.</li>
