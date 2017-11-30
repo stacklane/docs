@@ -86,8 +86,8 @@ function init(branch){
     init.addEventListener('completed', function(e) {
         addStatus("Done", "list-group-item pt-1 pb-1 list-group-item-success");
         var obj = JSON.parse(e.data);
-        var siteId = $get('SiteId').value;
-        $get("launch-link").setAttribute('href', "/site/" + siteId + '/' + branch + "/");
+        //var siteId = $get('SiteId').value;
+        $get("launch-link").setAttribute('href', obj.url);
         $get("launch-link").classList.remove('d-none');
         init.close();
     });

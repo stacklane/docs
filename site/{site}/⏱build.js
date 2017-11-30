@@ -69,7 +69,8 @@ new PlaySite(RepoUrl)
             next.push({
                 $event: {type: "completed", last: true},
                 level: "info",
-                value: "Completed"
+                value: "Completed",
+                url: finished.url
             });
 
             return next;
