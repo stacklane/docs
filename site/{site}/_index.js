@@ -59,6 +59,9 @@ function createProblemHtml(value){
         }
     }
 
+    console.log('P');
+    console.log(out);
+
     return out;
 }
 
