@@ -88,6 +88,7 @@ function init(branch){
         var obj = JSON.parse(e.data);
         //var siteId = $get('SiteId').value;
         $get("launch-link").setAttribute('href', obj.url);
+        $get("launch-link").setAttribute('target', obj.frameName);
         $get("launch-link").classList.remove('d-none');
         init.close();
     });

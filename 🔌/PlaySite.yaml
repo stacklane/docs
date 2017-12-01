@@ -1,6 +1,5 @@
-at: /site/{site}/{branch}/
 
-namespace: ~@
+# not honored at the moment:
 
 insert:
 - tool/style.css

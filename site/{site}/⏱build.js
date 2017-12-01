@@ -18,7 +18,6 @@ let finished = null;
 
 new PlaySite(RepoUrl)
 .branch(Params.branch)
-.at({site: $site, branch: Params.branch})
 .build()
 .status((log)=>{
     buffered.push({
@@ -45,7 +44,7 @@ new PlaySite(RepoUrl)
  * Return a callback that will emit Server Sent Events.
  * This will be periodically called until a "last event" is sent,
  * either explicitly, or by throwing the event(s).
- * The following code explicitly sets the last event explicitly.
+ * The following code sets the last event explicitly.
  */
 
 (lastEventId)=>{
@@ -70,7 +69,8 @@ new PlaySite(RepoUrl)
                 $event: {type: "completed", last: true},
                 level: "info",
                 value: "Completed",
-                url: finished.url
+                url: finished.url,
+                frame: finished.frameName
             });
 
             return next;
