@@ -4,10 +4,13 @@ function clearStatus(){
 
 function addStatus(html, cls){
     var node = document.createElement("li");
-
+    node.setAttribute("class", cls);
+    node.innerHTML = html;
     $get('status').appendChild(node);
 
-    node.innerHTML = html;
+    console.log(html);
+    console.log('vs');
+    console.log(node.innerHTML);
 
     if (html.indexOf("language-") > -1) Prism.highlightElement(node); // rerun
 };
