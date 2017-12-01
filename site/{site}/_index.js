@@ -4,9 +4,10 @@ function clearStatus(){
 
 function addStatus(html, cls){
     var node = document.createElement("li");
-    node.setAttribute("class", cls);
-    node.innerHTML = html;
+
     $get('status').appendChild(node);
+
+    node.innerHTML = html;
 
     if (html.indexOf("language-") > -1) Prism.highlightElement(node); // rerun
 };
@@ -58,9 +59,6 @@ function createProblemHtml(value){
             out += '</code></pre>';
         }
     }
-
-    console.log('P');
-    console.log(out);
 
     return out;
 }
