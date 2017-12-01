@@ -10,7 +10,7 @@ function addStatus(html, cls){
 
     // TODO  needs to be the code element for highlighElement to work
     //if (html.indexOf("language-") > -1) Prism.highlightElement(node); // rerun
-    //if (html.indexOf("language-") > -1) Prism.highlightAll();
+    if (html.indexOf("language-") > -1) Prism.highlightAll();
 };
 
 function logLevelToClass(level){
@@ -56,7 +56,7 @@ function createProblemHtml(value){
             // yes, put lang on both. long story.
             out += '<pre ' + 'models-line="' + lines  + '" models-line-offset="' + offset  + '" class="language-' + lang + '">';
             out += '<code class="language-' + lang + '">';
-            out += Prism.highlight(value.source, lang); // does this HTML escape?
+            out += $esc(value.source); // fails: Prism.highlight(value.source, lang); // does this HTML escape?
             out += '</code></pre>';
         }
     }
