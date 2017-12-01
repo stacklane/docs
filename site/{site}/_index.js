@@ -8,11 +8,7 @@ function addStatus(html, cls){
     node.innerHTML = html;
     $get('status').appendChild(node);
 
-    console.log(html);
-    console.log('vs');
-    console.log(node.innerHTML);
-
-    if (html.indexOf("language-") > -1) Prism.highlightElement(node); // rerun
+    //if (html.indexOf("language-") > -1) Prism.highlightElement(node); // rerun
 };
 
 function logLevelToClass(level){
