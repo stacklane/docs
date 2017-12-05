@@ -114,6 +114,10 @@ function init(branch){
     });
 }
 
+$on('branch', 'change', function(){
+    $get("launch-link").classList.add('d-none');
+});
+
 $on('repo-refresh-action', 'click', function(){
     clearStatus();
     init(getBranch());
