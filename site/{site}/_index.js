@@ -95,7 +95,8 @@ function init(branch){
         //var siteId = $get('SiteId').value;
         $get("launch-link").setAttribute('href', obj.url);
         $get("launch-link").setAttribute('target', obj.frame);
-        $get("launch-link").classList.remove('d-none');
+        $get("launch-link").classList.remove('disabled');
+        $get("launch-link").classList.remove('btn-primary');
         init.close();
     });
 
@@ -115,7 +116,8 @@ function init(branch){
 }
 
 $on('branch', 'change', function(){
-    $get("launch-link").classList.add('d-none');
+    $get("launch-link").classList.add('disabled');
+    $get("launch-link").classList.remove('btn-primary');
 });
 
 $on('repo-refresh-action', 'click', function(){
