@@ -64,6 +64,10 @@ function createProblemHtml(value){
     return out;
 }
 
+function getBranch(){
+    return $get('branch').value;
+}
+
 function init(branch){
     addStatus('Initializing', 'list-group-item list-group-item-warning pt-1 pb-1');
 
@@ -112,8 +116,8 @@ function init(branch){
 
 $on('repo-refresh-action', 'click', function(){
     clearStatus();
-    init('master');
+    init(getBranch());
 });
 
 clearStatus();
-init('master');
+init(getBranch());

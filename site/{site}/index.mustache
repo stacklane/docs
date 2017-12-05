@@ -19,9 +19,22 @@
     </header>
 
     <section>
-        <button id="repo-refresh-action" class="btn btn-light btn-sm">Refresh</button>
-        
-        <a id="launch-link" href="#" target="_blank" class="d-none btn btn-primary btn-sm">Launch</a>
+        <div class="row">
+            <div class="col-sm">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        Branch
+                    </div>
+                    <input id="branch" name="branch" type="text" class="font-weight-bold form-control" value="master">
+                    <div class="input-group-addon">
+                        <button id="repo-refresh-action" class="btn btn-light btn-sm">Build</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <a id="launch-link" href="#" target="_blank" class="d-none btn btn-primary btn-sm">Launch</a>
+            </div>
+        </div>
     </section>
 
     <section>
