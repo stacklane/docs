@@ -281,7 +281,28 @@ $sidebar-padding: 1rem;
   color: #99979c;
 }
 
-
+/**
+ * Playground status -- spinners on all but danger + success
+ */
+#status li:last-child:before{
+  content: ' ';
+  margin: 0px;
+  height: .75em;
+  width: .75em;
+  display:inline-block;
+  animation: rotate-spinner 0.8s infinite linear;
+  border: 3px solid lightgray;
+  border-right-color: transparent;
+  border-radius: 50%;
+}
+#status li.list-group-item-success:last-child:before,
+#status li.list-group-item-danger:last-child:before{
+  content: normal;
+}
+@keyframes rotate-spinner {
+  0%    { transform: rotate(0deg); }
+  100%  { transform: rotate(360deg); }
+}
 
 /**
  * Bootstrap changes
