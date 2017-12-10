@@ -79,7 +79,41 @@ $sl-logo-secondary: #13bdce;
   fill: none !important;
 }
 
-///
+/**
+ * Iconic duo tone
+ */
+
+
+@mixin iconic-color($color) {
+  fill: $color;
+  stroke: $color;
+}
+
+$color-primary: black;
+$color-secondary: lighten(black, 30%);
+
+
+/* Make sure filled and text elements only get fills */
+.iconic-property-fill, .iconic-property-text {
+  stroke: none !important;
+}
+
+/* Make sure stroked elements only get strokes */
+.iconic-property-stroke {
+  fill: none !important;
+}
+
+/* Main color */
+.iconic * {
+  @include iconic-color($color-primary);
+}
+
+/* Accent color */
+.iconic .iconic-property-accent {
+  @include iconic-color($color-secondary);
+}
+
+/////////////////
 
 .logo{
   @include sl-logo-color($gray-900, $gray-900);
