@@ -83,14 +83,13 @@ $sl-logo-secondary: #13bdce;
  * Iconic duo tone
  */
 
-
 @mixin iconic-color($color) {
   fill: $color;
   stroke: $color;
 }
 
 $color-primary: black;
-$color-secondary: lighten(black, 30%);
+$color-secondary: lighten(black, 40%);
 
 
 /* Make sure filled and text elements only get fills */
