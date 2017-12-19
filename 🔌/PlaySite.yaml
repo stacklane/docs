@@ -1,9 +1,0 @@
-
-namespace: ~@
-
-# not honored at the moment:
-
-insert:
-- tool/style.css
-- tool/script.js
-- tool/widget.html
