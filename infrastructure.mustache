@@ -35,25 +35,21 @@
 
         <p>
             HTTP/2 speeds up your site, and eliminates many
-            old crutches that have been created to speed up sites with HTTP/1.1.
-            In general, web developers no longer need to focus as much on
-            reducing HTTP requests (by bundling, concatenating, or inlining)
-            &mdash;
-            instead small, granular resources can be cached independently and transferred in parallel.
-        </p>
-        <p>
-            Concatenating files is no longer a best practice in HTTP/2.
-            Even if only a single line of CSS is changed, browsers are forced to reload all of your CSS declarations.
-            Similarly inline CSS or external JS directly into an HTML page is discouraged,
-            as it means that browsers can't cache individual assets.
-        </p>
-        <p>
-            Various build systems and have cropped up over the years to deal
-            with what amounts to deficiencies in HTTP/1.1.
+            crutches that have been created to speed up sites with the aging HTTP/1.1.
             "These hacks are indications of underlying problems in the protocol itself,
             and cause a number of problems on their own when used."
             (<a href="https://http2.github.io/faq/">HTTP/2 FAQ</a>).
             Simplify your code and start using HTTP/2 with Stacklane.
+        </p>
+        <p>
+            In general, web developers no longer need to focus on
+            reducing HTTP requests (by bundling, concatenating, or inlining)
+            &mdash;
+            instead small, granular resources can be cached independently and transferred in parallel.
+            Concatenating files is no longer a best practice in HTTP/2.
+            Even if only a single line of CSS is changed, browsers are forced to reload all of your CSS declarations.
+            Similarly inlining CSS or external JS directly into an HTML page is discouraged,
+            as it means that browsers can't cache individual assets.
         </p>
         <p>
             (Note: All current browsers require SSL for HTTP/2)
