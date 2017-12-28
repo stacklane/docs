@@ -6,9 +6,15 @@
 
 {{$content}}
 
+<style>
+    .card-title img{
+        height: 1em;
+    }
+</style>
+
 <article>
     <header>
-        <h1>Development Tools</h1>
+        <h1>Development Overview</h1>
 
         <p>
             Learn about developing for the Stacklane platform.
@@ -17,39 +23,37 @@
 
     <section>
         <p>
-            Stacklane doesn't require any special UI setup -- everything
+            Stacklane doesn't require any special UI setup to start coding -- everything
             needed to run a Stacklane site is in standard file formats,
-            hosted in a GIT source repository.
+            hosted in a GitHub source repository.  Branch and tag to your heart's delight.
+            We recommend using WebStorm and its Stacklane plugin.
         </p>
     </section>
 
     <section>
-        <h2>Development Environment</h2>
+        <h2>Recommended Environment</h2>
 
-        <p>
-            Any tool will do, however we recommend
-            <a target="_blank" href="https://www.jetbrains.com/webstorm/">WebStorm</a>.
-            It's bundled with smart syntax handling for all of the file types Stacklane uses,
-            great SASS support, and of course GIT integration.
-            No plugins needed, just download and go.
-        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><img src="images/WebStormLogo.png" /> WebStorm</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">+ Stacklane Plugin</h6>
+                        <p class="card-text">
+                            WebStorm natively supports all
+                            Stacklane file formats, including GIT integration.
+                            Grab the Stacklane plugin for WebStorm for easy testing.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a target="_blank" href="https://www.jetbrains.com/webstorm/download/"
+                           class="btn btn-sm btn-primary">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section>
-        <h2>Source Repository</h2>
-
-        <p>
-            Your GIT source code repository contains everything needed to run a Stacklane site.
-
-            Branch and tag to your heart's delight.
-
-            Currently supported repository types:
-
-        <ul>
-            <li>Github.com Public Repository</li>
-        </ul>
-        </p>
-    </section>
 </article>
 
 
