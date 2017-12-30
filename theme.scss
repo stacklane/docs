@@ -1,5 +1,6 @@
 
 $enable-print-styles: false;
+$link-color: #0099e5;
 
 ////
 
@@ -9,7 +10,7 @@ $enable-print-styles: false;
 @import "bootstrap/print";
 @import "bootstrap/reboot";
 @import "bootstrap/type";
-@import "bootstrap/images";
+//@import "bootstrap/images";
 @import "bootstrap/code";
 @import "bootstrap/grid";
 @import "bootstrap/tables";
@@ -25,7 +26,7 @@ $enable-print-styles: false;
 @import "bootstrap/card";
 //@import "bootstrap/breadcrumb";
 //@import "bootstrap/pagination";
-@import "bootstrap/badge";
+//@import "bootstrap/badge";
 //@import "bootstrap/jumbotron";
 @import "bootstrap/alert";
 @import "bootstrap/progress";
@@ -44,7 +45,6 @@ $enable-print-styles: false;
 
 $sl-logo-primary: #3b424c;
 $sl-logo-secondary: #13bdce;
-
 
 @mixin svg-color($color) {
   fill: $color;
@@ -285,7 +285,7 @@ $sidebar-padding: 1rem;
   color: black;
 }
 .sidebar ul a.active{
-  color: #0099e5
+  color: $link-color;
 }
 
 #subnav {
@@ -299,7 +299,7 @@ $sidebar-padding: 1rem;
 #subnav {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  font-size: .875rem;
+  font-size: .8rem;
 }
 
 #subnav ul {

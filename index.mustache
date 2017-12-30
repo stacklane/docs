@@ -4,6 +4,47 @@
 
 {{$content}}
 
+<style>
+    .development .card-title img{
+        height: 1em;
+    }
+
+    a.card{
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .07), 0 7px 17px 0 rgba(0, 0, 0, .1);
+        background: white;
+        transition: box-shadow .2s ease-in-out;
+    }
+    a.card:hover{
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .12), 0 7px 25px 0 rgba(0, 0, 0, .15)
+    }
+    a.card .card-text{
+        color: black;
+    }
+    a.card .card-body{
+        padding-bottom: 1rem;
+    }
+
+    .overview a.card{
+        text-decoration: none;
+        background: #fff no-repeat 1.5rem 1.5rem;
+        background-size: 2rem 2rem;
+        padding-left: 3.5rem;
+    }
+    .overview a.overview-models{
+        background-image: url(/icons/database-sm.svg)
+    }
+    .overview a.overview-scripting{
+        background-image: url(/icons/document-sm.svg)
+    }
+    .overview a.overview-endpoints{
+        background-image: url(/icons/target-sm.svg)
+    }
+    .overview a.overview-examples{
+        background-image: url(/icons/media-play-circle-sm.svg)
+    }
+
+</style>
+
 <article>
     <header>
         <h1>Documentation</h1>
@@ -22,7 +63,37 @@
         </p>
     </section>
 
-    <section>
+    <section class="overview">
+        <div class="card-deck">
+            <a class="card mt-1 overview-models" href="/models/">
+                <div class="card-body">
+                    <h6 class="card-title">Models</h6>
+                    <p class="card-text">Smart data automatically optimizes for each case.</p>
+                </div>
+            </a>
+            <a class="card mt-1 overview-endpoints" href="/endpoints/">
+                <div class="card-body">
+                    <h6 class="card-title">Endpoints</h6>
+                    <p class="card-text">Mustache and JavaScript, distributed globally.</p>
+                </div>
+            </a>
+        </div>
+        <div class="card-deck mt-1">
+            <a class="card mt-1 overview-scripting" href="/scripting/">
+                <div class="card-body">
+                    <h6 class="card-title">Scripting</h6>
+                    <p class="card-text">Fast, secure, and concise server-side JavaScript.</p>
+                </div>
+            </a>
+            <a class="card mt-1 overview-examples" href="/examples">
+                <div class="card-body">
+                    <h6 class="card-title">Examples</h6>
+                    <p class="card-text">View and run open source examples from GitHub.</p>
+                </div>
+            </a>
+        </div>
+
+        <!--
         <h2>Our Approach</h2>
 
         <p>
@@ -63,7 +134,40 @@
             and security best practices, while insulating projects from developer churn.
             </li>
             </ul>
+        </p>-->
+    </section>
+
+    <section class="development">
+        <h2><a name="start">Getting Started</a></h2>
+
+        <p>
+            Stacklane doesn't require any special UI setup to start coding -- everything
+            needed to run a Stacklane site is in standard file formats,
+            hosted in a GitHub source repository.  Branch and tag to your heart's delight.
+            We recommend using WebStorm and its Stacklane plugin.
         </p>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><img src="images/WebStormLogo.png" /> WebStorm</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">+ Stacklane Plugin</h6>
+                        <p class="card-text">
+                            WebStorm natively supports all
+                            Stacklane file formats, including GIT integration.
+                            Grab the
+                            <a target="_blank" href="https://plugins.jetbrains.com/plugin/10313-stacklane">Stacklane plugin</a>
+                            for WebStorm for easy testing.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a target="_blank" href="https://www.jetbrains.com/webstorm/download/"
+                           class="btn btn-sm btn-primary">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 </article>
