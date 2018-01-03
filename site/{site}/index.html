@@ -1,0 +1,50 @@
+<!--TEMPLATE mustache-->
+{{% import {RepoUrl, SiteId} from '📤' }}
+
+{{% partial /_layout }}
+
+{{< layout}}
+{{$content}}
+
+<link itemprop="content-security-policy" data-connect-self="true">
+
+<article>
+    <header>
+    <h1>
+        Example Build
+    </h1>
+    <h6>
+        {{RepoUrl}}
+    </h6>
+    </header>
+
+    <section>
+        <div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Branch</span>
+                </div>
+
+                <input id="branch" name="branch" type="text" class="font-weight-bold form-control" value="master">
+
+                <div class="input-group-append">
+                    <a id="repo-refresh-action" href="#" class="btn btn-outline-secondary">Build</a>
+                    <a id="launch-link" href="#" target="_blank" class="disabled btn btn-outline-primary">Launch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Build</h2>
+        <ul class="list-group small" id="status">
+            <li class="list-group-item list-group-item-warning">Initializing</li>
+        </ul>
+    </section>
+
+</article>
+
+<script src="_index.js"></script>
+
+{{/content}}
+{{/layout}}

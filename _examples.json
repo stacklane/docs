@@ -1,0 +1,12 @@
+[
+  {
+    "title":"TodoMVC (Angular)",
+    "desc":"Starting with the Angular flavor of TodoMVC, adds in server side storage and API.",
+    "src":"https://github.com/stacklane-examples/todomvc-angular.git"
+  },
+  {
+    "title":"Stacklane Docs",
+    "desc":"Make your head spin and run this doc from inside of itself.",
+    "src":"https://github.com/stacklane/web-docs.git"
+  }
+]

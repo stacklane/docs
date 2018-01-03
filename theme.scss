@@ -338,6 +338,16 @@ $sidebar-padding: 1rem;
   100%  { transform: rotate(360deg); }
 }
 
+
+/**
+ * SVG icons inside input-group-text
+ */
+.input-group-text svg{
+  vertical-align: text-bottom;
+  height: 1rem !important;
+  width: 1rem !important;
+}
+
 /**
  * Bootstrap changes
  */
