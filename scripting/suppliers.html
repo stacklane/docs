@@ -133,7 +133,7 @@ export {product as Product};
             In the above example <code>Product</code> is the resulting value exported.
             It is available from the module named '📤', for all scripts
             inside <code>/product/{productSlug}/*</code>, <i>and</i> any descendant directories.
-            For example the Mustache file <code>/product/{productSlug}/related/index.mustache</code>
+            For example the Mustache file <code>/product/{productSlug}/related/index.html</code>
             would be able import the <code>Product</code> value.
         </p>
 
@@ -171,10 +171,10 @@ import {Something, Other, That} from '📤';
         <p>
             Because suppliers follow the hierarchical REST structure, they have varying levels of specificity for an endpoint.
             The most specific supplier is one with the same name as the endpoint itself.
-            For example, an endpoint named <code>index.mustache</code>
+            For example, an endpoint named <code>index.html</code>
             may also have a supplier named <code>📤~index.js</code>.
-            As the most specific supplier, only <code>index.mustache</code> may access values exported by <code>📤~index.js</code>
-            (however <code>index.mustache</code> may also access other in-scope suppliers).
+            As the most specific supplier, only <code>index.html</code> may access values exported by <code>📤~index.js</code>
+            (however <code>index.html</code> may also access other in-scope suppliers).
         </p>
 
         <h3><a name="strict">Pinned Supplier</a></h3>

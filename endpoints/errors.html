@@ -31,8 +31,8 @@
             Multiple error views may be defined.  The nearest error view to the endpoint causing the error
             will be served.  For example, given an endpoint generating an error at
             <code>/here/{there}/everywhere.js</code>,
-            the error view <code>/here/⚡️.mustache</code> will be served instead of the earlier error view at
-            <code>/⚡️.mustache</code>.
+            the error view <code>/here/⚡️.html</code> will be served instead of the earlier error view at
+            <code>/⚡️.html</code>.
         </p>
     </section>
 
@@ -42,12 +42,12 @@
         <h3>Default / Catch-All</h3>
         <p>
             The default error view used when a more specific error view is not defined is called
-            <code>⚡️.mustache</code>.
+            <code>⚡️.html</code>.
         </p>
 
         <h3>Not Found</h3>
         <p>
-            Naming the error view <code>⚡️NotFound.mustache</code> will cause this to be selected
+            Naming the error view <code>⚡️NotFound.html</code> will cause this to be selected
             over the default error view in cases that are "Not Found-Like".  This includes simple
             missing endpoints, as well as uncaught cases where a loaded Model was not found.
         </p>

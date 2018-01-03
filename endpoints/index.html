@@ -39,7 +39,7 @@
 
             For example:
 
-            <code>/article/{article}/index.mustache</code>
+            <code>/article/{article}/index.html</code>
 
             would be served at the HTML endpoint
 
@@ -53,14 +53,14 @@
         <h2><a name="private">Private Files</a></h2>
 
         <p>
-            Any file prefixed with an underscore <code>_fileName.mustache</code>
+            Any file prefixed with an underscore <code>_fileName.html</code>
             will never be publicly accessible, and is only used for
             server side includes or similar logic (for example SASS or Mustache partial).
         </p>
 
         <p>
             Similarly any files whose <b>direct</b> parent folder
-            has an underscore such as <code>/_files/something.mustache</code>,
+            has an underscore such as <code>/_files/something.html</code>,
             will be considered private even if the files themselves are not prefixed
             with an underscore.
         </p>
