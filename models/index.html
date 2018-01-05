@@ -31,6 +31,37 @@
     </section>
 
     <section>
+        <div class="card-deck">
+            <a class="card mt-1 overview-models" href="/models/types#universal">
+                <div class="card-body">
+                    <h6 class="card-title">Universal Type</h6>
+                    <p class="card-text">Suitable for a wide range of entities and concepts.</p>
+                </div>
+            </a>
+            <a class="card mt-1 overview-endpoints" href="/models/types#tenant">
+                <div class="card-body">
+                    <h6 class="card-title">Tenant Type</h6>
+                    <p class="card-text">Top level "silo" that contains other isolated models.</p>
+                </div>
+            </a>
+        </div>
+        <div class="card-deck mt-1">
+            <a class="card mt-1 overview-scripting" href="/models/types#event">
+                <div class="card-body">
+                    <h6 class="card-title">Event Type</h6>
+                    <p class="card-text">Long term time-series data, activity, or logging.</p>
+                </div>
+            </a>
+            <a class="card mt-1 overview-examples" href="/models/types#content">
+                <div class="card-body">
+                    <h6 class="card-title">Content Type</h6>
+                    <p class="card-text">Text and data for end-users, visitors, and buyers.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section>
         <h2>Denormalized Documents</h2>
         <p>
             Modeling best practices follow those of document based databases, such as MongoDB.
@@ -76,11 +107,6 @@
         </p>
     </section>
 
-    <section>
-        <div class="alert alert-secondary" role="alert">
-            Next: Learn about <a href="/models/types">Model Types</a>
-        </div>
-    </section>
 </article>
 
 {{/content}}

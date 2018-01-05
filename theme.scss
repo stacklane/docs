@@ -338,6 +338,27 @@ $sidebar-padding: 1rem;
   100%  { transform: rotate(360deg); }
 }
 
+/**
+ * Card links
+ */
+
+a.card{
+  text-decoration: none !important;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .07), 0 7px 17px 0 rgba(0, 0, 0, .1);
+  background: white;
+  transition: box-shadow .2s ease-in-out, border-color .2s ease-in-out;
+}
+a.card:hover{
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .12), 0 7px 25px 0 rgba(0, 0, 0, .15);
+  border-color: $link-color;
+}
+a.card .card-text{
+  color: black;
+}
+a.card .card-body{
+  padding-bottom: 1rem;
+}
+
 
 /**
  * SVG icons inside input-group-text
