@@ -30,10 +30,25 @@
 
         <p>
             Create a file at the root <code>/🎨.scss</code> to define your properties.
-            This is a limited SCSS file, and because its values may be imported into JavaScript its
-            variable names must use camel case.  The following SCSS data types are supported:
-            string, boolean, color (hex/rgb/preset), url.  URLs must be absolute and
+            This is a limited SCSS file for variables only.
+            The following SCSS data types are supported:
+            string, boolean, color (hex/rgb/preset), url.
+            URLs must be absolute and
             point to static images contained in the source.
+        </p>
+
+        <h3>Variable Naming</h3>
+        <p>
+            As described below, the variables may be used in several different environments/languages.
+            Therefore it's important to understand how naming your variables gets translated.
+            The simplest thing to do is to use "camelCase" which ensures that your variables are
+            identical across all languages.
+        </p>
+        <p>
+            However a more SCSS/CSS friendly convention is to use
+            dashes for variables names such as <code>$color-primary</code>.  If you choose
+            this latter convention, simply be aware that from JS and Mustache that same variable
+            is accessed with an underscore: <code>color_primary</code>
         </p>
     </section>
 
@@ -49,7 +64,7 @@
 @import '/🎨';
 
 body{
-  background-image: $bgImgFromStyle
+  background-image: $image-background
 }
     </code></pre>
         </p>
@@ -64,10 +79,10 @@ body{
         </p>
         <p>
         <pre class="language-html"><code>
-&lt;--TEMPLATE mustache--&gt;
+&lt;!--TEMPLATE mustache--&gt;
 &#123;&#123;% import * as Style from '🎨'&#125;&#125;
 
-&lt;img src="&#123;&#123;Style.bgImgFromStyle&#125;&#125;"&gt;
+&lt;img src="&#123;&#123;Style.image_background&#125;&#125;"&gt;
     </code></pre>
         </p>
     </section>
@@ -83,7 +98,7 @@ body{
         <pre class="language-javascript"><code>
 import * as Style from '🎨';
 
-if (Style.someBooleanOption){
+if (Style.some_boolean_option){
    ...
 }
     </code></pre>
@@ -111,7 +126,7 @@ $myMode: true;
 
         <p>
         <pre class="language-html"><code>
-&lt;--TEMPLATE mustache--&gt;
+&lt;!--TEMPLATE mustache--&gt;
 &#123;&#123;% import * as Style from '🎨'&#125;&#125;
 
 &#123;&#123;#Style.myMode&#125;&#125;

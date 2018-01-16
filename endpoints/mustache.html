@@ -27,7 +27,7 @@
             and on the first line of the HTML file use the special comment:
         </p>
         <p>
-            <code>&lt;--TEMPLATE mustache--&gt;</code>
+            <code>&lt;!--TEMPLATE mustache--&gt;</code>
         </p>
         <p>
             All files that use Mustache for the templating language, including partials/imports,
@@ -143,7 +143,7 @@
         <h3>Master Template</h3>
         <p>
         <pre><code class="language-html">
-&lt;--TEMPLATE mustache--&gt;
+&lt;!--TEMPLATE mustache--&gt;
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
@@ -164,7 +164,7 @@
             Assuming a layout file named <code>/_layout.html</code>, another file
             would use this template like:
         <pre><code class="language-html">
-&lt;--TEMPLATE mustache--&gt;
+&lt;!--TEMPLATE mustache--&gt;
 &#123;&#123;% partial /_layout&#125;&#125;
 
 &#123;&#123;&lt;layout&#125;&#125;

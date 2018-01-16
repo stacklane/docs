@@ -29,6 +29,7 @@
 
     <section>
         <h2>Available Properties</h2>
+
         <h3><code><a name="source">source</a></code></h3>
 
         <p>
@@ -41,10 +42,24 @@ source: https://github.com/name/project.git#branch-or-tag
     </code></pre>
         </p>
 
+        <h3><code><a name="namespace">namespace</a></code></h3>
+
+        <p>
+            If the nested site is data driven, then it must be assigned a data namespace.
+            This ensures the data remains relevant if you later change its path.
+            Minimum length is 4 characters, maximum length is 25 characters.
+        </p>
+
+        <p>
+        <pre class="language-yaml"><code>
+namespace: my-namespace
+    </code></pre>
+        </p>
+
         <h3><a name="🎨">🎨</a></h3>
 
         <p>
-            If the nested site contains a <a href="/config/style">style configuration</a>,
+            If the nested site contains a <a href="/settings/style">style configuration</a>,
             then the values in the style configuration may be overridden, where
             the values beneath "🎨" correspond to values in the nested site's 🎨.scss file.
         </p>
@@ -52,8 +67,8 @@ source: https://github.com/name/project.git#branch-or-tag
         <p>
         <pre class="language-yaml"><code>
 🎨:
-  someOption: true
-  theColor: aliceblue
+  some-option: true
+  the-color: aliceblue
     </code></pre>
         </p>
     </section>
