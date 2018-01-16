@@ -1,0 +1,65 @@
+<!--TEMPLATE mustache-->
+{{% partial /_layout }}
+
+{{< layout}}
+
+{{$title}}Nested Site Mounts{{/title}}
+
+{{$content}}
+
+<article>
+    <header>
+        <h1>Nested Site Mounts</h1>
+
+        <p>
+            Stacklane sites may be organized into smaller sub-sites and mounted at a path.
+        </p>
+    </header>
+
+    <section>
+        <p>
+            To nest a site at a sub-path of another site, create a configuration file such as:
+            <code>/🔌path-name.yaml</code> where "path-name" will be come the directory
+            where the site is nested at.
+            For example, if your main site is hosted at <code>https://abccompany.com/</code>,
+            a configured nested site <code>/🔌store.yaml</code> would host the
+            nested site at <code>https://abccompany.com/store/</code>
+        </p>
+    </section>
+
+    <section>
+        <h2>Available Properties</h2>
+        <h3><code><a name="source">source</a></code></h3>
+
+        <p>
+            The only required field for a site mount is the location to obtain the nested site's source code.
+        </p>
+
+        <p>
+        <pre class="language-yaml"><code>
+source: https://github.com/name/project.git#branch-or-tag
+    </code></pre>
+        </p>
+
+        <h3><a name="🎨">🎨</a></h3>
+
+        <p>
+            If the nested site contains a <a href="/config/style">style configuration</a>,
+            then the values in the style configuration may be overridden, where
+            the values beneath "🎨" correspond to values in the nested site's 🎨.scss file.
+        </p>
+
+        <p>
+        <pre class="language-yaml"><code>
+🎨:
+  someOption: true
+  theColor: aliceblue
+    </code></pre>
+        </p>
+    </section>
+
+
+</article>
+
+{{/content}}
+{{/layout}}

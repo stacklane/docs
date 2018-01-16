@@ -1,0 +1,127 @@
+<!--TEMPLATE mustache-->
+{{% partial /_layout }}
+
+{{< layout}}
+
+{{$title}}Styles{{/title}}
+
+{{$content}}
+
+<article>
+    <header>
+        <h1>Styles</h1>
+
+        <p>
+            Styles are a purpose specific SCSS configuration file.
+        </p>
+    </header>
+
+    <section>
+        <p>
+            The style configuration file is a plain SCSS file that accepts values/variables only.
+            Unlike regular SCSS variables, these values may be overridden when nesting the site,
+            and also accessed from additional locations (server-side JavaScript, Mustache templates,
+            and of course imported into other SCSS files).
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="file">File Format</a></h2>
+
+        <p>
+            Create a file at the root <code>/🎨.scss</code> to define your properties.
+            This is a limited SCSS file, and because its values may be imported into JavaScript its
+            variable names must use camel case.  The following SCSS data types are supported:
+            string, boolean, color (hex/rgb/preset), url.  URLs must be absolute and
+            point to static images contained in the source.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="scss">SCSS Access</a></h2>
+
+        <p>
+            From another SCSS file, access variables defined in the style file just
+            as you would any other SCSS import:
+        </p>
+        <p>
+        <pre class="language-css"><code>
+@import '/🎨';
+
+body{
+  background-image: $bgImgFromStyle
+}
+    </code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="mustache">Mustache Access</a></h2>
+
+        <p>
+            From a mustache file import the style properties.
+            Note that url(...) values are unwrapped to their paths only.
+        </p>
+        <p>
+        <pre class="language-html"><code>
+&lt;--TEMPLATE mustache--&gt;
+&#123;&#123;% import * as Style from '🎨'&#125;&#125;
+
+&lt;img src="&#123;&#123;Style.bgImgFromStyle&#125;&#125;"&gt;
+    </code></pre>
+        </p>
+    </section>
+
+
+    <section>
+        <h2><a name="javascript">JavaScript Access</a></h2>
+
+        <p>
+            From a server side JS file import the style properties:
+        </p>
+        <p>
+        <pre class="language-javascript"><code>
+import * as Style from '🎨';
+
+if (Style.someBooleanOption){
+   ...
+}
+    </code></pre>
+        </p>
+    </section>
+
+
+    <section>
+        <h2><a name="advanced">Advanced Configuration</a></h2>
+
+        <p>
+            Consider using boolean and string values to provide advanced configuration or "modes" to a site.
+            Because the values are accessible from all locations, you can go deeper than CSS alone.
+            For example in <code>/🎨.scss</code>:
+        </p>
+        <p>
+        <pre class="language-css"><code>
+$myMode: true;
+    </code></pre>
+        </p>
+
+        <p>
+         Then in a Mustache endpoint:
+        </p>
+
+        <p>
+        <pre class="language-html"><code>
+&lt;--TEMPLATE mustache--&gt;
+&#123;&#123;% import * as Style from '🎨'&#125;&#125;
+
+&#123;&#123;#Style.myMode&#125;&#125;
+In special mode.
+&#123;&#123;/Style.myMode&#125;&#125;
+    </code></pre>
+        </p>
+    </section>
+
+</article>
+
+{{/content}}
+{{/layout}}

@@ -1,0 +1,61 @@
+<!--TEMPLATE mustache-->
+{{% partial /_layout }}
+
+{{< layout}}
+
+{{$title}}Users{{/title}}
+
+{{$content}}
+
+<article>
+    <header>
+        <h1>Users</h1>
+
+        <p>
+            This configuration is only needed to enable user and/or session functionality.
+        </p>
+    </header>
+
+    <section>
+        <h2>File Location</h2>
+
+        <p>
+            Create a file in the root named <code>/👤.yaml</code>
+        </p>
+    </section>
+
+    <section>
+        <h2>Available Properties</h2>
+
+        <h3><code><a name="auth">auth</a></code></h3>
+
+        <p>
+            Predefined string which specifies the overall authentication
+            mode of the site.  Default: <code>none</code>
+        </p>
+        <p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Value</th>
+                <th scope="col">Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><code>none</code></td>
+                <td>Default.  User and/or session functionality is disabled</td>
+            </tr>
+            <tr>
+                <td><code>required</code></td>
+                <td>The entire site is private access only, requiring user authentication for all endpoints.</td>
+            </tr>
+            </tbody>
+        </table>
+        </p>
+    </section>
+</article>
+
+
+{{/content}}
+{{/layout}}
