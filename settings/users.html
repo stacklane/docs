@@ -25,15 +25,13 @@
     </section>
 
     <section>
-        <h2>Available Properties</h2>
-
-        <h3><code><a name="auth">auth</a></code></h3>
+        <h2><code><a name="auth">auth</a></code></h2>
 
         <p>
             Predefined string which specifies the overall authentication
-            mode of the site.  Default: <code>none</code>
+            mode of the site.  Default: <code>inherit</code>
         </p>
-        <p>
+
         <table class="table">
             <thead>
             <tr>
@@ -43,8 +41,12 @@
             </thead>
             <tbody>
             <tr>
+                <td><code>inherit</code></td>
+                <td>Default. If the site is nested, inherit the parent site's user behavior, otherwise <code>none</code>.</td>
+            </tr>
+            <tr>
                 <td><code>none</code></td>
-                <td>Default.  User and/or session functionality is disabled</td>
+                <td>Explicitly disabled user and/or session functionality.</td>
             </tr>
             <tr>
                 <td><code>required</code></td>
@@ -52,6 +54,194 @@
             </tr>
             </tbody>
         </table>
+
+    </section>
+
+    <section>
+        <h2><code><a name="roles">roles</a></code></h2>
+
+        <div class="alert alert-info small" role="alert">
+            Changing and refactoring role names is a <i>safe</i> operation,
+            as long as you also update any code references to them.
+            Role names are not associated with data.
+        </div>
+
+        <p>
+            Roles contain 1 or more permission rules.
+            Permission rules define what is allowed for a role.
+            Most commonly permission rules map to model data operations.
+        </p>
+        <p>
+            Scripts and templates code against role names.
+            In other words:  "Is role ABC active for the current user/session".
+            The permission rules that a role contains consists
+            of two parts: 1) Resource Rule, 2) Operation(s) Allowed
+        </p>
+
+        <pre class="language-yaml"><code>
+roles:
+  [ROLE_NAME]:
+    [RESOURCE_RULE]: [OPERATIONS_ALLOWED]
+    </code></pre>
+
+        <h6>Resource Rule</h6>
+        <p>
+            Resource rules for models simply follow the data structure, from general to specific.
+        </p>
+
+        <pre class="language-yaml"><code>
+📦
+📦.Task
+📦.Task.name
+    </code></pre>
+
+        <h6>Operation Names</h6>
+        <p>
+            The available permission operations are:
+            <code>all</code>,
+            <code>create</code>
+            <code>read</code>,
+            <code>update</code>,
+            <code>delete</code>,
+            <code>state</code>
+        </p>
+        <p>
+            Most operations map directly to an HTTP method.
+            For predictable handling of endpoints that need to be role-constrained,
+            we recommend following this general pattern.
+        </p>
+
+        <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Operation</th>
+            <th scope="col">Description</th>
+            <th scope="col">HTTP</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><code>all</code></td>
+            <td>All operations are allowed.</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><code>create</code></td>
+            <td>Create operations are allowed</td>
+            <td><b>POST</b></td>
+        </tr>
+        <tr>
+            <td><code>read</code></td>
+            <td>
+                Read operations are allowed.
+                <br>
+                <small>Depending on the case "read" may also refer to "get", "load", "accessible", or "visible".</small>
+            </td>
+            <td><b>GET</b></td>
+        </tr>
+        <tr>
+            <td><code>update</code></td>
+            <td>
+                Update operations are allowed.
+                <br>
+                <small>May also refer to "editing" or "modifying" something that already exists.</small>
+            </td>
+            <td><b>PUT</b></td>
+        </tr>
+        <tr>
+            <td><code>delete</code></td>
+            <td>Delete operations are allowed.
+                <br>
+                <small>May also refer to quasi-deletes, such as an operation that could be rolled back.</small>
+            </td>
+            <td><b>DELETE</b></td>
+        </tr>
+        <tr>
+            <td><code>state</code></td>
+            <td>State change operations are allowed.
+                <br>
+                <small>
+                This is a special case of "update", where a significant "state change" is also taking place.
+                A state change usually involves concepts regarding "status", "publish", or "lifecycle"
+                    -- typically auditing or event logging takes place as well.
+                </small>
+            </td>
+            <td><b>PATCH</b></td>
+        </tr>
+        <tr>
+            <td><code>list</code></td>
+            <td>
+                List operations are allowed.
+                <br>
+                <small>List operations are "bulk" operations, and may refer to queries, or
+                anything that returns or operates on <i>potentially</i> multiple results.
+                </small>
+            </td>
+            <td></td>
+        </tr>
+        </tbody>
+        </table>
+
+        <h6>Full Role Example</h6>
+        <p>
+        <pre class="language-yaml"><code>
+roles:
+  admin:
+    📦: all
+  task-editor:
+    📦.Task: create,read,update,list
+    </code></pre>
+        </p>
+
+        <h6>Naming Recommendations</h6>
+        <p>
+            We recommend using a singular form for role names.
+            This will help to clearly
+            distinguish role names from the plural form recommended for group names.
+        </p>
+    </section>
+
+    <section>
+        <h2><code><a name="groups">groups</a></code></h2>
+
+        <div class="alert alert-warning small" role="alert">
+            Unlike role names, group names are <i>not</i> freely changeable,
+            especially if they have been used and associated with existing users.
+        </div>
+
+        <p>
+            Groups contain 1 or more named <code>roles</code>.
+            Users are assigned to groups.
+            Scripts and templates are <i>unaware</i> of groups --
+            they are only aware of the roles activated by groups.
+        </p>
+
+        <p>
+            Remember, groups are associated with all of your user data.
+            Freely change and refactor your role names (and the code that uses them, of course),
+            but remember that changing in-use group names will
+            alter access for users associated with those groups.
+            In short: changing group names is not recommended.
+        </p>
+
+        <h6>Full Group Example</h6>
+        <p>
+            Beneath the name of group, list out the roles it contains.
+        </p>
+        <pre class="language-yaml"><code>
+groups:
+  administrators:
+    - admin
+  editors:
+    - task-editor
+    </code></pre>
+
+        <h6>Naming Recommendations</h6>
+        <p>
+            As groups represent a collection of many users,
+            we recommend using the plural form of group names.
+            This will also more clearly
+            distinguish group names from the singular form recommended for role names.
         </p>
     </section>
 </article>

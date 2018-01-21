@@ -185,7 +185,8 @@ article pre code{
   line-height: 19px !important;
 }
 article code{
-  white-space:pre;
+  white-space: pre;
+  word-break: keep-all; // code usually for small snippets or words, not large blocks.  so prevent those words/snippets from breaking.
 }
 article .code>pre{
   margin:0;
@@ -383,8 +384,14 @@ a.card .card-body{
 /**
  * Prism
  */
+
 .line-highlight{
   margin-top: .5em; // unclear why adjustment needed -- bootstrap compat? orig value is 1em;
+}
+
+// prism overrides the bootstrap margin, so put it back
+pre[class*=language-]{
+  margin-bottom: 1rem;
 }
 
 
