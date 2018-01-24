@@ -36,20 +36,6 @@
             URLs must be absolute and
             point to static images contained in the source.
         </p>
-
-        <h3>Variable Naming</h3>
-        <p>
-            As described below, the variables may be used in several different environments/languages.
-            Therefore it's important to understand how naming your variables gets translated.
-            The simplest thing to do is to use "camelCase" which ensures that your variables are
-            identical across all languages.
-        </p>
-        <p>
-            However a more SCSS/CSS friendly convention is to use
-            dashes for variables names such as <code>$color-primary</code>.  If you choose
-            this latter convention, simply be aware that from JS and Mustache that same variable
-            is accessed with an underscore: <code>color_primary</code>
-        </p>
     </section>
 
     <section>
@@ -82,7 +68,18 @@ body{
 &lt;!--TEMPLATE mustache--&gt;
 &#123;&#123;% import * as Style from '🎨'&#125;&#125;
 
-&lt;img src="&#123;&#123;Style.image_background&#125;&#125;"&gt;
+&lt;img src="&#123;&#123;Style.image-background&#125;&#125;"&gt;
+    </code></pre>
+        </p>
+        <p>
+            Or directly:
+        </p>
+        <p>
+        <pre class="language-html"><code>
+&lt;!--TEMPLATE mustache--&gt;
+&#123;&#123;% import {image-background} from '🎨'&#125;&#125;
+
+&lt;img src="&#123;&#123;image-background&#125;&#125;"&gt;
     </code></pre>
         </p>
     </section>
@@ -92,13 +89,20 @@ body{
         <h2><a name="javascript">JavaScript Access</a></h2>
 
         <p>
-            From a server side JS file import the style properties:
+            A SCSS/CSS friendly convention is to use
+            dashes for variables names such as <code>$color-primary</code>.  If you choose
+            this naming convention, simply be aware that from JavaScript that same variable
+            is accessed with an underscore: <code>Style.color_primary</code>
+            Alternatively keep the dash using bracket syntax:  <code>Style['color-primary']</code>
+        </p>
+        <p>
+            From a server side JavaScript file import the style properties:
         </p>
         <p>
         <pre class="language-javascript"><code>
 import * as Style from '🎨';
 
-if (Style.some_boolean_option){
+if (Style['some-boolean-option']){
    ...
 }
     </code></pre>
@@ -107,33 +111,63 @@ if (Style.some_boolean_option){
 
 
     <section>
-        <h2><a name="advanced">Advanced Configuration</a></h2>
+        <h2><a name="cases">Use Cases</a></h2>
+
+        <h3>Interface Messages</h3>
 
         <p>
-            Consider using boolean and string values to provide advanced configuration or "modes" to a site.
+            Consider centralizing your interface messages/phrases into the style file.
+            This will later allow localizing/translating these phrases
+            in separate, language-specific style files.
+            For example:
+        </p>
+        <p>
+        <pre class="language-css"><code>
+$ui-home: 'Home';
+$ui-sign-in: 'Sign In';
+    </code></pre>
+        </p>
+        <p>
+            Then in a Mustache template:
+        </p>
+        <p>
+        <pre class="language-html"><code>
+&lt;!--TEMPLATE mustache--&gt;
+&#123;&#123;% import * as msg from '🎨'&#125;&#125;
+
+&lt;span&gt;&#123;&#123; msg.ui-home &#125;&#125;&lt;/span&gt;
+&lt;span&gt;&#123;&#123; msg.ui-sign-in &#125;&#125;&lt;/span&gt;
+    </code></pre>
+        </p>
+
+        <!--
+        <h3>Modes</h3>
+        <p>
+            Consider using boolean values to provide advanced configuration or "modes" to a site.
             Because the values are accessible from all locations, you can go deeper than CSS alone.
             For example in <code>/🎨.scss</code>:
         </p>
         <p>
         <pre class="language-css"><code>
-$myMode: true;
+$my-mode: true;
     </code></pre>
         </p>
 
         <p>
-         Then in a Mustache endpoint:
+           Then in a Mustache template:
         </p>
 
         <p>
         <pre class="language-html"><code>
 &lt;!--TEMPLATE mustache--&gt;
-&#123;&#123;% import * as Style from '🎨'&#125;&#125;
+&#123;&#123;% import {my-mode} from '🎨'&#125;&#125;
 
-&#123;&#123;#Style.myMode&#125;&#125;
-In special mode.
-&#123;&#123;/Style.myMode&#125;&#125;
+&#123;&#123;#my-mode&#125;&#125;
+Using special mode.
+&#123;&#123;/my-mode&#125;&#125;
     </code></pre>
         </p>
+        -->
     </section>
 
 </article>

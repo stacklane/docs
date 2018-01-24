@@ -17,10 +17,13 @@
     </header>
 
     <section>
-        <h2>File Location</h2>
+        <h2>Overview</h2>
 
         <p>
-            Create a file in the root named <code>/👤.yaml</code>
+            To enable user or session functionality drop a settings file into
+            the root named <code>/👤.yaml</code>.
+            After learning about the settings and related concepts involved,
+            check out the closely related <a href="/scripting/users/">user scripting</a>.
         </p>
     </section>
 
@@ -55,15 +58,22 @@
             </tbody>
         </table>
 
+        <p>
+            What if you have a site that is partially public and partially user access <code>required</code>?
+            In this case use a <a href="/settings/nested">nested site</a> for the <code>required</code> auth access.
+            This will keep the development of each cleanly separated by purpose.
+            If they share look and feel, there may be some duplication of style assets, however
+            in the long run this minor duplication will be worth it.
+        </p>
     </section>
 
     <section>
-        <h2><code><a name="roles">roles</a></code></h2>
+        <h2><code><a name="roles">role</a></code></h2>
 
         <div class="alert alert-info small" role="alert">
-            Changing and refactoring role names is a <i>safe</i> operation,
+            Changing role names is a <i>safe</i> operation,
             as long as you also update any code references to them.
-            Role names are not associated with data.
+            Role names are <i>not</i> associated with data.
         </div>
 
         <p>
@@ -79,7 +89,7 @@
         </p>
 
         <pre class="language-yaml"><code>
-roles:
+role:
   [ROLE_NAME]:
     [RESOURCE_RULE]: [OPERATIONS_ALLOWED]
     </code></pre>
@@ -109,6 +119,7 @@ roles:
             Most operations map directly to an HTTP method.
             For predictable handling of endpoints that need to be role-constrained,
             we recommend following this general pattern.
+            Not all operations are applicable to all resources.
         </p>
 
         <table class="table">
@@ -185,16 +196,17 @@ roles:
         <h6>Full Role Example</h6>
         <p>
         <pre class="language-yaml"><code>
-roles:
-  admin:
+role:
+  Admin:
     📦: all
-  task-editor:
+  TaskEditor:
     📦.Task: create,read,update,list
     </code></pre>
         </p>
 
         <h6>Naming Recommendations</h6>
         <p>
+            Names must start with an uppercase character and be valid identifiers.
             We recommend using a singular form for role names.
             This will help to clearly
             distinguish role names from the plural form recommended for group names.
@@ -205,8 +217,8 @@ roles:
         <h2><code><a name="groups">groups</a></code></h2>
 
         <div class="alert alert-warning small" role="alert">
-            Unlike role names, group names are <i>not</i> freely changeable,
-            especially if they have been used and associated with existing users.
+            Unlike role names, group names are <i>not</i> freely changeable in production.
+            In production they may have been used and already associated with existing users.
         </div>
 
         <p>
@@ -230,15 +242,16 @@ roles:
         </p>
         <pre class="language-yaml"><code>
 groups:
-  administrators:
-    - admin
-  editors:
-    - task-editor
+  Administrators:
+    - Admin
+  Editors:
+    - TaskEditor
     </code></pre>
 
-        <h6>Naming Recommendations</h6>
+        <h6>Naming Conventions</h6>
         <p>
-            As groups represent a collection of many users,
+            Names must start with an uppercase character and be valid identifiers.
+            Since groups represent a collection of many users,
             we recommend using the plural form of group names.
             This will also more clearly
             distinguish group names from the singular form recommended for role names.
