@@ -3,5 +3,4 @@ url:
   unique: true
 
 key:
-  type: string
-  unique: true
+  type: uid
