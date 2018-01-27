@@ -6,9 +6,16 @@
  * This supplier file is marked with ∞ -- exported values will be cached.
  */
 
-import {Mapping} from "📦";
+import {site} from '🔗';
+
+let url = site.url;
+
+export {url as RepoUrl}
+
+
+/*import {Mapping} from "📦";
 
 let site = $site;
 let url = Mapping.key($site).get().url;
 
-export {url as RepoUrl, site as SiteId};
+export {url as RepoUrl};*/

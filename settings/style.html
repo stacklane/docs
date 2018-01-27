@@ -60,9 +60,20 @@ body{
         <h2><a name="mustache">Mustache Access</a></h2>
 
         <p>
-            From a mustache file import the style properties.
+            There are several different ways to use or import style properties from Mustache.
             Note that url(...) values are unwrapped to their paths only.
         </p>
+
+        <h3>Direct Access</h3>
+        <p>
+        <pre class="language-html"><code>
+&lt;!--TEMPLATE mustache--&gt;
+
+&lt;img src="&#123;&#123;🎨.image-background&#125;&#125;"&gt;
+    </code></pre>
+        </p>
+
+        <h3>Import Alias</h3>
         <p>
         <pre class="language-html"><code>
 &lt;!--TEMPLATE mustache--&gt;
@@ -71,9 +82,8 @@ body{
 &lt;img src="&#123;&#123;Style.image-background&#125;&#125;"&gt;
     </code></pre>
         </p>
-        <p>
-            Or directly:
-        </p>
+
+        <h3>Specific Variable(s)</h3>
         <p>
         <pre class="language-html"><code>
 &lt;!--TEMPLATE mustache--&gt;
@@ -133,10 +143,9 @@ $ui-sign-in: 'Sign In';
         <p>
         <pre class="language-html"><code>
 &lt;!--TEMPLATE mustache--&gt;
-&#123;&#123;% import * as msg from '🎨'&#125;&#125;
 
-&lt;span&gt;&#123;&#123; msg.ui-home &#125;&#125;&lt;/span&gt;
-&lt;span&gt;&#123;&#123; msg.ui-sign-in &#125;&#125;&lt;/span&gt;
+&lt;span&gt;&#123;&#123; 🎨.ui-home &#125;&#125;&lt;/span&gt;
+&lt;span&gt;&#123;&#123; 🎨.ui-sign-in &#125;&#125;&lt;/span&gt;
     </code></pre>
         </p>
 
