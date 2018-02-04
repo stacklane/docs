@@ -25,13 +25,14 @@
         </p>
 
         <p>
-            The Universal type may optionally be a container for other types.
+            The Universal type may optionally be a <a href="/models/containers">container</a> for other types.
             For example, a <i>List</i> might be defined as a container
             for <i>Task</i>'s.
         </p>
 
         <p>
-            This type is not for cases covered by other model types.  It should not be
+            While this type has broad cases, review the other model types before choosing it,
+            to ensure that another type is not more suitable. It should not be
             used for extremely unbounded data, such as <i>Orders</i> or <i>Comments</i>
             (better suited for the Event type).  It does not allow large text fields,
             and is therefore not suitable for an article, blog post, or product description.
@@ -42,10 +43,9 @@
         <h2><a name="tenant">Tenant</a></h2>
 
         <p>
-            Use for top level containers where there is a clear case to silo or
+            Use for top level <a href="/models/containers">containers</a> where there is a clear case to silo or
             strongly isolate all of the descendant data models.
-            "User", "Account", "Project", etc -- any top level container whose data is highly specific to it.
-            Despite its name the Tenant type is also good for used for standalone, top-level profiles or mappings.
+            "Account", "Project", etc -- any top level container whose data is highly specific to it.
         </p>
 
         <p>
@@ -57,13 +57,13 @@
         <h3>Query Considerations</h3>
         <p>
             A Tenant container starts a new "query isolation" scope.
-            Given the example hierarchy User ▶︎ List ▶︎ Task, and a query for <code>Task.name('something')</code>,
+            Given the example hierarchy Account ▶︎ List ▶︎ Task, and a query for <code>Task.name('something')</code>,
             the scope of Tasks that will be queried varies depending on which of the two possible
             ancestor containers are selected.
         </p>
         <p>
             If the <code>Task.name('something')</code> query is executed in the scope of the User, then all Tasks across
-            all Lists by that single User will be queried by name.
+            all Lists by that single Account will be queried by name.
         </p>
         <p>
             If the <code>Task.name('something')</code> query is executed in the scope of a List, then only Tasks within
@@ -135,6 +135,23 @@
         <h2><a name="content">Content</a></h2>
         <p>
             Roadmap.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="profile">User Profile</a></h2>
+        <p>
+            User profiles are only relevant and available
+            when <a href="/settings/users">user related</a> functionality is enabled.
+        </p>
+        <p>
+            User profiles are always associated with a single user.
+            They may either be container-less, in which case they are represented as a singleton.
+            Or they may be contained by a <a href="#tenant">Tenant</a>.
+            You may only create or update <b>1</b> User Profile in a single request.
+        </p>
+        <p>
+            Learn more about <a href="/scripting/users">user scripting</a>.
         </p>
     </section>
 

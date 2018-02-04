@@ -35,13 +35,13 @@
         <div class="card-deck">
             <a class="card mt-1" href="/models/types#universal">
                 <div class="card-body">
-                    <h6 class="card-title">Universal Type</h6>
+                    <h6 class="card-title">Universal</h6>
                     <p class="card-text">Suitable for a wide range of entities and concepts.</p>
                 </div>
             </a>
             <a class="card mt-1" href="/models/types#tenant">
                 <div class="card-body">
-                    <h6 class="card-title">Tenant Type</h6>
+                    <h6 class="card-title">Tenants</h6>
                     <p class="card-text">Top level "silo" that contains other isolated models.</p>
                 </div>
             </a>
@@ -49,19 +49,43 @@
         <div class="card-deck mt-1">
             <a class="card mt-1" href="/models/types#event">
                 <div class="card-body">
-                    <h6 class="card-title">Event Type</h6>
+                    <h6 class="card-title">Events</h6>
                     <p class="card-text">Long term time-series data, activity, or logging.</p>
                 </div>
             </a>
             <a class="card mt-1" href="/models/types#content">
                 <div class="card-body">
-                    <h6 class="card-title">Content Type</h6>
+                    <h6 class="card-title">Content</h6>
                     <p class="card-text">Text and data for end-users, visitors, and buyers.</p>
+                </div>
+            </a>
+        </div>
+        <div class="card-deck mt-1">
+            <a class="card mt-1" href="/models/types#profile">
+                <div class="card-body">
+                    <h6 class="card-title">User Profiles</h6>
+                    <p class="card-text">Associate data one-to-one with a specific user.</p>
+                </div>
+            </a>
+            <a class="card mt-1" href="/models/types#embedded">
+                <div class="card-body">
+                    <h6 class="card-title">Embedded</h6>
+                    <p class="card-text">Normalize and share data structures between types.</p>
+                </div>
+            </a>
+        </div>
+        <div class="card-deck mt-1">
+            <a class="card mt-1" href="/models/containers">
+                <div class="card-body">
+                    <h6 class="card-title">Containers</h6>
+                    <p class="card-text">Create one-to-many relationships by nesting other
+                        models within the Universal and Tenant types.</p>
                 </div>
             </a>
         </div>
     </section>
 
+    <!--
     <section>
         <h2>Denormalized Documents</h2>
         <p>
@@ -72,41 +96,8 @@
             In a document based world there is no joining or foreign keys, only documents (Models) of a given type.
         </p>
     </section>
+    -->
 
-    <section>
-        <h2>Designing with Containers</h2>
-        <p>
-            A key concept in Stacklane is the "container", which creates a strong one-to-many,
-            or parent/child relationship.
-
-            A container may have many kinds of children,
-            but a child may only have one kind of container/parent.
-            For example, "Account/X" and "Account/Y", but there would
-            never be another parent for "X" besides "Account".
-        </p>
-
-        <h3>Types of Containers</h3>
-        <p>
-            Containers may be deeply nested, such as Account ▶ Site ▶ Order, or User ▶ List ▶ Task.
-            However in these examples, there are two kinds of containers.
-            It's recommended that the top level models in these examples (Account and User)
-            be defined as the <a href="/models/types#tenant">Tenant</a> type.
-            Where Site and List are simply <a href="/models/types#universal">Universal</a> containers.
-        </p>
-
-        <h3>Behavior of Unique Values</h3>
-
-        <p>
-            If a model type within a container defines unique values, then those
-            unique values are local/specific to a given container.
-        </p>
-
-        <p>
-            For example, given Blog ▶ Post, where Post has a <a href="/models/fields#uid">UID</a> field named "slug".
-            If there are many Blog's, and many Posts within any given Blog, then the two Posts may have
-            same UID if they are in <b>separate</b> Blog's.
-        </p>
-    </section>
 
 </article>
 

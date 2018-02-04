@@ -6,17 +6,19 @@
 
 import {RepoUrl} from "📤";
 import {PlaySite} from "🔌";
+import {site} from '🔗';
 import * as Params from "&";
 
 let buffered = [];
 let bufferedIndex = 0;
 let finished = null;
+let url = site.url;
 
 /**
  * Initiate the (potentially long running) builder and callbacks.
  */
 
-new PlaySite(RepoUrl)
+new PlaySite(url)
 .branch(Params.branch)
 .build()
 .status((log)=>{
