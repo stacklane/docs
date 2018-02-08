@@ -108,17 +108,18 @@ role:
         <h6>Operation Names</h6>
         <p>
             The available permission operations are:
+            <code>none</code>,
             <code>all</code>,
-            <code>create</code>
+            <code>create</code>,
             <code>read</code>,
             <code>update</code>,
             <code>delete</code>,
             <code>state</code>
         </p>
         <p>
-            Most operations map directly to an HTTP method.
+            <!--Most operations map directly to an HTTP method.
             For predictable handling of endpoints that need to be role-constrained,
-            we recommend following this general pattern.
+            we recommend following this general pattern.-->
             Not all operations are applicable to all resources.
         </p>
 
@@ -127,19 +128,19 @@ role:
         <tr>
             <th scope="col">Operation</th>
             <th scope="col">Description</th>
-            <th scope="col">HTTP</th>
+            <!--th scope="col">HTTP</th-->
         </tr>
         </thead>
         <tbody>
         <tr>
             <td><code>all</code></td>
             <td>All operations are allowed.</td>
-            <td></td>
+            <!--td></td-->
         </tr>
         <tr>
             <td><code>create</code></td>
             <td>Create operations are allowed</td>
-            <td><b>POST</b></td>
+            <!--td><b>POST</b></td-->
         </tr>
         <tr>
             <td><code>read</code></td>
@@ -148,7 +149,7 @@ role:
                 <br>
                 <small>Depending on the case "read" may also refer to "get", "load", "accessible", or "visible".</small>
             </td>
-            <td><b>GET</b></td>
+            <!--td><b>GET</b></td-->
         </tr>
         <tr>
             <td><code>update</code></td>
@@ -157,7 +158,7 @@ role:
                 <br>
                 <small>May also refer to "editing" or "modifying" something that already exists.</small>
             </td>
-            <td><b>PUT</b></td>
+            <!--td><b>PUT</b></td-->
         </tr>
         <tr>
             <td><code>delete</code></td>
@@ -165,19 +166,20 @@ role:
                 <br>
                 <small>May also refer to quasi-deletes, such as an operation that could be rolled back.</small>
             </td>
-            <td><b>DELETE</b></td>
+            <!--td><b>DELETE</b></td-->
         </tr>
         <tr>
             <td><code>state</code></td>
             <td>State change operations are allowed.
                 <br>
                 <small>
-                This is a special case of "update", where a significant "state change" is also taking place.
-                A state change usually involves concepts regarding "status", "publish", or "lifecycle"
-                    -- typically auditing or event logging takes place as well.
+                Special case of a field value <code>update</code>,
+                representing a significant "change in state".
+                This occurs by nomenclature, for any field named
+                "state", "status", "stage", or "lifecycle".
                 </small>
             </td>
-            <td><b>PATCH</b></td>
+            <!--td><b>PATCH</b></td-->
         </tr>
         <tr>
             <td><code>list</code></td>
@@ -188,12 +190,17 @@ role:
                 anything that returns or operates on <i>potentially</i> multiple results.
                 </small>
             </td>
-            <td></td>
+            <!--td></td-->
         </tr>
         </tbody>
         </table>
 
         <h6>Full Role Example</h6>
+        <p>
+            The rule most specific to the requested resource will be used.
+            Rules do not aggregate or combine.
+            More general rules simply provide defaults when a more specific rule does not exist.
+        </p>
         <p>
         <pre class="language-yaml"><code>
 role:
@@ -201,6 +208,7 @@ role:
     📦: all
   TaskEditor:
     📦.Task: create,read,update,list
+    📦.Task.status: none
     </code></pre>
         </p>
 
