@@ -70,6 +70,43 @@ field: 📦.Task.id
     </code></pre>
         </p>
 
+        <p>
+            If the model can't be found, it will result in a standard not found <a href="/endpoints/errors">error</a>.
+            From a scripting and template standpoint, these are exported as "links" to the model.
+            These links are not a live model, but a pointer or reference to the model.
+            Basic properties from the live object are cached on the link for up to 10 minutes.
+            If you only need to read properties, and a certain amount of staleness is acceptable,
+            then use these properties instead of loading the live model.
+        </p>
+
+        <p>
+        <pre class="language-javascript"><code>
+import {task} from '🔗';
+
+// Access the task's cached 'title'
+let title = task.title;
+
+// Or get a live version of the task by calling get() on the link
+title = task.get().title;
+    </code></pre>
+        </p>
+
+        <p>
+            Often dynamic paths are used with <a href="/models/containers">containers</a>.
+            In this case it's not necessary to load a live version to "use" the container.
+        </p>
+
+        <p>
+        <pre class="language-javascript"><code>
+import {list} from '🔗';
+import {Task} from '📦';
+
+// Return all of the tasks for the cached list
+list(()=>Task.all());
+    </code></pre>
+        </p>
+
+
         <h3>Fixed Value Dynamic Paths</h3>
 
         <p>
@@ -87,20 +124,25 @@ values:
     </code></pre>
         </p>
 
-        <!--
         <p>
-            Fixed values paths are exposed to scripting and Mustache views
-            as a boolean, indicating which value is active:
+            Fixed values paths are exposed to scripting and templates
+            in two different ways.
         </p>
         <p>
-        <pre class="language-html"><code>
-&lt;!--TEMPLATE mustache--&gt;
-&#123;&#123;% import * as Style from '🎨'&#125;&#125;
+        <pre class="language-javascript"><code>
+import {thePathVar} from '🔗';
 
-&lt;img src="&#123;&#123;Style.image_background&#125;&#125;"&gt;
+// Directly access the value
+if (thePathVar.$value == 'option-one'){
+    ...
+}
+
+// Boolean switch
+if (thePathVar['option-one']){
+    ...
+}
     </code></pre>
         </p>
-        -->
     </section>
 
     <section>
