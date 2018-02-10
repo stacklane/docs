@@ -1,0 +1,139 @@
+<!--TEMPLATE mustache-->
+{{% partial /_layout }}
+
+{{< layout}}
+
+{{$title}}Dynamic Paths{{/title}}
+
+{{$content}}
+
+<article>
+    <header>
+        <h1>Dynamic Paths</h1>
+
+        <p>
+           Learn how to create a dynamic path parameters.
+        </p>
+    </header>
+
+    <section>
+        <p>
+            In many cases with data-driven content, URLs are dynamic &dash;
+            they are backed by a model field, such as its ID, or other
+            unique field.  To indicate that part of an endpoint path
+            is dynamic, use a named placeholder surrounded by brackets:
+        </p>
+
+        <p>
+            <code>/article/{article}/index.html</code>
+        </p>
+
+        <p>
+            By itself this is invalid.
+            Next tell Stacklane the types of values allowed for this dynamic path parameter.
+            Drop a settings file into <code>/article/{article}/🔗.yaml</code>.
+            This settings file indicates how the dynamic parameter <code>{article}</code>
+            is translated into an actual value.
+        </p>
+
+        <p>
+            For the value in this settings file, choose <b>one</b> of the following options.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="model">Model-Backed</a></h2>
+
+        <p>
+            A single model field may be referenced.
+            The field may be the model's unique ID, or a <a href="/models/fields#uid">UID field</a>.
+        </p>
+
+        <p>
+        <pre class="language-yaml"><code>
+field: 📦.Task.id
+    </code></pre>
+        </p>
+
+        <p>
+            If the model can't be found, it will result in a standard not found <a href="/endpoints/errors">error</a>.
+            From a scripting and template standpoint, these are exported as "links" to the model.
+            These links are not a live model, but a pointer or reference to the model.
+            Basic properties from the live object are cached on the link for up to 10 minutes.
+            If you only need to read properties, and a certain amount of staleness is acceptable,
+            then use these properties instead of loading the live model.
+        </p>
+
+        <p>
+        <pre class="language-javascript"><code>
+import {task} from '🔗';
+
+// Access the task's cached 'title'
+let title = task.title;
+
+// Or get a live version of the task by calling get() on the link
+title = task.get().title;
+    </code></pre>
+        </p>
+
+        <p>
+            Often dynamic paths are used with <a href="/models/containers">containers</a>.
+            In this case it's not necessary to load a live version to "use" the container.
+        </p>
+
+        <p>
+        <pre class="language-javascript"><code>
+import {list} from '🔗';
+import {Task} from '📦';
+
+// Return all of the tasks for the cached list
+list(()=>Task.all());
+    </code></pre>
+        </p>
+
+    </section>
+
+    <section>
+        <h2><a name="choice">Fixed Choice</a></h2>
+
+        <p>
+            Indicates that a set of strings are valid for this path parameter.
+            These must be valid URL identifiers (see more information on
+            <a href="/models/fields#uid">formatting URL identifiers</a>).
+        </p>
+
+        <p>
+        <pre class="language-yaml"><code>
+values:
+- option-one
+- another-option
+- etc
+    </code></pre>
+        </p>
+
+        <p>
+            Fixed values paths are exposed to scripting and templates
+            in two different ways.
+        </p>
+        <p>
+        <pre class="language-javascript"><code>
+import {thePathVar} from '🔗';
+
+// Directly access the value
+if (thePathVar.$value == 'option-one'){
+    ...
+}
+
+// Boolean switch
+if (thePathVar['option-one']){
+    ...
+}
+    </code></pre>
+        </p>
+    </section>
+
+
+</article>
+
+{{/content}}
+{{/layout}}
