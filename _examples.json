@@ -6,7 +6,7 @@
   },
   {
     "title":"Stacklane Docs",
-    "desc":"Make your head spin and run this doc from inside of itself.",
+    "desc":"Make your head spin and run this documentation site from inside of itself.",
     "src":"https://github.com/stacklane/web-docs.git"
   }
 ]
