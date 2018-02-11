@@ -86,8 +86,23 @@ title = task.get().title;
 import {list} from '🔗';
 import {Task} from '📦';
 
-// Return all of the tasks for the cached list
+// Return all of the tasks for the list container
 list(()=>Task.all());
+    </code></pre>
+        </p>
+
+        <p>
+            However when containers are used in dynamic paths, they are automatically selected and in scope.
+            In other words the above example is redundant and for illustration only.
+            A simpler form is:
+        </p>
+
+        <p>
+        <pre class="language-javascript"><code>
+import {Task} from '📦';
+
+// Return all of the tasks for the list container
+Task.all();
     </code></pre>
         </p>
 
