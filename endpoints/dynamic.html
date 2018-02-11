@@ -50,6 +50,7 @@
         </p>
 
         <p>
+        <code>/task/{task}/🔗.yaml</code>
         <pre class="language-yaml"><code>
 field: 📦.Task.id
     </code></pre>
@@ -76,9 +77,18 @@ title = task.get().title;
     </code></pre>
         </p>
 
+        <h3>Using with Containers</h3>
+
         <p>
             Often dynamic paths are used with <a href="/models/containers">containers</a>.
             In this case it's not necessary to load a live version to "use" the container.
+        </p>
+
+        <p>
+        <code>/list/{list}/🔗.yaml</code>
+        <pre class="language-yaml"><code>
+field: 📦.List.id
+    </code></pre>
         </p>
 
         <p>
