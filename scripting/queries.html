@@ -19,7 +19,7 @@
     <section>
         <p>
             Stacklane uses method chaining to define the criteria of returned query results.
-            In general with method chaining <i>order matters</i> -- for example, field filters must be defined
+            In general with method chaining <i>order matters</i> &mdash;; for example, field filters must be defined
             before calling <code>limit</code>.
         </p>
         <p>
@@ -162,8 +162,8 @@ let titlesOnly = Article.all().map(article=>({title:article.title}));
         </p>
         <p>
         <pre><code class="language-javascript">
-// Where $slugId is from a URL path parameter:
-let found = Article.slug($slugId).get();
+let slugId = '....';
+let found = Article.slug(slugId).get();
 // Because of error handling, 'found' is always defined at this point
         </code></pre>
         </p>

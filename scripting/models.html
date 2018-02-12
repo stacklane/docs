@@ -22,15 +22,15 @@
         <h3>Create</h3>
         <p>
         <pre><code class="language-javascript">
-let newList = new List();
+let newList = new List().title('x');
         </code></pre>
         </p>
 
         <h3>Read</h3>
         <p>
         <pre><code class="language-javascript">
-// Where $listId is a URL path parameter
-let list = List.get($listId);
+let listId = '...';
+let list = List.get(listId);
 // Because of error handling, 'list' is always defined at this point
 let listTitle = list.title;
         </code></pre>
@@ -39,7 +39,8 @@ let listTitle = list.title;
         <h3>Update</h3>
         <p>
         <pre><code class="language-javascript">
-List.get($listId).title = 'new title'; // field/property setter
+let listId = '...';
+List.get(listId).title = 'new title'; // field/property setter
 new List().title('new title').otherField('value'); // fluent setter
         </code></pre>
         </p>
@@ -47,7 +48,8 @@ new List().title('new title').otherField('value'); // fluent setter
         <h3>Delete</h3>
         <p>
         <pre><code class="language-javascript">
-List.get($listId).remove();
+let listId = '...';
+List.get(listId).remove();
         </code></pre>
         </p>
     </section>
@@ -68,8 +70,9 @@ List.get($listId).remove();
         </p>
         <p>
         <pre><code class="language-javascript">
-// Load the container 'List', using URL path $listId:
-let myList = List.get($listId);
+// Load the container 'List'
+let listId = '...';
+let myList = List.get(listId);
 
 // Select myList, and get all Note titles for myList:
 let titleStream = myList(()=>{
@@ -85,8 +88,13 @@ titleStream;
         </p>
         <p>
         <pre><code class="language-javascript">
-List.get($listId)(()=>Note.all().map((n)=>n.title)));
+let listId = '...';
+List.get(listId)(()=>Note.all().map((n)=>n.title)));
         </code></pre>
+        </p>
+        <p>
+            Keep in mind that when working with containers in <a href="/endpoints/dynamic">dynamic REST paths</a>,
+            the container selection has already occurred.
         </p>
     </section>
 
@@ -116,9 +124,10 @@ List.get($listId)(()=>Note.all().map((n)=>n.title)));
         </p>
         <p>
         <pre><code class="language-javascript">
+let thingId = '....';
 let thing = null;
 try {
-    thing = Thing.get($thingId);
+    thing = Thing.get(thingId);
 } catch ($NotFound){
     // At this point we've specifically caught $NotFound,
     // as opposed to catching some unrelated error/exception.
