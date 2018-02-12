@@ -148,6 +148,35 @@ $ui-sign-in: 'Sign In';
 &lt;span&gt;&#123;&#123; 🎨.ui-sign-in &#125;&#125;&lt;/span&gt;
     </code></pre>
         </p>
+        <p>
+            Arguments are supported, for example:
+        </p>
+        <pre class="language-html"><code> <!-- NOTE, can't use CSS lang because brackets aren't interpreted in the string right -->
+$ui-hello: 'Hello, {0}';
+    </code></pre>
+        </p>
+        <p>
+            Then in a Mustache template:
+        </p>
+        <p>
+        <pre class="language-html"><code>
+&lt;!--TEMPLATE mustache--&gt;
+&#123;&#123; % import {Me} from '👤' &#125;&#125;
+
+&lt;span&gt;&#123;&#123; 🎨.ui-hello Me.name &#125;&#125;&lt;/span&gt;
+    </code></pre>
+        </p>
+        <p>
+            Results in:
+        </p>
+        <pre class="language-html"><code>
+Hello, John
+    </code></pre>
+        </p>
+        <p>
+            Argument formatting options are based on the <a href="https://ssl.icu-project.org/apiref/icu4j/com/ibm/icu/text/MessageFormat.html">ICU project</a>.
+        </p>
+
 
         <!--
         <h3>Modes</h3>
