@@ -40,42 +40,6 @@
     </section>
 
     <section>
-        <h2><a name="tenant">Tenant</a></h2>
-
-        <p>
-            Use for top level <a href="/models/containers">containers</a> where there is a clear case to silo or
-            strongly isolate all of the descendant data models.
-            "Account", "Project", etc -- any top level container whose data is highly specific to it.
-        </p>
-
-        <p>
-            Keep in mind that due to their narrow purpose, Tenant's are highly limited compared to other types.
-            You may only create or update <b>1</b> Tenant in a single request.
-            They can only be retrieved by a field defined as unique, or their ID.
-        </p>
-
-        <h3>Query Considerations</h3>
-        <p>
-            A Tenant container starts a new "query isolation" scope.
-            Given the example hierarchy Account ▶︎ List ▶︎ Task, and a query for <code>Task.name('something')</code>,
-            the scope of Tasks that will be queried varies depending on which of the two possible
-            ancestor containers are selected.
-        </p>
-        <p>
-            If the <code>Task.name('something')</code> query is executed in the scope of the User, then all Tasks across
-            all Lists by that single Account will be queried by name.
-        </p>
-        <p>
-            If the <code>Task.name('something')</code> query is executed in the scope of a List, then only Tasks within
-            the single List will be queried by name.
-        </p>
-        <p>
-            Because query isolation is in effect starting at a single User,
-            it is not possible to search for all Tasks's across all User's.
-        </p>
-    </section>
-
-    <section>
         <h2><a name="event">Event</a></h2>
 
         <p>
