@@ -93,6 +93,13 @@ role:
     [RESOURCE_RULE]: [OPERATIONS_ALLOWED]
     </code></pre>
 
+        <p>Or:</p>
+
+        <pre class="language-yaml"><code>
+role:
+  [ROLE_NAME]: [OPERATIONS_ALLOWED]
+    </code></pre>
+
         <h6>Resource Rule</h6>
         <p>
             Resource rules for models simply follow the data structure, from general to specific.
@@ -263,6 +270,66 @@ groups:
             distinguish group names from the singular form recommended for role names.
         </p>
     </section>
+
+    <section>
+        <h2><code><a name="base">default</a></code></h2>
+
+        <div class="alert alert-info small" role="alert">
+            For most cases with user-enabled sites we do not recommend setting a value for this.
+            This ensures that your custom roles start from a blank slate,
+            since the default for this value is <b>none</b>.
+        </div>
+
+        <p>
+            A special role type that is <i>always</i> in effect &mdash;
+            for all authenticated <i>and</i> unauthenticated users.
+        </p>
+
+        <pre class="language-yaml"><code>
+default:
+  [RESOURCE_RULE]: [OPERATIONS_ALLOWED]
+    </code></pre>
+
+        <p>Or:</p>
+
+        <pre class="language-yaml"><code>
+default: [OPERATIONS_ALLOWED]
+    </code></pre>
+
+        <p>
+            For example, to make everything readable by default:
+        </p>
+
+        <pre class="language-yaml"><code>
+default: read
+    </code></pre>
+
+        <p>
+            Take care with the default rule since permissions may only be granted, never revoked.
+            In other words you can't create another role that reduces the permissions given
+            by the <code>default</code> role.
+        </p>
+
+        <p>
+            If there is no user configuration file defined, then this role is effectively:
+        </p>
+
+        <pre class="language-yaml"><code>
+default: all
+    </code></pre>
+
+        <p>
+            When a user configuration file <i>is</i> defined, but this role is not specified in the file,
+            then it is effectively <code>none</code>, which ensures
+            that custom roles start with a blank slate.
+        </p>
+
+        <pre class="language-yaml"><code>
+default: none
+    </code></pre>
+
+    </section>
+
 </article>
 
 
