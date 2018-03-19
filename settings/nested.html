@@ -36,9 +36,13 @@
 
         <p>
         <pre class="language-yaml"><code>
-source: https://github.com/name/project.git#branch-or-tag
+source: https://github.com/owner/project.git#branch-or-tag
     </code></pre>
         </p>
+
+        <div class="alert alert-warning small" role="alert">
+            The <i>owner</i> must match the owner of the source including this nested mount.
+        </div>
     </section>
 
     <section>
@@ -55,6 +59,11 @@ source: https://github.com/name/project.git#branch-or-tag
 namespace: my-namespace
     </code></pre>
         </p>
+
+        <div class="alert alert-warning small" role="alert">
+            Changing the namespace identifier after it contains live / production data
+            will result in a loss of data.
+        </div>
     </section>
 
     <section>
