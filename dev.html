@@ -1,0 +1,98 @@
+<!--TEMPLATE mustache-->
+
+{{% partial /_layout }}
+
+{{< layout}}
+
+{{$content}}
+
+<style>
+    .plugins .card-title img{
+        height: 1em;
+    }
+</style>
+
+<article>
+    <header>
+        <h1>Development</h1>
+
+    </header>
+
+    <section>
+        <p>
+            Stacklane doesn't require any special UI setup to start coding -- everything
+            needed to run a Stacklane site is in standard file formats,
+            hosted in a GitHub source repository.  Branch and tag to your heart's delight.
+            We recommend using WebStorm and its Stacklane plugin.
+        </p>
+    </section>
+
+    <section class="plugins">
+        <h2><a name="ide">IDE Plugins</a></h2>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"><img src="images/WebStormLogo.png" /> WebStorm</h4>
+                        <h6 class="card-subtitle mb-2 text-muted">+ Stacklane Plugin</h6>
+                        <p class="card-text">
+                            WebStorm natively supports all
+                            Stacklane file formats, including GIT integration.
+                            Grab the
+                            <a target="_blank" href="https://plugins.jetbrains.com/plugin/10313-stacklane">Stacklane plugin</a>
+                            for WebStorm for easy testing.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a target="_blank" href="https://www.jetbrains.com/webstorm/download/"
+                           class="btn btn-sm btn-primary">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info small mt-4" role="alert">
+            Check out the <a href="/api/">Build API</a> to learn about developing new IDE plugins.
+        </div>
+    </section>
+
+    <section>
+        <h2><a name="credentials">Credentials</a></h2>
+
+        <p>
+            For certain functionality such as <a href="/scripting/connectors">connectors</a> to third party APIs,
+            you'll need to define credentials with your build.
+            Defining credentials is done with a JSON file that is specified in an IDE-specific way.
+        </p>
+
+        <h3>Basic Format</h3>
+        <p>
+        <pre class="language-javascript"><code>
+{
+  "🔑":{
+    "CREDENTIAL_NAME":{
+      "KEY_NAME":"KEY_VALUE"
+    }
+  }
+}
+    </code></pre>
+        </p>
+
+        <h3>Example</h3>
+        <p>
+        <pre class="language-javascript"><code>
+{
+  "🔑":{
+    "api:site24x7.com":{
+      "token":"[your-api-token]"
+    }
+  }
+}
+    </code></pre>
+        </p>
+    </section>
+</article>
+
+{{/content}}
+{{/layout}}

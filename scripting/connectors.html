@@ -1,0 +1,163 @@
+<!--TEMPLATE mustache-->
+{{% partial /_layout }}
+
+{{< layout}}
+
+{{$title}}Connectors{{/title}}
+
+{{$content}}
+
+<article>
+    <header>
+        <h1>Connectors</h1>
+
+        <p>
+            Learn about defining and using Connectors, which wrap third party REST APIs.
+        </p>
+    </header>
+
+    <section>
+        <p>
+            Connectors provide a secure and type-safe way to access third party REST APIs.
+            Defining a connector requires only a simple file/folder layout that closely
+            maps to the third party's REST structure.
+            Each connector uses a dedicated GIT repository.
+        </p>
+        <p>
+            Before defining a new connector, double check that one doesn't already exist in our
+            <a href="https://github.com/stacklane-registry/">registry</a>.
+            If you develop a new connector, get in touch &dash; we'd love to consider including
+            it in the public registry.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="manifest">Manifest</a></h2>
+
+        <p>
+           In the root directory, define a manifest file: <code>/🎛.yaml</code>
+        </p>
+
+        <h3>Example</h3>
+        <p>
+        <pre class="language-yaml"><code>
+name: site24x7.com
+
+type: rest-api
+
+rest-api:
+  prefix: https://www.site24x7.com/api
+  docs: https://www.site24x7.com/help/api/
+  token: Zoho-authtoken
+  payload: json
+  accept: application/json; version=2.0
+        </code></pre>
+        </p>
+
+        <h3>name</h3>
+        <p>
+            Typically the domain name the connector is for.
+            This name is used for <a href="#credentials">credential</a> keys,
+            and once in production use the name should never change.
+            Using the domain also ensures uniqueness.
+        </p>
+
+        <h3>prefix</h3>
+        <p>
+            The <code>prefix</code> will be prepended to all endpoint paths
+            for this connector.
+        </p>
+        <h3>token</h3>
+        <p>
+            The name of the token expected in the <code>Authorization</code> header.
+        </p>
+        <h3>payload</h3>
+        <p>
+            Either <code>json</code> or <code>form</code>,
+            to indicate how request content should be encoded and passed to non-GET endpoints.
+        </p>
+        <h3>accept</h3>
+        <p>
+            The <code>Accept</code> header expected by the third party API.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="definition">Definition</a></h2>
+
+        <p>
+            The definition of a connector involves mapping
+            folders/files to third party REST endpoints.
+        </p>
+
+        <h3>Example</h3>
+        <p>
+        <pre class="language-yaml"><code>
+/balance/history/{txn}/get.yaml
+
+REST endpoint result:
+
+GET /balance/history/{txn}
+
+JavaScript use:
+
+balance.history('txn').get()
+        </code></pre>
+        </p>
+
+        <h3>POST Example</h3>
+        <p>
+        <pre class="language-yaml"><code>
+/customers/{customer}/update.yaml
+
+REST endpoint result:
+
+POST /customers/{customer}
+
+JavaScript use:
+
+customers('customer').update({ payload });
+        </code></pre>
+        </p>
+        <p>
+            Within the update.yaml file specify <code>method: POST</code>
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="importing">Importing</a></h2>
+
+        <p>
+            Connectors must be imported into the project that will use it.
+            Define a file in the root named <code>/🔌.yaml</code>
+            Within this file specify each imported connector's GIT source
+            (branch is optional):
+        </p>
+
+        <p>
+        <pre class="language-yaml"><code>
+- https://github.com/stacklane-registry/site24x7.com.git#branch-or-tag
+        </code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="credentials">Credentials</a></h2>
+
+        <p>
+            Most third party APIs require an authorization token.
+            To pass the authorization token during development builds,
+            see the <a href="/dev#credentials">development credentials</a>
+            JSON format.
+        </p>
+        <p>
+            The credential key for a connector is <code>api:[connector-name]</code>,
+            where [connector-name] is the name of the connector given in the manifest.
+        </p>
+    </section>
+
+</article>
+
+{{/content}}
+
+{{/layout}}
