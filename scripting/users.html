@@ -101,18 +101,19 @@ if (Role.Me){
         <p>
             <a href="/models/types#profile">User profiles</a>
             are a type of model that allows you to associate custom fields and data directly with a specific user.
-            As mentioned in the documentation you can either associate the user profile with only a user,
-            <b>or</b> you may associate the user profile with <i>both</i> a user and a tenant container.
+            You can either associate the user profile with only a user,
+            <b>or</b> you may associate the user profile with <i>both</i> a user and a
+            <a href="/models/containers">container</a>.
         </p>
 
         <p>
-            If you're accessing user profiles for the currently logged in user,
+            W;hen accessing user profiles for the currently logged in user,
             use the special <code>me()</code> method to load them.
         </p>
 
         <p>
         <pre class="language-javascript"><code>
-import {BasicProfile} from '📦';
+import {BasicProfile} from '📦'
 
 let currentUserProfile = BasicProfile.me();
     </code></pre>
