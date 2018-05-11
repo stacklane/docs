@@ -123,27 +123,6 @@ let currentUserProfile = BasicProfile.me();
             Important: the me() method acts like a singleton, and if there hasn't been a user profile setup
             it will auto-create one.
         </p>
-
-        <h3>Adding Groups</h3>
-        <p>
-            Users are associated with roles via groups.
-            For more information on roles and groups see the <a href="/settings/users">user settings</a>.
-        </p>
-        <p>
-            All user profiles have a <code>groups</code> field and embedded <code>Group</code> model.
-        </p>
-        <p>
-            Adding a group in <code>POST.js</code>:
-        </p>
-        <p>
-        <pre class="language-javascript"><code>
-import {AccountUser} from '📦';
-
-AccountUser.me().groups.add(
-  new AccountUser.Group().name('Editors')
-);
-    </code></pre>
-        </p>
     </section>
 </article>
 

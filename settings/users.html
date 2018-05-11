@@ -69,9 +69,7 @@
         <h2><code><a name="roles">role</a></code></h2>
 
         <div class="alert alert-info small" role="alert">
-            Changing role names is a <i>safe</i> operation,
-            as long as you also update any code references to them.
-            Role names are <i>not</i> associated with data.
+            Changing role names may not be a safe operation if the role has been associated with a user.
         </div>
 
         <p>
@@ -116,8 +114,9 @@ role:
             The available permission operations are:
             <code>none</code>,
             <code>all</code>,
-            <code>create</code>,
+            <code>access</code>,
             <code>read</code>,
+            <code>create</code>,
             <code>update</code>,
             <code>delete</code>,
             <code>state</code>
@@ -144,18 +143,27 @@ role:
             <!--td></td-->
         </tr>
         <tr>
-            <td><code>create</code></td>
-            <td>Create operations are allowed</td>
-            <!--td><b>POST</b></td-->
+            <td><code>access</code></td>
+            <td>
+                Access operations are allowed.
+                <br>
+                <small>May also refer to "select", "exists", "accessible", or "visible".</small>
+            </td>
+            <!--td><b>GET</b></td-->
         </tr>
         <tr>
             <td><code>read</code></td>
             <td>
                 Read operations are allowed.
                 <br>
-                <small>Depending on the case "read" may also refer to "get", "load", "accessible", or "visible".</small>
+                <small>May also refer to "get", "load".</small>
             </td>
             <!--td><b>GET</b></td-->
+        </tr>
+        <tr>
+            <td><code>create</code></td>
+            <td>Create operations are allowed</td>
+            <!--td><b>POST</b></td-->
         </tr>
         <tr>
             <td><code>update</code></td>
@@ -222,57 +230,11 @@ role:
         <p>
             Names must start with an uppercase character and be valid identifiers.
             We recommend using a singular form for role names.
-            This will help to clearly
-            distinguish role names from the plural form recommended for group names.
         </p>
     </section>
 
     <section>
-        <h2><code><a name="groups">groups</a></code></h2>
-
-        <div class="alert alert-warning small" role="alert">
-            Unlike role names, group names are <i>not</i> freely changeable in production.
-            In production they may have been used and already associated with existing users.
-        </div>
-
-        <p>
-            Groups contain 1 or more named roles.
-            Users are assigned to groups.
-            Scripts and templates are <i>unaware</i> of groups --
-            they are only aware of the roles activated by groups.
-        </p>
-
-        <p>
-            Remember, groups are associated with all of your user data.
-            Freely change and refactor your role names (and the code that uses them, of course),
-            but remember that changing in-use group names will
-            alter access for users associated with those groups.
-        </p>
-
-        <h6>Full Group Example</h6>
-        <p>
-            Beneath the name of group, list out the roles it contains.
-        </p>
-        <pre class="language-yaml"><code>
-groups:
-  Administrators:
-    - Admin
-  Editors:
-    - TaskEditor
-    </code></pre>
-
-        <h6>Naming Conventions</h6>
-        <p>
-            Names must start with an uppercase character and be valid identifiers.
-            Since groups represent a collection of many users,
-            we recommend using the plural form of group names.
-            This will also more clearly
-            distinguish group names from the singular form recommended for role names.
-        </p>
-    </section>
-
-    <section>
-        <h2><code><a name="base">default</a></code></h2>
+        <h2><code><a name="default">default</a></code></h2>
 
         <div class="alert alert-info small" role="alert">
             For most cases with user-enabled sites we do not recommend setting a value for this.
@@ -330,6 +292,97 @@ default: none
 
     </section>
 
+    <section>
+        <h2><code><a name="sub">Sub-Directories</a></code></h2>
+
+        <p>
+            By default the root 👤.yaml impacts all files and descendant directories.
+        </p>
+        <p>
+            Additional user settings files (👤.yaml) may be selectively placed in sub-directories.
+            Use this functionality to grant / revoke / modify the permission rules for specific
+            roles or the <code>default</code> role.
+            As with the root file, settings in a sub-directory file are in scope for all descendants,
+            unless another 👤.yaml  is specified, in which case that begins a new scope.
+        </p>
+        <p>
+            When using sub-directory files to define a new permission scope, any role names
+            specified must already be defined in the root settings file.
+            In other words you can't use a sub-directory file to create a new role, only
+            redefine an existing role.
+            As with the root file, everything defaults to <code>none</code>,
+            and you must explicitly redefine rules for that sub-directory.
+        </p>
+    </section>
+
+    <!--
+    <section>
+        <h2><code><a name="assign">Assigning Roles</a></code></h2>
+
+        <p>
+
+        </p>
+    </section>
+    -->
+
+    <section>
+        <h2><code><a name="resolving">Resolving</a></code></h2>
+
+        <p>
+            To check access permissions, such as loading a specific
+            model instance <code>let prod = Product.get('[id]')</code>,
+            the platform will check:
+        </p>
+
+        <ul>
+            <li><code>access</code> <code>📦.Product</code>?</li>
+            <li><code>read</code> <code>📦.Product.id</code>?</li>
+        </ul>
+
+        <p>
+            Assuming the <code>Product</code> is found,
+            next it will check whether the user has any roles
+            specific to that unique product instance.
+            These roles will be brought into scope
+            only while accessing the specific product.
+        </p>
+
+        <p>
+            As additional operations on the product are performed,
+            such as <code>product.title = 'New Title'</code>,
+            the system will use all in-scope roles to determine:
+        </p>
+
+        <ul>
+            <li><code>update</code> <code>📦.Product.title</code>?</li>
+        </ul>
+
+        <h3>In-Scope Roles</h3>
+
+        <p>
+            To determine whether a specific operation is possible,
+            the platform is considering a combination of permission
+            rules as follows:
+        </p>
+        <ul>
+            <li>👤.yaml <code>default</code> role.</li>
+            <li>Roles assigned to the authenticated user.</li>
+            <li>Roles assigned between authenticated user and a specific model instance.</li>
+            <li>Roles assigned between authenticated user and a model's parent + ancestor <a href="/models/containers">containers</a>.</li>
+        </ul>
+        <p>
+            As we are only concerned with granting permissions,
+            if multiple roles are in effect then the final effective role is a combination of all
+            assigned and in-scope roles.
+        </p>
+        <p>
+            It's also important to keep in mind the first step of the process.
+            For this process 👤.yaml is referring to the currently in-scope
+            settings file, which may be a sub-directory file.
+            In this way both revocation and super-user scenarios
+            are possible simply redefining roles for specific sub-directories.
+        </p>
+    </section>
 </article>
 
 
