@@ -53,39 +53,20 @@ import {Me} from '👤';
 ({name: Me.name});
     </code></pre>
         </p>
-    </section>
 
-    <section>
-        <h2><a name="role">Current Role</a></h2>
-
+        <h3>Checking Optional Authentication</h3>
         <p>
-            The <code>Role</code> object in the module '👤' is a type-safe set of boolean fields.
-            Each field corresponds to a pre-defined role configured in the <a href="/settings/users">user settings file</a>.
-        </p>
-        <p>
-            To query whether a specific role is active:
-        </p>
-        <p>
-        <pre class="language-javascript"><code>
-import {Role} from '👤';
-
-if (Role.MyCustomRole){
-    ...
-}
-    </code></pre>
-        </p>
-        <p>
-            In most cases authentication state is guaranteed by how the user authentication settings and endpoints are configured.
+            In most cases authentication state is <b>guaranteed</b> by how the user authentication
+            settings and endpoints are configured.
             But in certain cases of "optional authentication"
             you may need to know whether the <code>Me</code> variable is available (whether a user authenticated).
-            In this case you can check the special role of the same name:
         </p>
         <p>
         <pre class="language-javascript"><code>
-import {Me, Role} from '👤';
+import {Me} from '👤';
 import {Msg} from '🎨';
 
-if (Role.Me){
+if (Me.linked){
     ({name: Me.name});
 } else {
     // This message must be configured in a style settings file
@@ -115,7 +96,7 @@ if (Role.Me){
         <pre class="language-javascript"><code>
 import {BasicProfile} from '📦'
 
-let currentUserProfile = BasicProfile.me();
+let currentUserProfile = BasicProfile.me().get();
     </code></pre>
         </p>
 
