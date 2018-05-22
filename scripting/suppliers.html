@@ -44,14 +44,17 @@
 
         <p>
             Choosing a supplier type depends on its purpose and allowed values.
-            Supplier .js files always begin with a special prefix for its type.
-            The remaining filename is for documentation purposes only, and
-            typically indicates what is being exported or why.
+            Supplier .js files are placed into a sub-directory named '📤',
+            and any directory may have a supplier sub-directory.
+            Suppliers are only visible to the current directory where
+            the supplier directory is located, as well as descendant directories.
+            This allows scoping exported supplier values to only
+            those endpoints which need the values/functions.
         </p>
 
         <h3>Request Supplier</h3>
         <p>
-            <code>📤Name.js</code>
+            <code>📤/AnyName.js</code>
             Allowed exports: Primitives (String, Number, Boolean), Map/Object of Primitives,
             a single instance of a <a href="/scripting/models">Model</a>, or a <a href="/scripting/queries">Query</a>.
         </p>
@@ -63,7 +66,7 @@
 
         <h3>Function Supplier</h3>
         <p>
-            <code>📤{}Name.js</code>.
+            <code>📤/{}AnyName.js</code>.
             Allowed exports: "Utility" functions only.  Function Suppliers
              have very limited functionality. They may not import anything (not even other suppliers).
             Their primary purpose is to provide functions that perform <i>calculations or transformations</i>
@@ -164,7 +167,7 @@ import {Something, Other, That} from '📤';
             Because suppliers follow the hierarchical REST structure, they have varying levels of specificity for an endpoint.
             The most specific supplier is one with the same name as the endpoint itself.
             For example, an endpoint named <code>index.html</code>
-            may also have a supplier named <code>📤index.js</code>.
+            may also have a supplier named <code>📤/index.js</code>.
             As the most specific supplier, only <code>index.html</code> may access values exported by <code>📤index.js</code>
             (however <code>index.html</code> may also access other in-scope suppliers).
         </p>
@@ -172,7 +175,7 @@ import {Something, Other, That} from '📤';
         <h3><a name="strict">Pinned Supplier</a></h3>
         <p>
             An extension to an endpoint specific supplier is a "pinned" supplier.
-            Indicate a pinned supplier with the pin emoji, e.g. <code>📤📌index.js</code>.
+            Indicate a pinned supplier with the pin emoji, e.g. <code>📤/📌index.js</code>.
             Pinned suppliers may be used to hide <i>or</i> re-expose broader/earlier supplied values.
         </p>
         <p>
