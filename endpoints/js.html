@@ -84,12 +84,12 @@
             A few conditions must exist for this to occur.
 
             <ul>
-                <li>It must be an POST/PUT/DELETE request.</li>
+                <li>It must be a POST/PUT/DELETE request.</li>
                 <li>"X-Requested-With" header must exist and equal "XMLHttpRequest" (denoting an AJAX request).</li>
-                <li>The script must emit an absolute path for the app, similar to an regular internal redirect.</li>
+                <li>The script must emit an absolute path for the app, similar to a regular internal redirect.</li>
             </ul>
 
-            Given a <code>POST.js</code>code called via AJAX and returning '/show/all', the server would
+            Given a <code>POST.js</code> code called via AJAX and returning '/show/all', the server would
             internally route and return the result of executing <code>GET /show/all</code>, <b>instead of</b>
             requiring the client to round trip as it would with a normal internal redirect.
         </p>
@@ -101,7 +101,7 @@
             <pre><code class="language-javascript">
 ({
   hello: 'world'
-})
+});
             </code></pre>
 
             Result:
@@ -120,7 +120,7 @@
 ({
   list: LoadedList.name,
   tasks: LoadedList(()=>Task.all().map(t=>({name:t.title}}))
-})
+});
             </code></pre>
 
             Result:
