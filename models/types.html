@@ -31,11 +31,25 @@
         </p>
 
         <p>
-            While this type has broad cases, review the other model types before choosing it,
-            to ensure that another type is not more suitable. It should not be
+            While this type has broad cases, review the other model types before choosing
+            in case another type is more suitable. It should not be
             used for extremely unbounded data, such as <i>Orders</i> or <i>Comments</i>
             (better suited for the Event type).  It does not allow large text fields,
             and is therefore not suitable for an article, blog post, or product description.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="content">Content</a></h2>
+        <p>
+            Represents content that is hand crafted by a small number of people,
+            and typically viewed by a much wider audience.
+            Intended for content management systems, and it may represent
+            anything from an Article to a Product.
+            It includes the capability for rich text fields, as well as image fields.
+        </p>
+        <p>
+            Content is on our roadmap for Q1 2019.
         </p>
     </section>
 
@@ -44,14 +58,21 @@
 
         <p>
             This type is for events, time-series data, activity, or logging.
-            Events accumulate (in a healthy business), as time goes by, at a potentially high frequency/volume.
-            Events are not "crafted" or "authored" -- they "occur".
+            Events accumulate over time at a potentially high frequency/volume.
         </p>
+
         <p>
             Orders, comments, and Twitter posts are considered "events", from the standpoint of their
             potentially high frequency, their small size, and their permanence/low-mutability.
             Once created they are usually not modified again.
         </p>
+
+        <p>
+            Events are on our 2019 roadmap.
+        </p>
+
+        <!--
+
         <p>
             Another distinguishing characteristic is that newer Events are generally more relevant than older events,
             with very old Events having little to no relevance.
@@ -93,13 +114,7 @@
                     thereby enforcing they are "purpose built" for that Event type.</li>
             </ul>
         </p>
-    </section>
-
-    <section>
-        <h2><a name="content">Content</a></h2>
-        <p>
-            This is on our roadmap for Q1 2019.
-        </p>
+        -->
     </section>
 
     <section>
