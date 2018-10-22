@@ -58,6 +58,41 @@
     </section>
 
     <section>
+        <h2><a name="options">Options</a></h2>
+
+        <p>
+            <code>options</code> are a special purpose string field, limited to pre-configured string values.
+            The options / values must be all lowercase single byte letter characters (a-z).
+            Underscore and dash are also allowed.
+            <br>
+            Provisioned size: 50 bytes.
+        </p>
+
+        <h3>Definition</h3>
+        <p>
+        <pre class="language-yaml"><code>
+status:
+  type: options
+  values:
+    - pending
+    - disabled
+    - active
+    </code></pre>
+        </p>
+
+        <h3>Type-Safe Access</h3>
+        <p>
+            Instead of referencing the available values by string, it's recommend to use
+            the type-safe version.  Given a <code>Product</code> model:
+        </p>
+        <p>
+        <pre class="language-javascript"><code>
+let p = new Product().status(Product.status.pending);
+    </code></pre>
+        </p>
+    </section>
+
+    <section>
         <h2><a name="special">Speciality</a></h2>
 
         <p>
