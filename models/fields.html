@@ -105,6 +105,14 @@ let p = new Product().status(Product.status.pending);
             <br>
             Provisioned size: 3 bytes.
         </p>
+
+        <h3><code>map</code></h3>
+        <p>
+            Special case field that should be used sparingly.
+            Maps support free-form string, number, and boolean values.
+            <i>Maps are not indexed, and not queryable</i>.
+            They are only suitable for free-form fields that may vary widely for the same model type.
+        </p>
     </section>
 
     <section>
