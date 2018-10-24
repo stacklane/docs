@@ -60,6 +60,22 @@ namespace: my-namespace
     </code></pre>
         </p>
 
+        <h3>Shared Data</h3>
+        <p>
+            A nested site may share data with its parent by specifying:
+        </p>
+
+        <p>
+        <pre class="language-yaml"><code>
+namespace: shared
+    </code></pre>
+        </p>
+
+        <p>
+            However this should only be used in special scenarios, especially when the parent and nested
+            site are sharing the same data model.
+        </p>
+
         <div class="alert alert-warning small" role="alert">
             Changing the namespace identifier after it contains live / production data
             will result in a loss of data.
@@ -80,6 +96,24 @@ namespace: my-namespace
 🎨:
   some-option: true
   the-color: aliceblue
+    </code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="keys">keys</a></h2>
+
+        <p>
+            Since secure keys and credentials are scoped to the parent, there may be certain keys
+            that the parent needs to expose to a nested site.
+            The parent must explicitly specify individual keys,
+            and any other keys will be non-existent for the nested site.
+        </p>
+
+        <p>
+        <pre class="language-yaml"><code>
+keys:
+  - api:stripe.com
     </code></pre>
         </p>
     </section>
