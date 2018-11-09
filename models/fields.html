@@ -67,7 +67,7 @@
             Provisioned size: 50 bytes.
         </p>
 
-        <h3>Definition</h3>
+        <h3>Example Definition</h3>
         <p>
         <pre class="language-yaml"><code>
 status:
@@ -112,6 +112,31 @@ let p = new Product().status(Product.status.pending);
             Maps support free-form string, number, and boolean values.
             <i>Maps are not indexed, and not queryable</i>.
             They are only suitable for free-form fields that may vary widely for the same model type.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="image">Images</a></h2>
+
+        <p>
+            The <code>image</code> field type stores a single image. Supported image types are JPG, GIF, PNG.
+            For more information on uploading and displaying images,
+            see <a href="/models/images">Models / Images</a>.
+        </p>
+
+        <h3>Maximum Size</h3>
+        <p>
+            Upload sizes of up to {{🎨.image-max-upload}} are accepted.
+            However images that exceed {{🎨.image-resize-width}} will be proportionally
+            re-sized to {{🎨.image-max-upload}} wide with a variable height.
+            The size of an image does <b>not</b> contribute to the size of a model.
+        </p>
+
+        <h3>Example Definition</h3>
+        <p>
+        <pre class="language-yaml"><code>
+coverImage: image
+    </code></pre>
         </p>
     </section>
 
@@ -189,7 +214,7 @@ let p = new Product().status(Product.status.pending);
     </section>
 
     <section>
-        <h2><a name="uid">URL Identifiers (UID)</a></h2>
+        <h2><a name="uid">URL Identifiers</a></h2>
 
         <p>
             <code>uid</code> is used for "user friendly" unique identifiers destined for URL paths (aka URL slugs).

@@ -24,7 +24,7 @@
             If your query parameter contains a dash (or any other incompatible identifier character),
             such as <code>this-that</code>, then import it with an underscore instead: <code>this_that</code>.
         </p>
-        <p>
+
         <pre><code class="language-javascript">
 /* import all at a prefix */
 
@@ -34,7 +34,6 @@ import * as Params from '&';
 
 import {specific, param, here as Other} from '&';
             </code></pre>
-        </p>
     </section>
 
     <section>
@@ -45,7 +44,7 @@ import {specific, param, here as Other} from '&';
             If your form parameter contains a dash (or any other incompatible identifier character),
             such as <code>this-that</code>, then import it with an underscore instead: <code>this_that</code>.
         </p>
-        <p>
+
         <pre><code class="language-javascript">
 /* import all at a prefix */
 
@@ -55,7 +54,6 @@ import * as Form from 'form';
 
 import {specific, param, here as Other} from 'form';
             </code></pre>
-        </p>
     </section>
 
     <section>
@@ -65,18 +63,13 @@ import {specific, param, here as Other} from 'form';
             All utilities are safe and efficient to use during any HTTP method.
         </p>
         <h3>Encoding</h3>
-        <p>
         <pre><code class="language-javascript">
 import {Encoding} from 'util';
 
 Encoding.base64Url().encode('string');
 Encoding.base64Url().encodeNum(1234);
-Encoding.html().escape('<p>html</p>');
+Encoding.html().escape('&lt;p&gt;html&lt;/p&gt;');
             </code></pre>
-        </p>
-        <p>
-
-        </p>
     </section>
 
 </article>
