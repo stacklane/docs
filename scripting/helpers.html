@@ -17,7 +17,7 @@
     </header>
 
     <section>
-        <h2><a name="query">Query/URL Parameters</a></h2>
+        <h2><a name="url">URL Parameters</a></h2>
 
         <p>
             Access URL query parameters via the <code>'&'</code> module.
@@ -54,6 +54,43 @@ import * as Form from 'form';
 
 import {specific, param, here as Other} from 'form';
             </code></pre>
+    </section>
+
+    <section>
+        <h2><a name="redirect">Redirect</a></h2>
+
+        <p>
+            The <code>Redirect</code> object is already imported.
+            The following examples show the available methods and their result.
+        </p>
+
+        <pre><code class="language-javascript">
+Redirect.home(); // Result: /
+Redirect.dir('accounts').dir(accountId); // Result: /accounts/1234/
+Redirect.dir('accounts').dir(accountId).name('settings'); // Result: /accounts/1234/settings
+Redirect.home().name('place').params({this:'that');  // Result: /place?this=that
+            </code></pre>
+
+        <h3>Messages</h3>
+        <p>
+            As convenience to using the <code>Messages</code> object directly,
+            messages may "go with" the redirect being built.
+            For example, after adding a new Article:
+        </p>
+
+        <pre><code class="language-javascript">
+import {Article} from '📦';
+
+let article = new Article().title('New');
+
+Redirect.path('articles')
+        .path(article.id).dir()
+        .success('New Article successfully created');
+            </code></pre>
+
+        <p>
+            See <a href="/scripting/messages">Messages</a> for more information.
+        </p>
     </section>
 
     <section>

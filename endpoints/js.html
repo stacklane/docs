@@ -23,16 +23,15 @@
         </p>
 
         <p>
-            JavaScript endpoints live at files named after HTTP verbs (uppercase required):
-            <code>GET.js</code>, <code>POST.js</code>, <code>PUT.js</code>, <code>DELETE.js</code>.
+            In many cases JavaScript endpoints are used in conjunction with JavaScript
+            <a href="/scripting/suppliers">Suppliers</a>.
+            Suppliers allow for code reuse between multiple endpoints, creating simpler endpoint code.
         </p>
 
         <p>
-            In many cases JavaScript endpoints are used in conjunction with JavaScript
-            <a href="/scripting/suppliers">Suppliers</a>.
-            Suppliers allow for code reuse between multiple endpoints, creating simpler
-            endpoint code.
-        </a>
+            Scripts are executed on the server-side only, and their last emitted value
+            becomes the response value. Scripts never produce HTML, which is better suited
+            for <a href="/endpoints/mustache">Mustache</a> files.
         </p>
     </section>
 
@@ -40,61 +39,87 @@
         <h2><a name="routing">Routing</a></h2>
 
         <p>
-            Script endpoints are named according to their <b>parent path</b>.
-            This results in endpoints with no trailing slashes.
+            The file name is used to determine both the endpoint path and the HTTP verb it responds to.
+            There are several ways of defining JavaScript endpoints, and it's a matter of preference
+            which to choose.  There is no functional difference.
+            Note that in all cases JavaScript endpoints do not end in a trailing "/".
+        </p>
+
+        <h3>Verb Name Only</h3>
+
+        <p>
+            Place an uppercase verb name in a directory.
+            <code>GET.js</code>, <code>POST.js</code>, <code>PUT.js</code>, <code>DELETE.js</code>.
+        </p>
+
+        <p>
+            For example <code>/hello/POST.js</code>
+            responds to requests for <code>POST /hello</code>.
         </p>
         <p>
-            For example, <code>/hello/GET.js</code> and <code>/hello/POST.js</code>
-            respond to requests for <code>GET /hello</code> and <code>POST /hello</code>.
+            Or for a <a href="/endpoints/dynamic">dynamic path</a> such as <code>/product/{product}/GET.js</code>, a
+            corresponding request could be <code>/product/1234</code>.
         </p>
+
+        <h3>Emoji and Name</h3>
+
         <p>
-            For a <a href="/endpoints/dynamic">dynamic path</a> such as <code>/product/{product}/GET.js</code>, a
-            corresponding request might be <code>/product/1234</code>.
+            Verbs are represented by a specific an emoji prefix.
+        </p>
+
+        <ul>
+            <li>🖥 - GET</li>
+            <li>📮 - POST</li>
+            <li>❌ - DELETE</li>
+        </ul>
+
+        <p>
+            The rest of the name after verb prefix becomes the endpoint name.
+            For example a file name of
+            <code>/account/{account}/🖥settings.js</code>
+            responds to requests for <code>GET /account/1234/settings</code>
         </p>
     </section>
 
     <section>
-        <h2><a name="output">Output</a></h2>
-
-        <p>
-            Scripts are executed on the server-side only, and their last emitted value
-            becomes the response value. Scripts do not produce HTML, which is better suited
-            for <a href="/endpoints/mustache">Mustache</a> files.
-            The following types of output are supported:
-        </p>
+        <h2><a name="redirect">Redirects</a></h2>
 
         <h3>Redirects</h3>
-        <p>
-            <ul>
-                <li>
-                    Internal redirects -
-                    Output a string prefixed with "/"
-                    to perform an absolute redirect to another endpoint within your app.
-                </li>
-                <li>
-                    External redirects -
-                    Output a string prefixed with "http" to perform an external redirect.
-                </li>
-            </ul>
-        </p>
+        <ul>
+            <li>
+                Internal redirects -
+                Output a string prefixed with "/"
+                to perform an absolute redirect to another endpoint within your app.
+                For more readable code and additional options, use the
+                <a href="/scripting/helpers#redirect">Redirect builder</a> instead.
+            </li>
+            <li>
+                External redirects -
+                Output a string prefixed with "http" to perform an external redirect.
+            </li>
+        </ul>
 
         <h3>Rerouting</h3>
         <p>
             Similar to an internal redirect, but no extra client request is made.
             A few conditions must exist for this to occur.
+        </p>
 
-            <ul>
-                <li>It must be a POST/PUT/DELETE request.</li>
-                <li>"X-Requested-With" header must exist and equal "XMLHttpRequest" (denoting an AJAX request).</li>
-                <li>The script must emit an absolute path for the app, similar to a regular internal redirect.</li>
-            </ul>
+        <ul>
+            <li>It must be a POST/PUT/DELETE request.</li>
+            <li>"X-Requested-With" header must exist and equal "XMLHttpRequest" (denoting an AJAX request).</li>
+            <li>The script must emit an absolute path for the app, similar to a regular internal redirect.</li>
+        </ul>
 
+        <p>
             Given a <code>POST.js</code> code called via AJAX and returning '/show/all', the server would
             internally route and return the result of executing <code>GET /show/all</code>, <b>instead of</b>
             requiring the client to round trip as it would with a normal internal redirect.
         </p>
+    </section>
+    <section>
+        <h2><a name="json">JSON Output</a></h2>
 
-        <h3><a name="json">JSON</a></h3>
         <p>
             Output an object literal from the script to create a JSON response.  For example:
 

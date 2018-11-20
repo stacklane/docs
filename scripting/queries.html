@@ -146,7 +146,7 @@ let titlesOnly = Article.all().map(article=>({title:article.title}));
             (before the request ends).  From a user standpoint this means that up to 10 results will be modified
              before they view the results or next page.
             Any results beyond the first 10 are processed asynchronously in batches, meaning there could be a
-            very short delay for a user to see the result of changes to larger batches.
+            short delay for a user to see the result of changes to larger batches.
             This "semi-asynchronous" approach strikes a balance between user expectations on more common (small) operations,
             while making sure the request time is at a minimum for larger operations.
         </p>
