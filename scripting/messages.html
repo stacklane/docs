@@ -87,10 +87,10 @@ Messages.fieldError('title', 'Titles may not contain special characters.');
 
         <pre><code class="language-html">
 &lt;!--TEMPLATE mustache--&gt;
-&#123;&#123;% class-map message error=alert-danger *=alert-* &#125;&#125;
+&#123;&#123;% choose-string-map message error=alert-danger *=alert-* &#125;&#125;
 
 &#123;&#123;#Messages.all&#125;&#125;
-&lt;div class="alert &#123;&#123;% class message this.type &#125;&#125;"&gt;
+&lt;div class="alert &#123;&#123;% choose-string message this.type &#125;&#125;"&gt;
   &#123;&#123;this.value&#125;&#125;
 &lt;/div&gt;
 &#123;&#123;/Messages.all&#125;&#125;
@@ -105,10 +105,10 @@ Messages.fieldError('title', 'Titles may not contain special characters.');
 
         <pre><code class="language-html">
 &lt;!--TEMPLATE mustache--&gt;
-&#123;&#123;% class-map message error=is-danger *=is-* &#125;&#125;
+&#123;&#123;% choose-string-map message error=is-danger *=is-* &#125;&#125;
 
 &#123;&#123;#Messages.all&#125;&#125;
-&lt;div class="notification &#123;&#123;% class message this.type &#125;&#125;"&gt;
+&lt;div class="notification &#123;&#123;% choose-string message this.type &#125;&#125;"&gt;
   &#123;&#123;this.value&#125;&#125;
 &lt;/div&gt;
 &#123;&#123;/Messages.all&#125;&#125;

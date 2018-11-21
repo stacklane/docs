@@ -197,6 +197,73 @@
     </section>
 
     <section>
+        <h2><a name="util">Utilities</a></h2>
+
+        <h3>choose-string</h3>
+
+        <p>
+            Provides a declarative way to choose one string based on another string.
+            If it were defined programmatically it would be a series of simple if/then/else,
+            or switch/case/default statements.
+            This is especially useful when dealing with constant, well-defined values
+            for a model field.
+        </p>
+
+        <p>
+            First, declare the string choices using <code>choose-string-map</code>.
+        </p>
+
+        <pre><code class="language-html">
+&#123;&#123;% choose-string-map message error=alert-danger *=alert-* &#125;&#125;
+    </code></pre>
+
+        <p>
+            The first parameter of <code>message</code> defines a name of the string choice,
+            which will be repeated later for <code>choose-string</code>.
+            The remaining parameters define the mapping of input strings to output strings,
+            with an optional capture of the input via "*".
+        </p>
+
+        <p>
+            The above example outputs "alert-danger" when the string input is "error".
+            A catch all / else case may defined with "*".
+            In the example above an input of "success" would result in "alert-success".
+            For any of the cases, "*" is available to fill in the existing string input.
+        </p>
+
+        <p>
+            Second, use the previously defined string map.
+            The first parameter repeats the name given to the string map,
+            and the second parameter is the string input.
+        </p>
+
+        <pre><code class="language-html">
+&#123;&#123;#Messages.all&#125;&#125;
+&lt;div class="notification &#123;&#123;% choose-string message this.type &#125;&#125;"&gt;
+  &#123;&#123;this.value&#125;&#125;
+&lt;/div&gt;
+&#123;&#123;/Messages.all&#125;&#125;
+        </code></pre>
+
+        <h3>Alternative Definition</h3>
+
+        <p>
+            <code>choose-string-map</code> is the most compact way to define the choices.
+            However if spaces are needed in the strings use JSON for the definition via
+            <code>choose-string-json</code>.
+        </p>
+
+        <pre><code class="language-html">
+&#123;&#123;% choose-string-json message
+  {
+    "error": "alert alert-danger",
+     "*": "alert alert-*"
+  }
+&#125;&#125;
+    </code></pre>
+    </section>
+
+    <section>
         <h2><a name="iteration">Iteration Extensions</a></h2>
         <p>
             We've extended Mustache iteration with a couple of helpful utilities.
