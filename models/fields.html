@@ -72,11 +72,19 @@
         <pre class="language-yaml"><code>
 status:
   type: options
+  init: false
   values:
     - pending
     - disabled
     - active
     </code></pre>
+        </p>
+
+        <h3>Initialization</h3>
+        <p>
+            To use the first listed value as a default / pre-initialized value for newly created models,
+            simply change <code>init</code> to <code>true</code>.
+            Otherwise it will default to null.
         </p>
 
         <h3>Type-Safe Access</h3>
