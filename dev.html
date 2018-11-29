@@ -22,8 +22,51 @@
         <p>
             Stacklane doesn't require any special UI setup to start coding -- everything
             needed to run a Stacklane site is in standard file formats,
-            hosted in a GitHub source repository.  Branch and tag to your heart's delight.
-            We recommend using WebStorm and its Stacklane plugin.
+            hosted in a BitBucket or GitHub GIT repository.
+            For ease of testing, we recommend using WebStorm and its Stacklane plugin.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="repositories">Repositories</a></h2>
+
+        <p>
+            A repository URL is only needed for live deployment and testing from within the Stacklane management console UI.
+
+            However we recommend creating and developing with a repository from the beginning.
+
+            BitBucket and GitHub are supported GIT repository types.
+        </p>
+
+        <h3>Public</h3>
+        <p>
+            For public repositories,
+            ensure that the repository is set to be publicly accessible.
+            Then use the <code>HTTPS</code> GIT URL given in the BitBucket and GitHub UIs.
+        </p>
+        <p>
+            <code>https://bitbucket.org/[group]/[repo].git</code>
+            <br>
+            <code>https://github.com/[group]/[repo].git</code>
+        </p>
+
+        <h3>Private</h3>
+        <p>
+            For private repository deployment,
+            Stacklane will be accessing a read-only version of your repository using
+            SSH keys generated and securely hosted by Stacklane.
+            When providing the GIT URL in the management console UI,
+            use the SSH form given in the BitBucket and GitHub UIs.
+        </p>
+        <p>
+            <code>git@bitbucket.org:[group]/[repo].git</code>
+            <br>
+            <code>git@github.com:[group]/[repo].git</code>
+        </p>
+        <p>
+            Stacklane supports both a one-to-one and one-to-many model of SSH keys per repository.
+            For the one-to-many model on GitHub you'll need to follow their
+            "<a target="_blank" href="https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users">machine user</a>" pattern.
         </p>
     </section>
 
@@ -39,7 +82,7 @@
                         <p class="card-text">
                             WebStorm natively supports all
                             Stacklane file formats, including GIT integration.
-                            Grab the
+                            Get the
                             <a target="_blank" href="https://plugins.jetbrains.com/plugin/10313-stacklane">Stacklane plugin</a>
                             for WebStorm for easy testing.
                         </p>
