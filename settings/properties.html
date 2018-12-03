@@ -3,31 +3,30 @@
 
 {{< layout}}
 
-{{$title}}Styles{{/title}}
+{{$title}}Properties{{/title}}
 
 {{$content}}
 
 <article>
     <header>
-        <h1>Styles</h1>
+        <h1>Properties</h1>
 
         <p>
-            Styles are a purpose specific SCSS configuration file.
+            Properties are a purpose specific SCSS file which may define
+            colors, phrases, and options for a running instance.
+            Variables defined by the properties configuration file may be configured per-instance.
         </p>
     </header>
 
     <section>
+        <h2><a name="file">File Format</a></h2>
+
         <p>
-            The style configuration file is a plain SCSS file that accepts values/variables only.
+            The properties configuration file is a plain SCSS file that accepts values/variables only.
             Unlike regular SCSS variables, these values may be overridden when nesting the site,
             and also accessed from additional locations (server-side JavaScript, Mustache templates,
             and of course imported into other SCSS files).
         </p>
-    </section>
-
-    <section>
-        <h2><a name="file">File Format</a></h2>
-
         <p>
             Create a file at the root <code>/🎨.scss</code> to define your properties.
             This is a limited SCSS file for variables only.
@@ -42,7 +41,7 @@
         <h2><a name="scss">SCSS Access</a></h2>
 
         <p>
-            From another SCSS file, access variables defined in the style file just
+            From another SCSS file, access variables defined in the properties file just
             as you would any other SCSS import:
         </p>
         <p>
@@ -60,7 +59,7 @@ body{
         <h2><a name="mustache">Mustache Access</a></h2>
 
         <p>
-            There are several different ways to use or import style properties from Mustache.
+            There are several different ways to use or import properties from Mustache.
             Note that url(...) values are unwrapped to their paths only.
         </p>
 
@@ -77,9 +76,9 @@ body{
         <p>
         <pre class="language-html"><code>
 &lt;!--TEMPLATE mustache--&gt;
-&#123;&#123;% import * as Style from '🎨'&#125;&#125;
+&#123;&#123;% import * as Properties from '🎨'&#125;&#125;
 
-&lt;img src="&#123;&#123;Style.image-background&#125;&#125;"&gt;
+&lt;img src="&#123;&#123;Properties.image-background&#125;&#125;"&gt;
     </code></pre>
         </p>
 
@@ -102,17 +101,17 @@ body{
             A SCSS/CSS friendly convention is to use
             dashes for variables names such as <code>$color-primary</code>.  If you choose
             this naming convention, simply be aware that from JavaScript that same variable
-            is accessed with an underscore: <code>Style.color_primary</code>
-            Alternatively keep the dash using bracket syntax:  <code>Style['color-primary']</code>
+            is accessed with an underscore: <code>Properties.color_primary</code>
+            Alternatively keep the dash using bracket syntax:  <code>Properties['color-primary']</code>
         </p>
         <p>
-            From a server side JavaScript file import the style properties:
+            From a server side JavaScript file import the properties:
         </p>
         <p>
         <pre class="language-javascript"><code>
-import * as Style from '🎨';
+import * as Properties from '🎨';
 
-if (Style['some-boolean-option']){
+if (Properties['some-boolean-option']){
    ...
 }
     </code></pre>
@@ -122,9 +121,9 @@ if (Style['some-boolean-option']){
         </p>
         <p>
         <pre class="language-javascript"><code>
-import * as Style from '🎨';
+import * as Properties from '🎨';
 
-let msg = Style.hello();
+let msg = Properties.hello();
     </code></pre>
         </p>
     </section>
@@ -133,12 +132,22 @@ let msg = Style.hello();
     <section>
         <h2><a name="cases">Use Cases</a></h2>
 
+        <h3>Instance-Specific Options</h3>
+
+        <p>
+            Certain capabilities may be optional,
+            and checked in JavaScript or Mustache logic.
+        </p>
+        <pre class="language-css"><code>
+$use-new-feature: true;
+    </code></pre>
+
         <h3>Interface Messages</h3>
 
         <p>
-            Consider centralizing your interface messages/phrases into the style file.
+            Consider centralizing your interface messages/phrases into the properties file.
             This will later allow localizing/translating these phrases
-            in separate, language-specific style files.
+            in separate, language-specific properties files.
             For example:
         </p>
         <p>
