@@ -61,6 +61,16 @@
             corresponding request could be <code>/product/1234</code>.
         </p>
 
+        <h3>Index / Directory</h3>
+
+        <p>
+            JavaScript endpoints by default do not respond to directory requests ending in "/".
+            In certain cases directory requests are useful however,
+            especially if the JS endpoint is redirecting to other endpoints.
+            In this case use <code>🖥index.js</code>, such as <code>/here/🖥index.js</code>
+            to have the endpoint respond at <code>GET /here/</code>.
+        </p>
+
         <h3>Emoji and Name</h3>
 
         <p>
