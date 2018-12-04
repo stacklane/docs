@@ -128,7 +128,30 @@ let msg = Properties.hello();
         </p>
     </section>
 
+    <section>
+        <h2><a name="categories">Categories</a></h2>
 
+        <p>
+            There are several preset categories to group by properties by:
+            <code>theme</code>, <code>messages</code>, and <code>options</code>.
+            These provide a hint to the Stacklane console UI on how to
+            group and display properties to a user configuring them.
+        </p>
+
+        <pre class="language-css"><code>
+/**
+ * @category messages
+ */
+
+$ui-home: 'Home';
+$ui-sign-in: 'Sign In';
+
+/**
+ * @category theme
+ */
+
+$bg-color: aliceblue;
+    </code></pre>
     <section>
         <h2><a name="cases">Use Cases</a></h2>
 
