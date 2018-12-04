@@ -133,9 +133,10 @@ let msg = Properties.hello();
 
         <p>
             There are several preset categories to group by properties by:
-            <code>theme</code>, <code>messages</code>, and <code>options</code>.
-            These provide a hint to the Stacklane console UI on how to
+            <code>style</code>, <code>messages</code>, and <code>options</code>.
+            Category presets provide a hint to the Stacklane console UI on how to
             group and display properties to a user configuring them.
+            If no category is specified then <code>style</code> is the default.
         </p>
 
         <pre class="language-css"><code>
@@ -147,7 +148,7 @@ $ui-home: 'Home';
 $ui-sign-in: 'Sign In';
 
 /**
- * @category theme
+ * @category style
  */
 
 $bg-color: aliceblue;
