@@ -83,8 +83,8 @@ import {Article} from '📦';
 
 let article = new Article().title('New');
 
-Redirect.path('articles')
-        .path(article.id).dir()
+Redirect.dir('articles')
+        .dir(article.id)
         .success('New Article successfully created');
             </code></pre>
 
