@@ -69,7 +69,6 @@ Messages.fieldError('title', 'Titles may not contain special characters.');
         </p>
     </section>
    -->
-
     <section>
         <h2><a name="mustache">Mustache Rendering</a></h2>
 
@@ -152,9 +151,30 @@ if (title == 'great')
 
         <pre><code class="language-javascript">
 {
-  messages:[
-    {type: 'success', value: 'Successfully created new Article'},
-    {type: 'info', field: 'title', value: 'Great title for the Article!'}
+  "messages":[
+    {"type": "success", value: "Successfully created new Article"},
+    {"type": "info", field: "title", value: "Great title for the Article!"}
+  ]
+}
+        </code></pre>
+
+        <h3>Throwing Messages</h3>
+
+        <p>
+            Messages may also be thrown as an error:
+        </p>
+        <pre><code class="language-javascript">
+throw Messages.fieldError('title', 'Not Good');
+        </code></pre>
+
+        <p>
+            Results in client side JSON with HTTP status code 422:
+        </p>
+
+        <pre><code class="language-javascript">
+{
+  "messages":[
+    {"type": "error", "field": "title", "value": "Not Good"}
   ]
 }
         </code></pre>

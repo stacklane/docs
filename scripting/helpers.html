@@ -69,7 +69,23 @@ Redirect.home(); // Result: /
 Redirect.dir('accounts').dir(accountId); // Result: /accounts/1234/
 Redirect.dir('accounts').dir(accountId).name('settings'); // Result: /accounts/1234/settings
 Redirect.home().name('place').params({this:'that');  // Result: /place?this=that
-            </code></pre>
+        </code></pre>
+
+        <p>
+            Redirects may also be used as JSON values:
+        </p>
+
+        <pre><code class="language-javascript">
+({redirect: Redirect.home().success('Going Home')});
+        </code></pre>
+
+        <p>
+            Resulting in:
+        </p>
+
+        <pre><code class="language-javascript">
+{"redirect": {"path":"/", "messages":[{"type":"success", "value": "Going Home"}]}
+        </code></pre>
 
         <h3>Messages</h3>
         <p>
@@ -86,7 +102,7 @@ let article = new Article().title('New');
 Redirect.dir('articles')
         .dir(article.id)
         .success('New Article successfully created');
-            </code></pre>
+        </code></pre>
 
         <p>
             See <a href="/scripting/messages">Messages</a> for more information.
