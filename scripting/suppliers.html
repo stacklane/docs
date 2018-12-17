@@ -34,8 +34,8 @@
 
         <p class="alert alert-info small" role="alert">
             Suppliers aren't the only way to share values across many endpoints.
-            <a href="/endpoints/dynamic">Dynamic path parameters</a> which load models will
-            provide the models to all suppliers and endpoints.
+            <a href="/endpoints/dynamic">Dynamic path parameters</a> will
+            provide model references to all suppliers and endpoints.
         </p>
     </section>
 
@@ -106,7 +106,6 @@ export {callback as TheValue};
     </section>
     -->
 
-    <!-- TODO REWRITE, this has incorrect info about $productSlug
     <section>
         <h2><a name="scope">Export Scope</a></h2>
         <p>
@@ -116,31 +115,23 @@ export {callback as TheValue};
             directories, have access to the exported values of a supplier.
         </p>
         <p>
-            <code>/product/{productSlug}/📤GetProduct.js</code>
+            <code>/product/{product}/📤/GetLiveProduct.js</code>
             <pre><code class="language-javascript">
-let product = Product.slug($productSlug).get();
+import {product} from '🔗';
 
-export {product as Product};
+let liveProduct = product.get();
+
+export {liveProduct as LiveProduct};
             </code></pre>
         </p>
         <p>
-            In the above example <code>Product</code> is the resulting value exported.
-            It is available from the module named '📤', for all scripts
-            inside <code>/product/{productSlug}/*</code>, <i>and</i> any descendant directories.
-            For example the Mustache file <code>/product/{productSlug}/related/index.html</code>
-            would be able import the <code>Product</code> value.
-        </p>
-
-        <h3>Dynamic Paths</h3>
-        <p>
-            Suppliers are based on paths, including dynamic paths.  This extends to cached values as well.
-            For example, a supplier at <code>/account/{account}/📤MySupplier.js</code>, would export and cache
-            different values for <code>GET /account/1234/something</code> versus
-            <code>GET /account/5678/something</code>.  If for some reason this is not desired, simply
-            place the supplier at an earlier path, for example <code>/account/📤MySupplier.js</code>.
+            In the above example <code>*/</code> is the resulting value exported.
+            It is imported from the module named '📤', for all scripts
+            inside <code>/product/{product}/*</code>, <i>and</i> any descendant directories.
+            For example the Mustache file <code>/product/{product}/related/index.html</code>
+            would be able import the <code>LiveProduct</code> value.
         </p>
     </section>
-    -->
 
     <section>
         <h2><a name="importing">Importing Values</a></h2>
