@@ -81,8 +81,16 @@
             There are many excellent content delivery networks these days, where
             third party libraries are dependable, static, and versioned.
 
-            <a href="https://www.jsdelivr.com/">jsDelivr</a> is one such service,
-            which supports combining several files, among other features.
+            <a href="https://www.jsdelivr.com/">jsDelivr</a> is one such service.
+        </p>
+
+        <h3>SRI</h3>
+        <p>
+            For security purposes all third party (external) JavaScript and CSS must
+            specify an <code>integrity</code> attribute.
+            Subresource Integrity (SRI) is a security feature that enables browsers to verify that
+            files they fetch are delivered without unexpected manipulation.
+            It works by allowing you to provide a cryptographic hash that a fetched file must match.
         </p>
     </section>
 
@@ -94,7 +102,7 @@
             we recommend keeping your client-side JavaScript to a minimum.
             Whenever possible consider using native
             <a target="_blank"  href="https://developer.mozilla.org/en-US/docs/Web/API/Element">DOM</a>
-            methods, or the tongue-in-cheek <a target="_blank" href="http://vanilla-js.com/">VanillaJS</a>.
+            methods and <a target="_blank" href="http://vanilla-js.com/">VanillaJS</a>.
         </p>
 
         <h3>Inlining</h3>
