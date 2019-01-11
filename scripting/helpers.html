@@ -40,19 +40,24 @@ import {specific, param, here as Other} from '&';
         <h2><a name="form">Form Parameters</a></h2>
 
         <p>
-            Access form parameters via the <code>'form'</code> module.
+            Access form parameters via the <code>'form'</code> module,
+            or the  <code>'form{}'</code> module.
             If your form parameter contains a dash (or any other incompatible identifier character),
             such as <code>this-that</code>, then import it with an underscore instead: <code>this_that</code>.
         </p>
 
         <pre><code class="language-javascript">
-/* import all at a prefix */
-
-import * as Form from 'form';
-
-/* or, individual parameters */
+/* individual parameters */
 
 import {specific, param, here as Other} from 'form';
+
+/* import as hash or object literal */
+
+import {Form} from 'form{}';
+
+let theValue = Form.theParamName;
+let theOtherValue = Form['theOtherParam'];
+let hasAValue = Form.has('checkboxValue');
             </code></pre>
     </section>
 
