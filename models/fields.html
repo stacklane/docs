@@ -149,6 +149,31 @@ coverImage: image
     </section>
 
     <section>
+        <h2><a name="svg-icon">SVG Icon</a></h2>
+
+        <p>
+            <code>svg-icon</code> is a purpose specific field for holding a web-safe, square SVG icon.
+            Typically these values are generated from the <code>Identicon</code>
+            <a href="/scripting/helpers#utilities">utility</a>.
+            This field is highly constrained to valid and safe SVG.
+            No scripting or inline styles are allowed.
+            <br>
+            Maximum and provisioned size: 2000 bytes.
+        </p>
+
+        <h3>Example Definition</h3>
+        <p>
+        <pre class="language-yaml"><code>
+projectIcon: svg-icon
+    </code></pre>
+        </p>
+
+        <p>
+            To display an SVG field in Mustache, use <a href="/endpoints/mustache#html">triple brackets</a>.
+        </p>
+    </section>
+
+    <section>
         <h2><a name="rich">Rich Text / HTML</a></h2>
 
         <h3><code>text</code></h3>
@@ -185,6 +210,10 @@ coverImage: image
             single <code>h1-h6</code> block containing allowed inline elements.
             <br>
             Maximum length: 100 UTF-8 <em>characters</em>.  Provisioned size: 400 bytes (4 bytes provisioned per character).
+        </p>
+
+        <p>
+            To display an HTML field in Mustache, use <a href="/endpoints/mustache#html">triple brackets</a>.
         </p>
     </section>
 

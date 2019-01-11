@@ -197,6 +197,25 @@
     </section>
 
     <section>
+        <h2><a name="html">HTML and SVG</a></h2>
+
+        <p>
+            Unescaped HTML or SVG may be emitted with triple brackets.
+        </p>
+
+        <pre><code class="language-html">
+...
+&#123;&#123;&#123; myModel.icon &#125;&#125;&#125;
+    </code></pre>
+
+        <p>
+            Keep in mind that this is only allowed for web safe
+            <a href="/models/fields#rich">HTML</a> and
+            <a href="/models/fields#svg-icon">SVG</a> field types.
+        </p>
+    </section>
+
+    <section>
         <h2><a name="util">Utilities</a></h2>
 
         <h3>choose-string</h3>

@@ -128,7 +128,26 @@ Encoding.base64Url().encode('string');
 Encoding.base64Url().encodeNum(1234);
 Encoding.html().escape('&lt;p&gt;html&lt;/p&gt;');
             </code></pre>
+
+        <h3>Identicon</h3>
+
+        <p>
+            Identicons are a visual representation of any string value.
+            Stacklane provides a utility to generate SVG identicons.
+            These generated values may be stored in the
+            <a href="/models/fields#svg-icon">SVG icon model field type</a>.
+        </p>
+
+        <pre><code class="language-javascript">
+import {Identicon} from 'util';
+
+let repeatableIcon = Identicon.of('any string value');
+
+let randomIcon = Identicon.random();
+        </code></pre>
     </section>
+
+
 
 </article>
 
