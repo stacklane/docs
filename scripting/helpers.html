@@ -74,6 +74,7 @@ Redirect.home(); // Result: /
 Redirect.dir('accounts').dir(accountId); // Result: /accounts/1234/
 Redirect.dir('accounts').dir(accountId).name('settings'); // Result: /accounts/1234/settings
 Redirect.home().name('place').params({this:'that');  // Result: /place?this=that
+Redirect.index().name('other'); // If current request is /here/there, result: /here/other
         </code></pre>
 
         <p>
@@ -146,8 +147,6 @@ let repeatableIcon = Identicon.of('any string value');
 let randomIcon = Identicon.random();
         </code></pre>
     </section>
-
-
 
 </article>
 
