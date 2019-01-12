@@ -184,6 +184,34 @@ throw Messages.fieldError('title', 'Not Good');
 }
         </code></pre>
     </section>
+
+    <section>
+        <h2><a name="data">Passing Data</a></h2>
+
+        <p>
+            Messages may also be used to pass arbitrary string data from one request to another.
+        </p>
+
+        <p>
+            Given a POST which sets data and redirects to <code>/</code>:
+        </p>
+
+        <pre><code class="language-javascript">
+Messages.data('thing', 'one');
+Redirect.home();
+        </code></pre>
+
+        <p>
+            For the very next GET to <code>/</code> only, the value of <code>thing</code> will be available:
+        </p>
+
+        <pre><code class="language-html">
+&lt;!--TEMPLATE mustache--&gt;
+&#123;&#123#Messages.data.thing&#125;&#125;
+Hello thing: &#123;&#123Messages.data.thing&#125;&#125;
+&#123;&#123/Messages.data.thing&#125;&#125;
+        </code></pre>
+    </section>
 </article>
 
 {{/content}}
