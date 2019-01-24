@@ -2,12 +2,7 @@
   {
     "title":"Image Handling",
     "desc":"Image storage, display, and upload process, including a StimulusJS widget.",
-    "src":"https://github.com/stacklane-examples/image-upload.git"
-  },
-  {
-    "title":"TodoMVC (Angular)",
-    "desc":"Starting with the Angular flavor of TodoMVC, adds in server side storage and API.",
-    "src":"https://github.com/stacklane-examples/todomvc-angular.git"
+    "src":"https://github.com/stacklane-examples/images.git"
   },
   {
     "title":"Stacklane Docs",
