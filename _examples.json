@@ -5,6 +5,11 @@
     "src":"https://github.com/stacklane-examples/images.git"
   },
   {
+    "title":"Tasks",
+    "desc":"Add, complete, and prioritize / reorder tasks in a list.",
+    "src":"https://github.com/stacklane-examples/tasks.git"
+  },
+  {
     "title":"Stacklane Docs",
     "desc":"Make your head spin and run this documentation site from inside of itself.",
     "src":"https://github.com/stacklane/docs.git"
