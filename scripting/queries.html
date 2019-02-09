@@ -34,7 +34,8 @@
 
         <p>
             To query all models of a type, without any filters, use the <code>all()</code> method.
-            For example, <code>Note.all()</code>. By default results will be returned from oldest to newest,
+            For example, <code>Note.all()</code>.
+            By default results will be returned from oldest to newest,
             however this can be reversed from newest to oldest by adding <code>desc()</code>,
             e.g. <code>Note.all().desc()</code>.
         </p>
@@ -76,6 +77,16 @@
     </section>
 
     <section>
+        <h2><a name="ordering">asc()/desc()</a></h2>
+
+        <p>
+            All model types have a <a href="/models/ordering">natural order</a>.
+            To reverse the natural ordering, use asc() / desc(),
+            such as  <code>Note.all().desc()</code>.
+        </p>
+    </section>
+
+    <section>
         <h2><a name="filter">filter(function)</a></h2>
         <p>
             The callback function to <code>filter</code> returns a <code>boolean</code>
@@ -98,12 +109,36 @@
         <h2><a name="map">map(function)</a></h2>
         <p>
             The callback function to <code>map</code> <i>transforms</i> the current stream element
-            to something else.  This is often used to transform a model to a JSON object literal.
+            into a map.  This is often used to transform a model to a JSON object literal.
             It should be the last method in a chain.
         </p>
         <p>
         <pre><code class="language-javascript">
 let titlesOnly = Article.all().map(article=>({title:article.title}));
+        </code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="map">flatMap(function)</a></h2>
+        <p>
+            The callback function to <code>flatMap</code> <i>transforms</i> the current stream element
+            into an array. It should be the last method in a chain.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="map">distinct()</a></h2>
+        <p>
+            Using the results from either <code>map</code> or <code>flatMap</code>,
+            creates new results that contain only unique values.
+        </p>
+        <p>
+        <pre><code class="language-javascript">
+let distinctTitleCount = Article.all()
+    .map(article=>({title:article.title}))
+    .distinct()
+    .count();
         </code></pre>
         </p>
     </section>

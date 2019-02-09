@@ -1,0 +1,104 @@
+<!--TEMPLATE mustache-->
+{{% partial /_layout }}
+
+{{< layout}}
+
+{{$title}}Ordering{{/title}}
+
+{{$content}}
+
+<article>
+    <header>
+        <h1>Ordering</h1>
+
+        <p>
+            Learn how models of various types are ordered and returned from query results.
+        </p>
+    </header>
+
+    <section>
+        <h2><a name="default">Default</a></h2>
+        <p>
+            Every model type has a natural / default ordering field and direction.
+        </p>
+        <p>
+            Universal, Content, and User Profile types order by their <code>created</code>
+            timestamp, ascending from oldest to newest.
+        </p>
+        <p>
+            The Event type orders by its <code>created</code> timestamp, descending from newest to oldest.
+        </p>
+        <p>
+            The natural ordering of query results may be reversed
+            using <code>asc()</code> and <code>desc()</code>
+            <a href="/scripting/queries">query methods</a>.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="custom">Custom</a></h2>
+
+        <p>
+            The Universal type supports custom ordering for the following field types:
+
+            <code>string</code>, <code>integer</code>, <code>double</code>, <code>timestamp</code>.
+
+            To specify custom natural ordering on one of these field
+            types use the <code>order</code> attribute set to <code>true</code>.
+        </p>
+
+        <p>
+        <pre class="language-yaml"><code>
+highScore:
+  type: integer
+  order: true
+    </code></pre>
+        </p>
+
+        <h3>Contained Models</h3>
+
+        <p>
+            If a model is a child within a <a href="/models/containers">container</a>,
+            then the field names which allow custom ordering are limited to
+            <code>title</code>, <code>name</code>, <code>order</code>, <code>hierarchy</code>.
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="hierarchy">Hierarchy</a></h2>
+
+        <p>
+            The <a href="/models/fields#hierarchy">hierarchy</a> field type
+            provides custom, manual ordering of the Universal type.
+            When specified on a Universal model, it automatically changes the
+            natural ordering to use this field.
+        </p>
+
+        <p>
+            Hierarchy values may be thought of as a numerical value,
+            however for simplicity it's best to use them in relationship
+            to other hierarchy values, and other models that already exist.
+
+            For example, given 3 existing Tasks, moving 1 of those Tasks
+            between two others:
+        </p>
+
+        <p>
+        <pre class="language-javascript"><code>
+/**
+ * Set 'moveTask' hierarchy value to a position between 'afterTask' and 'beforeTask'
+ */
+moveTask.hierarchy = afterTask.hierarchy.before(beforeTask.hierarchy);
+    </code></pre>
+        </p>
+
+        <p>
+            The "tasks"
+            <a href="https://github.com/stacklane-examples/tasks.git">example</a>
+            shows basic reordering functionality using a hierarchy field.
+        </p>
+    </section>
+</article>
+
+{{/content}}
+{{/layout}}

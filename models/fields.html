@@ -19,7 +19,7 @@
     <section>
         <h2><a name="default">Default</a></h2>
         <p>
-            Every type is pre-defined with <code>created</code> and <code>modified</code> timestamp fields.
+            Every model type is pre-defined with <code>created</code> and <code>modified</code> timestamp fields.
             These are automatically managed.
         </p>
     </section>
@@ -55,6 +55,17 @@
             <br>
             Provisioned size: 8 bytes.
         </p>
+
+        <h3><code>timestamp</code></h3>
+        <p>
+            Date/time stored as UTC/GMT.
+            Keep in mind that every model comes with
+            automatically managed <code>created</code> and <code>modified</code> timestamp fields.
+            <br>
+            Provisioned size: 8 bytes.
+            <br>
+            To initialize a timestamp field to the current date/time use <code>init: true</code>.
+        </p>
     </section>
 
     <section>
@@ -72,6 +83,7 @@
         <pre class="language-yaml"><code>
 status:
   type: options
+  optional: true
   init: false
   values:
     - pending
@@ -130,6 +142,8 @@ let p = new Product().status(Product.status.pending);
             The <code>image</code> field type stores a single image. Supported image types are JPG, GIF, PNG.
             For more information on uploading and displaying images,
             see <a href="/models/images">Models / Images</a>.
+            <br>
+            Provisioned size: 100 bytes (independent of image size)
         </p>
 
         <h3>Maximum Size</h3>
@@ -145,6 +159,33 @@ let p = new Product().status(Product.status.pending);
         <pre class="language-yaml"><code>
 coverImage: image
     </code></pre>
+        </p>
+    </section>
+
+    <section>
+        <h2><a name="hierarchy">Hierarchy</a></h2>
+
+        <p>
+            <code>hierarchy</code> is a specialized field type which enables
+            custom ordering of the <i>Universal</i> model type.
+        </p>
+
+        <p>
+            This field may only be named "hierarchy" or "order",
+            and a model may only contain one field of this type.
+            For more information on using this field type see
+            <a href="/models/ordering#hierarchy">Models / Ordering</a>
+        </p>
+
+        <h3>Example Definition</h3>
+        <p>
+        <pre class="language-yaml"><code>
+order: hierarchy
+    </code></pre>
+        </p>
+
+        <p>
+            Provisioned size: 50 bytes.
         </p>
     </section>
 

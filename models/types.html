@@ -42,19 +42,21 @@
     <section>
         <h2><a name="content">Content</a></h2>
         <p>
-            Represents content that is hand crafted by a small number of people,
+            Represents content that is handcrafted by a small number of people,
             and typically viewed by a much wider audience.
             Intended for content management systems, and it may represent
             anything from an Article to a Product.
-            It supports larger field sizes.
         </p>
         <p>
-            Content is on our roadmap for Q1 2019.
+            It supports a larger field size for the <a href="/models/fields#rich">rich text field</a>,
+            as well as a larger overall model size.
+            Because it is intended to created and managed by people,
+            it only supports a low write volume of <b>2</b> Content models per transaction.
         </p>
     </section>
 
     <section>
-        <h2><a name="event">Event</a></h2>
+        <h2><a name="event">Event (Q4 2019)</a></h2>
 
         <p>
             This type is for events, time-series data, activity, or logging.
@@ -65,10 +67,6 @@
             Orders, comments, and Twitter posts are considered "events", from the standpoint of their
             potentially high frequency, their small size, and their permanence/low-mutability.
             Once created they are usually not modified again.
-        </p>
-
-        <p>
-            Events are on our 2019 roadmap.
         </p>
 
         <!--

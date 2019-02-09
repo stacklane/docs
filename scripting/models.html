@@ -130,7 +130,7 @@ try {
     thing = Thing.get(thingId);
 } catch ($NotFound){
     // At this point we've specifically caught $NotFound,
-    // as opposed to catching some unrelated error/exception.
+    // as opposed to catching an unrelated error/exception.
     thing = new Thing();
 }
 // At this point 'thing' is always defined.
