@@ -14,7 +14,7 @@ A repository URL is only needed for live deployment and testing from within the 
 However we recommend creating and developing with a repository from the beginning.
 BitBucket and GitHub are supported GIT repository types.
 
-## <a name="ide">Public</a>
+## Public
 
 For public repositories,
 ensure that the repository is set to be publicly accessible.
@@ -40,8 +40,8 @@ For the one-to-many model on GitHub you'll need to follow their
 
 </section>
 
-<section class="plugins">
-# <a name="ide">IDE Plugins</a>
+<section>
+# IDE Plugins
    
         <div class="row">
             <div class="col-md-6">
@@ -71,7 +71,7 @@ For the one-to-many model on GitHub you'll need to follow their
 </section>
 
 <section>
-# <a name="credentials">Credentials</a>
+# Credentials
 
 For certain functionality such as <a href="/scripting/connectors">connectors</a> to third party APIs,
 you'll need to define credentials with your build.
