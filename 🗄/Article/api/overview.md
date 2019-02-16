@@ -100,7 +100,7 @@ the final line will start with `https://` and contain the unique test domain for
 ## Passing Credentials
 
 The POST operation may optionally pass 
-[development credentials](/🗄/Article/dev#credentials).
+[development credentials](/🗄/Article/dev.md#credentials).
 When passing the credential JSON file to the build process,
 specify a <code>Content-Type</code> of <code>application/json</code> and
 the JSON credentials file as the content/payload of the request.
