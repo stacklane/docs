@@ -8,6 +8,7 @@ hosted in a BitBucket or GitHub GIT repository.
 For ease of testing, we recommend using WebStorm and its Stacklane plugin.
 
 <section>
+ 
 # Repositories
 
 A repository URL is only needed for live deployment and testing from within the Stacklane management console UI.
@@ -41,6 +42,7 @@ For the one-to-many model on GitHub you'll need to follow their
 </section>
 
 <section>
+ 
 # IDE Plugins
    
         <div class="row">
@@ -71,6 +73,7 @@ For the one-to-many model on GitHub you'll need to follow their
 </section>
 
 <section>
+ 
 # Credentials
 
 For certain functionality such as <a href="/scripting/connectors">connectors</a> to third party APIs,
@@ -100,4 +103,5 @@ Defining credentials is done with a JSON file that is specified in an IDE-specif
   }
 }
 ```
+
 </section>
