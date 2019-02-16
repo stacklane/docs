@@ -83,6 +83,7 @@ Any other files not specified will be deleted.
     "/other/index.html"
   ]
 }
+```
 
 # POST
 
