@@ -22,8 +22,8 @@ All API verbs are performed at the following endpoint:
 `https://api.execute.website/{ProjectId}`
  
 `{ProjectId}` should be a GUID-like string
-between 20 and 64 characters (a-z A-Z 0-9 - _).  This could be a
-randomly generated value or SHA-256 hex value.
+between 20 and 64 characters `(a-z A-Z 0-9 - _)`.  
+This could be a randomly generated value or SHA-256 hex value.
 For anonymous users the client code should take care to produce
 sufficiently unique values to prevent collisions.
 Generally this would be a unique value produced at IDE startup.
@@ -43,6 +43,7 @@ If the <code>ProjectId</code> does not exist the response status is <b>404</b>.
     { "path": "/🎛.yaml", "md5": "m1ChXoeAKCZirpWm3sbPAg==" }
   ]
 }
+```
 
 # PUT
 
