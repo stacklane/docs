@@ -1,0 +1,9 @@
+title: string
+
+content: document-text
+
+uid: document-uid
+
+summary:
+  type: string
+  optional: true
