@@ -32,8 +32,8 @@ SSH keys generated and securely hosted by Stacklane.
 When providing the GIT URL in the management console UI,
 use the SSH form given in the BitBucket and GitHub UIs.
         
-<code>git@bitbucket.org:[group]/[repo].git</code>
-<code>git@github.com:[group]/[repo].git</code>
+`git@bitbucket.org:[group]/[repo].git`\
+`git@github.com:[group]/[repo].git`
 
 Stacklane supports both a one-to-one and one-to-many model of SSH keys per repository.
 For the one-to-many model on GitHub you'll need to follow their
@@ -44,32 +44,16 @@ For the one-to-many model on GitHub you'll need to follow their
 <section>
  
 # IDE Plugins
-   
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title"><img src="images/WebStormLogo.png" /> WebStorm</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">+ Stacklane Plugin</h6>
-                        <p class="card-text">
-                            WebStorm natively supports all
-                            Stacklane file formats, including GIT integration.
-                            Get the
-                            <a target="_blank" href="https://plugins.jetbrains.com/plugin/10313-stacklane">Stacklane plugin</a>
-                            for WebStorm for easy testing.
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <a target="_blank" href="https://www.jetbrains.com/webstorm/download/"
-                           class="btn btn-sm btn-primary">Download</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="alert alert-info small mt-4" role="alert">
-            Check out the <a href="/api/">Build API</a> to learn about developing new IDE plugins.
-        </div>
+## WebStorm
+
+[WebStorm](https://www.jetbrains.com/webstorm/download/) 
+natively supports all Stacklane file formats, including GIT integration.
+Get the [Stacklane plugin](https://plugins.jetbrains.com/plugin/10313-stacklane) 
+for WebStorm for easy testing.
+
+> Check out the [Build API](/🗄/Article/api) to learn about developing new IDE plugins.
+
 </section>
 
 <section>
