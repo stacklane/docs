@@ -6,8 +6,6 @@ Stacklane doesn't require any special UI setup to start coding -- everything
 needed to run a Stacklane site is in standard file formats,
 hosted in a BitBucket or GitHub GIT repository.
 For ease of testing, we recommend using WebStorm and its Stacklane plugin.
-
-<section>
  
 # Repositories
 
@@ -39,10 +37,6 @@ Stacklane supports both a one-to-one and one-to-many model of SSH keys per repos
 For the one-to-many model on GitHub you'll need to follow their
 "<a target="_blank" href="https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users">machine user</a>" pattern.
 
-</section>
-
-<section>
- 
 # IDE Plugins
 
 ## WebStorm
@@ -52,11 +46,7 @@ natively supports all Stacklane file formats, including GIT integration.
 Get the [Stacklane plugin](https://plugins.jetbrains.com/plugin/10313-stacklane) 
 for WebStorm for easy testing.
 
-> Check out the [Build API](/🗄/Article/api) to learn about developing new IDE plugins.
-
-</section>
-
-<section>
+> Check out the [Build API](/🗄/Article/api/overview.md) to learn about developing new IDE plugins.
  
 # Credentials
 
@@ -87,5 +77,3 @@ Defining credentials is done with a JSON file that is specified in an IDE-specif
   }
 }
 ```
-
-</section>
