@@ -21,7 +21,7 @@ For public repositories,
 ensure that the repository is set to be publicly accessible.
 Then use the HTTPS GIT URL given in the BitBucket and GitHub UIs.
         
-`https://bitbucket.org/[group]/[repo].git`
+`https://bitbucket.org/[group]/[repo].git`\
 `https://github.com/[group]/[repo].git`
 
 ## Private
