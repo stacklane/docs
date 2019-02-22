@@ -1,0 +1,7 @@
+title:
+  type: string
+  order: true
+
+description: string
+
+src: string

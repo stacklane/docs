@@ -3,6 +3,8 @@
 {{% svg /_logos/ as logo }}
 {{% partial /_layout }}
 
+{{% import {Example} from '🗄' }}
+
 {{< layout}}
 
 {{$title}}Examples{{/title}}
@@ -51,17 +53,14 @@
     <section>
         <h2>Examples</h2>
 
-        <!--
-            Data is loaded/imported from _examples.json
-         -->
-        {{#examples by 2 as grp}}
+        {{#Example.all by 2 as grp}}
             <div class="card-deck small">
                 {{#grp as example}}
                     <div class="card mb-4">
                         <div class="card-body">
                             <h6 class="card-title">{{title}}</h6>
                             <p class="card-text">
-                                {{desc}}
+                                {{description}}
                             </p>
                         </div>
                         <div class="card-footer text-right">
@@ -71,7 +70,7 @@
                     </div>
                 {{/grp}}
             </div>
-        {{/examples}}
+        {{/Example.all}}
 
     </section>
 </article>

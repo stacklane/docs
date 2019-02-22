@@ -45,6 +45,10 @@ $link-color: #0099e5;
 $sl-logo-primary: #3b424c;
 $sl-logo-secondary: #13bdce;
 
+blockquote > p{
+  margin: 0;
+}
+
 @mixin svg-color($color) {
   fill: $color;
   stroke: $color;
@@ -139,40 +143,55 @@ $color-secondary: lighten(black, 40%);
  * Article
  */
 
-@media (min-width: map-get($grid-breakpoints, md) )  {
-  article, footer {
+//@media (min-width: map-get($grid-breakpoints, md) )  {
+ // article, footer {
  //   max-width: 75%;
-  }
+ // }
+//}
+
+article .is-invalid-link:after, article .is-missing-link:after{
+  content: '⚠️';
 }
+
 article, footer{
   font-size: 90%;
 }
 footer svg{
   height: 1rem;
 }
+article > h1{
+  font-size: $h4-font-size;
+  //margin-bottom: 1rem;
+  //border-top: 2px solid #f4f6f7;
+ // padding-top: 2rem;
+ // margin-top: 2rem
+}
+article > h1, article header + p{
+  margin-bottom: 1rem;
+  border-top: 2px solid #f4f6f7;
+  padding-top: 2rem;
+  margin-top: 2rem
+}
+article > h2{
+  font-size: $h6-font-size;
+  text-decoration: underline;
+  margin-top: 1rem;
+}
 article header{
   padding-top: 8px;
-  padding-bottom: 39px;
-  border-bottom: 2px solid #f4f6f7;
+  //padding-bottom: 39px;
+  //border-bottom: 2px solid #f4f6f7;
+  //margin-bottom: 2rem;
 }
+//article header + p{
+  //margin-top: 1rem;
+//}
 article header h1{
   font-size: $h2-font-size;
 }
-article section h2{
-  font-size: $h4-font-size;
-  margin-bottom: 1rem;
-}
-article section h3{
-  font-size: $h6-font-size;
-  text-decoration: underline;
-}
-article section{
-  border-bottom: 2px solid #f4f6f7;
-  padding: 2rem 0;
-}
 article pre{
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+ // padding-top: 0 !important;
+ // padding-bottom: 0 !important;
   background: #f7f8f9 !important;
   border-radius: 5px !important;
   position: relative !important;
@@ -188,7 +207,7 @@ article code{
   white-space: pre;
   word-break: keep-all; // code usually for small snippets or words, not large blocks.  so prevent those words/snippets from breaking.
 }
-article .code>pre{
+article .code > pre{
   margin:0;
 }
 article section p:last-child,

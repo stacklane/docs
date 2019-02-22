@@ -1,0 +1,135 @@
+---
+title: Query Scripting
+summary:  Learn about querying for models with chainable filters.
+---
+
+Stacklane uses method chaining to define the criteria of returned query results.
+In general with method chaining _order matters_ &mdash; for example, field filters must be defined
+before calling `limit`.
+
+The results of a query are generally "used" outside of the script itself.  
+For example, a [Mustache endpoint](/🗄/Article/endpoints/mustache.md)
+may iterate over a query given by a [supplier](/🗄/Article/scripting/suppliers.md)
+to display results as HTML.
+
+# all()
+
+To query all models of a type, without any filters, use the `all()` method.
+For example, `Note.all()`.
+By default results will be returned from oldest to newest,
+however this can be reversed from newest to oldest by adding `desc()`,
+e.g. `Note.all().desc()`.
+
+# Field Filters
+
+All queries besides `all()` start with a field filter.
+Multiple field filters may be chained together.
+Keep in mind that field filters are effectively **and** conditions.
+        
+## eq
+        
+`Article.title('theTitle')`
+
+## gt
+
+`Article.created_gt(new Date(2000))`
+
+## gte
+
+`Product.price_gte(30)`
+
+## lt
+        
+`Article.created_gt(new Date(2000)).created_lt(new Date(2010))`
+
+## lte
+        
+`Product.price_gte(30).price_lte(40)`
+
+# asc()/desc()
+
+All model types have a [natural ordering](/🗄/Article/models/ordering.md).
+To reverse the natural ordering, use asc() / desc(),
+such as `Note.all().desc()`.
+
+# filter(function) 
+
+The callback function to `filter` returns a `boolean`
+that indicates whether the item should be included in the results (return false to exclude an entry).
+This should only be used if another specific field is not sufficient.
+
+# limit(number)
+
+Limits the results of a query.
+
+# map(function)
+
+The callback function to `map` _transforms_ the current stream element
+into a map.  This is often used to transform a model to a JSON object literal.
+It should be the last method in a chain.
+        
+```javascript
+let titlesOnly = Article.all().map(article=>({title:article.title}));
+```
+
+# flatMap(function)
+
+The callback function to `flatMap` _transforms_ the current stream element
+into an array. It should be the last method in a chain.
+        
+# distinct()
+
+Using the results from either `map` or `flatMap`,
+creates new results that contain only unique values.
+        
+```javascript
+let distinctTitleCount = Article.all()
+    .map(article=>({title:article.title}))
+    .distinct()
+    .count();
+```
+
+# get()
+
+Returns a single result (effectively `limit(1)`).
+If there is no result, then a `$ModelNotFound`
+exception is generated, similar to loading a model by GUID.
+        
+# modify(function)
+
+        
+The callback function to `modify`
+receives a Model instance as its parameter,
+and does not expect any return value.
+This should only be used to update fields, or `remove()` models in bulk.
+It is only available during `POST`, `PUT`, `DELETE`.
+        
+It is not required that every Model be modified, for example if it doesn't satisfy some condition.
+However consider using `filter(...)` in the case where there are well defined conditions
+that must be met before updating a model.  This will also keep your modify function simpler.
+        
+This method works with full Model instances, and should therefore not be used in conjunction with
+`map(..)`.
+        
+## Semi-Asynchronous
+        
+For bulk operations the first 10 updates will occur synchronously, before the method returns
+(before the request ends).  From a user standpoint this means that up to 10 results will be modified
+ before they view the results or next page.
+Any results beyond the first 10 are processed asynchronously in batches, meaning there could be a
+short delay for a user to see the result of changes to larger batches.
+This "semi-asynchronous" approach strikes a balance between user expectations on more common (small) operations,
+while making sure the request time is at a minimum for larger operations.
+        
+# Unique Value Queries {#unique}
+
+Query [unique fields](/🗄/Article/models/fields.md#unique) and 
+[UID fields](/🗄/Article/models/fields.md#uid)
+as you would any other type of equality query.
+Assuming a model named `Article` and a UID field named "slug":
+        
+```javascript
+let slugId = '....';
+let found = Article.slug(slugId).get();
+// Because of error handling, 'found' is always defined at this point
+```
