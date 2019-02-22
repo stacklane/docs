@@ -63,13 +63,15 @@
   -->
 <script>
     var html = '';
-    $each('a', function(e){
-        if (e.getAttribute('name') != null && e.getAttribute('name').length > 0){
-            var title = (e.getAttribute('data-sub') != null) ? e.getAttribute('data-sub') : e.innerHTML;
-            html+='<li><a href="#' + e.getAttribute('name') + '">' + title + '</a></li>';
+
+    document.querySelectorAll('article > h1').forEach(function (e) {
+        if (e.id){
+            var title = e.innerText;
+            html += '<li><a href="#' + e.id + '">' + title + '</a></li>';
         }
     });
-    if (html.length > 0){
+
+    if (html.length > 0) {
         $get('subnav').innerHTML = '<ul>' + html + '</ul>';
     }
 </script>

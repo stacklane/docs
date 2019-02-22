@@ -15,125 +15,119 @@
         </p>
     </header>
 
-    <section>
-        <p>
-            Stacklane's limits are designed to emphasize
-            best practices for using the platform, not make your life difficult.
-            In fact we hope you never encounter these limits.
-            For every limit there is usually an alternative approach
-            with better long term scale and maintenance characteristics.
-        </p>
-        <p>
-            For example, we limit the size of a repository to emphasize
-            its use as controller + view, and not for example as a way
-            to serve large files, or model-like content.
-            Lists of embedded entries are limited to emphasize
-            using containers for cases
-            that may call for unbounded entries.  And so on.
-        </p>
+    <p>
+        Stacklane's limits are designed to emphasize
+        best practices for using the platform, not make your life difficult.
+        In fact we hope you never encounter these limits.
+        For every limit there is usually an alternative approach
+        with better long term scale and maintenance characteristics.
+    </p>
+    <p>
+        For example, we limit the size of a repository to emphasize
+        its use as controller + view, and not for example as a way
+        to serve large files, or model-like content.
+        Lists of embedded entries are limited to emphasize
+        using containers for cases
+        that may call for unbounded entries.  And so on.
+    </p>
 
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Limit</th>
-                <th scope="col">Amount</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Repository: Total Size</td>
-                <td>10 MB</td>
-            </tr>
-            <tr>
-                <td>
-                    Repository: Image Count
-                    <br><small>Repository images are primarily for styling / decoration / theme.
-                    Consider using <a href="/endpoints/mustache#svg">SVG</a> for decoration as well.
-                    </small>
-                </td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>
-                    Model: Total Number of Entries
-                </td>
-                <td>Unlimited</td>
-            </tr>
-            <tr>
-                <td>
-                    Model: Field and Model Type Name Length
-                </td>
-                <td>20 chars</td>
-            </tr>
-            <tr>
-                <td>
-                    Model: Field Count
-                    <br>
-                    <small>This can be effectively extended using embedded field types,
-                    as long as the provisioned size for the type is not exceeded.
-                    </small>
-                </td>
-                <td>20</td>
-            </tr>
-            <tr>
-                <td>
-                    Model: Embedded List Entries
-                    <br><small>The maximum number of embedded entries in a multi-valued field.
-                    Typically this will be customized to a <a href="/models/definition#embedded">lesser value</a>,
-                    to reduce the total provisioned size.
-                    For unbounded one-to-many associations use <a href="/models/containers">containers</a>.
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Limit</th>
+            <th scope="col">Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Repository: Total Size</td>
+            <td>10 MB</td>
+        </tr>
+        <tr>
+            <td>
+                Repository: Image Count
+                <br><small>Repository images are primarily for styling / decoration / theme.
+                Consider using <a href="/endpoints/mustache#svg">SVG</a> for decoration as well.
                 </small>
-                </td>
-                <td>20</td>
-            </tr>
-            <tr>
-                <td>
-                    Model: Field Type Size
-                    <br><small>Choose the right field type for the job.</small>
-                </td>
-                <td><a href="/models/fields">Varies</a></td>
-            </tr>
+            </td>
+            <td>50</td>
+        </tr>
+        <tr>
+            <td>
+                Model: Total Number of Entries
+            </td>
+            <td>Unlimited</td>
+        </tr>
+        <tr>
+            <td>
+                Model: Field and Model Type Name Length
+            </td>
+            <td>20 chars</td>
+        </tr>
+        <tr>
+            <td>
+                Model: Field Count
+                <br>
+                <small>This can be effectively extended using embedded field types,
+                as long as the provisioned size for the type is not exceeded.
+                </small>
+            </td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>
+                Model: Embedded List Entries
+                <br><small>The maximum number of embedded entries in a multi-valued field.
+                Typically this will be customized to a <a href="/models/definition#embedded">lesser value</a>,
+                to reduce the total provisioned size.
+                For unbounded one-to-many associations use <a href="/models/containers">containers</a>.
+            </small>
+            </td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>
+                Model: Field Type Size
+                <br><small>Choose the right field type for the job.</small>
+            </td>
+            <td><a href="/models/fields">Varies</a></td>
+        </tr>
 
-            <tr>
-                <td>
-                    Model: Provisioned Size
-                    <p class="small mb-1">
-                        The sum of all
-                        <a href="/models/fields">field type</a> sizes.
-                        Exceeding the Provisioned Size of a model type will be determined during <b>compile/build time</b>,
-                        ensuring that during runtime there are zero surprises.
-                    </p>
-                    <p class="pl-2 small">
-                        Universal Type
-                        <br>
-                        Content Type
-                        <br>
-                        Event Type
-                        <!--<br>
-                        Tenant Type-->
-                        <br>
-                        User Profile Type
-                    </p>
-                </td>
-                <td class="align-bottom">
-                    <p class="small">
-                        20KB
-                        <br>
-                        200KB
-                        <br>
-                        20KB
-                        <!--<br>
-                        20KB-->
-                        <br>
-                        20KB
-                    </p>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                Model: Provisioned Size
+                <p class="small mb-1">
+                    The sum of all
+                    <a href="/models/fields">field type</a> sizes.
+                    Exceeding the Provisioned Size of a model type will be determined during **compile/build time**,
+                    ensuring that during runtime there are zero surprises.
+                </p>
+                <p class="pl-2 small">
+                    Universal Type
+                    <br>
+                    Content Type
+                    <br>
+                    Event Type
+                    <br>
+                    User Profile Type
+                </p>
+            </td>
+            <td class="align-bottom">
+                <p class="small">
+                    20KB
+                    <br>
+                    200KB
+                    <br>
+                    20KB
+                    <br>
+                    20KB
+                </p>
+            </td>
+        </tr>
 
-            </tbody>
-        </table>
+        </tbody>
+    </table>
 
-    </section>
 
 </article>
 

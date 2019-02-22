@@ -17,20 +17,18 @@
         </p>
     </header>
 
-    <section>
-        <p>
-            Stacklane uses a JavaScript <b>subset</b> for server-side logic.
-            This subset is designed for speed, security, and compile time validation.
-            The primary uses are <a href="/endpoints/js">endpoints</a> and <a href="/endpoints/js">suppliers</a>.
-        </p>
-        <p>
-            The JS engine implies <code>"use strict"</code> by default, however
-            its strictness goes beyond this standard setting.
-            In general Stacklane will not a let a script successfully compile
-            unless it can validate all properties and methods referenced actually exist.
-            This is particularly helpful when it comes to referencing <a href="/models/">data models</a>.
-        </p>
-    </section>
+    <p>
+        Stacklane uses a JavaScript <em>subset</em> for server-side logic.
+        This subset is designed for speed, security, and compile time validation.
+        The primary uses are <a href="/endpoints/js">endpoints</a> and <a href="/endpoints/js">suppliers</a>.
+    </p>
+    <p>
+        The JS engine implies <code>"use strict"</code> by default, however
+        its strictness goes beyond this standard setting.
+        In general Stacklane will not a let a script successfully compile
+        unless it can validate all properties and methods referenced actually exist.
+        This is particularly helpful when it comes to referencing <a href="/models/">data models</a>.
+    </p>
 
     <section>
         <div class="card-deck">
@@ -85,39 +83,37 @@
         </div>
     </section>
 
-    <section>
-        <h2>Restrictions</h2>
-        <p>
-            The following is not an exhaustive list, but covers common cases:
-        </p>
-        <p>
-        <ul>
-            <li>
-                Use <code>let</code> instead of <code>var</code>.
-            </li>
-            <li>
-                Compact function syntax only -- instead of <code>function (..) {..}</code>,
-                use the equivalent compact syntax <code>(..)=>{..}</code>
-            </li>
-            <li>
-                <code>Date</code> objects are immutable -- any of the <code>Date.setXyz</code> methods
-                are not available.
-            </li>
-            <li>
-                <code>const</code> is not supported.
-            </li>
-            <li>
-                Free-form iteration via <code>for</code> or <code>while</code> is not allowed.
-                Instead, where cases that require working on items in bulk, special case callback methods are provided.
-            </li>
-            <li>
-                Once assigned, variables may not change their type -- this works
-                <code>let x = null; x = '1'</code> (null to string), but this does not
-                <code>let x = 1; x = '1'</code> (number to string).
-            </li>
-        </ul>
-        </p>
-    </section>
+    <h1>Restrictions</h1>
+    <p>
+        The following is not an exhaustive list, but covers common cases:
+    </p>
+    <p>
+    <ul>
+        <li>
+            Use <code>let</code> instead of <code>var</code>.
+        </li>
+        <li>
+            Compact function syntax only -- instead of <code>function (..) {..}</code>,
+            use the equivalent compact syntax <code>(..)=>{..}</code>
+        </li>
+        <li>
+            <code>Date</code> objects are immutable -- any of the <code>Date.setXyz</code> methods
+            are not available.
+        </li>
+        <li>
+            <code>const</code> is not supported.
+        </li>
+        <li>
+            Free-form iteration via <code>for</code> or <code>while</code> is not allowed.
+            Instead, where cases that require working on items in bulk, special case callback methods are provided.
+        </li>
+        <li>
+            Once assigned, variables may not change their type -- this works
+            <code>let x = null; x = '1'</code> (null to string), but this does not
+            <code>let x = 1; x = '1'</code> (number to string).
+        </li>
+    </ul>
+    </p>
 
 </article>
 

@@ -1,56 +1,38 @@
 <!--TEMPLATE mustache-->
 {{% svg /icons/ as icon }}
 
+{{% yaml /_navItems as items }}
+
 <div id="all-nav" class="invisible">
 <h1 class="nav-category">{{>icon-compass-sm}} Overview</h1>
 <ul class="d-none">
-    <li><a class="nav-link" href="/">Introduction</a></li>
-    <li><a class="nav-link" href="/dev">Development</a></li>
-    <li><a class="nav-link" href="/infrastructure">Infrastructure</a></li>
-    <li><a class="nav-link" href="/limits">Limits</a></li>
-    <li><a class="nav-link" href="/api/">Build API</a></li>
+    {{# items.overview }}
+    <li><a class="nav-link" href="{{path}}">{{title}}</a></li>
+    {{/ items.overview }}
 </ul>
 <h1 class="nav-category">{{>icon-cog-sm}} Settings</h1>
 <ul class="d-none">
-    <li><a class="nav-link" href="/settings/">Overview</a></li>
-    <li><a class="nav-link" href="/settings/manifest">Manifest</a></li>
-    <li><a class="nav-link" href="/settings/properties">Properties</a></li>
-    <li><a class="nav-link" href="/settings/nested">Nested</a></li>
-    <li><a class="nav-link" href="/settings/users">Users</a></li>
+    {{# items.settings }}
+    <li><a class="nav-link" href="{{path}}">{{title}}</a></li>
+    {{/ items.settings }}
 </ul>
 <h1 class="nav-category">{{>icon-database-sm}} Models</h1>
 <ul class="d-none">
-    <li><a class="nav-link" href="/models/">Overview</a></li>
-    <li><a class="nav-link" href="/models/types">Types</a></li>
-    <li><a class="nav-link" href="/models/containers">Containers</a></li>
-    <li><a class="nav-link" href="/models/fields">Fields</a></li>
-    <li><a class="nav-link" href="/models/images">Images</a></li>
-    <li><a class="nav-link" href="/models/definition">Definition</a></li>
-    <li><a class="nav-link" href="/models/ordering">Ordering</a></li>
+    {{# items.models }}
+    <li><a class="nav-link" href="{{path}}">{{title}}</a></li>
+    {{/ items.models }}
 </ul>
 <h1 class="nav-category">{{>icon-target-sm}} Endpoints</h1>
 <ul class="d-none">
-    <li><a class="nav-link" href="/endpoints/">Overview</a></li>
-    <li><a class="nav-link" href="/endpoints/dynamic">Dynamic</a></li>
-    <li><a class="nav-link" href="/endpoints/mustache">Mustache</a></li>
-    <li><a class="nav-link" href="/endpoints/js">JavaScript</a></li>
-    <li><a class="nav-link" href="/endpoints/assets">Assets</a></li>
-    <li><a class="nav-link" href="/endpoints/errors">Errors</a></li>
+    {{# items.endpoints }}
+    <li><a class="nav-link" href="{{path}}">{{title}}</a></li>
+    {{/ items.endpoints }}
 </ul>
 <h1 class="nav-category">{{>icon-document-sm}} Scripting</h1>
 <ul class="d-none">
-    <li><a class="nav-link" href="/scripting/">Overview</a></li>
-    <li><a class="nav-link" href="/scripting/models">Models</a></li>
-    <li><a class="nav-link" href="/scripting/queries">Queries</a></li>
-    <li><a class="nav-link" href="/scripting/suppliers">Suppliers</a></li>
-    <li><a class="nav-link" href="/scripting/users">Users</a></li>
-    <li><a class="nav-link" href="/scripting/helpers">Helpers</a></li>
-    <li><a class="nav-link" href="/scripting/messages">Messages</a></li>
-    <li><a class="nav-link" href="/scripting/connectors">Connectors</a></li>
-    <!--
-      should be included in 'Queries'
-    <li><a class="nav-link" href="/scripting/stream">Streaming</a></li>
-    -->
+    {{# items.scripting }}
+    <li><a class="nav-link" href="{{path}}">{{title}}</a></li>
+    {{/ items.scripting }}
 </ul>
 <div class="nav-separator">
     <a href="/examples"><h1 class="">{{>icon-media-play-circle-sm}} Examples</h1></a>

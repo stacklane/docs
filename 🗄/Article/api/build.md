@@ -11,8 +11,8 @@ To see this API in action view the source code for the
 # Auth
 
 The build API supports a reasonable number of anonymous users per day.
-To indicate anonymous authentication pass <code>Bearer anonymous</code>
-in the <code>Authorization</code> header.
+To indicate anonymous authentication pass `Bearer anonymous`
+in the `Authorization` header.
 Only anonymous users are currently supported.
 
 ## Endpoint and Project IDs
@@ -22,7 +22,7 @@ All API verbs are performed at the following endpoint:
 `https://api.execute.website/{ProjectId}`
  
 `{ProjectId}` should be a GUID-like string
-between 20 and 64 characters `(a-z A-Z 0-9 - _)`.  
+between 20 and 64 characters `(a-z A-Z 0-9 - _)`.
 This could be a randomly generated value or SHA-256 hex value.
 For anonymous users the client code should take care to produce
 sufficiently unique values to prevent collisions.
@@ -32,8 +32,8 @@ this unique GUID-like value should not frequently change.
 
 # GET
 
-Produces a JSON response with the current contents of the <code>ProjectId</code>.
-If the <code>ProjectId</code> does not exist the response status is <b>404</b>.
+Produces a JSON response with the current contents of the `ProjectId`.
+If the `ProjectId` does not exist the response status is **404**.
 
 ## JSON Response
 
@@ -48,18 +48,18 @@ If the <code>ProjectId</code> does not exist the response status is <b>404</b>.
 # PUT
 
 PUT completely replaces all files for the site.
-It receives the request <code>Content-Type</code> of <code>application/zip</code>.
+It receives the request `Content-Type` of `application/zip`.
 The body should contain the binary zip data.
 
-PUT always creates a new <code>ProjectId</code> if one does not exist,
+PUT always creates a new`ProjectId` if one does not exist,
 therefore unlike other verbs it will never return 404.
-The response from a successful upload is the current contents as defined by <code>GET</code>.
+The response from a successful upload is the current contents as defined by `GET`.
 
 # PATCH
 
-Use PATCH for incremental syncing of an existing <code>ProjectId</code>.
-When a <code>ProjectId</code> already exists this is the quickest way to generate a new test instance.
-If the <code>ProjectId</code> does not exist the response status is <b>404</b>.
+Use PATCH for incremental syncing of an existing `ProjectId`.
+When a `ProjectId` already exists this is the quickest way to generate a new test instance.
+If the `ProjectId` does not exist the response status is **404**.
 This would typically be transparent to the user &mdash;
 for example, if GET returns 404, then automatically perform a PUT instead of trying a PATCH.
 PATCH takes two forms depending on the request Content-Type.
@@ -68,7 +68,7 @@ PATCH takes two forms depending on the request Content-Type.
 
 Similar to PUT, but the zip should only contain the files to create or update.
 No files will be deleted in this operation.
-Use the <code>md5</code> from GET to determine what files need to be updated.
+Use the `md5` from GET to determine what files need to be updated.
 
 ## Prune/Delete Files (application/json)
 
@@ -87,7 +87,7 @@ Any other files not specified will be deleted.
 
 # POST
 
-Use the POST operation on a previously uploaded/synced <code>ProjectId</code>.
+Use the POST operation on a previously uploaded/synced `ProjectId`.
 This step performs the validation and build of the files, reports any errors,
 and if successful returns a unique domain name for testing and sharing.
 
@@ -102,6 +102,6 @@ the final line will start with `https://` and contain the unique test domain for
 The POST operation may optionally pass 
 [development credentials](/🗄/Article/dev.md#credentials).
 When passing the credential JSON file to the build process,
-specify a <code>Content-Type</code> of <code>application/json</code> and
+specify a `Content-Type` of `application/json` and
 the JSON credentials file as the content/payload of the request.
 

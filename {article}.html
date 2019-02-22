@@ -1,0 +1,25 @@
+<!--TEMPLATE mustache-->
+
+{{% partial /_layout }}
+{{% import {article} from '🔗' }}
+
+{{< layout}}
+
+{{$title}}{{article.title}}{{/title}}
+
+{{$content}}
+
+<article>
+<header>
+    <h1>{{article.title}}</h1>
+    {{#article.summary}}
+    <p>{{article.summary}}</p>
+    {{/article.summary}}
+</header>
+
+{{{article.get.content}}}
+
+</article>
+
+{{/content}}
+{{/layout}}
