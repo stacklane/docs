@@ -43,22 +43,22 @@
     <h1>Example</h1>
 
     {{#Example.all by 2 as grp}}
-        <div class="card-deck small">
-            {{#grp as example}}
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h6 class="card-title">{{title}}</h6>
-                        <p class="card-text">
-                            {{description}}
-                        </p>
-                    </div>
-                    <div class="card-footer text-right">
-                        <a href="{{src}}" class="btn btn-sm btn-light">Source</a>
-                        <a href="{{src}}" class="playground-example-loader btn btn-sm btn-light">Load</a>
-                    </div>
+    <div class="card-deck small">
+        {{#grp as example}}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h6 class="card-title">{{title}}</h6>
+                    <p class="card-text">
+                        {{description}}
+                    </p>
                 </div>
-            {{/grp}}
-        </div>
+                <div class="card-footer text-right">
+                    <a href="{{src}}" class="btn btn-sm btn-light">Source</a>
+                    <a href="{{src}}" class="playground-example-loader btn btn-sm btn-light">Load</a>
+                </div>
+            </div>
+        {{/grp}}
+    </div>
     {{/Example.all}}
 
 </article>

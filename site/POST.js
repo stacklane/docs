@@ -1,20 +1,14 @@
 
 import {url} from 'form';
 import {Encoding} from 'util';
+import {Source} from '🔌';
 import {Mapping} from '📦';
 
-if (url == null || url.length == 0 || !url.startsWith('https://github.com'))  throw url;
+if (url == null || url.length == 0 || !Source.isValidURLFormat(url))  throw url;
 
-/**
- * Reasonable counter for this purpose -- 1 per second.
- */
 let idCreator = ()=>{
-    let base = Math.round(new Date(2017, 10, 1) / 1000);
-    let counter = Math.round(new Date() / 1000) - base;
-
-    let finalId = Encoding.base64Url().encodeNum(counter);
-
-    return finalId;
+    let source = Source.of(url);
+    return source.name;
 };
 
 /**

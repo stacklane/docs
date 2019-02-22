@@ -110,5 +110,5 @@ Most third party APIs require an authorization token.
 To pass the authorization token during development builds,
 see the [development credentials](/🗄/Article/dev.md#credentials) JSON format.
 
-The credential key for a connector is `api:\[connector-name\]`,
-where \[connector-name\] is the name of rest API's root domain.
+The credential key for a connector is `api:[connector-name]`,
+where `[connector-name]` is the name of rest API's root domain.

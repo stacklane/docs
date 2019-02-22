@@ -20,7 +20,7 @@ using `asc()` and `desc()`
 
 The Universal type supports custom ordering for the following field types:
 
-`string`, `integer`, `double`, `timestamp`.
+`string`, `integer`, `double`, `timestamp`
 
 To specify custom natural ordering on one of these field
 types use the `order` attribute set to `true`.
