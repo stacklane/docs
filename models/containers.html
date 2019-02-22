@@ -1,0 +1,60 @@
+<!--TEMPLATE mustache-->
+{{% partial /_layout }}
+
+{{< layout}}
+
+{{$title}}Containers{{/title}}
+
+{{$content}}
+
+<article>
+    <header>
+        <h1>Containers</h1>
+
+        <p>
+            Learn about designing models with containers in mind.
+        </p>
+    </header>
+
+    <section>
+        <h2>Overview</h2>
+        <p>
+            Containers in Stacklane are an important modeling concept.
+            They creates a strong one-to-many,
+            or parent/child relationship.
+            A container may have many kinds of children,
+            but a child may only have one kind of container/parent.
+            For example, "Account/X" and "Account/Y", but there would
+            never be another parent for "X" besides "Account".
+            The container (parent) is always a <a href="/models/types#universal">Universal</a> type.
+        </p>
+    </section>
+
+    <section>
+        <h2>Access Control</h2>
+        <p>
+            Containers are an important access control point.
+            Any roles specifically associated between a user and a container
+            will be in effect for the container and its descendants.
+        </p>
+    </section>
+
+    <section>
+        <h2>Behavior of Unique Values</h2>
+
+        <p>
+            If a model type within a container defines unique values, then those
+            unique values are local/specific to a given container.
+        </p>
+
+        <p>
+            For example, given Blog ▶ Post, where Post has a <a href="/models/fields#uid">UID</a> field named "slug".
+            If there are many Blog's, and many Posts within any given Blog, then two Posts may have
+            the same UID if they are in <b>separate</b> Blog's.
+        </p>
+    </section>
+
+</article>
+
+{{/content}}
+{{/layout}}
