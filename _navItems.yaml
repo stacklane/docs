@@ -1,71 +1,71 @@
 overview:
 - title: Overview
-  path: /
+  path:
 - title: Development
-  path: /dev
+  path: dev
 - title: Infrastructure
-  path: /infrastructure
+  path: infrastructure
 - title: Limits
-  path: /limits
+  path: limits
 - title: Build API
-  path: /api/build
+  path: api/build
 
 settings:
 - title: Overview
-  path: /settings/
+  path: settings/
 - title: Manifest
-  path: /settings/manifest
+  path: settings/manifest
 - title: Properties
-  path: /settings/properties
+  path: settings/properties
 - title: Nested
-  path: /settings/nested
+  path: settings/nested
 - title: Users
-  path: /settings/users
+  path: settings/users
 
 models:
 - title: Overview
-  path: /models/
+  path: models/
 - title: Types
-  path: /models/types
+  path: models/types
 - title: Containers
-  path: /models/containers
+  path: models/containers
 - title: Fields
-  path: /models/fields
+  path: models/fields
 - title: Images
-  path: /models/images
+  path: models/images
 - title: Definition
-  path: /models/definition
+  path: models/definition
 - title: Ordering
-  path: /models/ordering
+  path: models/ordering
 
 endpoints:
 - title: Overview
-  path: /endpoints/
+  path: endpoints/
 - title: Dynamic
-  path: /endpoints/dynamic
+  path: endpoints/dynamic
 - title: Mustache
-  path: /endpoints/mustache
+  path: endpoints/mustache
 - title: JavaScript
-  path: /endpoints/js
+  path: endpoints/js
 - title: Assets
-  path: /endpoints/assets
+  path: endpoints/assets
 - title: Errors
-  path: /endpoints/errors
+  path: endpoints/errors
 
 scripting:
 - title: Overview
-  path: /scripting/
+  path: scripting/
 - title: Models
-  path: /scripting/models
+  path: scripting/models
 - title: Queries
-  path: /scripting/queries
+  path: scripting/queries
 - title: Suppliers
-  path: /scripting/suppliers
+  path: scripting/suppliers
 - title: Users
-  path: /scripting/users
+  path: scripting/users
 - title: Helpers
-  path: /scripting/helpers
+  path: scripting/helpers
 - title: Messages
-  path: /scripting/messages
+  path: scripting/messages
 - title: Connectors
-  path: /scripting/connectors
+  path: scripting/connectors
