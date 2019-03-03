@@ -67,7 +67,7 @@ In other words, you must first know the Site you want to query before you query 
 # User Profile {#profile}
 
 User profiles are only relevant and available
-when [user related](/🗄/Article/settings/users.md)functionality is enabled.
+when [user related](/🗄/Article/settings/users.md) functionality is enabled.
 They may either be a top level type or [contained](/🗄/Article/models/containers.md).
 
 Learn more about [user scripting](/🗄/Article/scripting/users.md).

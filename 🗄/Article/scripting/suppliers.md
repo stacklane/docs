@@ -36,7 +36,7 @@ those endpoints which need the values/functions.
 
 `📤/AnyName.js`
 Allowed exports: Primitives (String, Number, Boolean), Map/Object of Primitives,
-a single instance of a [Model](/models/), or a [query](/🗄/Article/scripting/query.md).
+a single instance of a [Model](/models/), or a [query](/🗄/Article/scripting/queries.md).
 
 Only model read/query operations are allowed within the supplier.
 However the endpoint finally using the supplied value may itself perform write operations
