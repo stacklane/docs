@@ -19,7 +19,7 @@ readability, performance, and maintainability.
 > {.alert .alert-info .small}
 >
 > Suppliers aren't the only way to share values across many endpoints.
-> <a href="/endpoints/dynamic">Dynamic path parameters</a> will
+> [Dynamic path parameters](/🗄/Article/endpoints/dynamic.md) will
 > provide model references to all suppliers and endpoints.
 
 # Supplier Types
