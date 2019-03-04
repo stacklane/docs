@@ -93,7 +93,7 @@ import {Encoding} from 'util';
 
 Encoding.base64Url().encode('string');
 Encoding.base64Url().encodeNum(1234);
-Encoding.html().escape('&lt;p&gt;html&lt;/p&gt;');
+Encoding.html().escape('<p>html</p>');
 ```
 
 ## Identicon

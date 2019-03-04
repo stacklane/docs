@@ -50,13 +50,13 @@ The following example maps the message types to Bootstrap classes
 and displays the messages as an "alert" class:
 
 ```html
-&lt;!--TEMPLATE mustache--&gt;
+<!--TEMPLATE mustache-->
 {{% choose-string-map message error=alert-danger *=alert-* }}
 
 {{#Messages.all}}
-&lt;div class="alert {{% choose-string message this.type }}"&gt;
+<div class="alert {{% choose-string message this.type }}">
   {{this.value}}
-&lt;/div&gt;
+</div>
 {{/Messages.all}}
 ```
 
@@ -66,13 +66,13 @@ The following example maps the message types to Bulma classes
 and displays the messages as a "notification" class:
 
 ```html
-&lt;!--TEMPLATE mustache--&gt;
+<!--TEMPLATE mustache-->
 {{% choose-string-map message error=is-danger *=is-* }}
 
 {{#Messages.all}}
-&lt;div class="notification {{% choose-string message this.type }}"&gt;
+<div class="notification {{% choose-string message this.type }}">
   {{this.value}}
-&lt;/div&gt;
+</div>
 {{/Messages.all}}
 ```
 
@@ -145,7 +145,7 @@ Redirect.home();
 For the very next GET to `/` only, the value of `thing` will be available:
 
 ```html
-&lt;!--TEMPLATE mustache--&gt;
+<!--TEMPLATE mustache-->
 {{#Messages.data.thing}}
 Hello thing: {{Messages.data.thing}}
 {{/Messages.data.thing}}
