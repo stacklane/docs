@@ -46,7 +46,7 @@ natively supports all Stacklane file formats, including GIT integration.
 Get the [Stacklane plugin](https://plugins.jetbrains.com/plugin/10313-stacklane) 
 for WebStorm for easy testing.
 
-> Check out the [Build API](/🗄/Article/api/overview.md) to learn about developing new IDE plugins.
+> Check out the [Build API](/🗄/Article/api/build.md) to learn about developing new IDE plugins.
  
 # Credentials
 
