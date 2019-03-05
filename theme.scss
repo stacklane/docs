@@ -42,8 +42,9 @@ $link-color: #0099e5;
 
 ////////////////////////
 
-$sl-logo-primary: #3b424c;
-$sl-logo-secondary: #13bdce;
+$sl-logo-primary: #101e27;
+//$sl-logo-secondary: #345167;
+$sl-logo-secondary: #3284a0;
 
 blockquote > p{
   margin: 0;
@@ -59,18 +60,6 @@ blockquote > p{
   vertical-align: text-bottom;
 }
 
-@mixin sl-logo-color($primary, $secondary){
-  .stacklane-logo {
-    .logo-primary {
-      fill: $primary;
-    }
-    .logo-secondary{
-      fill: $secondary;
-    }
-  }
-}
-
-@include sl-logo-color($sl-logo-primary, $sl-logo-secondary);
 
 /* Make sure filled and text elements only get fills */
 .iconic-property-fill, .iconic-property-text {
@@ -91,9 +80,8 @@ blockquote > p{
   stroke: $color;
 }
 
-$color-primary: black;
-$color-secondary: lighten(black, 40%);
-
+$color-primary: $sl-logo-primary;
+$color-secondary: $sl-logo-secondary;
 
 /* Make sure filled and text elements only get fills */
 .iconic-property-fill, .iconic-property-text {
@@ -117,16 +105,11 @@ $color-secondary: lighten(black, 40%);
 
 /////////////////
 
-.logo{
-  @include sl-logo-color($gray-900, $gray-900);
-
-  margin-left: -1.2rem;
-}
 .logo a, .logo a:visited, .logo a:hover{
   text-decoration: none;
   display:inline-block;
 }
-.logo svg.stacklane-logo{
+.logo svg{
   height: 1rem;
   vertical-align:text-bottom;
 }
