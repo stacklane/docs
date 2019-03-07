@@ -1,6 +1,6 @@
 ---
 title: Query Scripting
-summary:  Learn about querying for models with chainable filters.
+summary: Learn about querying for models with chainable filters.
 ---
 
 Stacklane uses method chaining to define the criteria of returned query results.
@@ -16,8 +16,8 @@ to display results as HTML.
 
 To query all models of a type, without any filters, use the `all()` method.
 For example, `Note.all()`.
-By default results will be returned from oldest to newest,
-however this can be reversed from newest to oldest by adding `desc()`,
+By default results will be returned in the model's natural ordering,
+however this can be reversed by adding `desc()`,
 e.g. `Note.all().desc()`.
 
 # Field Filters

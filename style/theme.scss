@@ -46,7 +46,7 @@
     font-weight: $weight-medium;
   }
   a{
-    width: 48%;
+    width: 100%;
 
     @extend %block;
 
@@ -67,6 +67,11 @@
 
     &:active {
       box-shadow: $box-link-active-shadow;
+    }
+  }
+  @include tablet{
+    a{
+      width: 48%;
     }
   }
 }
