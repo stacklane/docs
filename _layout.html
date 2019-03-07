@@ -58,7 +58,8 @@
         </div>
 
         <div class="navbar-end">
-            <a href="https://stacklane.com/status/" id="status" class="navbar-item up">
+            <!-- TODO csp work, OR, create a 'connector' -->
+            <a href="https://stacklane.com/status/" id="status" class="navbar-item up is-invisible">
                 <span id="status-indicator"></span>
                 <span id="status-text"></span>
             </a>
@@ -98,6 +99,7 @@
     });
 
     $ready(function(){
+        var moreClass = 'is-invisible '; // TODO needs csp work or a connector
         var xhr = new XMLHttpRequest();
         xhr.open('GET', '/status/api/status'); // assumes docs are mounted on same domain as /status/
 
@@ -109,14 +111,14 @@
 
                     var r = JSON.parse(xhr.responseText);
 
-                    document.getElementById('status').setAttribute('class', r.status);
+                    document.getElementById('status').setAttribute('class', moreClass + r.status);
                     document.getElementById('status').setAttribute('title', new Date().toLocaleString());
 
                 } else {
-                    document.getElementById('status').setAttribute('class', 'error');
+                    document.getElementById('status').setAttribute('class', moreClass + 'error');
                 }
             } else {
-                document.getElementById('status').setAttribute('class', 'error');
+                document.getElementById('status').setAttribute('class', moreClass + 'error');
                 console.log('Error: ' + xhr.status); // An error occurred during the request.
             }
         };
