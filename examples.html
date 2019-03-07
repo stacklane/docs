@@ -11,6 +11,12 @@
 
 {{$content}}
 
+<style>
+    .d-none{
+        display:none;
+    }
+</style>
+
 <article>
     <header>
         <h1>Examples</h1>
@@ -24,42 +30,32 @@
 
     <p>
         <form id="form" method="post" action="/site">
-        <div class="input-group">
-            <div class="input-group-prepend"><span class="input-group-text">{{> logo-github}}</span></div>
-            <input id="github-url" name="url" type="search"
-                   class="form-control" placeholder="https://github.com/your/stacklane-repo.git">
-            <div class="input-group-append"><input type="submit" class="btn btn-outline-primary" value="Load"></div>
-        </div>
-        </form>
-
-        <div id="form-alert" class="alert alert-danger d-none" role="alert"></div>
-
-        <div class="progress d-none" id="loading">
-            <div class="progress-bar progress-bar-striped progress-bar-animated w-100" role="progressbar"
-                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-    </p>
-
-    <h1>Example</h1>
-
-    {{#Example.all by 2 as grp}}
-    <div class="card-deck small">
-        {{#grp as example}}
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h6 class="card-title">{{title}}</h6>
-                    <p class="card-text">
-                        {{description}}
-                    </p>
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <input id="github-url" name="url" class="input" placeholder="https://github.com/your/stacklane-repo.git">
                 </div>
-                <div class="card-footer text-right">
-                    <a href="{{src}}" class="btn btn-sm btn-light">Source</a>
-                    <a href="{{src}}" class="playground-example-loader btn btn-sm btn-light">Load</a>
+                <div class="control">
+                    <input type="submit" class="button is-primary" value="Load">
                 </div>
             </div>
-        {{/grp}}
+
+        </form>
+
+        <div id="form-alert" class="alert is-danger d-none"></div>
+
+        <progress id="example-loading" class="progress is-small is-primary d-none" max="100">15%</progress>
+    </p>
+
+    <h1>Examples</h1>
+
+    <div class="article-list">
+        {{#Example.all as example}}
+        <a href="{{src}}" class="example-loader">
+            <h2>{{title}}</h2>
+            <p>{{description}}</p>
+        </a>
+        {{/Example.all}}
     </div>
-    {{/Example.all}}
 
 </article>
 

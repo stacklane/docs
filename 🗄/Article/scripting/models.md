@@ -67,7 +67,7 @@ let listId = '...';
 List.get(listId)(()=>Note.all().map((n)=>n.title)));
 ```
 
-Keep in mind that when working with containers from 
+Keep in mind that when working with containers from a
 [dynamic endpoint path](/🗄/Article/endpoints/dynamic.md)
 the container selection has already occurred.
 

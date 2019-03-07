@@ -9,7 +9,7 @@ User scripting puts into practice the concepts and setup from
 Review these docs before learning about user scripting, or use this doc as an overview
 for how these settings materialize into code.
 
-> {.alert .alert-info .small}
+> {.alert .is-info .is-small}
 >
 > The examples below are in JavaScript, but most approaches apply to Mustache templates as well.
 
@@ -50,7 +50,7 @@ if (Me.linked){
 
 # Profiles
 
-[User profiles](/🗄/Article/models/types.md#profile).
+[User profiles](/🗄/Article/models/types.md#profile)
 are a type of model that allows you to associate custom fields and data directly with a specific user.
 You can either associate the user profile with only a user,
 **or** you may associate the user profile with _both_ a user and a

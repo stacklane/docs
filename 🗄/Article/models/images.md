@@ -7,7 +7,7 @@ summary:  Learn about uploading and displaying images.
 
 The `image` field type stores a single image. Supported image types are JPG, GIF, PNG.
 Because non-expert users may be using your site/app, the system supports image uploads of up to 10MB.
-However all images will be re-sized to be no more than 2000px wide (with a proportional height).
+However all images will be re-sized to no more than 2000px wide (with a proportional height).
 
 # Display
 

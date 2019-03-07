@@ -1,0 +1,78 @@
+
+@import "/bulma/utilities/initial-variables";
+@import "/bulma/utilities/functions";
+@import "/bulma/utilities/derived-variables";
+
+/**
+ * Custom
+ */
+
+$main-bg-color: #f8f8f8;
+
+//$shadow-sm: 0 .125rem .25rem rgba($black, .075) !default;
+//$shadow: 0 .5rem 1rem rgba($black, .15) !default;
+//$shadow-lg: 0 1rem 3rem rgba($black, .175) !default;
+
+//$shadow-for-bg-small: 0 2px 5px 0 rgba(59,65,94, 0.1), 0 1px 1px 0 rgba(0, 0, 0, .07) !default;
+$shadow-for-bg: 0 7px 14px 0 rgba(59,65,94, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07) !default;
+//$shadow-for-bg-large: 0 15px 35px 0 rgba(59,65,94, 0.1), 0 5px 15px 0 rgba(0, 0, 0, .07) !default;
+
+$zindex-sticky: 39;
+
+$boxed-radius: $radius; //0.25rem;
+$boxed-border: 1px solid rgba(0,0,0,.1); //#e5e5e5;
+$boxed-border-lighter: 1px solid rgba(0,0,0,.05);
+$boxed-background: white !important;
+$boxed-shadow:  0px 0px 15px 0px rgba(0, 0, 0, 0.05);
+
+@mixin is-boxed {
+  box-shadow: $boxed-shadow;
+  border-radius: $boxed-radius;
+  border: $boxed-border;
+  background: $boxed-background;
+}
+
+/**
+ * Overrides
+ */
+$navbar-z: $zindex-sticky + 1;
+$navbar-fixed-z: $navbar-z;
+$navbar-background-color: $main-bg-color;
+$navbar-height: 3.25rem;
+$navbar-padding-vertical: 1rem;
+$navbar-breakpoint: 0px;
+$navbar-total-height: $navbar-height + $navbar-padding-vertical + $navbar-padding-vertical;
+
+$family-sans-serif: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+$input-border-color: $grey-lighter;
+
+$body-background-color: $main-bg-color; //#101E27;
+$body-color: #555555;
+$body-size: 15px;
+$body-line-height: 1.5;
+$body-weight: $weight-normal;
+
+$table-background-color: transparent;
+
+$link: #3284A0;
+$link-hover: #345167;
+
+$box-radius: $boxed-radius;
+$box-shadow: $boxed-shadow;
+$box-background-color: $boxed-background;
+.box{ border: $boxed-border; }
+
+$code-background: inherit;
+$code-size: inherit;
+$code-weight: inherit;
+$code-padding: 0;
+
+/*
+ * Use bootstrap breakpoints
+ */
+$tablet: 576px;
+$desktop: 768px /*+ 2 * $gap*/;
+$widescreen: 992px /*+ 2 * $gap*/;
+$fullhd: 1200px /*+ 2 * $gap*/;
+

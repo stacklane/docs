@@ -1,0 +1,22 @@
+<!--TEMPLATE mustache-->
+
+{{% partial /_layout }}
+{{% partial /_nav }}
+
+{{< layout}}
+
+{{$title}}{{$title2}}Content{{/title2}}{{/title}}
+
+{{$content}}
+
+<div class="columns">
+    <div class="column is-one-fifth is-hidden-mobile">
+        {{>nav}}
+    </div>
+    <div class="column">
+        {{$content2}}Content{{/content2}}
+    </div>
+</div>
+
+{{/content}}
+{{/layout}}

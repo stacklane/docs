@@ -1,11 +1,11 @@
 <!--TEMPLATE mustache-->
-{{% partial /_layout }}
+{{% partial /_layoutSide }}
 
-{{< layout}}
+{{< layoutSide}}
 
-{{$title}}Models{{/title}}
+{{$title2}}Models{{/title2}}
 
-{{$content}}
+{{$content2}}
 
 <article>
     <header>
@@ -15,7 +15,6 @@
             Learn how to create data driven applications with Stacklane.
         </p>
     </header>
-
 
     <p>
         With Stacklane you never have to worry about indexes, sharding, or scaling.
@@ -30,67 +29,35 @@
         that facilitate choosing one over the other.  Learn more about each below.
     </p>
 
-
-    <section>
-        <div class="card-deck">
-            <a class="card mt-1" href="/models/types#universal">
-                <div class="card-body">
-                    <h6 class="card-title">Universal</h6>
-                    <p class="card-text">Suitable for a wide range of entities and concepts.</p>
-                </div>
-            </a>
-            <a class="card mt-1" href="/models/types#embedded">
-                <div class="card-body">
-                    <h6 class="card-title">Embedded</h6>
-                    <p class="card-text">Normalize and share data structures between types.</p>
-                </div>
-            </a>
-        </div>
-        <div class="card-deck mt-1">
-            <a class="card mt-1" href="/models/types#content">
-                <div class="card-body">
-                    <h6 class="card-title">Content ⚠️</h6>
-                    <p class="card-text">Text and data for end-users, visitors, and buyers.</p>
-                </div>
-            </a>
-            <a class="card mt-1" href="/models/types#event">
-                <div class="card-body">
-                    <h6 class="card-title">Events ⚠️</h6>
-                    <p class="card-text">Long term time-series data, activity, or logging.</p>
-                </div>
-            </a>
-        </div>
-        <div class="card-deck mt-1">
-            <a class="card mt-1" href="/models/types#profile">
-                <div class="card-body">
-                    <h6 class="card-title">User Profiles</h6>
-                    <p class="card-text">Associate data one-to-one with a specific user.</p>
-                </div>
-            </a>
-            <a class="card mt-1" href="/models/containers">
-                <div class="card-body">
-                    <h6 class="card-title">Containers</h6>
-                    <p class="card-text">Create parent/child relationships between model types.</p>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!--
-    <section>
-        <h2>Denormalized Documents</h2>
-        <p>
-            Modeling best practices follow those of document based databases, such as MongoDB.
-            Document based modeling usually calls for much more denormalization than relational databases.
-            For example, the classic Order/OrderItem two table relationship, would likely become a single
-            Order document with nested/embedded OrderItems.
-            In a document based world there is no joining or foreign keys, only documents (Models) of a given type.
-        </p>
-    </section>
-    -->
-
+    <div class="article-list">
+        <a href="/models/types#universal">
+            <h2>Universal</h2>
+            <p>Suitable for a wide range of entities and concepts.</p>
+        </a>
+        <a href="/models/types#embedded">
+            <h2>Embedded</h2>
+            <p>Normalize and share data structures between types.</p>
+        </a>
+        <a href="/models/types#content">
+            <h2>Content️</h2>
+            <p>Text and data for end-users, visitors, and buyers.</p>
+        </a>
+        <!--
+        <a href="/models/types#event">
+            <h6 class="card-title">Events ⚠️</h6>
+            <p class="card-text">Long term time-series data, activity, or logging.</p>
+        </a>-->
+        <a href="/models/types#profile">
+            <h2>User Profiles</h2>
+            <p>Associate data one-to-one with a specific user.</p>
+        </a>
+        <a href="/models/containers">
+            <h2>Containers</h2>
+            <p>Create parent/child relationships between model types.</p>
+        </a>
+    </div>
 
 </article>
 
-{{/content}}
-{{/layout}}
+{{/content2}}
+{{/layoutSide}}

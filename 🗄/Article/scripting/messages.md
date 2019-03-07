@@ -7,7 +7,7 @@ Messages are a simple way to communicate a one-time notice, alert, or message.
 They are intended for a single user/visitor to see on the very next page view (GET).
 Messages may be more typically added during [redirects](/🗄/Article/scripting/helpers.md#redirect).
   
-> {.alert .alert-warning .small}
+> {.alert .is-warning .is-small}
 > 
 > Messages are intended for information purposes only, 
 > and should not contain sensitive or secure information.

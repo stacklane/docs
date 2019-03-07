@@ -1,12 +1,11 @@
 <!--TEMPLATE mustache-->
+{{% partial /_layoutSide }}
 
-{{% partial /_layout }}
+{{< layoutSide}}
 
-{{< layout}}
+{{$title2}}Scripting{{/title2}}
 
-{{$title}}Scripting Engine{{/title}}
-
-{{$content}}
+{{$content2}}
 
 <article>
     <header>
@@ -30,58 +29,42 @@
         This is particularly helpful when it comes to referencing <a href="/models/">data models</a>.
     </p>
 
-    <section>
-        <div class="card-deck">
-            <a class="card mt-1" href="/scripting/models">
-                <div class="card-body">
-                    <h6 class="card-title">Models</h6>
-                    <p class="card-text">Defines the name and other basic properties.</p>
-                </div>
-            </a>
-            <a class="card mt-1" href="/scripting/queries">
-                <div class="card-body">
-                    <h6 class="card-title">Queries</h6>
-                    <p class="card-text">Create criteria based queries to find models.</p>
-                </div>
-            </a>
-        </div>
-        <div class="card-deck mt-1">
-            <a class="card mt-1" href="/scripting/suppliers">
-                <div class="card-body">
-                    <h6 class="card-title">Suppliers</h6>
-                    <p class="card-text">Reuse values across scripts and templates.</p>
-                </div>
-            </a>
-            <a class="card mt-1" href="/scripting/users">
-                <div class="card-body">
-                    <h6 class="card-title">Users</h6>
-                    <p class="card-text">Scripting with users, roles, and profiles.</p>
-                </div>
-            </a>
-        </div>
-        <div class="card-deck mt-1">
-            <a class="card mt-1" href="/scripting/helpers">
-                <div class="card-body">
-                    <h6 class="card-title">Helpers</h6>
-                    <p class="card-text">Form handling, redirects, and encoding.</p>
-                </div>
-            </a>
-            <a class="card mt-1" href="/scripting/messages">
-                <div class="card-body">
-                    <h6 class="card-title">Messages</h6>
-                    <p class="card-text">Messages, alerts, and notices across requests.</p>
-                </div>
-            </a>
-        </div>
-        <div class="card-deck mt-1">
-            <a class="card mt-1" href="/scripting/connectors">
-                <div class="card-body">
-                    <h6 class="card-title">Connectors</h6>
-                    <p class="card-text">Connections to third party REST APIs.</p>
-                </div>
-            </a>
-        </div>
-    </section>
+    <div class="article-list">
+        <a href="/scripting/models">
+            <h2>Models</h2>
+            <p>Create, read, update, and delete.</p>
+        </a>
+
+        <a href="/scripting/queries">
+            <h2>Queries</h2>
+            <p>Create criteria based queries to find models.</p>
+        </a>
+
+        <a href="/scripting/suppliers">
+            <h2>Suppliers</h2>
+            <p>Reuse values across scripts and templates.</p>
+        </a>
+
+        <a href="/scripting/users">
+            <h2>Users</h2>
+            <p>Scripting with users, roles, and profiles.</p>
+        </a>
+
+        <a href="/scripting/helpers">
+            <h2>Helpers</h2>
+            <p>Form handling, redirects, and encoding.</p>
+        </a>
+
+        <a href="/scripting/messages">
+            <h2>Messages</h2>
+            <p>Messages, alerts, and notices across requests.</p>
+        </a>
+
+        <a href="/scripting/connectors">
+            <h2>Connectors</h2>
+            <p>Connections to third party REST APIs.</p>
+        </a>
+    </div>
 
     <h1>Restrictions</h1>
     <p>
@@ -117,6 +100,6 @@
 
 </article>
 
-{{/content}}
-{{/layout}}
+{{/content2}}
+{{/layoutSide}}
 

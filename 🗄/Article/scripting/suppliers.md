@@ -16,7 +16,7 @@ then it's likely worth breaking it out into multiple supplier scripts.
 Keeping supplier scripts small and purpose specific will enhance
 readability, performance, and maintainability.
 
-> {.alert .alert-info .small}
+> {.alert .is-info .is-small}
 >
 > Suppliers aren't the only way to share values across many endpoints.
 > [Dynamic path parameters](/🗄/Article/endpoints/dynamic.md) will

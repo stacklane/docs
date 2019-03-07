@@ -53,9 +53,12 @@ between two others:
 
 ```javascript
 /**
- * Set 'moveTask' hierarchy value to a position between 'afterTask' and 'beforeTask'
+ * Set 'moveTask' hierarchy value to a position 
+ * between 'afterTask' and 'beforeTask'
  */
-moveTask.hierarchy = afterTask.hierarchy.before(beforeTask.hierarchy);
+moveTask.hierarchy = afterTask.hierarchy.before(
+  beforeTask.hierarchy
+);
 ```
 
 The "tasks"

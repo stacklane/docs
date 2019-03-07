@@ -1,0 +1,28 @@
+/**
+ * Build status -- spinners on all but danger + success
+ */
+#build-status div{
+  opacity: .7
+}
+#build-status div:first-child{
+  opacity: 1;
+}
+#build-status div:first-child p:after{
+  content: ' ';
+  height: .9em;
+  width: .9em;
+  display:inline-block;
+  animation: rotate-spinner 0.8s infinite linear;
+  border: 2px solid rgba(0,0,0,.5);
+  border-right-color: transparent;
+  border-radius: 50%;
+  margin: 0px 0px 0px .5em;
+}
+#build-status div.is-success:first-child p:after,
+#build-status div.is-danger:first-child p:after{
+  content: normal;
+}
+@keyframes rotate-spinner {
+  0%    { transform: rotate(0deg); }
+  100%  { transform: rotate(360deg); }
+}

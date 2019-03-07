@@ -1,12 +1,13 @@
 function clearStatus(){
-    $get('status').innerHTML = '';
+    $get('build-status').innerHTML = '';
 }
 
 function addStatus(html, cls){
-    var node = document.createElement("li");
-    node.setAttribute("class", cls);
-    node.innerHTML = html;
-    $get('status').appendChild(node);
+    var node = document.createElement("div");
+    node.setAttribute("class", 'alert ' + cls);
+    node.innerHTML = '<p>' + html + '</p>';
+    $get('build-status').prepend(node);
+
 
     // TODO  needs to be the code element for highlighElement to work
     //if (html.indexOf("language-") > -1) Prism.highlightElement(node); // rerun
@@ -16,10 +17,10 @@ function addStatus(html, cls){
 function logLevelToClass(level){
     if (level == null) level = 'debug';
     switch (level){
-        case 'error': return 'danger';
-        case 'warn': return 'warning';
-        case 'info': return 'info';
-        case 'debug': return 'light';
+        case 'error': return 'is-danger';
+        case 'warn': return 'is-warning';
+        case 'info': return 'is-info';
+        case 'debug': return 'is-light';
         default: return level;
     }
 }
@@ -69,39 +70,39 @@ function getBranch(){
 }
 
 function init(branch){
-    addStatus('Initializing', 'list-group-item list-group-item-warning pt-1 pb-1');
+    addStatus('Initializing', 'is-warning');
 
     var init = new EventSource('build?branch=' + branch);
     var graceful = false;
 
     init.onerror = function(e){
         if (!graceful) {
-            addStatus('Connection failed: ' + e.message, "list-group-item pt-1 pb-1 list-group-item-danger");
+            addStatus('Connection failed: ' + e.message, "is-danger");
         }
     };
 
     init.onmessage = function(e){
         if (e.data.startsWith("{")){
             var obj = JSON.parse(e.data);
-            addStatus(createProblemHtml(obj.value), "list-group-item pt-1 pb-1 list-group-item-" + logLevelToClass(obj.level));
+            addStatus(createProblemHtml(obj.value), "" + logLevelToClass(obj.level));
         } else {
-            addStatus(e.data, "list-group-item pt-1 pb-1 list-group-item-warning");
+            addStatus(e.data, "is-warning");
         }
     }
 
     init.addEventListener('completed', function(e) {
-        addStatus("Done", "list-group-item pt-1 pb-1 list-group-item-success");
+        addStatus("Done", "is-success");
         var obj = JSON.parse(e.data);
         //var siteId = $get('SiteId').value;
         $get("launch-link").setAttribute('href', obj.url);
         $get("launch-link").setAttribute('target', obj.frame);
-        $get("launch-link").classList.remove('disabled', 'btn-secondary');
-        $get("launch-link").classList.add('btn-primary');
+        $get("launch-link").classList.remove('is-disabled', 'is-secondary');
+        $get("launch-link").classList.add('is-success');
         init.close();
     });
 
     init.addEventListener('exception', function(e) {
-        addStatus(e.data, "list-group-item pt-1 pb-1 list-group-item-danger");
+        addStatus(e.data, "is-danger");
         init.close();
     });
 
@@ -111,13 +112,13 @@ function init(branch){
     });
 
     init.addEventListener('timeout', function(e) {
-        addStatus('Timeout', "list-group-item pt-1 pb-1 list-group-item-danger");
+        addStatus('Timeout', "is-danger");
     });
 }
 
 $on('branch', 'change', function(){
-    $get("launch-link").classList.add('disabled', 'btn-secondary');
-    $get("launch-link").classList.remove('btn-primary');
+    $get("launch-link").classList.add('is-disabled', 'is-light');
+    $get("launch-link").classList.remove('is-success');
 });
 
 $on('repo-refresh-action', 'click', function(){

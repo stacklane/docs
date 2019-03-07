@@ -1,0 +1,44 @@
+
+@import "/style/variables";
+
+#toc{
+  border-radius: $boxed-radius;
+  border: $boxed-border;
+
+  position: -webkit-sticky;
+  position: sticky;
+  top: $navbar-total-height;
+  overflow-y: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: .9rem;
+
+  ul {
+    padding-left: 0;
+  }
+
+  li {
+    display:block;
+  }
+
+  a{
+    display: block;
+    padding: .125rem 1.5rem;
+    color: #99979c;
+    //background: white;
+  }
+
+  a:hover{
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  li.is-active a{
+    color: $link-active;
+  }
+}
+
+.is-scrolled #toc{
+  border-top-left-radius:0;
+  border-top-right-radius:0;
+  border-top: none;
+}

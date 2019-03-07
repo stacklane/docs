@@ -28,41 +28,6 @@ It supports a larger field size for the [rich text field type](/🗄/Article/mod
 as well as a larger overall model size.
 Because it is intended to created and managed by people,
 only 1 insert is allowed per transaction.
-
-# Event (Q4 2019) {#event}
-
-This type is for events, time-series data, activity, or logging.
-Events accumulate over time at a potentially high frequency/volume.
-
-Orders, comments, and Twitter posts are considered "events", from the standpoint of their
-potentially high frequency, their small size, and their permanence/low-mutability.
-Once created they are usually not modified again.
-
-Another distinguishing characteristic is that newer Events are generally more relevant than older events,
-with very old Events having little to no relevance.
-
-Events have a "useful time horizon" for queries, of either yearly, monthly, or daily.
-The default of one year should be suitable for most cases, and is easiest to develop against.
-A query for events may only span two time partitions.  So in the case of the default
-yearly horizon, a single query could span two years.
-
-## Query Scope
-
-The Event type is always isolated to its immediate parent container for query scope.
-Given Account ▶︎ Site ▶︎ Orders, the Orders Event type must always be queried in the context of a single Site.
-In other words, you must first know the Site you want to query before you query for Orders.
-
-## Advantages
-
-- Designed for highest write volume.
-- Automatic partitioning over time. There is no "performance penalty" to a business that has events growing over time, where newer events are generally more relevant than previous events.
-
-## Limitations
-       
-- Unique values are not allowed.
-- Must always exist within a [container](/🗄/Article/models/containers.md).
-- All queries must include date/time range (it is not possible to query for all Events).
-- Embedded models must be "local" to the Event type -- "purpose built" for that Event type.
  
 # User Profile {#profile}
 
@@ -71,6 +36,11 @@ when [user related](/🗄/Article/settings/users.md) functionality is enabled.
 They may either be a top level type or [contained](/🗄/Article/models/containers.md).
 
 Learn more about [user scripting](/🗄/Article/scripting/users.md).
+
+# Event (Q4 2019) {#event}
+
+This type is for events, time-series data, activity, or logging.
+Events accumulate over time at a potentially high frequency/volume.
 
 # Embedded
 

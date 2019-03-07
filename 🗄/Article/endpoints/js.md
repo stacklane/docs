@@ -57,13 +57,16 @@ responds to requests for `GET /account/1234/settings`.
 
 # Redirects
 
-- Internal redirects -
-    Output a string prefixed with "/"
-    to perform an absolute redirect to another endpoint within your app.
-    For more readable code and additional options, use the
-    [redirect builder](/🗄/Article/scripting/helpers.md#redirect) instead.
-- External redirects -
-  Output a string prefixed with "http" to perform an external redirect.
+## Internal Redirects
+
+Output a string prefixed with "/"
+to perform an absolute redirect to another endpoint within your app.
+For more readable code and additional options, use the
+[redirect builder](/🗄/Article/scripting/helpers.md#redirect) instead.
+    
+## External Redirects
+
+Output a string prefixed with "http" to perform an external redirect.
    
 ## Rerouting
 

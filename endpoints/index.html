@@ -1,11 +1,11 @@
 <!--TEMPLATE mustache-->
-{{% partial /_layout }}
+{{% partial /_layoutSide }}
 
-{{< layout}}
+{{< layoutSide}}
 
-{{$title}}Endpoints{{/title}}
+{{$title2}}Endpoints{{/title2}}
 
-{{$content}}
+{{$content2}}
 
 <article>
     <header>
@@ -16,46 +16,33 @@
         </p>
     </header>
 
-    <section class="mt-4">
-        <div class="card-deck">
-            <a class="card mt-1" href="/endpoints/mustache">
-                <div class="card-body">
-                    <h6 class="card-title">Mustache</h6>
-                    <p class="card-text">Use Mustache templates to generate HTML views.</p>
-                </div>
-            </a>
-            <a class="card mt-1" href="/endpoints/js">
-                <div class="card-body">
-                    <h6 class="card-title">JavaScript</h6>
-                    <p class="card-text">Use server-side JS for controllers and JSON.</p>
-                </div>
-            </a>
-        </div>
-        <div class="card-deck mt-1">
-            <a class="card mt-1" href="/endpoints/assets">
-                <div class="card-body">
-                    <h6 class="card-title">Assets</h6>
-                    <p class="card-text">Images, plain HTML, CSS, and native SASS/SCSS.</p>
-                </div>
-            </a>
-            <a class="card mt-1" href="/endpoints/errors">
-                <div class="card-body">
-                    <h6 class="card-title">Errors</h6>
-                    <p class="card-text">Fallback server and "not found" error views.</p>
-                </div>
-            </a>
-        </div>
-        <div class="card-deck mt-1">
-            <a class="card mt-1" href="/endpoints/dynamic">
-                <div class="card-body">
-                    <h6 class="card-title">Dynamic Paths</h6>
-                    <p class="card-text">Dynamic path parameters based on choice or model data.</p>
-                </div>
-            </a>
-        </div>
-    </section>
+    <p>
 
+    </p>
+
+    <div class="article-list">
+        <a href="/endpoints/mustache">
+            <h2>Mustache</h2>
+            <p>Use Mustache templates to generate HTML views.</p>
+        </a>
+        <a href="/endpoints/js">
+            <h2>JavaScript</h2>
+            <p>Use server-side JS for controllers and JSON.</p>
+        </a>
+        <a href="/endpoints/assets">
+            <h2>Assets</h2>
+            <p>Images, plain HTML, CSS, and native SASS/SCSS.</p>
+        </a>
+        <a href="/endpoints/errors">
+            <h2>Errors</h2>
+            <p>Fallback server and "not found" error views.</p>
+        </a>
+        <a href="/endpoints/dynamic">
+            <h2>Dynamic Paths</h2>
+            <p>Dynamic path parameters based on choice or model data.</p>
+        </a>
+    </div>
 </article>
 
-{{/content}}
-{{/layout}}
+{{/content2}}
+{{/layoutSide}}

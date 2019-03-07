@@ -3,39 +3,39 @@
 
 {{% yaml /_navItems as items }}
 
-<div id="all-nav" class="invisible">
-<h1 class="nav-category">{{>icon-compass-sm}} Overview</h1>
-<ul class="d-none">
+<div id="sidebar" class="is-invisible sidebar">
+<h1 class="nav-category">Overview</h1>
+<ul>
     {{# items.overview }}
     <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
     {{/ items.overview }}
 </ul>
-<h1 class="nav-category">{{>icon-cog-sm}} Settings</h1>
-<ul class="d-none">
+<h1 class="nav-category">Settings</h1>
+<ul>
     {{# items.settings }}
     <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
     {{/ items.settings }}
 </ul>
-<h1 class="nav-category">{{>icon-database-sm}} Models</h1>
-<ul class="d-none">
+<h1 class="nav-category">Models</h1>
+<ul>
     {{# items.models }}
     <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
     {{/ items.models }}
 </ul>
-<h1 class="nav-category">{{>icon-target-sm}} Endpoints</h1>
-<ul class="d-none">
+<h1 class="nav-category">Endpoints</h1>
+<ul>
     {{# items.endpoints }}
     <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
     {{/ items.endpoints }}
 </ul>
-<h1 class="nav-category">{{>icon-document-sm}} Scripting</h1>
-<ul class="d-none">
+<h1 class="nav-category">Scripting</h1>
+<ul>
     {{# items.scripting }}
     <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
     {{/ items.scripting }}
 </ul>
 <div class="nav-separator">
-    <a href="/examples"><h1 class="">{{>icon-media-play-circle-sm}} Examples</h1></a>
+    <a href="/examples"><h1 class="">Examples</h1></a>
 </div>
 </div>
 
@@ -45,19 +45,22 @@
 <script>
     $each('.nav-link', function(e){
         if (e.getAttribute('href') == window.location.pathname){
-            e.classList.add('active');
-            e.parentElement.parentElement.classList.toggle('d-none', false);
+            e.classList.add('is-active');
+            var ul = e.parentElement.parentElement;
+            ul.classList.toggle('is-active', true);
+            ul.previousElementSibling.classList.toggle('is-active', true);
         }
     });
 
     /**
-     *  This technique produces the least amount of 'flashing',
-     *  since there is nothing at all shown until navs are ready
+     * This technique produces the least amount of 'flashing',
+     * since there is nothing at all shown until navs are ready
      */
-    $get('all-nav').classList.remove('invisible');
+    $get('sidebar').classList.remove('is-invisible');
 
     $on('.nav-category', 'click', function(event){
         var cat = $up(event.target, '.nav-category');
-        cat.nextElementSibling.classList.toggle('d-none');
+        cat.classList.toggle('is-active');
+        cat.nextElementSibling.classList.toggle('is-active');
     });
 </script>

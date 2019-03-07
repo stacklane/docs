@@ -1,0 +1,152 @@
+@import "/style/variables";
+
+article{
+  footer{
+    margin-top: 5rem;
+    border-radius: $boxed-radius;
+    border: $boxed-border;
+    padding: 2rem;
+  }
+
+  .suggestion{
+    font-size: .85rem;
+    text-align:right;
+    white-space: nowrap;
+    color: rgba(0,0,0,.54);
+
+    .suggestion-edit-link:after{
+      content: "";
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border: 4px solid transparent;
+      border-left: 4px solid $link;
+      margin-left: 6px;
+    }
+  }
+}
+
+article .is-invalid-link:after,
+article .is-missing-link:after{
+  content: '⚠️';
+}
+
+article p{
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+article p:last-child{
+  margin-bottom: 0rem;
+}
+
+article > h1{
+  font-size: $size-4;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 3.75rem;
+  flex: 0;
+  width: 100%;
+  margin-bottom: 15px;
+  color: black;
+  font-weight: 400;
+
+  // only for is-header-anchor padding-right: 3.75rem;
+}
+
+
+// ideally would account for fixed height toolbar with an html fragment/anchor
+/*
+:target::before {
+  content: " ";
+  display: block;
+  height: $navbar-total-height; // fixed header height
+  margin: -$navbar-total-height 0 0; // negative fixed header height *
+  visibility: hidden;
+  pointer-events: none;
+}*/
+
+$article-h1-top-spacing: 3.125rem;
+
+article > h1:target {
+  position: relative;
+  border-top: $navbar-total-height - 2rem solid transparent;
+  margin-top: -($navbar-total-height - 2rem);
+  //padding-top: $article-h1-top-spacing; // using margin below, so move that spacing to padding
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+/*
+article > h1 .is-header-anchor{
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  transition: all 0.2s;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  transition-delay: 0s;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  position: absolute;
+  right: 0;
+  top: 50%;
+  display: block;
+  width: 3.125rem;
+  height: 3.125rem;
+  border-radius: 50%;
+  border: 1px solid #e5e5e5;
+  outline: none;
+}
+article > h1 .is-header-anchor:after{
+  content: '#';
+}*/
+
+article > h1:after{
+  content: '';
+  flex-grow: 1;
+  margin-left: .625rem;
+  border-top: $boxed-border;
+}
+
+article > h1, article header + p{
+  padding-top: $article-h1-top-spacing;
+}
+
+article > h2{
+  font-size: $size-6;
+  text-decoration: none;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+article header h1{
+  font-size: $size-2;
+  color: black;
+}
+/*
+article pre{
+  // padding-top: 0 !important;
+  // padding-bottom: 0 !important;
+  background: #f7f8f9 !important;
+  border-radius: 5px !important;
+  position: relative !important;
+}
+article pre code{
+  padding:0 !important;
+  color: #333 !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  line-height: 19px !important;
+}*/
+article code{
+  white-space: pre;
+  word-break: keep-all; // code usually for small snippets or words, not large blocks.  so prevent those words/snippets from breaking.
+}
+
+//article .code > pre{
+ // margin:0;
+//}

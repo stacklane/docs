@@ -30,7 +30,7 @@ To specify a tag (prefix with '!'):
 source: https://github.com/owner/project.git#!tag
 ```
 
-> {.alert .alert-warning .small}
+> {.alert .is-warning .is-small}
 >
 > The _owner_ must match the owner of the source including this nested mount.
 
@@ -55,7 +55,7 @@ namespace: shared
 However this should only be used in special scenarios, especially when the parent and nested
 site are sharing the same data model.
 
-> {.alert .alert-warning .small}
+> {.alert .is-info .is-small}
 >
 > Changing the namespace identifier after it contains live / production data will result in a loss of data.
 

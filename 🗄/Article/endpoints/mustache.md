@@ -191,7 +191,7 @@ and the second parameter is the string input.
 {{/Messages.all}}
 ```
 
-## Alternative Definition<
+## Alternative Definition
 
 `choose-string-map` is the most compact way to define the choices.
 However if spaces are needed in the strings use JSON for the definition via

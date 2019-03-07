@@ -4,6 +4,9 @@
 {{% partial /_layout }}
 
 {{< layout}}
+
+{{$title}}Example Build{{/title}}
+
 {{$content}}
 
 <link itemprop="content-security-policy" data-connect-self="true">
@@ -11,33 +14,30 @@
 <article>
     <header>
         <h1>Example Build</h1>
-        <h6>{{site.url}}</h6>
+        <p>{{site.url}}</p>
     </header>
 
-    <section class="mt-4">
-        <div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Branch</span>
-                </div>
-
-                <input id="branch" name="branch" type="text" class="font-weight-bold form-control" value="master">
-
-                <div class="input-group-append">
-                    <a id="repo-refresh-action" href="#" class="btn btn-secondary">Build</a>
-                    <a id="launch-link" href="#" target="_blank" class="disabled btn btn-secondary">Launch</a>
-                </div>
+    <p>
+        <div class="field has-addons">
+            <div class="control is-expanded">
+                <input id="branch" name="branch" type="text" class="has-text-weight-bold input" value="master">
+            </div>
+            <div class="control">
+                <a id="repo-refresh-action" href="#" class="button is-primary">Build</a>
+            </div>
+            <div class="control">
+                <a id="launch-link" href="#" target="_blank" class="button is-disabled is-light">Launch</a>
             </div>
         </div>
-    </section>
+    </p>
 
-    <section class="mt-4">
-        <h1>Build</h1>
+    <h1>Build</h1>
 
-        <ul class="list-group small" id="status">
-            <li class="list-group-item list-group-item-warning">Initializing</li>
-        </ul>
-    </section>
+    <p>
+        <div class="" id="build-status">
+            <div class="alert is-primary"><p>Initializing</p></div>
+        </div>
+    </p>
 
 </article>
 

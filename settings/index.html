@@ -1,11 +1,11 @@
 <!--TEMPLATE mustache-->
-{{% partial /_layout }}
+{{% partial /_layoutSide }}
 
-{{< layout}}
+{{< layoutSide}}
 
-{{$title}}Configuration{{/title}}
+{{$title2}}Configuration{{/title2}}
 
-{{$content}}
+{{$content2}}
 
 <article>
     <header>
@@ -24,37 +24,25 @@
         functionality.
     </p>
 
-    <section class="mt-4">
-        <div class="card-deck">
-            <a class="card mt-1" href="/settings/manifest">
-                <div class="card-body">
-                    <h6 class="card-title">Manifest 🎛.yaml</h6>
-                    <p class="card-text">Defines the name and other basic properties.</p>
-                </div>
-            </a>
-            <a class="card mt-1" href="/settings/style">
-                <div class="card-body">
-                    <h6 class="card-title">Properties 🎨.scss</h6>
-                    <p class="card-text">Configurable colors, phrases, and variables.</p>
-                </div>
-            </a>
-        </div>
-        <div class="card-deck mt-1">
-            <a class="card mt-1" href="/settings/nested">
-                <div class="card-body">
-                    <h6 class="card-title">Nested 🔌**.yaml</h6>
-                    <p class="card-text">Nest a site at a sub-path of another site.</p>
-                </div>
-            </a>
-            <a class="card mt-1" href="/settings/users">
-                <div class="card-body">
-                    <h6 class="card-title">Users 👤.yaml</h6>
-                    <p class="card-text">Enables user/session functionality for a site.</p>
-                </div>
-            </a>
-        </div>
-    </section>
+    <div class="article-list">
+        <a href="/settings/manifest">
+            <h2>Manifest 🎛.yaml</h2>
+            <p>Defines the name and other basic properties.</p>
+        </a>
+        <a href="/settings/style">
+            <h2>Properties 🎨.scss</h2>
+            <p>Configurable colors, phrases, and variables.</p>
+        </a>
+        <a href="/settings/nested">
+            <h2>Nested 🔌**.yaml</h2>
+            <p>Nest a site at a sub-path of another site.</p>
+        </a>
+        <a href="/settings/users">
+            <h2>Users 👤.yaml</h2>
+            <p>Enables user/session functionality for a site.</p>
+        </a>
+    </div>
 </article>
 
-{{/content}}
-{{/layout}}
+{{/content2}}
+{{/layoutSide}}
