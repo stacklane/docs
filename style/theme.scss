@@ -101,6 +101,7 @@ main + footer{
   margin-top: 10rem !important;
   padding-top: 1rem;
   padding-bottom: 2rem;
+  padding-right: 1rem;
   border-top: $boxed-border;
   text-align: right;
   font-size: .8rem;
@@ -109,8 +110,11 @@ main + footer{
 .is-scrolled .navbar{
   border-bottom: $boxed-border-lighter;
 }
+
 .navbar-brand .logo svg{
   height: 1.25rem;
+  overflow:visible;
+  margin-bottom: 1px;
 }
 
 
