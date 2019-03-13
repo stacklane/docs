@@ -64,6 +64,3 @@ import {BasicProfile} from '📦'
 
 let currentUserProfile = BasicProfile.me().get();
 ```
-
-Important: the me() method acts like a singleton, and if there hasn't been a user profile setup
-it will auto-create one.
