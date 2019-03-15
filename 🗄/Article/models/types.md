@@ -42,11 +42,13 @@ Learn more about [user scripting](/🗄/Article/scripting/users.md).
 This type is for events, time-series data, activity, or logging.
 Events accumulate over time at a potentially high frequency/volume.
 
-# Embedded
+# Embedded {#embedded}
 
 Embedded models create a complex value (or sub-document) that can be used as a field type for another model type.
 It may also be used for lists, where for example "Order.items" is a list of "OrderItem" embedded values.
 Models to be embedded take on the field limitations of whatever type they are embedded on.
+
+For more information see [embedded definitions](/🗄/Article/models/definition.md#embedded).
 
 ## Local vs Global 
 

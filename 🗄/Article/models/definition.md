@@ -83,7 +83,7 @@ item:
     price: double
 ```
 
-## Multi-Valued
+## Lists
 
 Whether defined globally or locally, embedded values can allow multiple values (up to 20 entries)
 by adding "[]" after the field name:
@@ -100,3 +100,27 @@ specifying a number (less than 20) between the brackets.
 ```yaml
 address[5]: Address
 ```
+
+## Capped/Rolling Lists
+
+Lists of embedded values may also be used to retain only `N` recent values,
+where `N` is the maximum size defined for the embedded list.
+
+This works in a way similar to circular buffers: 
+once a list fills its allocated space, 
+it makes room for new embedded entries by overwriting the oldest value in the list.
+
+Use the `put` method on the list to achieve this behavior. 
+Assuming an embedded value list with a maximum number of entries set to `2`:
+
+```javascript
+let p = new Post();
+p.recentComments.put(new Post.Comment().content('<p>a</p>'));
+p.recentComments.put(new Post.Comment().content('<p>b</p>'));
+p.recentComments.put(new Post.Comment().content('<p>c</p>'));
+```
+The `Post` will now only contain comments `b` and `c`.
+Putting the last comment `c` dropped off the older comment `a`,
+since that exceeded the maximum of `2` entries for this embedded list field.
+
+

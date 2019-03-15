@@ -10,11 +10,12 @@ These are automatically managed.
 
 # Primitive
 
-## `code`
+## `string`
 
-Maximum length: 100 UTF-8 <em>characters</em>.
+Maximum length: 100 UTF-8 *characters*.
 May be marked as <a href="#unique">unique: true</a>.\
-Provisioned size: 400 bytes (4 bytes provisioned per character).
+Provisioned size: 400 bytes (4 bytes provisioned per character).\
+This may be lowered by defining `max: N` for the field definition.
 
 ## `boolean`
 
@@ -177,6 +178,23 @@ Provisioned *and* maximum size is 20,000 *bytes* for the Content Type, and 2,000
 Special kind of `text` which is limited to a
 single `h1-h6` block containing allowed inline elements.\
 Maximum length: 100 UTF-8 *characters*.  Provisioned size: 400 bytes (4 bytes provisioned per character).
+
+## `paragraph`
+
+Special kind of `text` which is limited to a
+single `p` block containing allowed inline elements.\
+Provisioned *and* maximum size: 2000 *bytes*.\
+This may be lowered by defining `max: N` for the field definition.
+
+## Markdown
+
+Rich text / HTML fields support markdown *input* via field-specific static methods.
+Keep in mind that the markdown must ultimately resolve to a valid HTML for the field type.
+
+```javascript
+let markdown = 'My *markdown* string'
+new Product().summary(Product.summary.md(markdown));
+```
 
 ## Display
 
