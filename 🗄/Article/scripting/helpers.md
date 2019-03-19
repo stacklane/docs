@@ -111,3 +111,32 @@ let repeatableIcon = Identicon.of('any string value');
 
 let randomIcon = Identicon.random();
 ```
+
+## TimeAgo
+
+Utility for displaying relative dates server-side, rather than resorting to a client-side library.
+Relative dates are designed to give a general sense of time, not precision.
+
+```javascript
+import {Post} from '📦';
+
+Post.all().map(p=>({
+    createdAgo: TimeAgo.fromNow(p.created),
+    title: p.title
+}));
+```
+
+Examples of `TimeAgo.fromNow` output:
+
+`now`\
+`3 seconds ago`\
+`6 hours ago`\
+`1 day ago`\
+`2 weeks ago`\
+`4 months ago`\
+`1.4 years ago`
+
+Only the year resolution will use a single decimal fraction.
+
+
+
