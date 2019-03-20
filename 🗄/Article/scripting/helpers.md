@@ -112,21 +112,22 @@ let repeatableIcon = Identicon.of('any string value');
 let randomIcon = Identicon.random();
 ```
 
-## TimeAgo
+## RelativeDateTime
 
-Utility for displaying relative dates server-side, rather than resorting to a client-side library.
-Relative dates are designed to give a general sense of time, not precision.
+Utility for displaying relative date/times server-side, rather than resorting to a client-side library.
+Relative date/times are designed to give a general sense of time, not precision.
 
 ```javascript
 import {Post} from '📦';
+import {RelativeDateTime} from 'util';
 
 Post.all().map(p=>({
-    createdAgo: TimeAgo.fromNow(p.created),
+    createdAgo: RelativeDateTime.fromNow(p.created),
     title: p.title
 }));
 ```
 
-Examples of `TimeAgo.fromNow` output:
+Examples of `RelativeDateTime.fromNow` output:
 
 `now`\
 `3 seconds ago`\
