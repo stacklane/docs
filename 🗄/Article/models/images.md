@@ -20,8 +20,33 @@ shareable "wrapper".
 Using a Mustache template, simply embed the URL:
 
 ```html
-<img src="{{Post.image.url}}" width="1000">
+<img src="{{post.image.url}}" width="1000">
 ```
+
+# Utilities
+
+An image value has several helpful utility fields:
+
+## processed
+
+`true` if the uploaded image has been analyzed for height/width and resized.
+
+## height
+
+If `processed`, then returns the height of the image, otherwise null.
+
+## width
+
+If `processed`, then returns the width of the image, otherwise null.
+
+## ratio
+
+If `processed`, then returns the ratio of the image such as `16:9`. 
+Variations of this field are `ratioBy` which returns as `2by3`, 
+and `ratioX` which returns as `1x1`.
+The ratio (combined with a CSS class) can be useful in displaying responsive images.
+Keep in mind that if the image's dimensions are highly unusual,
+then the ratio may be null.
 
 # Friendly URLs {#sharing}
      
