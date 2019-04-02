@@ -27,7 +27,7 @@ Access the currently authenticated user using the `Me` variable in the `👤` mo
 import {Me} from '👤';
 
 ({name: Me.name});
-```
+``` 
 
 ## Checking Optional Authentication
 
@@ -48,13 +48,20 @@ if (Me.linked){
 }
 ```
 
+# Avatar
+
+All users have an `avatar()` method, which is also accessible 
+from Mustache as `{{{user.avatar}}}` (triple bracket to emit HTML).
+
+This method will return a web safe SVG or IMG value.
+
 # Profiles
 
 [User profiles](/🗄/Article/models/types.md#profile)
-are a type of model that allows you to associate custom fields and data directly with a specific user.
-You can either associate the user profile with only a user,
+are a type of model that allows associating custom fields with a specific user.
+A user profile may be associated with only a user (one-to-one),
 **or** you may associate the user profile with _both_ a user and a
-[container](/🗄/Article/models/containers.md).
+[container](/🗄/Article/models/containers.md) (one-to-many, via profile per container).
         
 When accessing user profiles for the currently logged in user,
 use the special `me()` method to load them.
@@ -64,3 +71,24 @@ import {BasicProfile} from '📦'
 
 let currentUserProfile = BasicProfile.me().get();
 ```
+
+## Assigning Roles
+
+When constructing a new user profile model, it's common to associate it with both the current user and a defined role.
+The following example assumes a container named `Group`, a profile named `GroupUser`, and a role named `GroupOwner`.
+
+```javascript
+import {Me,Role} from '👤';
+import {Group, GroupUser} from '📦';
+
+let group = new Group().name('New Group');
+
+group(()=>{ // Selects the 'group' as a container
+  new GroupUser().role(Role.GroupOwner).user(Me);
+});
+```
+
+We've created a new Group, created a new GroupUser profile, 
+then assigned the current user to the GroupUser profile, along with the pre-defined role GroupOwner.
+
+GroupOwner must be a previously [defined role](/🗄/Article/settings/users.md).
