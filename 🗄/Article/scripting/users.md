@@ -61,7 +61,7 @@ This method will return a web safe SVG or IMG value.
 are a type of model that allows associating custom fields with a specific user.
 A user profile may be associated with only a user (one-to-one),
 **or** you may associate the user profile with _both_ a user and a
-[container](/🗄/Article/models/containers.md) (one-to-many, via profile per container).
+[container](/🗄/Article/models/containers.md) (one-to-many, profile-per-container).
         
 When accessing user profiles for the currently logged in user,
 use the special `me()` method to load them.
@@ -69,7 +69,11 @@ use the special `me()` method to load them.
 ```javascript
 import {BasicProfile} from '📦'
 
-let currentUserProfile = BasicProfile.me().get();
+try {
+    let currentUserProfile = BasicProfile.me().get();
+} catch ($ModelNotFound){
+    // No BasicProfile created for current user
+}
 ```
 
 ## Assigning Roles
