@@ -105,7 +105,7 @@ To check whether a user profile is assigned a specific role, use `hasRole`:
 import {Role} from '👤';
 import {GroupUser} from '📦';
 
-if (GroupUser.me().hasRole(Role.GroupOwner)){
+if (GroupUser.me().get().hasRole(Role.GroupOwner)){
   // Current user is a 'GroupOwner'
 }
 ```
