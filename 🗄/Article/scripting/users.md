@@ -96,3 +96,16 @@ We've created a new Group, created a new GroupUser profile,
 then assigned the current user to the GroupUser profile, along with the pre-defined role GroupOwner.
 
 GroupOwner must be a previously [defined role](/🗄/Article/settings/users.md).
+
+## Checking Roles
+
+To check whether a user profile is assigned a specific role, use `hasRole`:
+
+```javascript
+import {Role} from '👤';
+import {GroupUser} from '📦';
+
+if (GroupUser.me().hasRole(Role.GroupOwner)){
+  // Current user is a 'GroupOwner'
+}
+```
