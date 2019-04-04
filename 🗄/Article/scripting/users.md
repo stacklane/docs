@@ -55,6 +55,8 @@ from Mustache as `{{{user.avatar}}}` (triple bracket to emit HTML).
 
 This method will return a web safe SVG or IMG value.
 
+The avatar method requires `read` permission for `👤.User.name` and `👤.User.picture`.
+
 # Profiles
 
 [User profiles](/🗄/Article/models/types.md#profile)
