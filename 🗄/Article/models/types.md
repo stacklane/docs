@@ -12,9 +12,7 @@ The Universal type may optionally be a [container](/🗄/Article/models/containe
 For example, a `List` might be defined as a container for `Task`'s.
 
 While this type has broad cases, review the other model types before choosing
-in case another type is more suitable. It should not be
-used for extremely unbounded data, such as _Orders_ or _Comments_
-(better suited for the Event type).  It does not allow large text fields,
+in case another type is more suitable. It does not allow large text fields,
 and is therefore not suitable for an article, blog post, or product description.
 
 # Content
@@ -40,11 +38,6 @@ For a contained user profile, a single user may have as many user profiles as th
 In both cases the user profile must be explicitly created.
 
 Learn more about [user scripting](/🗄/Article/scripting/users.md).
-
-# Event (Q4 2019) {#event}
-
-This type is for events, time-series data, activity, or logging.
-Events accumulate over time at a potentially high frequency/volume.
 
 # Embedded {#embedded}
 

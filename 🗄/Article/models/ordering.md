@@ -10,8 +10,6 @@ Every model type has a natural / default ordering field and direction.
 Universal, Content, and User Profile types order by their `created`
 timestamp, ascending from oldest to newest.
 
-The Event type orders by its `created` timestamp, descending from newest to oldest.
-
 The natural ordering of query results may be reversed
 using `asc()` and `desc()`
 [query methods](/🗄/Article/scripting/queries.md).
