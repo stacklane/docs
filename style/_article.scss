@@ -37,10 +37,12 @@ article p{
 }
 
 article p:last-child{
+  margin-top: 0rem;
   margin-bottom: 0rem;
 }
 
 article pre[class*="language-"]{
+  margin-top: 0rem;
   margin-bottom: $article-block-spacing;
 }
 article pre[class*="language-"]:last-child{

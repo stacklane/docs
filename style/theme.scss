@@ -96,22 +96,30 @@ main {
     @include is-boxed;
   }
 
+  /**
+   * Designed to always be stacked on top of another language.
+   * In other words, this always "goes with" another pre language block.
+   */
   pre[class*="language-file-name"]{
     background: whitesmoke !important;
     font-size: .8em;
     z-index: 1;
     position: relative;
-    display:inline-block;
+    display:inline-flex;
     padding: .75em;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: -2px;
 
     /**
      * Stacking file-name on top of another language,
      * bring them up tighter together.
      */
     + pre[class*="language-"]{
-      margin-top: -$article-block-spacing - .25rem;
+      margin-top: 0rem;
+      //margin-top: -$article-block-spacing - .25rem; // warning: this is touchy, across browsers too
       border-top-left-radius: 0;
-      border-top-right-radius: 0;
+      //border-top-right-radius: 0;
       z-index: 2;
       position: relative;
     }
