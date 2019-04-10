@@ -66,38 +66,50 @@
         </a>
     </div>
 
-    <h1>Restrictions</h1>
+    <h1>Differences and Restrictions</h1>
     <p>
-        The following is not an exhaustive list, but covers common cases:
+        The following are common cases where Stacklane server-side JavaScript differs,
+        or places additional restrictions.
     </p>
-    <p>
-    <ul>
-        <li>
-            Use <code>let</code> instead of <code>var</code>.
-        </li>
-        <li>
-            Compact function syntax only -- instead of <code>function (..) {..}</code>,
-            use the equivalent compact syntax <code>(..)=>{..}</code>
-        </li>
-        <li>
-            <code>Date</code> objects are immutable -- any of the <code>Date.setXyz</code> methods
-            are not available.
-        </li>
-        <li>
-            <code>const</code> is not supported.
-        </li>
-        <li>
-            Free-form iteration via <code>for</code> or <code>while</code> is not allowed.
-            Instead, where cases that require working on items in bulk, special case callback methods are provided.
-        </li>
-        <li>
-            Once assigned, variables may not change their type -- this works
-            <code>let x = null; x = '1'</code> (null to string), but this does not
-            <code>let x = 1; x = '1'</code> (number to string).
-        </li>
-    </ul>
-    </p>
-
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><code>var</code></td>
+            <td>Use <code>let</code></td>
+        </tr>
+        <tr>
+            <td><code>function</code></td>
+            <td>Use the equivalent compact syntax <code>(..)=>{..}</code></td>
+        </tr>
+        <tr>
+            <td><code>Date</code></td>
+            <td><code>Date</code> objects are immutable &mdash; any of the <code>Date.setXyz</code> methods
+            are not available.</td>
+        </tr>
+        <tr>
+            <td><code>for, while</code></td>
+            <td>
+                Free-form iteration is not allowed.
+                In cases that require working on items in bulk,
+                special case callback methods are provided.
+                See <a href="/scripting/queries">query scripting methods</a>,
+                which address many common cases of iteration for data models.
+            </td>
+        </tr>
+        <tr>
+            <td>Type Safety</td>
+            <td>Once assigned, variables may not change their type &mdash; this works
+                <code>let x = null; x = '1'</code> (null to string), but this does not
+                <code>let x = 1; x = '1'</code> (number to string).</td>
+        </tr>
+        </tbody>
+    </table>
 </article>
 
 {{/content2}}
