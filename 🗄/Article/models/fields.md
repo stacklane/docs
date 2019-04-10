@@ -189,7 +189,7 @@ This may be lowered by defining `max: N` for the field definition.
 ## Markdown
 
 Rich text / HTML fields support markdown *input* via field-specific static methods.
-Keep in mind that the markdown must ultimately resolve to a valid HTML for the field type.
+Keep in mind that the markdown must ultimately resolve to valid HTML for the field type.
 
 ```javascript
 let markdown = 'My *markdown* string'
