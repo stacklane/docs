@@ -96,6 +96,10 @@ placeholder which denotes where to "insert" a section of HTML from another Musta
 
 ## Master Template
 
+```file-name
+/_layout.html
+```
+
 ```html
 <!--TEMPLATE mustache-->
 <!DOCTYPE html>
@@ -117,6 +121,10 @@ placeholder which denotes where to "insert" a section of HTML from another Musta
 The file using the master layout template will include it similar to a partial.
 Assuming a layout file named `/_layout.html`, another file
 would use this template like:
+
+```file-name
+/index.html
+```
 
 ```html
 <!--TEMPLATE mustache-->

@@ -95,6 +95,27 @@ main {
   pre[class*="language-"] {
     @include is-boxed;
   }
+
+  pre[class*="language-file-name"]{
+    background: whitesmoke !important;
+    font-size: .8em;
+    z-index: 1;
+    position: relative;
+    display:inline-block;
+    padding: .75em;
+
+    /**
+     * Stacking file-name on top of another language,
+     * bring them up tighter together.
+     */
+    + pre[class*="language-"]{
+      margin-top: -$article-block-spacing - .25rem;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      z-index: 2;
+      position: relative;
+    }
+  }
 }
 
 main + footer{

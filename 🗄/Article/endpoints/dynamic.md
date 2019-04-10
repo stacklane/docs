@@ -24,7 +24,9 @@ A single model field may be referenced.
 The field may be the model's unique ID, or a [UID field](/🗄/Article/models/fields.md#uid).
 When using a UID field type, old UID's are automatically redirected to the primary / current UID for proper SEO.
 
-`/task/{task}/🔗.yaml`
+```file-name
+/task/{task}/🔗.yaml
+```
 
 ```yaml
 field: 📦.Task.id
@@ -52,10 +54,16 @@ title = task.get().title;
 Often dynamic paths are used with [containers](/🗄/Article/models/containers.md).
 In this case it's not necessary to load a live version to "use" the container.
 
-`/list/{list}/🔗.yaml`
+```file-name
+/list/{list}/🔗.yaml
+```
 
 ```yaml
 field: 📦.List.id
+```
+
+```file-name
+/list/{list}/GET.js
 ```
 
 ```javascript
@@ -77,6 +85,36 @@ import {Task} from '📦';
 Task.all();
 ```
 
+## Single Endpoint
+
+In the above examples, the dynamic model-backed directory
+applies to all endpoints, and all descendant directories/endpoints.
+
+In certain scenarios it can be useful to have a single dynamic endpoint,
+instead of an entire dynamic directory.
+The setup is similar, however the bracketed placeholders are file based instead of directory based.
+
+Given a dynamic Mustache endpoint named:
+
+```file-name
+{article}.html
+```
+
+```html
+...
+```
+
+a corresponding settings file which describes the dynamic field would be:
+
+```file-name
+{article}🔗.yaml
+```
+
+```yaml
+field: 📦.Article.uid
+```
+
+The end result is that this single endpoint responds only to valid Article uid's.
 
 # Fixed Choice
 

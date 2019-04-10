@@ -19,6 +19,10 @@ In the root directory, define a manifest file: `/🎛.yaml`
 
 ## Example
 
+```file-name
+/🎛.yaml
+```
+
 ```yaml
 name: site24x7.com
 
@@ -64,33 +68,39 @@ folders/files to third party REST endpoints.
 
 ## Example
 
-```yaml
+```file-name
 /balance/history/{txn}/get.yaml
+```
+
+```yaml'
+# No additional configuration needed
+```
 
 REST endpoint result:
 
-GET /balance/history/{txn}
+`GET /balance/history/{txn}`
 
 JavaScript use:
 
-balance.history('txn').get()
-```
+`balance.history('txn').get()`
 
 ## Post Example
 
-```yaml
+```file-name
 /customers/{customer}/update.yaml
+```
+
+```yaml
+method: POST
+```
 
 REST endpoint result:
 
-POST /customers/{customer}
+`POST /customers/{customer}`
 
 JavaScript use:
 
-customers('customer').update({ payload });
-```
-
-Within the update.yaml file specify `method: POST`
+`customers('customer').update({ payload });`
 
 # Importing
 
@@ -98,6 +108,10 @@ Connectors must be imported into the project that will use it.
 Define a file in the root named `/🔌.yaml`
 Within this file specify each imported connector's GIT source
 (branch is optional):
+
+```file-name
+/🔌.yaml
+```
 
 ```yaml
 - https://github.com/stacklane-registry/site24x7.com.git#branch

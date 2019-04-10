@@ -57,7 +57,9 @@ of where its exported values are visible.
 Only scripts in the same directory, _or_ descendant
 directories, have access to the exported values of a supplier.
 
-`/product/{product}/📤/GetLiveProduct.js`
+```file-name
+/product/{product}/📤/GetLiveProduct.js
+```
 
 ```javascript
 import {product} from '🔗';
@@ -67,17 +69,16 @@ let liveProduct = product.get();
 export {liveProduct as LiveProduct};
 ```
 
-In the above example `*/` is the resulting value exported.
-It is imported from the module named '📤', for all scripts
-inside `/product/{product}/*`, _and_ any descendant directories.
+The exported value `LiveProduct` may be imported from the module named '📤', 
+for all scripts inside `/product/{product}/*`, _and_ any descendant directories.
 For example the Mustache file `/product/{product}/related/index.html`
 would be able import the `LiveProduct` value.
 
 # Importing Values {#import}
 
 Regardless of where the supplier exists in the path hierarchy, and regardless of the supplier's file name,
-all supplier values are located in the module named '📤'.  This creates a simple flat namespace for
-importing named values.
+all supplier values are located in the module named '📤'. 
+This creates a simple flat namespace for importing named values.
 
 ```javascript
 // Importing specific values:
