@@ -26,8 +26,8 @@ a standalone domain name.  Default: `true`
 # `path`
 
 true/false value that determines whether a site may be 
-[properties file](/🗄/Article/settings/nested.md)
-at sub-path of another site.  Default: `true`
+[nested](/🗄/Article/settings/nested.md)
+at a sub-path of another site.  Default: `true`
 
 # `frameable`
 
