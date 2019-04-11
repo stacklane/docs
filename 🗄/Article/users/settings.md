@@ -43,7 +43,8 @@ auth: none
 
 ```yaml
 auth: required
-# Grant all permissions, example only:
+
+# All permissions by default (for example only):
 default: all 
 ```
 
@@ -63,7 +64,8 @@ auth: optional
 
 ```yaml
 auth: required
-# Grant all permissions, example only:
+
+# All permissions by default (for example only):
 default: all 
 ```
 
