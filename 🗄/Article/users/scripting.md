@@ -5,7 +5,7 @@ summary: Learn about scripting with users, roles, and profiles.
 
 User scripting puts into practice the concepts and setup from
 [user settings](/🗄/Article/users/settings.md) and
-[user profiles](/🗄/Article/models/types.md#profile).
+[Profiles](/🗄/Article/users/profiles.md).
 Review these docs before learning about user scripting, or use this doc as an overview
 for how these settings materialize into code.
 
@@ -59,7 +59,7 @@ Using the avatar method requires `read` permission for `👤.User.name` and `�
 
 # Profiles
 
-[User profiles](/🗄/Article/models/types.md#profile)
+[Profiles](/🗄/Article/users/profiles.md)
 are a type of model that allows associating custom fields with a specific user.
 A user profile may be associated with only a user (one-to-one),
 **or** you may associate the user profile with _both_ a user and a
@@ -97,7 +97,7 @@ group(()=>{ // Selects the 'group' as a container
 We've created a new Group, created a new GroupUser profile, 
 then assigned the current user to the GroupUser profile, along with the pre-defined role GroupOwner.
 
-GroupOwner must be a previously [defined role](/🗄/Article/settings/users.md).
+GroupOwner must be a previously [defined role](/🗄/Article/users/roles.md).
 
 ## Checking Roles
 

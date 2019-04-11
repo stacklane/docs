@@ -71,5 +71,9 @@ users:
   path: users/
 - title: Settings
   path: users/settings
+- title: Profiles
+  path: users/profiles
+- title: Roles
+  path: users/roles
 - title: Scripting
   path: users/scripting

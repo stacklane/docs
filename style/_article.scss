@@ -31,12 +31,12 @@ article .is-missing-link:after{
   content: '⚠️';
 }
 
-article p{
+article p, article ul{
   margin-bottom: $article-block-spacing;
   line-height: 1.8;
 }
 
-article p:last-child{
+article p:last-child, article ul:last-child{
   margin-top: 0rem;
   margin-bottom: 0rem;
 }

@@ -19,7 +19,9 @@ The container (parent) is always a
 
 Containers are an important access control point.
 Any roles specifically associated between a user and a container
-will be in effect for the container and its descendants.
+will be in effect for the container *and* its descendants.
+
+For more information see the document on [User Profiles](/🗄/Article/users/profiles.md).
 
 # Behavior of Unique Values
 

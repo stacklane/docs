@@ -123,24 +123,8 @@ Result:
 
 Adding a file with the same name as the JavaScript endpoint, but with 
 the extension `yaml` will create a configuration file specific to the endpoint.
-For example, a configuration file for the POST "📮setup.js" would be "📮setup.yaml". 
+For example, a configuration file for the POST `📮setup.js` would be `📮setup.yaml`
+in the same directory. 
 
-## Users
-
-Presuming [user functionality](/🗄/Article/settings/users.md) is enabled,
-then the following configuration values are supported, any of which are optional:
-
-```yaml
-👤:
-  as: SomeRoleName
-  only: OtherRoleName
-```
-
-The role names must already be defined. 
-
-`as` causes the current JavaScript endpoint to "run as" the given role,
-regardless of whether the current user is actually assigned to that role.
-
-`only` causes the current JavaScript endpoint to only allow requests 
-from users associated with the role. If the user is not associated
-with the role, then `403 FORBIDDEN` is returned.
+The primary use of this file is to define 
+[endpoint-specific role behavior](/🗄/Article/users/roles.md#endpoint).
