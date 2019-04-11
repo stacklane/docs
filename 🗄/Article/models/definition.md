@@ -26,7 +26,7 @@ a "Universal" model named `Article` will be available to your scripts.
 To define models that are in a container, place them into directories.  Example files and folders in the
 "📦" directory which define 3 model types, two of which are in containers.
 
-```
+```files
  🌐Account.yaml
  Account/🌐List.yaml
  Account/List/🌐Task.yaml

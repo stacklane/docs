@@ -1,10 +1,10 @@
 ---
 title: User Scripting
-summary:  Learn about scripting with users, roles, and profiles.
+summary: Learn about scripting with users, roles, and profiles.
 ---
 
 User scripting puts into practice the concepts and setup from
-[user settings](/🗄/Article/settings/users.md) and
+[user settings](/🗄/Article/users/settings.md) and
 [user profiles](/🗄/Article/models/types.md#profile).
 Review these docs before learning about user scripting, or use this doc as an overview
 for how these settings materialize into code.

@@ -19,8 +19,6 @@ settings:
   path: settings/properties
 - title: Nested
   path: settings/nested
-- title: Users
-  path: settings/users
 
 models:
 - title: Overview
@@ -61,11 +59,17 @@ scripting:
   path: scripting/queries
 - title: Suppliers
   path: scripting/suppliers
-- title: Users
-  path: scripting/users
 - title: Helpers
   path: scripting/helpers
 - title: Messages
   path: scripting/messages
 - title: Connectors
   path: scripting/connectors
+
+users:
+- title: Overview
+  path: users/
+- title: Settings
+  path: users/settings
+- title: Scripting
+  path: users/scripting
