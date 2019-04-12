@@ -6,17 +6,29 @@ summary: A purpose specific SCSS file which may define colors, phrases, and opti
 
 # File Format
 
-The properties configuration file is a plain SCSS file that accepts values/variables only.
-Unlike regular SCSS variables, these values may be overridden when nesting the site,
-and also accessed from additional locations (server-side JavaScript, Mustache templates,
-and of course imported into other SCSS files).
+The properties file is a plain SCSS-like file that accepts values/variables only.
+These values may be overridden for instances of the site,
+and also accessed from server-side environments &mdash;
+JavaScript, Mustache, and imported into other SCSS files.
 
 Create a file at the root `/🎨.scss` to define your properties.
 This is a limited SCSS file for variables only.
-The following SCSS data types are supported:
-string, boolean, color (hex/rgb/preset), url.
-URLs must be absolute and
-point to static images contained in the source.
+The following SCSS data types are supported:  `string`, `boolean`, `color (hex/rgb/preset)`, `url`.
+URLs must be absolute and point to static images contained in the source.
+
+Variable names must follow the convention of `$variable` or `$variable-name`.
+
+## Example
+
+```file-name
+/🎨.scss
+```
+
+```css
+$name: 'ABC Great App';
+
+$theme-color: blue;
+```
 
 # SCSS Access {#scss}
 
@@ -67,7 +79,7 @@ Note that url(...) values are unwrapped to their paths only.
 A SCSS/CSS friendly convention is to use
 dashes for variables names such as `$color-primary`.  If you choose
 this naming convention, simply be aware that from JavaScript that same variable
-is accessed with an underscore: `Properties.color_primary`
+is accessed with "camel case" convention: `Properties.colorPrimary`.
 Alternatively keep the dash using bracket syntax:  `Properties['color-primary']`
 
 From a server side JavaScript file import the properties:
@@ -75,8 +87,8 @@ From a server side JavaScript file import the properties:
 ```javascript
 import * as Properties from '🎨';
 
-if (Properties['some-boolean-option']){
-   ...
+if (Properties.someBooleanOption){
+   /* In 🎨.scss the variable is $some-boolean-option */
 }
 ```
 
