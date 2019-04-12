@@ -13,10 +13,10 @@ parent/child ([container](/🗄/Article/models/containers.md)) relationships.
 The file name indicates _both_ the name of the model as well as the model's type.
 The model's type is denoted with a specific emoji prefix.
 
-- [Universal](/🗄/Article/models/types.md#universal) -- prefix file with 🌐
-- [Content](/🗄/Article/models/types.md#content) -- prefix file with 📄
-- [User Profile](/🗄/Article/models/types.md#profile)-- prefix file with 👤
-- [Embedded](/🗄/Article/models/types.md#embedded) -- prefix with 📎
+- [Universal](/🗄/Article/models/types.md#universal) &mdash; prefix file with 🌐
+- [Content](/🗄/Article/models/types.md#content) &mdash; prefix file with 📄
+- [User Profile](/🗄/Article/models/types.md#profile) &mdash; prefix file with 👤
+- [Embedded](/🗄/Article/models/types.md#embedded) &mdash; prefix with 📎
 
 Within the directory "📦", and given a file name named `🌐Article.yaml`,
 a "Universal" model named `Article` will be available to your scripts.
