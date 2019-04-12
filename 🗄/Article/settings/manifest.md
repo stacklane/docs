@@ -13,7 +13,7 @@ The name of the site / application (for development purposes). Required.
 
 # `lang`
 
-The default language of the text on the site, and within this manifest file.
+The default language of the text on the site.
 Also the default language of any strings defined in a
 (optional) [properties file](/🗄/Article/settings/properties.md).
 Default: `en`
