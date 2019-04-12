@@ -3,26 +3,30 @@ title: Error Handling
 summary: Learn about views for handling expected and unexpected errors.
 ---
 
-Error endpoints are Mustache view prefixed with "⚡️".
-They support Mustache layouts, however beyond layouts they are very restricted.
+Errors and exceptions may occur during JavaScript and Mustache execution.
+
+If an error occurs while rendering a Mustache view, then the emoji '⚠️' is emitted visibly, 
+and the rendering stops at that point. The system also emits debugging information within
+an HTML comment block (invisible to the user). 
+
+If an error occurs while executing a JavaScript endpoint, then Stacklane automatically
+generates an error view.  
+
+# Not Found {#404}
+
+"Not Found" / 404 errors are special case of a more expected error.
+These include missing endpoints, unresolvable dynamic paths,
+and uncaught `$ModelNotFound` errors.
+
+"Not Found" errors may be given a custom Mustache view anywhere in the hierarchy.
+These views support Mustache layouts, however beyond layouts they are very restricted.
 For example you may not load data into a Mustache error view.
 
-# Routing
+## Routing
         
-Multiple error views may be defined.  The nearest error view to the endpoint causing the error
+Multiple views may be defined.  The nearest error view to the endpoint causing the error
 will be served.  For example, given an endpoint generating an error at
 `/here/{there}/everywhere.js`,
-the error view `/here/⚡️.html` will be served instead of the earlier error view at
-`/⚡️.html`.
-       
-# Types
-
-## Default / Catch-All
-
-The default error view used when a more specific error view is not defined is called `⚡️.html`.
-
-## Not Found
-
-Naming the error view `⚡️NotFound.html` will cause this to be selected
-over the default error view in cases that are "Not Found-Like".  This includes simple
-missing endpoints, as well as uncaught cases where a loaded Model was not found.
+the error view `/here/⚡️NotFound.html` will be served instead of the earlier error view at
+`/⚡️NotFound.html`.
+   
