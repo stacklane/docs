@@ -129,7 +129,7 @@ default:
 # Sub-Directory Roles {#sub}
 
 User settings files may be placed in [sub-directories](/🗄/Article/users/settings.md#sub).
-This allows roles and permission to be scoped to a directory and its descendants.
+This allows roles and permissions to be scoped to a directory and its descendants.
 
 Sub-directory settings files may *not* define new role names. 
 They may only use role names already specified in the root `/👤.yaml`.
