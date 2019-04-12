@@ -38,10 +38,9 @@ rest-api:
 
 ## name
 
-Typically the domain name the connector is for.
-This name is used for <a href="#credentials">credential</a> keys,
-and once in production use the name should never change.
-Using the domain also ensures uniqueness.
+Typically the domain name the connector is for, 
+however this is for management purposes and does not impact the connector's functionality.
+For example `ABC API v2` would be a valid name.
 
 ## prefix
 
@@ -124,6 +123,6 @@ Most third party APIs require an authorization token.
 To pass the authorization token during development builds,
 see the [development credentials](/🗄/Article/dev.md#credentials) JSON format.
 
-The credential key for a connector is `api:[connector-domain]`,
-where `[connector-domain]` is the name of the rest API's root domain.
+The credential key for a connector is `api:[connector-root-domain]`,
+where `[connector-root-domain]` is the name of the rest API's root domain.
 For example, a connector to `api.abc.com` would have the credential key of `api:abc.com`.
