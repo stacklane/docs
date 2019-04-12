@@ -78,13 +78,13 @@ try {
 }
 ```
 
-## Assigning Roles
+# Roles
 
-When constructing a new user profile model, it's common to associate it with both the current user and a defined role.
+When constructing a new Profile model, it's common to associate it with both the current User and a defined role.
 The following example assumes a container named `Group`, a profile named `GroupUser`, and a role named `GroupOwner`.
 
 ```javascript
-import {Me,Role} from '👤';
+import {Me, Role} from '👤';
 import {Group, GroupUser} from '📦';
 
 let group = new Group().name('New Group');
@@ -94,14 +94,14 @@ group(()=>{ // Selects the 'group' as a container
 });
 ```
 
-We've created a new Group, created a new GroupUser profile, 
-then assigned the current user to the GroupUser profile, along with the pre-defined role GroupOwner.
+In this example we've created a new Group, created a new GroupUser profile, 
+then assigned the current User to the GroupUser profile, along with the pre-defined role GroupOwner.
 
 GroupOwner must be a previously [defined role](/🗄/Article/users/roles.md).
 
 ## Checking Roles
 
-To check whether a user profile is assigned a specific role, use `hasRole`:
+To check whether a Profile is assigned a specific role, use `hasRole`:
 
 ```javascript
 import {Role} from '👤';

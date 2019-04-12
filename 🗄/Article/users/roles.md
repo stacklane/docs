@@ -39,7 +39,7 @@ Custom role names must start with an uppercase character and be valid identifier
 We recommend using a singular form for role names &mdash; for example,
 use the role name of `Owner` instead of the plural `Owners`.
 
-## Role Association
+## Role Associations
 
 Once you've defined custom roles, they are most typical meaningful when associated with a specific user.
 
