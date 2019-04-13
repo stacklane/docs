@@ -33,8 +33,7 @@ $theme-color: blue;
 # Special Variables {#special}
 
 The following variable names have reserved meaning for progressive web apps (PWAs).
-We encourage you to use them as "standardized" variable names, however
-be sure to keep the intent described below.
+Freely use them as "standardized" variable names, however be sure to keep the intent described below.
 
 - `$name` &mdash; The name of the web app or site as it is usually displayed to the user 
   (e.g., amongst a list of other applications, or as a label for an icon).
@@ -46,6 +45,9 @@ be sure to keep the intent described below.
 
 - `$theme-color` &mdash; Often a brand color, toolbar color, or otherwise primary color in e.g. a logo.
 - `$background-color` &mdash; Used on the splash screen when the application is first launched.
+  This value repeats what is already available in the site’s CSS, 
+  but can be used by browsers to draw the background color before the stylesheet has loaded. 
+  This creates a smooth transition between launching the web application and loading the site's content.
 
 ## Icons
 
@@ -63,7 +65,7 @@ as you would any other SCSS import:
 @import '/🎨';
 
 body{
-  background-image: $image-background
+  background-color: $background-color;
 }
 ```
 
@@ -144,7 +146,7 @@ $ui-sign-in: 'Sign In';
  * @category style
  */
 
-$bg-color: aliceblue;
+$background-color: aliceblue;
 ```
 
 # Use Cases {#cases}
