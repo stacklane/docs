@@ -30,6 +30,30 @@ $name: 'ABC Great App';
 $theme-color: blue;
 ```
 
+# Special Variables {#special}
+
+The following variable names have reserved meaning for progressive web apps (PWAs).
+We encourage you to use them as "standardized" variable names, however
+be sure to keep the intent described below.
+
+- `$name` &mdash; The name of the web app or site as it is usually displayed to the user 
+  (e.g., amongst a list of other applications, or as a label for an icon).
+- `$short-name` &mdash; Only used in the case that `$name` is rather long.
+  It is a short version of the name of the web app, intended to be used where there is insufficient space to display the full name.
+  If both are provided, `$short-name` is used on the user's home screen, launcher, or other places where space may be limited.
+
+## Colors
+
+- `$theme-color` &mdash; Often a brand color, toolbar color, or otherwise primary color in e.g. a logo.
+- `$background-color` &mdash; Used on the splash screen when the application is first launched.
+
+## Icons
+
+These icons are used in places like the home screen, app launcher, task switcher, splash screen, etc.
+
+- `$icon-sm` &mdash; 192x192 pixel PNG or JPG.
+- `$icon-lg` &mdash; 512x512 pixel PNG or JPG.
+
 # SCSS Access {#scss}
 
 From another SCSS file, access variables defined in the properties file just
