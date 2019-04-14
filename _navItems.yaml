@@ -19,6 +19,8 @@ settings:
   path: settings/properties
 - title: Nested
   path: settings/nested
+- title: Web App
+  path: settings/app
 
 models:
 - title: Overview

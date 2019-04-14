@@ -25,21 +25,25 @@ Variable names must follow the convention of `$variable` or `$variable-name`.
 ```
 
 ```css
-$name: 'ABC Great App';
+$name: 'The Great App';
 
 $theme-color: blue;
 ```
 
 # Special Variables {#special}
 
-The following variable names have reserved meaning for progressive web apps (PWAs).
+The following variable names have reserved meaning for [progressive web apps (PWAs)](/🗄/Article/settings/app.md).
 Freely use them as "standardized" variable names, however be sure to keep the intent described below.
 
 - `$name` &mdash; The name of the web app or site as it is usually displayed to the user 
   (e.g., amongst a list of other applications, or as a label for an icon).
+  Example: "The Great App".
 - `$short-name` &mdash; Only used in the case that `$name` is rather long.
   It is a short version of the name of the web app, intended to be used where there is insufficient space to display the full name.
   If both are provided, `$short-name` is used on the user's home screen, launcher, or other places where space may be limited.
+  Example: "TheGreat".
+  
+`$name` and `$short-name` may be the same value.  
 
 ## Colors
 
@@ -53,8 +57,16 @@ Freely use them as "standardized" variable names, however be sure to keep the in
 
 These icons are used in places like the home screen, app launcher, task switcher, splash screen, etc.
 
-- `$icon-sm` &mdash; 192x192 pixel PNG or JPG.
-- `$icon-lg` &mdash; 512x512 pixel PNG or JPG.
+- `$icon-sm` &mdash; 192x192 absolute PNG image `url`.  
+- `$icon-lg` &mdash; 512x512 absolute PNG image `url`.
+
+## Apple Touch Icon
+
+For iOS, there are a few more requirements:
+
+- `$icon-apple` &mdash; 180x180 absolute PNG image `url`. 
+
+This PNG should fill the entire 180x180 square.  No rounded corners or transparency.
 
 # SCSS Access {#scss}
 
