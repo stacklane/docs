@@ -10,6 +10,31 @@ For example, if your main site is hosted at `https://abccompany.com/`,
 a configured nested site `/🔌store.yaml` would host the
 nested site at `https://abccompany.com/store/`
 
+# Base URLs {#base}
+
+Development of a nested site should be no different than if the site is intended for deployment on a root domain.
+The final deployment location of the site (root domain or nested path) is code agnostic.
+Therefore the nested site's code should *not* hardcode its final mount location.
+Stacklane automatically applies a few simple rules to facilitate this.
+The following scenarios are automatically modified to include with the mount path prefix of the nested site:
+
+- Static assets such as links to scripts / images.
+- Redirects from JavaScript endpoints.
+- Form actions beginning with `/` &mdash; `<form ... action="/my-endpoint">` 
+- *Any* HTML attribute in the format `href="/my/path"` where the attribute ends with `href` and its value begins with `/`.
+
+The last rule covers a variety of scenarios including `a`, as well as custom attributes, for example:
+
+`data-custom-value-href="/the/path"`
+
+Another approach for client side JavaScript is to specify a `base` in `<html>` or `<body>`, such as this:
+
+`<html data-base-href="/">`
+
+If the site is deployed to the root domain then this will always be `/`.
+
+Otherwise it will be the mount path where parent site is nesting this site.
+
 # `source`
 
 The only required field for a site mount is the location to obtain the nested site's source code.
@@ -82,3 +107,4 @@ and any other keys will be non-existent for the nested site.
 keys:
   - api:stripe.com
 ```
+
