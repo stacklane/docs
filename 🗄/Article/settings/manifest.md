@@ -11,16 +11,17 @@ The `name` field is required.
 
 The name of the site / application (for development purposes). Required.
 
-# `app`
-
-Defining this path value enables [progressive web app functionality](/🗄/Article/settings/app.md).
-
 # `lang`
 
 The default language of the text on the site.
 Also the default language of any strings defined in a
 (optional) [properties file](/🗄/Article/settings/properties.md).
 Default: `en`
+
+# `app`
+
+Setting this value to `true` enables [progressive web app functionality](/🗄/Article/settings/app.md).
+Additional configuration is needed as described in the [doc](/🗄/Article/settings/app.md).
 
 # `domain`
 

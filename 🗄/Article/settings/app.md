@@ -11,8 +11,6 @@ give them the similar user experience advantages as native apps.
 # Manifest
 
 To indicate support for PWA, use the `app` configuration value in the `🗄.yaml` manifest file.
-This value indicates the directory that should be considered the root of the application.
-Depending on the app, this would either be the root directory or a sub-directory.
 
 ```file-name
 /🎛.yaml
@@ -21,7 +19,7 @@ Depending on the app, this would either be the root directory or a sub-directory
 ```yaml
 name: GreatApp
 
-app: /app/
+app: true
 ```
 
 # Properties
