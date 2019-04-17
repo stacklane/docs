@@ -7,8 +7,9 @@ overview:
   path: infrastructure
 - title: Limits
   path: limits
-- title: Build API
-  path: api/build
+# linked instead from /dev
+#- title: Build API
+#  path: api/build
 
 settings:
 - title: Overview

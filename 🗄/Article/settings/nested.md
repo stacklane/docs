@@ -1,5 +1,5 @@
 ---
-title: Nested Site Mounts
+title: Nested Sites
 summary: Stacklane sites may be organized into smaller sub-sites and mounted at a path.
 ---
 
@@ -55,9 +55,11 @@ To specify a tag (prefix with '!'):
 source: https://github.com/owner/project.git#!tag
 ```
 
+The `#branch` and `#!tag` postfixes also apply to private SSH GIT sources.
+
 > {.alert .is-warning .is-small}
 >
-> The _owner_ must match the owner of the source including this nested mount.
+> For production deployment, the _owner_ must match the owner of the source including the nested site.
 
 # `namespace`
 

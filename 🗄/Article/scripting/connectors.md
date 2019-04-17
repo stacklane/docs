@@ -10,7 +10,7 @@ Each connector uses a dedicated GIT repository.
 
 Before defining a new connector, double check that one doesn't already exist in our
 <a href="https://github.com/stacklane-registry/">registry</a>.
-If you develop a new connector, get in touch &dash; we'd love to consider including
+If you develop a new connector, get in touch &mdash; we'd love to consider including
 it in the public registry.
 
 # Manifest
@@ -40,7 +40,7 @@ rest-api:
 
 Typically the domain name the connector is for, 
 however this is for management purposes and does not impact the connector's functionality.
-For example `ABC API v2` would be a valid name.
+For example "ABC API v2" would be a valid name.
 
 ## prefix
 
@@ -106,7 +106,7 @@ JavaScript use:
 Connectors must be imported into the project that will use it.
 Define a file in the root named `/🔌.yaml`
 Within this file specify each imported connector's GIT source
-(branch is optional):
+(branch/tag is optional):
 
 ```file-name
 /🔌.yaml
