@@ -61,6 +61,10 @@ source: https://github.com/owner/project.git#!tag
 
 # `namespace`
 
+> {.alert .is-warning .is-small}
+>
+> Changing the namespace identifier after it contains production data will result in a loss of data.
+
 If the nested site is data driven, then it must be assigned a data namespace.
 This ensures the data remains relevant if you later change its path.
 Minimum length is 4 characters, maximum length is 25 characters.
@@ -79,10 +83,6 @@ namespace: shared
 
 However this should only be used in special scenarios, especially when the parent and nested
 site are sharing the same data model.
-
-> {.alert .is-info .is-small}
->
-> Changing the namespace identifier after it contains live / production data will result in a loss of data.
 
 # `🎨`
 
