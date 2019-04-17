@@ -79,3 +79,5 @@ users:
   path: users/roles
 - title: Scripting
   path: users/scripting
+- title: Login
+  path: users/login
