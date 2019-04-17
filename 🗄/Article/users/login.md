@@ -49,8 +49,8 @@ Public Site
   namespace: application
 ```
 
-In this case the private site and auth area will be accessible from
-`/app/` and `/app/auth/` respectively.
+For the deployment of "Public Site", the private site and auth area will
+be accessible from `/app/` and `/app/auth/` respectively.
 
 # Login Widget
 
@@ -106,8 +106,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
 });
 ```
 
-The key `/auth/provider` contains the unique type of the user provider they last logged in with.
-This value can be used to indicate to the user on the UI what they last logged in with.
+The localStorage key `/auth/provider` contains the unique type of the user provider which was last used to login.
+This value may be used to indicate to the user on the UI which provider they last logged in with.
 
 ```javascript
 document.addEventListener('DOMContentLoaded', ()=>{
