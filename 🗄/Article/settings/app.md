@@ -6,11 +6,11 @@ summary: Learn the settings required to enable PWA's.
 Progressive web apps use modern web APIs along with traditional progressive enhancement 
 strategy to create cross-platform web applications.
 These apps work everywhere and provide several features that 
-give them the similar user experience advantages as native apps. 
+give them similar user experience advantages as native apps. 
 
 # Manifest
 
-To indicate support for PWA, use the `app` configuration value in the `🗄.yaml` manifest file.
+To indicate support for PWA, use the `app` configuration value in the `🎛.yaml` manifest file.
 
 ```file-name
 /🎛.yaml
@@ -40,7 +40,7 @@ Stacklane automatically assembles these values, as well as the "[Web App Manifes
 Simply include the following line in your Mustache file's `<head>`, usually in a layout template:
 
 ```file-name
-/app/_layout.html
+/_layout.html
 ```
 
 ```html
@@ -65,12 +65,12 @@ which a user is expected to choose "Add to Home Screen" from.
 To explicitly emit Apple related tags, and assuming a layout template as in the example above:
 
 ```file-name
-/app/index.html
+/index.html
 ```
 
 ```html
 <!--TEMPLATE mustache-->
-{{% partial /app/_layout }}
+{{% partial /_layout }}
 {{< layout}}
 
 {{$head}}
