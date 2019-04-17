@@ -14,7 +14,7 @@ generates an error view.
 
 # Not Found {#404}
 
-"Not Found" / 404 errors are special case of a more expected error.
+"Not Found" / 404 errors are a special case of an expected error.
 These include missing endpoints, unresolvable dynamic paths,
 and uncaught `$ModelNotFound` errors.
 
@@ -26,7 +26,7 @@ For example you may not load data into a Mustache error view.
         
 Multiple views may be defined.  The nearest error view to the endpoint causing the error
 will be served.  For example, given an endpoint generating an error at
-`/here/{there}/everywhere.js`,
+`/here/{there}/GET.js`,
 the error view `/here/⚡️NotFound.html` will be served instead of the earlier error view at
 `/⚡️NotFound.html`.
    
