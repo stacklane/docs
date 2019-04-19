@@ -94,6 +94,16 @@ It's important to think of uploading images as _independent_ from
 updating a model's data. Images previously uploaded
 are not "committed" unless they are associated with a model's field (described below).
 
+**CSP**:
+
+On the page containing the upload form controls, ensure that the following is specified anywhere:
+
+```html
+<link itemprop="content-security-policy" data-img-upload="true">
+```
+
+This ensures the proper Content Security Policy is active for the HTML endpoint performing the uploads.
+
 **Step 1**:
 
 Obtain a one-time-use URL that will be the destination of the PUT.
