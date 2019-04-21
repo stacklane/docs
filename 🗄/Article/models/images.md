@@ -39,6 +39,12 @@ If `processed`, then returns the height of the image, otherwise null.
 
 If `processed`, then returns the width of the image, otherwise null.
 
+## square, horizontal, vertical
+
+If `processed`, and height and width are available,
+then returns true/false if image width == height,
+width > height, and width < height respectively.
+
 ## ratio
 
 If `processed`, then returns the ratio of the image such as `16:9`. 
