@@ -82,3 +82,4 @@ To explicitly emit Apple related tags, and assuming a layout template as in the 
 
 The end result being that (between the layout template and endpoint template)
 both `{{{🎨.WebApp}}}` and `{{{🎨.AppleMobile}}}` will be generated.
+

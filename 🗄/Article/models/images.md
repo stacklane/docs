@@ -7,7 +7,7 @@ summary:  Learn about uploading and displaying images.
 
 The `image` field type stores a single image. Supported image types are JPG, GIF, PNG.
 Because non-expert users may be using your site/app, the system supports image uploads of up to 10MB.
-However all images will be re-sized to no more than 2000px wide (with a proportional height).
+However all images will be re-=sized to no more than 2000px wide (with a proportional height).
 
 # Display
 
@@ -17,11 +17,14 @@ The image URLs are not designed to be user friendly or directly shared.
 Image URLs should always be embedded in HTML, even if it's a simple
 shareable "wrapper".
 
-Using a Mustache template, simply embed the URL:
+Using a Mustache template, a triple bracket expression will render an appropriate `<img>` tag, for example:
 
 ```html
-<img src="{{post.image.url}}" width="1000">
+{{{post.image}}}
 ```
+
+Depending on the processing state of the image, the resulting value may
+or may not have width/height attributes.
 
 # Utilities
 
