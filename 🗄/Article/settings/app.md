@@ -83,3 +83,44 @@ To explicitly emit Apple related tags, and assuming a layout template as in the 
 The end result being that (between the layout template and endpoint template)
 both `{{{🎨.WebApp}}}` and `{{{🎨.AppleMobile}}}` will be generated.
 
+# Caching
+
+App-enabled Stacklane sites automatically generate and install a service worker.
+This service worker sets up 
+pre-caching of static assets, 
+dynamic caching of [model images](/🗄/Article/models/images.md) ,
+and custom caching for HTML endpoints.
+
+## Third Party JavaScript
+
+To ensure that third party JavaScript may be cached by the service worker,
+specify `crossorigin="anonymous"`:
+
+```html
+<script src="https://...js" integrity="..." crossorigin="anonymous"></script>
+```
+
+## Custom Caching Strategies
+
+Individual HTML endpoints may be given custom caching strategies.
+We recommend using these sparingly on only the most commonly accessed views.
+
+- **Network-First (Network Falling Back to Cache)** &mdash; 
+  Good for endpoints which may be updated frequently. 
+  By default it will try and fetch the latest request from the network. 
+  If the request is successful, it’ll put the response in the cache. 
+  If the network fails to return a response, the caches response will be used.
+- **Stale-While-Revalidate** &mdash; 
+  The stale-while-revalidate pattern responds to a request as
+  quickly as possible with a cached response if available, falling back to the network 
+  request if it’s not cached. The network request is then used to update the cache.
+  This is a fairly common strategy where having the most up-to-date resource is not vital to the application.
+
+Specify the strategy as a Mustache pragma:
+
+```html
+<!--TEMPLATE mustache-->
+{{% Network-First }}
+...
+```
+
