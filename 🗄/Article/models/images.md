@@ -32,30 +32,27 @@ An image value has several helpful utility fields:
 
 ## processed
 
-`true` if the uploaded image has been analyzed for height/width and resized.
-
-## height
-
-If `processed`, then returns the height of the image, otherwise null.
+`true` if the uploaded image has been analyzed and resized.
 
 ## width
 
-If `processed`, then returns the width of the image, otherwise null.
+If available, then returns the width of the image, otherwise null.
+
+## height
+
+If available, then returns the height of the image, otherwise null.
 
 ## square, horizontal, vertical
 
-If `processed`, and height and width are available,
-then returns true/false if image width == height,
+If width/height are available, then returns true/false if image width == height,
 width > height, and width < height respectively.
 
 ## ratio
 
-If `processed`, then returns the ratio of the image such as `16:9`. 
-Variations of this field are `ratioBy` which returns as `2by3`, 
-and `ratioX` which returns as `1x1`.
+If width/height are available, then returns the ratio of the image such as `16:9`. 
+Variations of this field are `ratioBy` which returns as `2by3`, and `ratioX` which returns as `1x1`.
 The ratio (combined with a CSS class) can be useful in displaying responsive images.
-Keep in mind that if the image's dimensions are highly unusual,
-then the ratio may be null.
+If the image's dimensions are unusual, then the ratio may be null.
 
 # Friendly URLs {#sharing}
      
@@ -116,17 +113,20 @@ This ensures the proper Content Security Policy is active for the HTML endpoint 
 **Step 1**:
 
 Obtain a one-time-use URL that will be the destination of the PUT.
-This is typically done with XHR that accesses a simple JavaScript endpoint such as:
+This is typically done with an XHR/fetch that accesses a simple JavaScript endpoint such as:
 
 ```javascript
 import {Post} from '📦';
-import {name} from 'form';
+import {name, width, height} from 'form';
 
 if (!Post.image.isValidFileName(name)) throw 'InvalidImageFileName';
-let newUrl = Post.image.newPutUrl(name);
+let newUrl = Post.image.newPutUrl(name, width, height);
 
 ({url: newUrl});
 ```
+
+Passing in `width` and `height` from the client side is recommended,
+and involves obtaining the `naturalWidth` and `naturalHeight` of the image.
 
 **Step 2**:
 
@@ -157,7 +157,7 @@ there is no need to send multipart/form-data, or it
 should be stripped out before the third step.
 The image's binary data was already sent in Step 2.
 (Our <a href="https://github.com/stacklane-examples/images" target="_blank">example</a>
- takes care of that for you).
+ takes care of that for you). 
 
 ## Working Example
 
