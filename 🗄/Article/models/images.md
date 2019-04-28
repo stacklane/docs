@@ -7,7 +7,7 @@ summary:  Learn about uploading and displaying images.
 
 The `image` field type stores a single image. Supported image types are JPG, GIF, PNG.
 Because non-expert users may be using your site/app, the system supports image uploads of up to 10MB.
-However all images will be re-=sized to no more than 2000px wide (with a proportional height).
+However all images will be rescaled to no more than 2000px wide (with a proportional height).
 
 # Display
 
@@ -25,6 +25,22 @@ Using a Mustache template, a triple bracket expression will render an appropriat
 
 Depending on the processing state of the image, the resulting value may
 or may not have width/height attributes.
+
+# Lifecycle
+
+From initial upload to final storage, images pass through two phases. 
+For typical development these phases will be transparent to the client code.
+
+## Preprocess
+ 
+This is the image state immediately after it's transferred/uploaded.
+It is the raw image received from the client.
+Prior to processing, images displayed while in this phase will still be in their original state.
+
+## Postprocess
+
+The image has been processed and is now in its final stored state.
+Processing includes rescaling, auto-orientation correction based EXIF data, and removal of all EXIF data (GPS location, etc). 
 
 # Utilities
 
