@@ -58,13 +58,15 @@ Building a login widget that lists providers is relatively simple.
 All configured login providers for the site are accessible from the `Providers` object.
 These providers may vary from test environment to the production environment.
 `{{provider.brand}}` is well-defined identifier such as `github` or `google`,
-suitable for targeting with CSS.
+suitable for targeting with CSS. 
+Take note of the special `itemprop='content-security-policy` in the example below:
 
 ```html
 <!--TEMPLATE mustache-->
 ...
 
 {{% import {Me, Providers} from '👤' }} 
+<link itemprop='content-security-policy' data-form-action-auth='true'>
 
 ...
 <div class="provider-list">
