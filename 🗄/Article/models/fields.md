@@ -39,6 +39,19 @@ Keep in mind that every model comes with
 automatically managed `created` and `modified` timestamp fields.\
 Provisioned size: 8 bytes.\
 To initialize a timestamp field to the current date/time use `init: true`.
+
+## `geo`
+
+Geographical point containing both latitude and longitude.\
+Provisioned size: 16 bytes.
+        
+Writing a geo point may be done as either a 
+comma separated string `myModel.location = 'latitude,longitude'`,
+or as a value object `myModel.location = new MyModelType.location(lat,long)`.
+
+Reading a geo point always results in a value object with `latitude` and `longitude` properties.
+
+Valid geo points have latitudes >= -90 and <= 90, and longitudes >= -180 and <= 180.
         
 # Options {#options}
 
