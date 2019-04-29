@@ -293,8 +293,22 @@ Include the following tag anywhere in the body:
 
 This tag supports the following properties:
 
-- `data-connect-self="true"` - allows AJAX connections to the same web app.
-- `data-img-src-data="true"` - allows "data:" as an image source in CSS.
+- `data-connect-self="true"` &mdash; allows AJAX connections to the same web app. Default: *true*.
+- `data-form-self="true"` &mdash; allows AJAX connections to the same web app. Default: *true*.
+- `data-img-src-data="true"` &mdash; allows "data:" as an image source in CSS (not recommended). Default: *false*.
+
+## Script Dependencies
+
+Certain scripts, external or otherwise, may have further CSP dependencies.
+For readability these may be specified on the `<script>` element itself:
+
+```html
+<script 
+  src="https://js.stripe.com/v3/"
+  data-frame-src="https://js.stripe.com"
+  data-connect-src="https://api.stripe.com"
+></script>
+```
 
 ## Restrictions
 
