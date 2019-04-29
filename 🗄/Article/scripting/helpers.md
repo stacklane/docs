@@ -6,8 +6,8 @@ summay: Learn about available helper modules available in server-side JavaScript
 # URL Parameters {#url}
 
 Access URL query parameters via the `'&'` module.
-If your query parameter contains a dash (or any other incompatible identifier character),
-such as `this-that`, then import it with an underscore instead: `this_that`.
+If your query parameter is separated by dashes, 
+such as `this-that`, then import it with camel case instead: `thisThat`.
 
 ```javascript
 /* import all at a prefix */
@@ -23,8 +23,8 @@ import {specific, param, here as Other} from '&';
 
 Access form parameters via the `'form'` module,
 or the  `'form{}'` module.
-If your form parameter contains a dash (or any other incompatible identifier character),
-such as `this-that`, then import it with an underscore instead: `this_that`.
+If your form parameter is separated by dashes, 
+such as `this-that`, then import it with camel case instead: `thisThat`.
 
 ```javascript
 /* individual parameters */
