@@ -90,12 +90,19 @@ site are sharing the same data model.
 
 If the nested site contains a [properties file](/🗄/Article/settings/properties.md),
 then the values in this file may be overridden, where
-the values beneath "🎨" correspond to values in the nested site's 🎨.scss file.
+the values beneath "🎨" correspond to values in the nested site's 🎨.scss properties file.
 
 ```yaml
 🎨:
   some-option: true
   the-color: aliceblue
+```
+
+A nested site definition may also use properties from the parent:
+
+```yaml
+🎨:
+  the-color: $name-of-parent-property
 ```
 
 # `keys`
