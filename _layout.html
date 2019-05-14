@@ -68,6 +68,7 @@
         document.body.classList.toggle('is-scrolled', past);
     });
 
+    /** TODO better as IntersectionObserver? **/
     $ready(function() {
         var height = $get('nav').getBoundingClientRect().height;
         if (typeof SmoothScroll !== 'undefined') new SmoothScroll('[data-scroll]', {
@@ -75,34 +76,39 @@
             offset: height - 40
         });
     });
-
-    $ready(function(){
-        var moreClass = 'is-invisible '; // TODO needs csp work or a connector
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/status/api/status'); // assumes docs are mounted on same domain as /status/
-
-        xhr.onreadystatechange = function () {
-            var DONE = 4; // readyState 4 means the request is done.
-            var OK = 200; // status 200 is a successful return.
-            if (xhr.readyState === DONE) {
-                if (xhr.status === OK) {
-
-                    var r = JSON.parse(xhr.responseText);
-
-                    document.getElementById('status').setAttribute('class', moreClass + r.status);
-                    document.getElementById('status').setAttribute('title', new Date().toLocaleString());
-
-                } else {
-                    document.getElementById('status').setAttribute('class', moreClass + 'error');
-                }
-            } else {
-                document.getElementById('status').setAttribute('class', moreClass + 'error');
-                console.log('Error: ' + xhr.status); // An error occurred during the request.
-            }
-        };
-
-        xhr.send(null);
-    });
 </script>
+
+{{!
+
+// TODO needs csp work or a connector
+$ready(function(){
+    var moreClass = 'is-invisible '; // TODO needs csp work or a connector
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/status/api/status'); // assumes docs are mounted on same domain as /status/
+
+    xhr.onreadystatechange = function () {
+    var DONE = 4; // readyState 4 means the request is done.
+    var OK = 200; // status 200 is a successful return.
+    if (xhr.readyState === DONE) {
+    if (xhr.status === OK) {
+
+    var r = JSON.parse(xhr.responseText);
+
+    document.getElementById('status').setAttribute('class', moreClass + r.status);
+    document.getElementById('status').setAttribute('title', new Date().toLocaleString());
+
+    } else {
+    document.getElementById('status').setAttribute('class', moreClass + 'error');
+    }
+    } else {
+    document.getElementById('status').setAttribute('class', moreClass + 'error');
+    console.log('Error: ' + xhr.status); // An error occurred during the request.
+    }
+};
+
+xhr.send(null);
+});
+
+}}
 </body>
 </html>
