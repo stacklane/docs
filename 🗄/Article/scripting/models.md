@@ -34,6 +34,16 @@ new List().title('new title').otherField('value'); // fluent setter
 let listId = '...';
 List.get(listId).remove();
 ```
+
+# Field Metadata
+
+Every model field has static metadata properties.
+
+## required
+
+`Product.description.required` &mdash; true if the description field has been set to required.
+
+`{{{ Product.description.html.required }}}` &mdash; Renders the HTML attribute `required` if true, otherwise renders nothing.
         
 # Containers
 
