@@ -37,6 +37,8 @@ $boxed-shadow:  0px 0px 15px 0px rgba(0, 0, 0, 0.05);
 /**
  * Overrides
  */
+$size-7: .8rem;
+
 $navbar-z: $zindex-sticky + 1;
 $navbar-fixed-z: $navbar-z;
 $navbar-background-color: $main-bg-color;

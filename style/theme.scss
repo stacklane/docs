@@ -33,6 +33,14 @@
 
 ////////////
 
+.small, small{
+  font-size: $size-7;
+}
+
+td.align-bottom{
+  vertical-align: bottom;
+}
+
 .alert.is-small{
   font-size: .85rem;
 }

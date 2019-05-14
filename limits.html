@@ -22,12 +22,10 @@
         with better long term scale and maintenance characteristics.
     </p>
     <p>
-        For example, we limit the size of a repository to emphasize
-        its use as controller + view, and not for example as a way
-        to serve large files, or model-like content.
-        Lists of embedded entries are limited to emphasize
-        using containers for cases
-        that may call for unbounded entries.  And so on.
+        For example, the size of a repository is limited to emphasize
+        its use as controller and view, and not as a way to serve large files, or model-like content.
+        Lists of embedded entries are limited to emphasize using containers for cases that may call for unbounded entries.
+        And so on.
     </p>
 
     <table class="table">
@@ -39,14 +37,21 @@
         </thead>
         <tbody>
         <tr>
-            <td>Repository: Total Size</td>
-            <td>10 MB</td>
+            <td>Repository: Total Size
+                <br>
+                <small>
+                    Consider using <a href="/settings/nested">nested sites</a> to break up large sites.
+                </small>
+            </td>
+            <td>5 MB</td>
         </tr>
         <tr>
             <td>
                 Repository: Image Count
-                <br><small>Repository images are primarily for styling / decoration / theme.
-                Consider using <a href="/endpoints/mustache#svg">SVG</a> for decoration as well.
+                <br>
+                <small>
+                    Repository images are primarily for styling / decoration / theme
+                    and are not related to <a href="/models/images">model data images</a>.
                 </small>
             </td>
             <td>50</td>
@@ -67,8 +72,9 @@
             <td>
                 Model: Field Count
                 <br>
-                <small>This can be effectively extended using embedded field types,
-                as long as the provisioned size for the type is not exceeded.
+                <small>
+                    Extendable using embedded field types,
+                    as long as the provisioned size for the type is not exceeded.
                 </small>
             </td>
             <td>20</td>
@@ -76,11 +82,13 @@
         <tr>
             <td>
                 Model: Embedded List Entries
-                <br><small>The maximum number of embedded entries in a multi-valued field.
-                Typically this will be customized to a <a href="/models/definition#embedded">lesser value</a>,
-                to reduce the total provisioned size.
-                For unbounded one-to-many associations use <a href="/models/containers">containers</a>.
-            </small>
+                <br>
+                <small>
+                    The maximum number of embedded entries in a multi-valued field.
+                    Typically this will be customized to a <a href="/models/definition#embedded">lesser value</a>,
+                    to reduce the total provisioned size.
+                    For unbounded one-to-many associations use <a href="/models/containers">containers</a>.
+                </small>
             </td>
             <td>20</td>
         </tr>
@@ -95,13 +103,13 @@
         <tr>
             <td>
                 Model: Provisioned Size
-                <p class="small mb-1">
+                <p class="small">
                     The sum of all
                     <a href="/models/fields">field type</a> sizes.
                     Exceeding the Provisioned Size of a model type will be determined during compile/build time,
                     ensuring that during runtime there are zero surprises.
                 </p>
-                <p class="pl-2 small">
+                <p class="small">
                     Universal Type
                     <br>
                     Content Type
