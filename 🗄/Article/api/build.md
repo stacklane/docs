@@ -130,7 +130,7 @@ This is an example of an `error` occurring within a group:
 ```javascript
 ...
 {"type":"group-begin", "group":{"name":"Endpoints","id":"grp-12"}}
-{"type":"file":"/GET.js", "group":{"name":"Endpoints","id":"grp-12"}, /*....*/ }
+{"type":"error", "file":"/GET.js", "group":{"name":"Endpoints","id":"grp-12"}, /*....*/ }
 {"type":"group-end", "group":{"name":"Endpoints","id":"grp-12"}}
 ...
 ```
