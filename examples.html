@@ -50,9 +50,9 @@
 
     <div class="article-list">
         {{#Example.all as example}}
-        <a href="{{src}}" class="example-loader">
-            <h2>{{title}}</h2>
-            <p>{{description}}</p>
+        <a href="{{example.src}}" class="example-loader">
+            <h2>{{example.title}}</h2>
+            <p>{{example.description}}</p>
         </a>
         {{/Example.all}}
     </div>
