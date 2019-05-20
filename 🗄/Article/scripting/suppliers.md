@@ -4,7 +4,7 @@ summary:  Learn about sharing and reusing values across multiple scripts and vie
 ---
 
 Suppliers are scripts which export one or more named values, for the sole purpose of
-having those values imported by another script -- either by another supplier,
+having those values imported by another script &mdash; either by another supplier,
 a [JS endpoint](/🗄/Article/endpoints/js.md), or a 
 [Mustache endpoint](/🗄/Article/endpoints/mustache.md).
 Suppliers allow for reusing values and functions.
@@ -25,7 +25,7 @@ readability, performance, and maintainability.
 # Supplier Types
 
 Choosing a supplier type depends on its purpose and allowed values.
-Supplier .js files are placed into a sub-directory named '📤',
+Supplier files are placed into a sub-directory named '📤',
 and any directory may have a supplier sub-directory.
 Suppliers are only visible to the current directory where
 the supplier directory is located, as well as descendant directories.
@@ -35,6 +35,7 @@ those endpoints which need the values/functions.
 ## Request Supplier {#request}
 
 `📤/AnyName.js`
+
 Allowed exports: Primitives (String, Number, Boolean), Map/Object of Primitives,
 a single instance of a [Model](/models/), or a [query](/🗄/Article/scripting/queries.md).
 
@@ -44,11 +45,26 @@ if allowed by the endpoint.
 
 ## Function Supplier {#function}
         
-`📤/{}AnyName.js`.
-Allowed exports: "Utility" functions only.  Function Suppliers
- have very limited functionality. They may not import anything (not even other suppliers).
-Their primary purpose is to provide functions that perform _calculations or transformations_
-on parameters.
+`📤/{}AnyName.js`
+
+Allowed exports: "Utility" functions only.
+Function Suppliers have very limited functionality. 
+They may not import anything (not even other suppliers).
+Their primary purpose is to provide functions that perform _calculations or transformations_ on parameters.
+
+## HTML Supplier {#html}
+
+`📤/AnyName.html`
+
+Allows sharing HTML fragments between server-side JS and Mustache.
+These suppliers are always represented as functions accepting a 
+single argument exposed as `this` to the Mustache template.
+
+A good practice for naming these suppliers is ending 
+with either "Fragment", such as `ArticleRowFragment.html`,
+or with the name of the primary element `ArticleRowDIV.html`.
+
+Learn more about <a href="#html-use">using HTML suppliers</a> below.
 
 # Export Scope {#export}
 
@@ -83,6 +99,59 @@ This creates a simple flat namespace for importing named values.
 ```javascript
 // Importing specific values:
 import {Something, Other, That} from '📤';
+```
+
+# HTML Suppliers {#html-use}
+
+HTML suppliers are only necessary when sharing a fragment of HTML between *both* server-side JavaScript and server-side Mustache.
+It's also useful if multiple Mustache templates need to share an HTML fragment that requires a parameter.
+
+All HTML suppliers are called as a function with a single parameter.  This parameter is exposed to the HTML supplier as `this`.
+
+The following example illustrates the definition of the supplier, and accessing the supplier from both environments.
+The assumption in this example is that `/📮newItem.js` is called from a client-side `fetch`, 
+and the `html` JSON property is appended to `<div class="items">`.
+
+
+```file-name
+/📤/ItemDIV.html
+```
+```html
+<!--TEMPLATE mustache-->
+{{#this as item}
+<div class="item">
+  {{item.name}}
+</div>
+{{/this}}
+```
+
+```file-name
+/📮newItem.js
+```
+```javascript
+import {Item} from '📦';
+import {ItemDIV} from '📤';
+
+let item = new Item().name('ABC');
+
+({id: item.id, html: ItemDIV(item)});
+```
+
+```file-name
+/index.html
+```
+```html
+<!--TEMPLATE mustache-->
+...
+{{% import {Item} from '📦' }}
+{{% import {ItemDIV} from '📤' }}
+
+<div class="items">
+{{#Item.all}}
+  {{ItemDIV item}}
+{{/Item.all}}
+</div>
+...
 ```
 
 # Endpoint Specific {#endpoint}
