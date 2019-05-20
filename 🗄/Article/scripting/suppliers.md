@@ -112,7 +112,6 @@ The following example illustrates the definition of the supplier, and accessing 
 The assumption in this example is that `/📮newItem.js` is called from a client-side `fetch`, 
 and the `html` JSON property is appended to `<div class="items">`.
 
-
 ```file-name
 /📤/ItemDIV.html
 ```
@@ -148,7 +147,8 @@ let item = new Item().name('ABC');
 
 <div class="items">
 {{#Item.all}}
-  {{ItemDIV item}}
+  {{! triple brackets }}
+  {{{ ItemDIV item }}} 
 {{/Item.all}}
 </div>
 ...
