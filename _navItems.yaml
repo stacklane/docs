@@ -38,6 +38,8 @@ models:
   path: models/definition
 - title: Ordering
   path: models/ordering
+- title: Static
+  path: models/static
 
 endpoints:
 - title: Overview

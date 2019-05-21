@@ -138,14 +138,19 @@ would use this template like:
 {{/layout}}
 ```
 
-# JSON
+# Structured Data {#structured}
 
 In certain cases it helps to keep structured data outside of your Mustache file,
 and then include this for processing as any other variable.
+A similar and more robust approach is to use [static model definitions](/🗄/Article/models/static.md).
 
-In this case you can define a JSON file with a list of objects, and then refer to it as
-you would any partial:  `{{% json /_myData as myData }}`.
-This list of objects may then be iterated using Mustache iteration tags.
+## YAML
+
+Define a YAML file and then refer to it with the pragma:  `{{% yaml /_myData as myData }}`
+
+## JSON
+
+Define a JSON file and then refer to it with the pragma:  `{{% json /_myData as myData }}`
 
 # HTML and SVG {#html}
 
