@@ -59,28 +59,8 @@ responds to requests for `GET /account/1234/settings`.
 
 ## Internal Redirects
 
-Output a string prefixed with "/"
-to perform an absolute redirect to another endpoint within your app.
-For more readable code and additional options, use the
-[redirect builder](/🗄/Article/scripting/helpers.md#redirect) instead.
+Output a [redirect object](/🗄/Article/scripting/helpers.md#redirect).
     
-## External Redirects
-
-Output a string prefixed with "http" to perform an external redirect.
-   
-## Rerouting
-
-Similar to an internal redirect, but no extra client request is made.
-A few conditions must exist for this to occur.
-
-- It must be a POST/PUT/DELETE request.
-- "X-Requested-With" header must exist and equal "XMLHttpRequest" (denoting an AJAX request).
-- The script must emit an absolute path for the app, similar to a regular internal redirect.
-
-Given a `POST.js` code called via AJAX and returning '/show/all', the server would
-internally route and return the result of executing `GET /show/all`, **instead of**
-requiring the client to round trip as it would with a normal internal redirect.
-
 # JSON Output {#json}
 
 Output an object literal from the script to create a JSON response.  For example:
