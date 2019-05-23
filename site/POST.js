@@ -18,12 +18,12 @@ try {
 
     let existing = Mapping.url(url).get();
 
-    `/site/${existing.key}/`; // redirect
+    Redirect.dir('site').dir(existing.key);
 
 } catch ($ModelNotFound){
 
     let created = new Mapping().url(url).key(idCreator());
 
-    `/site/${created.key}/`; // redirect
+    Redirect.dir('site').dir(created.key);
 
 }
