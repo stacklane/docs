@@ -60,5 +60,5 @@ moveTask.hierarchy = afterTask.hierarchy.before(
 ```
 
 The "tasks"
-<a href="https://github.com/stacklane-examples/tasks.git">example</a>
+<a href="https://github.com/stacklane-blueprints/tasks.git">example</a>
 shows basic reordering functionality using a hierarchy field.
