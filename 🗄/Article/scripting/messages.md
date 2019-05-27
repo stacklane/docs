@@ -142,7 +142,7 @@ Messages.data('thing', 'one');
 Redirect.home();
 ```
 
-For the very next GET to `/` only, the value of `thing` will be available:
+For the very next GET only, the value of `thing` will be available:
 
 ```html
 <!--TEMPLATE mustache-->
