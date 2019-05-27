@@ -149,4 +149,8 @@ For the very next GET only, the value of `thing` will be available:
 {{#Messages.data.thing}}
 Hello thing: {{Messages.data.thing}}
 {{/Messages.data.thing}}
+
+{{^Messages.data.thing}}
+No thing
+{{/Messages.data.thing}}
 ```
