@@ -16,16 +16,21 @@ let newList = new List().title('x');
 ```javascript
 let listId = '...';
 let list = List.get(listId);
-// Because of error handling, 'list' is always defined at this point
+
+// Because of error handling,
+// 'list' is always defined at this point
 let listTitle = list.title;
 ```
 
 ## Update
 
 ```javascript
-let listId = '...';
-List.get(listId).title = 'new title'; // field/property setter
-new List().title('new title').otherField('value'); // fluent setter
+// field/property setter:
+list.title = 'new title';
+
+// fluent setter:
+list.title('new title')
+    .otherField('value');
 ```
 
 ## Delete
@@ -81,13 +86,20 @@ Keep in mind that when working with containers from a
 [dynamic endpoint path](/🗄/Article/endpoints/dynamic.md)
 the container selection has already occurred.
 
-# Common Error Handling {#errors}
+# Transactions
+
+All model operations (create, update, delete/remove), which happen
+within a single request are committed together / atomically.
+There is no way to end up in a state where the first few models have
+been persisted, but later changes haven't.
+
+# Error Handling {#errors}
 
 In several examples above, note that `null` or `undefined`
 is not used to represent the absence of a result -- for example `List.get` and
 `Article.slug` never return a null/undefined value.
 
-Instead, an exception is thrown if there is no result.  This exception can be left "uncaught"
+Instead, an exception is thrown if there is no result.  This exception can be left unhandled,
 and therefore propagated up to an [error endpoint](/🗄/Article/endpoints/errors.md).
 Or it can be specifically caught using a special nomenclature:
 
@@ -96,8 +108,8 @@ let thingId = '....';
 let thing = null;
 try {
     thing = Thing.get(thingId);
-} catch ($NotFound){
-    // At this point we've specifically caught $NotFound,
+} catch ($ModelNotFound){
+    // At this point we've specifically caught $ModelNotFound,
     // as opposed to catching an unrelated error/exception.
     thing = new Thing();
 }
