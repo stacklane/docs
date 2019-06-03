@@ -98,8 +98,16 @@ To configure a provider from a test environment make sure and use its `type`.
 
 ## Google Gmail
 
-- `type`: gmail
+- `type`: `gmail`
 
 ## Amazon SES
 
-- `type`: ses
+- `type`: `ses-us-east-1` / `ses-eu-west-1`, according to the AWS region the credentials have been setup in.
+
+## Mailgun
+
+- `type`: `mailgun`
+
+## Test
+
+- `type`: `test` &mdash; user/pass may be anything.  This provider is only usable in test instances.
