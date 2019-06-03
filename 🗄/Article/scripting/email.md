@@ -107,7 +107,3 @@ To configure a provider from a test environment make sure and use its `type`.
 ## Mailgun
 
 - `type`: `mailgun`
-
-## Test
-
-- `type`: `test` &mdash; user/pass may be anything.  This provider is only usable in test instances.
