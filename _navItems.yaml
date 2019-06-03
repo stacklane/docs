@@ -70,6 +70,8 @@ scripting:
   path: scripting/messages
 - title: Connectors
   path: scripting/connectors
+- title: Email
+  path: scripting/email
 
 users:
 - title: Overview

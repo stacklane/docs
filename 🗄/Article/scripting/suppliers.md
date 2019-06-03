@@ -106,7 +106,8 @@ import {Something, Other, That} from '📤';
 HTML suppliers are only necessary when sharing a fragment of HTML between *both* server-side JavaScript and server-side Mustache.
 It's also useful if multiple Mustache templates need to share an HTML fragment that requires a parameter.
 
-All HTML suppliers are called as a function with a single parameter.  This parameter is exposed to the HTML supplier as `this`.
+All HTML suppliers are called as a function with a single parameter, even if that single parameter is an empty `{}`.
+This parameter is exposed to the HTML supplier as `this`.
 
 The following example illustrates the definition of the supplier, and accessing the supplier from both environments.
 The assumption in this example is that `/📮newItem.js` is called from a client-side `fetch`, 
