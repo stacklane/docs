@@ -89,7 +89,7 @@ For a test environment such as WebStorm, you'll need to configure these directly
 - `"from"` &mdash; May either be a simple email address, or it may contain a display name
 using the RFC822 format: `"Example & Co." <from@example.com>`
 - `[PROVIDER_TYPE]` &mdash; Should be replaced with one of the supported provider types listed below.
-For example the full key for Amazon SES would be `email:ses`.
+For example the full key for Mailgun would be `email:mailgun`.
 
 # Providers
 
