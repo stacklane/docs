@@ -16,9 +16,22 @@ to display results as HTML.
 
 To query all models of a type, without any filters, use the `all()` method.
 For example, `Note.all()`.
-By default results will be returned in the model's natural ordering,
-however this can be reversed by adding `desc()`,
-e.g. `Note.all().desc()`.
+Results will be returned in the model's natural ordering,
+however this may be reversed by adding `desc()`, e.g. `Note.all().desc()`.
+
+For convenience the "all" query on a model type is also available to [Mustache](/🗄/Article/endpoints/mustache.md).
+Any other queries must be built within a [supplier](/🗄/Article/scripting/suppliers.md) before importing them into Mustache.
+
+```file-name
+/index.html
+```
+```html
+<!--TEMPLATE mustache-->
+{{% import {Note} from '📦' }}
+{{#Note.all as note}}
+  {{note.title}}
+{{/Note.all}}
+```
 
 # Field Filters
 
@@ -49,14 +62,13 @@ Keep in mind that field filters are effectively **and** conditions.
 # asc()/desc()
 
 All model types have a [natural ordering](/🗄/Article/models/ordering.md).
-To reverse the natural ordering, use asc() / desc(),
-such as `Note.all().desc()`.
+To reverse the natural ordering, use asc() / desc(), such as `Note.all().desc()`.
 
 # filter(function) 
 
 The callback function to `filter` returns a `boolean`
 that indicates whether the item should be included in the results (return false to exclude an entry).
-This should only be used if another specific field is not sufficient.
+This should only be used if another field filter (eq, gt, gte, lt, lte) is not sufficient.
 
 # limit(number)
 
@@ -66,7 +78,7 @@ Limits the results of a query.
 
 The callback function to `map` _transforms_ the current stream element
 into a map.  This is often used to transform a model to a JSON object literal.
-It should be the last method in a chain.
+It should be the last method in a chain (or followed only by `get` / `distinct` / `count`).
         
 ```javascript
 let titlesOnly = Article.all().map(article=>({title:article.title}));
@@ -75,7 +87,7 @@ let titlesOnly = Article.all().map(article=>({title:article.title}));
 # flatMap(function)
 
 The callback function to `flatMap` _transforms_ the current stream element
-into an array. It should be the last method in a chain.
+into an array. It should be the last method in a chain (or followed only by `get` / `distinct` / `count`).
         
 # distinct()
 
@@ -97,7 +109,6 @@ exception is generated, similar to loading a model by GUID.
         
 # modify(function)
 
-        
 The callback function to `modify`
 receives a Model instance as its parameter,
 and does not expect any return value.
