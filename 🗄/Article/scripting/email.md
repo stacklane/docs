@@ -4,8 +4,7 @@ summary: Learn about setting up the email module.
 ---
 
 The email module allows you to compose and send email using specific providers.
-Pre-configured providers allow Stacklane to provide simpler configurations,
-region specific endpoints, and automatic batching when applicable.
+Pre-configured providers allow Stacklane to provide simpler configurations.
 Contact us if you require a provider not already listed below.
 
 # Basic Use {#basic}
