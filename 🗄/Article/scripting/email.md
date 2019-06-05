@@ -71,7 +71,7 @@ Redirect.home().success(
 
 An email service provider must be configured with a username, password, and "from" address.
 For sites configured in the Stacklane Console, the UI will guide the setup of these required fields.
-For a test environment such as WebStorm, you'll need to configure these directly:
+For a [test environment](/🗄/Article/dev.md#credentials) such as WebStorm, you'll need to configure these directly:
 
 ```javascript
 {
