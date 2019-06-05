@@ -21,8 +21,7 @@ import {specific, param, here as Other} from '&';
 
 # Form Parameters {#form}
 
-Access form parameters via the `'form'` module,
-or the  `'form{}'` module.
+Access form parameters via the `'form'` module, or the  `'form{}'` module.
 If your form parameter is separated by dashes, 
 such as `this-that`, then import it with camel case instead: `thisThat`.
 
@@ -86,6 +85,16 @@ Redirect.dir('articles')
 
 The utilities module is named `'util'` and exports the following objects and methods.
 All utilities are safe and efficient to use during any HTTP method.
+
+## ID
+
+Generates a URL and HTML friendly globally unique ID.
+
+```
+import {ID} from 'util';
+
+let randomUnique = ID.generate();
+```
 
 ## Encoding
 
