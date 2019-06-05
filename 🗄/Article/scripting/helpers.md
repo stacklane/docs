@@ -90,7 +90,7 @@ All utilities are safe and efficient to use during any HTTP method.
 
 Generates a URL and HTML friendly globally unique ID.
 
-```
+```javascript
 import {ID} from 'util';
 
 let randomUnique = ID.generate();
