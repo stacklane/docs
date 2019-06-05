@@ -5,8 +5,8 @@ summary: Learn about available field types for your models.
 
 # Default
 
-Every model type is pre-defined with `created` and `modified` timestamp fields.
-These are automatically managed.
+Every non-embedded model type is pre-defined with a unique `id`, plus `created` and `modified` timestamp fields.
+These are automatically managed.  They are available before persisting.
 
 # Primitive
 
