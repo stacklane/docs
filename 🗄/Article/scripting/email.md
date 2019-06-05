@@ -97,7 +97,7 @@ To configure a provider from a test environment make sure and use its `type`.
 
 ## Google Gmail
 
-- `type`: `gmail`
+- `type`: `gmail` &mdash A dedicated Gmail account is recommended for this purpose.  Generate an app specific password, and enable "Less secure app access" in the security settings.
 
 ## Amazon SES
 
