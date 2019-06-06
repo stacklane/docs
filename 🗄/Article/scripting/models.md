@@ -42,14 +42,16 @@ List.get(listId).remove();
 
 # Field Metadata
 
-Every model field has static metadata properties.
+Every model field has static metadata utilities:
 
 ## required
 
 `Product.description.required` &mdash; true if the description field has been set to required.
 
-`{{{ Product.description.html.required }}}` &mdash; Renders the HTML attribute `required` if true, otherwise renders nothing.
-        
+## html
+
+Model fields have a number of conveniences for [working with HTML forms](/🗄/Article/models/forms.md).
+
 # Containers
 
 Since [containers](/🗄/Article/models/containers.md) create a "scope" for
@@ -59,7 +61,20 @@ before any other operations on its contained data.
 To execute code in the context of selected container, pass a function
 to the container's variable.  The return value of the function
 will be passed back as the return value of selecting the container.
-Example:
+
+## Create Child
+
+```javascript
+import {List,Task} from '📦';
+
+let list = new List();
+
+let childNote = list(()=>{
+  return new Task().title('My Task');
+});
+```
+
+## Query Children
 
 ```javascript
 // Load the container 'List'
