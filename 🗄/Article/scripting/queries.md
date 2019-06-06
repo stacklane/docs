@@ -33,10 +33,6 @@ Any other queries must be built within a [supplier](/🗄/Article/scripting/supp
 {{/Note.all}}
 ```
 
-## none()
-
-As the opposite of `all()` there is also a type-safe empty query for a given type.
-
 # Field Filters
 
 All queries besides `all()` start with a field filter.
