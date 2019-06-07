@@ -14,10 +14,9 @@ to display results as HTML.
 
 # all()
 
-To query all models of a type, without any filters, use the `all()` method.
-For example, `Note.all()`.
-Results will be returned in the model's natural ordering,
-however this may be reversed by adding `desc()`, e.g. `Note.all().desc()`.
+To query all models of a type, without any filters, use the `all()` method. For example, `Note.all()`.
+
+Results will be returned in the model's [natural ordering](/🗄/Article/models/ordering.md#query).
 
 For convenience the "all" query on a model type is also available to [Mustache](/🗄/Article/endpoints/mustache.md).
 Any other queries must be built within a [supplier](/🗄/Article/scripting/suppliers.md) before importing them into Mustache.
@@ -62,7 +61,8 @@ Keep in mind that field filters are effectively **and** conditions.
 # asc()/desc()
 
 All model types have a [natural ordering](/🗄/Article/models/ordering.md).
-To reverse the natural ordering, use asc() / desc(), such as `Note.all().desc()`.
+In general it's recommended to minimize the use of `asc()` and `desc()`
+and to typically rely on the [default ordering of various query types](/🗄/Article/models/ordering.md#query).
 
 # filter(function) 
 

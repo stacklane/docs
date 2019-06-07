@@ -10,9 +10,8 @@ Every model type has a natural / default ordering field and direction.
 Universal, Content, and User Profile types order by their `created`
 timestamp, ascending from oldest to newest.
 
-The natural ordering of query results may be reversed
-using `asc()` and `desc()`
-[query methods](/🗄/Article/scripting/queries.md).
+However keep in mind that ordered versus unordered results are also influenced by the
+[type of query](/🗄/Article/models/ordering.md#query).
 
 # Custom 
 
@@ -34,6 +33,20 @@ highScore:
 If a model is a child within a [container](/🗄/Article/models/containers.md),
 then the field _names_ which allow custom ordering are limited to
 `title`, `name`, `order`, `hierarchy`.
+
+# Query Ordering {#query}
+
+The default ordering of results is impacted by the type of [query](/🗄/Article/scripting/queries.md) performed.
+
+The `all()` query returns results in the default natural order automatically. `all()` may also be explicitly `asc()` or `desc()`.
+
+If specifying query filters, then by default the results are _unordered_.
+
+If **both** query filters _and_ ordering are required, then explicitly specify `asc()` or `desc()`.
+
+In general we recommend minimizing use of `asc()` and `desc()`,
+using them only for specific cases, and therefore relying on
+the default ordered/unordered behavior whenever possible.
 
 # Hierarchy
 
