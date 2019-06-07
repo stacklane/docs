@@ -40,14 +40,6 @@ let listId = '...';
 List.get(listId).remove();
 ```
 
-# Field Metadata
-
-Every model field has static metadata utilities:
-
-## required
-
-`Product.description.required` &mdash; true if the description field has been set to required.
-
 ## html
 
 Model fields have a number of conveniences for [working with HTML forms](/🗄/Article/models/forms.md).
@@ -65,17 +57,20 @@ will be passed back as the return value of selecting the container.
 ## Create Child
 
 ```javascript
-import {List,Task} from '📦';
+import {List,Note} from '📦';
 
 let list = new List();
 
 let childNote = list(()=>{
-  return new Task().title('My Task');
+  return new Note().title('My Task');
 });
 ```
 
 ## Query Children
 
+```file-name
+/list/tasks/GET.js
+```
 ```javascript
 // Load the container 'List'
 let listId = '...';
@@ -86,7 +81,7 @@ let titleStream = myList(()=>{
    return Note.all().map((n)=>n.title));
 });
 
-// Assuming GET.js, this will result in JSON of Note titles:
+// Output JSON of Note titles:
 titleStream;
 ```
 
@@ -97,9 +92,21 @@ let listId = '...';
 List.get(listId)(()=>Note.all().map((n)=>n.title)));
 ```
 
-Keep in mind that when working with containers from a
+## Dynamic Endpoint
+
+When working with containers from a
 [dynamic endpoint path](/🗄/Article/endpoints/dynamic.md)
-the container selection has already occurred.
+the container selection has already occurred:
+
+```file-name
+/list/{list}/tasks/GET.js
+```
+```javascript
+import {list} from '🔗';
+
+// Output JSON of Note titles:
+Note.all().map((n)=>n.title));
+```
 
 # Transactions
 
