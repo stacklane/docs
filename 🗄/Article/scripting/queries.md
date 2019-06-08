@@ -164,7 +164,7 @@ Assuming a simple single-valued embedded list model:
 Article.languages(new Article.Language().value('en'));
 ```
 
-This will return all `Article`'s with the "en" as one of its `Article.languages`.
+This will return all `Article`'s with "en" as one of its `Article.languages`.
 Because `Article.languages` is an embedded list, it may have other languages besides "en".
 
 # Unique Value Queries {#unique}
