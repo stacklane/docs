@@ -85,6 +85,10 @@ item:
 
 ## Lists
 
+> {.alert .is-warning .is-small}
+>
+> Before using embedded lists, review the [query limitations and suggestions](/🗄/Article/scripting/queries.md#embedded).
+
 Whether defined globally or locally, embedded values can allow multiple values (up to 20 entries)
 by adding "[]" after the field name:
 

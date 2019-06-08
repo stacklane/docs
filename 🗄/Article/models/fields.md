@@ -224,6 +224,7 @@ To display an HTML field in Mustache, use triple brackets `{{{ model.titleOrText
 This is the field type corresponding to a complex value defined by an [Embedded](/🗄/Article/models/types.md#embedded) model type.
 
 It may be a many valued array/list, in which case there is a limit of **20** embedded entries.
+Keep in mind that embedded lists carry [query limitations](/🗄/Article/scripting/queries.md#embedded)
         
 Provisioned size: sum of provisioned field sizes * times number of possible entries.
 

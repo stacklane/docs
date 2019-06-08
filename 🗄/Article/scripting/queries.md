@@ -132,7 +132,41 @@ Any results beyond the first 10 are processed asynchronously in batches, meaning
 short delay for a user to see the result of changes to larger batches.
 This "semi-asynchronous" approach strikes a balance between user expectations on more common (small) operations,
 while making sure the request time is at a minimum for larger operations.
-        
+
+# Embedded Models {#embedded}
+
+Queries for embedded models work in much the same as any equality query.
+Use an instance of an embedded model to define the "example" criteria to search for.
+
+The following assumes `Article` has a field named `metadata` with an embedded model as its value:
+
+```javascript
+Article.metadata(new Article.Metadata().title('The Title')).get();
+```
+
+This will return an `Article` where `Article.metadata.title == 'The Title'`;
+
+## Embedded Lists
+
+Lists of embedded models come with important limitations.
+Chiefly they only match when the _entire_ embedded model in the list matches all given fields.
+In other words, when embedded models are in a list, it's not possible search for a
+partial field match (unless querying a unique value field).
+
+Therefore if needing to query against lists of embedded values, then it's recommended to
+either keep the model limited to 1-2 fields, or keep the queries limited to a unique value.
+
+Otherwise, use [contained models](/🗄/Article/models/containers.md), which provide more robust querying.
+
+Assuming a simple single-valued embedded list model:
+
+```javascript
+Article.languages(new Article.Language().value('en'));
+```
+
+This will return all `Article`'s with the "en" as one of its `Article.languages`.
+Because `Article.languages` is an embedded list, it may have other languages besides "en".
+
 # Unique Value Queries {#unique}
 
 Query [unique fields](/🗄/Article/models/fields.md#unique) and 
