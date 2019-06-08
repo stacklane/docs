@@ -38,15 +38,18 @@ then the field _names_ which allow custom ordering are limited to
 
 The default ordering of results is impacted by the type of [query](/🗄/Article/scripting/queries.md) performed.
 
-The `all()` query returns results in the default natural order automatically. `all()` may also be explicitly `asc()` or `desc()`.
+## "All" / all() {#all-query}
 
-If specifying query filters, then by default the results are _unordered_.
+Results are _ordered_ using the default natural order of the model type.
+`all()` may also be explicitly ordered with `asc()` or `desc()`.
 
-If **both** query filters _and_ ordering are required, then explicitly specify `asc()` or `desc()`.
+## Field Criteria {#field-query}
 
-In general we recommend minimizing use of `asc()` and `desc()`,
-using them only for specific cases, and therefore relying on
-the default ordered/unordered behavior whenever possible.
+Results for field specific query criteria are _unordered_ by default.
+
+Ordering of field queries may be activated with `asc()` or `desc()`.
+However we recommend minimizing their use in this case, and relying on the _unordered_ behavior.
+The general goal of field specific query criteria to return a relatively small set of results.
 
 # Hierarchy
 

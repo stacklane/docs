@@ -18,7 +18,7 @@ To query all models of a type, without any filters, use the `all()` method. For 
 
 Results will be returned in the model's [natural ordering](/🗄/Article/models/ordering.md#query).
 
-For convenience the "all" query on a model type is also available to [Mustache](/🗄/Article/endpoints/mustache.md).
+The "all" query on a model type is also available to [Mustache](/🗄/Article/endpoints/mustache.md).
 Any other queries must be built within a [supplier](/🗄/Article/scripting/suppliers.md) before importing them into Mustache.
 
 ```file-name
@@ -37,7 +37,8 @@ Any other queries must be built within a [supplier](/🗄/Article/scripting/supp
 All queries besides `all()` start with a field filter.
 Multiple field filters may be chained together.
 Keep in mind that field filters are effectively **and** conditions.
-        
+By default field filters return [_unordered_ results](/🗄/Article/models/ordering.md#query).
+
 ## eq
         
 `Article.title('theTitle')`
