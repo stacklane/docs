@@ -186,12 +186,6 @@ Within each block, the following inline elements are supported:
 
 Provisioned *and* maximum size is 20,000 *bytes* for the Content Type, and 2,000 *bytes* for all other types.
 
-## `title`
-
-Special kind of `text` which is limited to a
-single `h1-h6` block containing allowed inline elements.\
-Maximum length: 100 UTF-8 *characters*.  Provisioned size: 400 bytes (4 bytes provisioned per character).
-
 ## `paragraph`
 
 Special kind of `text` which is limited to a
