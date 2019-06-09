@@ -15,7 +15,7 @@ While this type has broad cases, review the other model types before choosing
 in case another type is more suitable. It does not allow large text fields,
 and is therefore not suitable for an article, blog post, or product description.
 
-# Content
+# Content {#content}
 
 Represents content that is handcrafted by a small number of people,
 and typically viewed by a much wider audience.

@@ -13,51 +13,32 @@ These are automatically managed.  They are available before persisting.
 ## `string`
 
 Maximum length: 100 UTF-8 *characters*.
-May be marked as <a href="#unique">unique: true</a>.\
-Provisioned size: 400 bytes (4 bytes provisioned per character).\
-This may be lowered by defining `max: N` for the field definition.
+May be marked as <a href="#unique">unique: true</a>.
+The maximum length may be lowered by defining `max: N` on the field definition.
 
 ## `boolean`
 
-true/false boolean value.\
-Provisioned size: 1 byte.
+true/false boolean value.
 
 ## `integer`
 
-Non-floating 64 bit integer (long).\
-Provisioned size: 8 bytes.
+Non-floating 64 bit integer (long).
 
 ## `double`
 
-Floating-point number (64-bit double precision, IEEE 754).\
-Provisioned size: 8 bytes.
+Floating-point number (64-bit double precision, IEEE 754).
 
 ## `timestamp`
 
-Date/time stored as UTC/GMT.
+Date and time stored as UTC/GMT.
 Keep in mind that every model comes with
-automatically managed `created` and `modified` timestamp fields.\
-Provisioned size: 8 bytes.\
-To initialize a timestamp field to the current date/time use `init: true`.
+automatically managed `created` and `modified` timestamp fields.
+Initialize a timestamp field to the current date/time using `init: true`.
 
-## `geo`
-
-Geographical point containing both latitude and longitude.\
-Provisioned size: 16 bytes.
-        
-Writing a geo point may be done as either a 
-comma separated string `myModel.location = 'latitude,longitude'`,
-or as a value object `myModel.location = new MyModelType.location(lat,long)`.
-
-Reading a geo point always results in a value object with `latitude` and `longitude` properties.
-
-Valid geo points have latitudes >= -90 and <= 90, and longitudes >= -180 and <= 180.
-        
 # Options {#options}
 
 `options` are a special purpose string field, limited to pre-configured string values.
-The options / values must be camel case (example, exampleOne, exampleTwoOther), using single byte letters.\
-Provisioned size: 50 bytes.
+The options / values must be camel case (example, exampleOne, exampleTwoOther), using single byte letters.
 
 ## Example {#options-example}
 
@@ -93,8 +74,7 @@ Speciality fields provide validation, and often lower provisioned sizes.
 
 ## `country`
 
-<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3" target="_blank">ISO 3166-1 alpha-3</a> country code.\
-Provisioned size: 3 bytes.
+<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3" target="_blank">ISO 3166-1 alpha-3</a> country code.
 
 ## `map`
 
@@ -106,6 +86,7 @@ They are only suitable for free-form fields that may vary widely for the same mo
 # Geo Point
 
 Use the `geo` field type to store latitude and longitude in a single field.
+Valid geo points have latitudes >= -90 and <= 90, and longitudes >= -180 and <= 180.
 
 Values may be assigned/set as strings such as "45.33670190996811,-75.8056640625".
 
@@ -122,14 +103,11 @@ new Post().location(geoPoint);
 Getting/reading a geo value always results in an object with the properties:
 `latitude` (double), `longitude` (double), `value` (string).
 
-Provisioned size: 16 bytes
-
 # Image
 
 The `image` field type stores a single image. Supported image types are JPG, GIF, PNG.
 For more information on uploading and displaying images,
-see [Models / Images](/🗄/Article/models/images.md).\
-Provisioned size: 100 bytes (independent of image size)
+see [Models / Images](/🗄/Article/models/images.md).
 
 ## Maximum Size
 
@@ -160,16 +138,14 @@ For more information on using this field type see
 order: hierarchy
 ```
 
-Provisioned size: 50 bytes.
-
 # SVG Icon {#svg-icon}
 
 `svg-icon` is a purpose specific field for holding a web-safe, square SVG icon.
 Typically these values are generated from the `Identicon`
 [utility](/🗄/Article/scripting/helpers.md#utilities).
 This field is highly constrained to valid and safe SVG.
-No scripting or inline styles are allowed.\
-Maximum and provisioned size: 2000 bytes.
+No scripting or inline styles are allowed.
+Maximum size: 2000 bytes.
 
 ## Example Definition
 
@@ -205,13 +181,13 @@ Within each block, the following inline elements are supported:
 `sub`,
 `sup`.
 
-Provisioned *and* maximum size is 20,000 *bytes* for the Content Type, and 2,000 *bytes* for all other types.
+Maximum size is 20,000 *bytes* for the Content Type, and 2,000 *bytes* for all other types.
 
 ## `paragraph`
 
 Special kind of `text` which is limited to a
 single `p` block containing allowed inline elements.\
-Provisioned *and* maximum size: 2000 *bytes*.\
+Maximum size: 2000 *bytes*.\
 This may be lowered by defining `max: N` for the field definition.
 
 ## Markdown
@@ -240,8 +216,6 @@ This is the field type corresponding to a complex value defined by an [Embedded]
 
 It may be a many valued array/list, in which case there is a limit of **20** embedded entries.
 Keep in mind that embedded lists carry [query limitations](/🗄/Article/scripting/queries.md#embedded)
-        
-Provisioned size: sum of provisioned field sizes * times number of possible entries.
 
 For more information on defining an embedded field, [click here](/🗄/Article/models/types.md#embedded).
 
@@ -277,5 +251,3 @@ In an ideal scenario from an SEO standpoint, if the visitor has reached a URL by
 then it's recommended you redirect to the current/primary UID value.
 When using [dynamic endpoints](/🗄/Article/endpoints/dynamic.md) backed by a UID field,
 this redirection is handled automatically.
-
-Provisioned size: 100 bytes.

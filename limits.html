@@ -105,9 +105,8 @@
             <td>
                 Model: Provisioned Size
                 <p class="small">
-                    The sum of all
-                    <a href="/models/fields">field type</a> sizes.
-                    Exceeding the Provisioned Size of a model type will be determined during compile/build time,
+                    The sum of all <a href="#provisioned">provisioned field sizes</a>.
+                    Exceeding the provisioned size of a model type will be determined during compile/build time,
                     ensuring that during runtime there are zero surprises.
                 </p>
                 <p class="small">
@@ -132,7 +131,93 @@
                 </p>
             </td>
         </tr>
+        </tbody>
+    </table>
 
+    <h1 id="provisioned">Model Provisioned Size</h1>
+
+    <p>
+        A model type's total provisioned size is the sum of the
+        provisioned size for each field defined for the model.
+        Stacklane determines the provisioned size of a model at compile time,
+        ensuring that during runtime there are zero surprises.
+    </p>
+
+    <table class="table is-fullwidth">
+        <thead>
+        <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Provisioned Size</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>string</td>
+                <td>
+                    400 bytes (4 <b>x</b> max characters)
+                </td>
+            </tr>
+            <tr>
+                <td>boolean</td>
+                <td>1 byte</td>
+            </tr>
+            <tr>
+                <td>integer</td>
+                <td>8 bytes</td>
+            </tr>
+            <tr>
+                <td>double</td>
+                <td>8 bytes</td>
+            </tr>
+            <tr>
+                <td>timestamp</td>
+                <td>8 bytes</td>
+            </tr>
+            <tr>
+                <td>options</td>
+                <td>50 bytes</td>
+            </tr>
+            <tr>
+                <td>country</td>
+                <td>3 bytes</td>
+            </tr>
+            <tr>
+                <td>geo</td>
+                <td>16 bytes</td>
+            </tr>
+            <tr>
+                <td>image</td>
+                <td>100 bytes (independent of image size)
+                </td>
+            </tr>
+            <tr>
+                <td>hierarchy</td>
+                <td>50 bytes</td>
+            </tr>
+            <tr>
+                <td>svg-icon</td>
+                <td>2000 bytes</td>
+            </tr>
+            <tr>
+                <td>uid</td>
+                <td>100 bytes</td>
+            </tr>
+            <tr>
+                <td>text</td>
+                <td>
+                    2,000 bytes, or 20,000 bytes for <a href="/models/types#content">Content</a>
+                </td>
+            </tr>
+            <tr>
+                <td>paragraph</td>
+                <td>2,000 bytes</td>
+            </tr>
+            <tr>
+                <td><a href="/models/types#embedded">Embedded</a></td>
+                <td>
+                    Sum of field sizes (<b>x</b> times number of possible entries)
+                </td>
+            </tr>
         </tbody>
     </table>
 </article>
