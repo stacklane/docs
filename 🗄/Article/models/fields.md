@@ -103,6 +103,27 @@ Maps support free-form string, number, and boolean values.
 _Maps are not indexed, and not queryable_.
 They are only suitable for free-form fields that may vary widely for the same model type.
 
+# Geo Point
+
+Use the `geo` field type to store latitude and longitude in a single field.
+
+Values may be assigned/set as strings such as "45.33670190996811,-75.8056640625".
+
+Or, values may be assigned with an object:
+
+```javascript
+import {Post} from '📦';
+import {lat,long} from 'form';
+
+let geoPoint = new Post.location(lat, long);
+new Post().location(geoPoint);
+```
+
+Getting/reading a geo value always results in an object with the properties:
+`latitude` (double), `longitude` (double), `value` (string).
+
+Provisioned size: 16 bytes
+
 # Image
 
 The `image` field type stores a single image. Supported image types are JPG, GIF, PNG.
