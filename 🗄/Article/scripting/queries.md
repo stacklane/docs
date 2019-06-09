@@ -170,7 +170,7 @@ Because `Article.languages` is an embedded list, it may have other languages bes
 # Contained Models {#containers}
 
 For models which are [contained](/🗄/Article/models/containers.md) by a parent model,
-querying is performed in much the same way.
+querying is performed in much the same way as any other query.
 
 The difference is that querying for a child model happens within the scope of a _selected_ container.
 There are 3 ways to ensure a container is _selected_ and in-scope (before querying a child).
@@ -184,6 +184,18 @@ There are 3 ways to ensure a container is _selected_ and in-scope (before queryi
    Return values are optional.
 3. Iteration &mdash; If a container is being iterated (for example in Mustache, as a part of `map()`, etc),
    then it is selected within the context of each iteration: `Container.all().map(c=>({children: Child.all()}))`.
+
+## Ancestor Scope
+
+In certain cases it may be necessary to query for children _across_ containers, up to 1 level deep.
+Take the following model containers and children:  `Project` / `List` / `Task`.
+The following queries are possible:
+
+1. Single Container &mdash; Query for all `List`'s in a single `Project`, _or_ all `Task`'s in a single `List`.
+2. Across Containers &mdash; Query for all Tasks in a single `Project` (across all `List`'s in 1 `Project`).
+
+The 3 selection rules still apply.
+When querying across containers the selected container in the example would be `Project` instead of `List`.
 
 # Unique Value Queries {#unique}
 
