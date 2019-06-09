@@ -192,7 +192,7 @@ Take the following model containers and children:  `Project` / `List` / `Task`.
 The following queries are possible:
 
 1. Single Container &mdash; Query for all `List`'s in a single `Project`, _or_ all `Task`'s in a single `List`.
-2. Across Containers &mdash; Query for all Tasks in a single `Project` (across all `List`'s in 1 `Project`).
+2. Across Containers &mdash; Query for all `Task`'s in a single `Project` (across all `List`'s in 1 `Project`).
 
 The 3 selection rules still apply.
 When querying across containers the selected container in the example would be `Project` instead of `List`.
