@@ -167,6 +167,24 @@ Article.languages(new Article.Language().value('en'));
 This will return all `Article`'s with "en" as one of its `Article.languages`.
 Because `Article.languages` is an embedded list, it may have other languages besides "en".
 
+# Contained Models
+
+For models which are [contained](/🗄/Article/models/containers.md) by a parent model,
+querying is performed in much the same way.
+
+The difference is that querying for a child model happens within the scope of a _selected_ container.
+There are 3 ways to ensure a container is _selected_ and in-scope (before querying a child).
+
+1. [Dynamic Paths](/🗄/Article/endpoints/dynamic.md) &mdash;
+   If a container model is the target of a dynamic endpoint,
+   then it is automatically selected for all descendant endpoints and directories.
+   This selection may be overridden by the other two methods.
+2. Variable Selection &mdash; Every container variable is also a function.  Whatever happens in this function is
+   done in the context of that container:  `let children = containerVar(()=>{ return Child.all(); })`.
+   Return values are optional.
+3. Iteration &mdash; If a container is being iterated (for example in Mustache, as a part of `map()`, etc),
+   then it is selected within the context of each iteration: `Container.all().map(c=>({children: Child.all()}))`.
+
 # Unique Value Queries {#unique}
 
 Query [unique fields](/🗄/Article/models/fields.md#unique) and 
