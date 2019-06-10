@@ -29,7 +29,7 @@ new Email()
 
 ## send()
 
-Use the factory method `to`, build the email, and the 'send()'.
+Use the factory method `to`, build the email, and the `send()`.
 
 ```javascript
 import {Email} from '📧';
