@@ -19,7 +19,7 @@ This includes the site's text, and any strings defined in the
 
 Default: `en`
 
-Other Examples: `en-US`, 'de-DE', 'fr'
+Other Examples: `en-US`, `de-DE`, `fr`
 
 # `app`
 
