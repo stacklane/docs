@@ -11,12 +11,15 @@ The `name` field is required.
 
 The name of the site / application (for development purposes). Required.
 
-# `lang`
+# `locale`
 
-The default language of the text on the site.
-Also the default language of any strings defined in a
+The primary locale (language and optional country) of the site.
+This includes the site's text, and any strings defined in the
 (optional) [properties file](/🗄/Article/settings/properties.md).
+
 Default: `en`
+
+Other Examples: `en-US`, 'de-DE', 'fr'
 
 # `app`
 
