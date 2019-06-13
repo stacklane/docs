@@ -210,6 +210,25 @@ let markdown = theProduct.summary.md();
 
 To display an HTML field in Mustache, use triple brackets `{{{ model.titleOrTextField }}}` to ensure it is not escaped.
 
+# Model Links {#model-links}
+
+To link from one model to another, specify the model name for the field type:
+
+```yaml
+otherModel: TheOtherModelName
+```
+
+Keep in mind that links may be "broken" if the target of the link was deleted.
+
+Fields of this type never return null or undefined.
+
+Model links have the following methods/properties:
+
+- `get()` &mdash; Obtain a live instance of the Model linked to.  Throws `$ModelNotFound` if it no longer exists.
+- `exists()` &mdash; Return true if the linked Model still exists.
+- `linked()` &mdash; Link fields are never null or undefined.  Returns true if the a link has been set.
+- `id` &mdash; The ID of the Model, or null if `linked() == false`.
+
 # Embedded
 
 This is the field type corresponding to a complex value defined by an [Embedded](/🗄/Article/models/types.md#embedded) model type.
