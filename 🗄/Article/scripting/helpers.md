@@ -3,7 +3,7 @@ title: Scripting Helpers
 summay: Learn about available helper modules available in server-side JavaScript.
 ---
 
-# URL Parameters {#url}
+# URL Params {#url}
 
 Access URL query parameters via the `'&'` module.
 If your query parameter is separated by dashes, 
@@ -19,9 +19,9 @@ import * as Params from '&';
 import {specific, param, here as Other} from '&';
 ```
 
-# Form Parameters {#form}
+# Form Params {#form}
 
-Access form parameters via the `'form'` module, or the  `'form{}'` module.
+Access form parameters via the `'form'` module, or the `'form{}'` module.
 If your form parameter is separated by dashes, 
 such as `this-that`, then import it with camel case instead: `thisThat`.
 
@@ -44,14 +44,16 @@ let hasAValue = Form.has('checkboxValue');
 ## Reading
 
 Reading cookies may be done from any request or supplier.
+Keep in mind that cookie values may be null (may not exist).
 
 ```javascript
-import {Cookies} from '🍪';
+import {token} from '🍪';
 
-// May be null:
-let theValue = Cookies.theValue;
-
-/* ... */
+if (token){
+  Redirect.dir('has-token').params({t:token});
+} else {
+  Redirect.dir('no-token');
+}
 ```
 
 ## Writing
