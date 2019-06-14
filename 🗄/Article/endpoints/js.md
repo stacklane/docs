@@ -27,17 +27,15 @@ Note that in all cases JavaScript endpoints do not end in a trailing "/".
 Place an uppercase verb name in a directory.
 `GET.js`, `POST.js`, `PUT.js`, `DELETE.js`.
 
-For example `/hello/POST.js`
-responds to requests for `POST /hello`.
+For example `/hello/POST.js` responds to requests for `POST /hello`.
 
-Or for a [dynamic path](/🗄/Article/endpoints/dynamic.md) 
-such as `/product/{product}/GET.js`, a
-corresponding request could be `/product/1234`.
+Or for a [dynamic path](/🗄/Article/endpoints/dynamic.md) such as `/product/{product}/GET.js`,
+a corresponding request could be `/product/1234`.
 
 ## Index / Directory
 
 JavaScript endpoints by default do not respond to directory requests ending in "/".
-In certain cases directory requests are useful however,
+In certain cases directory requests are useful,
 especially if the JS endpoint is redirecting to other endpoints.
 In this case use `🖥index.js`, such as `/here/🖥index.js`
 to have the endpoint respond at `GET /here/`.
@@ -99,12 +97,42 @@ Result:
 }
 ```
 
+# Click Actions {#get-action}
+
+GET's are generally designed to be side effect free, and only for retrieving information.
+There are certain cases when coming from an external site, or link in an email,
+where it may be useful to update models or write cookies.
+
+If this case is needed use the mouse prefix "🖱" to designate the special GET endpoint to respond to such requests:
+
+```file-name
+/🖱verify.js
+```
+```javascript
+import {Verify} from '📦';
+import {Cookie} from '🍪';
+import {t} from '&';
+
+try {
+  Verify.token(t).get().verified = true;
+  new Cookie().name('verified').value(t).days(30);
+  Redirect.dir('verified');
+} catch ($ModelNotFound){
+  Redirect.dir('unverified');
+}
+```
+
+Click actions are a narrow case, and there are few limitations to be aware of:
+
+- [Redirect](/🗄/Article/scripting/helpers.md#redirect)'s are the only valid response.
+- [Suppliers](/🗄/Article/scripting/suppliers.md) are not supported.
+- Models may be updated, but not created or deleted.
+
 # Configuration
 
 Adding a file with the same name as the JavaScript endpoint, but with 
 the extension `yaml` will create a configuration file specific to the endpoint.
-For example, a configuration file for the POST `📮setup.js` would be `📮setup.yaml`
-in the same directory. 
+For example, a configuration file for the POST `📮setup.js` would be `📮setup.yaml` in the same directory.
 
 The primary use of this file is to define 
 [endpoint-specific role behavior](/🗄/Article/users/roles.md#endpoint).
