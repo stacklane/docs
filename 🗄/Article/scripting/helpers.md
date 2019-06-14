@@ -39,6 +39,46 @@ let theOtherValue = Form['theOtherParam'];
 let hasAValue = Form.has('checkboxValue');
 ```
 
+# Cookies {#cookies}
+
+## Reading
+
+Reading cookies may be done from any request or supplier.
+
+```javascript
+import {Cookies} from '🍪';
+
+// May be null:
+let theValue = Cookies.theValue;
+
+/* ... */
+```
+
+## Writing
+
+Writing cookies may be done from non-GET requests, but not from suppliers.
+There is no functional difference between an implicit or explicit submit.
+Submitted cookies will only be included in the response if the script evaluates without exception.
+
+```javascript
+import {Cookie} from '🍪';
+
+// Implicit submit
+new Cookie().name('token').value('123').days(30);
+
+// Explicit submit
+Cookie.name('token').value('123').days(30).submit();
+
+/* ... */
+```
+
+- `name(string)` &mdash; Must not begin with "_" or equal "sid".
+- `value(string)` &mdash; Sets the value of the cookie.
+- `days(number)` &mdash; Creates a persistent cookie that expires.
+- `clear()` &mdash; Adds a blank value.
+
+For security purposes cookies use the `Secure`, `HttpOnly`, `SameSite=lax` flags.
+
 # Redirect
 
 The `Redirect` object is already imported.
