@@ -74,7 +74,7 @@ Cookie.name('token').value('123').days(30).submit();
 /* ... */
 ```
 
-- `name(string)` &mdash; Lower or camel case, and must not begin with "_" or equal to "sid".
+- `name(string)` &mdash; Lower or camel case, and must not begin with "_" or equal "sid".
 - `value(string)` &mdash; Sets the value of the cookie.
 - `days(number)` &mdash; Creates a persistent cookie that expires.
 - `clear()` &mdash; Adds a blank value.
