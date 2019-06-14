@@ -180,7 +180,7 @@ There are 3 ways to ensure a container is _selected_ and in-scope (before queryi
    then it is automatically selected for all descendant endpoints and directories.
    This selection may be overridden by the other two methods.
 2. Variable Selection &mdash; Every container variable is also a function.  Whatever happens in this function is
-   done in the context of that container:  `let children = containerVar(()=>{ return Child.all(); })`.
+   done in the context of that container:  `let children = containerVar(()=>Child.all())`.
    Return values are optional.
 3. Iteration &mdash; If a container is being iterated (for example in Mustache, as a part of `map()`, etc),
    then it is selected within the context of each iteration: `Container.all().map(c=>({children: Child.all()}))`.
