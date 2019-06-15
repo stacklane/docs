@@ -93,6 +93,7 @@ Redirect.dir('accounts').dir(accountId).name('settings'); // Result: /accounts/1
 Redirect.home().name('place').params({this:'that'});  // Result: /place?this=that
 Redirect.index().name('other'); // If current request is /here/there, result: /here/other
 Redirect.home().hash('123'); // Result /#123
+Redirect.home().url.href; // Full URL including host
 ```
 
 Redirects may also be used as JSON values:
