@@ -77,7 +77,7 @@ Cookie.name('token').value('123').days(30).submit();
 - `name(string)` &mdash; Lower or camel case, and must not begin with "_" or equal "sid".
 - `value(string)` &mdash; Sets the value of the cookie.
 - `days(number)` &mdash; Creates a persistent cookie that expires.
-- `clear()` &mdash; Adds a blank value.
+- `invalidate()` &mdash; Sets an empty value, and an expires in the past.
 
 For security purposes cookies use the `Secure`, `HttpOnly`, `SameSite=lax` flags.
 
