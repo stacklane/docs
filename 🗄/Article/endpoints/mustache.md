@@ -330,3 +330,38 @@ Similarly any files whose **direct** parent folder
 has an underscore such as `/_files/something.html`,
 will be considered private even if the files themselves are not prefixed
 with an underscore.
+
+# Cache Control
+
+> {.alert .is-warning .is-small}
+>
+> For special cases only. Stacklane already applies Cache-Control appropriate for most scenarios.
+
+The following client-side cache options are available for Mustache endpoints.
+Typically these options are only used in special cases.
+
+## Cache-Control-Seconds
+
+Sets the "max-age" to the given seconds:
+
+```html
+{{% Cache-Control-Seconds 30 }}
+```
+
+## Cache-Control-Single-User
+
+For endpoints that are intended for a single user.
+
+```html
+{{% Cache-Control-Single-User }}
+```
+
+By default this will use `no-cache, no-store, max-age=0, must-revalidate`.
+If used in conjunction with `Cache-Control-Seconds`, this will be changed to `max-age=N, private`.
+
+This setting is _never_ recommended or needed when already using the [built-in user functionality](/users/).
+
+
+
+
+
