@@ -335,7 +335,7 @@ with an underscore.
 
 > {.alert .is-warning .is-small}
 >
-> For special cases only. Stacklane already applies Cache-Control appropriate for most scenarios.
+> For special cases only. Stacklane already applies a Cache-Control appropriate for most scenarios.
 
 The following client-side cache options are available for Mustache endpoints.
 Typically these options are only used in special cases.

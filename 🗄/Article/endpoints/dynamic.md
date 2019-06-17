@@ -10,7 +10,6 @@ is dynamic, use a named placeholder surrounded by brackets:
 
 `/article/{article}/index.html`
 
-By itself this is invalid.
 Next tell Stacklane the types of values allowed for this dynamic path parameter.
 Drop a settings file into `/article/{article}/🔗.yaml`.
 This settings file indicates how the dynamic parameter `{article}`
@@ -20,29 +19,33 @@ For the value in this settings file, choose **one** of the following options.
 
 # Model-Backed
 
+> {.alert .is-warning .is-small}
+>
+> Imported path parameter models are slightly stale.
+> Use the stale values if acceptable, or access the live model via `get()`.
+
 A single model field may be referenced.
 The field may be the model's unique ID, or a [UID field](/🗄/Article/models/fields.md#uid).
 When using a UID field type, old UID's are automatically redirected to the primary / current UID for proper SEO.
+If the model can't be found, it will result in a standard [not found error](/🗄/Article/endpoints/errors.md).
 
 ```file-name
 /task/{task}/🔗.yaml
 ```
-
 ```yaml
 field: 📦.Task.id
 ```
 
-If the model can't be found, it will result in a standard [not found error](/🗄/Article/endpoints/errors.md).
 From a scripting and template standpoint, these are exported as "links" to the model.
 These links are not a live model, but a pointer or reference to the model.
-Basic properties from the live object are cached on the link for up to 10 minutes.
+Basic properties from the live object are cached on the link for up to 1 minute.
 If you only need to read properties, and a certain amount of staleness is acceptable,
 then use these properties instead of loading the live model.
     
 ```javascript
 import {task} from '🔗';
 
-// Access the task's cached 'title'
+// Access the task's slightly stale 'title'
 let title = task.title;
 
 // Or get a live version of the task by calling get() on the link
@@ -57,7 +60,6 @@ In this case it's not necessary to load a live version to "use" the container.
 ```file-name
 /list/{list}/🔗.yaml
 ```
-
 ```yaml
 field: 📦.List.id
 ```
@@ -65,7 +67,6 @@ field: 📦.List.id
 ```file-name
 /list/{list}/GET.js
 ```
-
 ```javascript
 import {list} from '🔗';
 import {Task} from '📦';
