@@ -19,21 +19,29 @@ The maximum length may be lowered by defining `max: N` on the field definition.
 ## `boolean`
 
 true/false boolean value.
+Also accepts string input of "true"/"1", "false"/"0".
+Other strings result in a validation error.
 
 ## `integer`
 
 Non-floating 64 bit integer (long).
+Accepts string input which does not contain a decimal point.
+Other strings result in a validation error.
 
 ## `double`
 
 Floating-point number (64-bit double precision, IEEE 754).
+Accepts string input representing a decimal or non-decimal.
+Other strings result in a validation error.
 
 ## `timestamp`
 
-Date and time stored as UTC/GMT.
+Date/time stored as UTC.
 Keep in mind that every model comes with
 automatically managed `created` and `modified` timestamp fields.
 Initialize a timestamp field to the current date/time using `init: true`.
+Accepts string input in ISO 8601 format, including partial formats such as "2000-01-01".
+Other strings result in a validation error.
 
 # Options {#options}
 
@@ -55,9 +63,8 @@ status:
 
 ## Initialization {#options-init}
 
-To use the first listed value as a default / pre-initialized value for newly created models,
-simply change `init` to `true`.
-Otherwise it will default to null.
+To use the first listed value as a pre-initialized value for newly created models,
+simply change `init` to `true`. Otherwise it will default to null.
 
 ## Type-Safe Access {#options-type-safe}
 
@@ -88,7 +95,7 @@ They are only suitable for free-form fields that may vary widely for the same mo
 Use the `geo` field type to store latitude and longitude in a single field.
 Valid geo points have latitudes >= -90 and <= 90, and longitudes >= -180 and <= 180.
 
-Values may be assigned/set as strings such as "45.33670190996811,-75.8056640625".
+Values may be assigned as strings such as "45.33670190996811,-75.8056640625".
 
 Or, values may be assigned with an object:
 
@@ -155,60 +162,20 @@ projectIcon: svg-icon
 
 To display an SVG field in Mustache, use triple brackets `{{{ model.textField }}}`.
 
-# Rich Text / HTML {#rich}
+# Markdown {#markdown}
 
-## `text`
-        
-Limited and validated HTML "rich text".
+Use the `markdown` field type for simple and safe rich text formatting.
+The default maximum size is 2,000 characters, which may be increased to 20,000 characters.
+This field accepts string input.
+The field is never null, and always returns a value object, even when the value is empty.
 
-Supports a series of blocks
-`h1-h6`,
-`p`,
-`pre`,
-`section`,
-`blockquote`,
-`ul/li`,
-`ol/li`.
-`section` must contain `h1-h6` as its first child.
+To display as rendered HTML within Mustache, use triple brackets:
 
-Within each block, the following inline elements are supported:
-`a`,
-`br`,
-`code`,
-`em`,
-`s`,
-`strong`,
-`sub`,
-`sup`.
+`{{{ model.markdownField }}}`
 
-Maximum size is 20,000 *bytes* for the Content Type, and 2,000 *bytes* for all other types.
+The markdown string value is available on the never null `.value` field:
 
-## `paragraph`
-
-Special kind of `text` which is limited to a
-single `p` block containing allowed inline elements.\
-Maximum size: 2000 *bytes*.\
-This may be lowered by defining `max: N` for the field definition.
-
-## Markdown
-
-Rich text / HTML fields support markdown input via field-specific static methods.
-Keep in mind that the markdown must ultimately resolve to valid HTML for the field type.
-
-```javascript
-let markdown = 'My *markdown* string'
-new Product().summary(Product.summary.md(markdown));
-```
-
-To later convert back to Markdown:
-
-```javascript
-let markdown = theProduct.summary.md();
-```
-
-## Display
-
-To display an HTML field in Mustache, use triple brackets `{{{ model.titleOrTextField }}}` to ensure it is not escaped.
+`model.markdownField.value.length == 0`
 
 # Model Links {#model-links}
 
