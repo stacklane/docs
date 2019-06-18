@@ -214,20 +214,23 @@ For more information on defining an embedded field, [click here](/🗄/Article/m
 
 # Unique Values {#unique}
 
+> {.alert .is-warning .is-small}
+>
+> A transaction will fail if trying to persist a duplicate unique value.
+> Therefore if a unique value is being created or changed,
+> first [query by the unique field](/🗄/Article/scripting/queries.md)
+> to check whether it's already used.
+
 The `string` field type may be marked as unique for the [Universal](/🗄/Article/models/types.md#universal)
 model type only.  Unique values are constrained/scoped to the nearest [container](/🗄/Article/models/containers.md).
         
 Deleting a document will delete all associated unique values.
 
-Warning: Commits will fail / throw an exception if there is a unique value violation.
-Therefore it's highly recommended that if a unique value is being created or changing,
-that there exists logic to check whether the unique value is available.
-
 # URL Identifiers {#uid}
 
 `uid` is used for "user friendly" unique identifiers destined for URL paths (aka URL slugs).
 
-This field is always unique, and is available for the [Universal](/🗄/Article/models/types.md#universal)
+This field is *always unique*, and is available for the [Universal](/🗄/Article/models/types.md#universal)
 and [Content](/🗄/Article/models/types.md#content) type's.
 
 To keep URLs formatted according to best practices, it must start and end with
@@ -235,7 +238,7 @@ a lower case character a-z, or 0-9.  Between the start and end, dash characters 
 Minimum length is 2 characters.  Maximum length is 100 characters.
 
 UID's behave differently than other unique values.  Because they are destined
-for URLs, it's implied that when modified the previous value is not lost
+for URLs, when changing a unique value the previous unique value is retained
 (otherwise any previously published URL would result in a broken link).
 Therefore a single model field may have multiple unique UID values associated with it,
 however at any given time only one is "current" or "primary".
