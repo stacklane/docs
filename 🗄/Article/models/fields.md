@@ -165,7 +165,7 @@ To display an SVG field in Mustache, use triple brackets `{{{ model.textField }}
 # Markdown {#markdown}
 
 Use the `markdown` field type for simple and safe rich text formatting.
-The default maximum size is 2,000 characters, which may be increased to 20,000 characters.
+The default maximum size is 2,000 characters, which may be increased up to 20,000 characters.
 This field accepts string input.
 The field is never null, and always returns a value object, even when the value is empty.
 
