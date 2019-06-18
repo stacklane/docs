@@ -177,6 +177,8 @@ The markdown string value is available on the never null `.value` field:
 
 `model.markdownField.value.length == 0`
 
+To adjust the maximum characters use the `max: N` field configuration value.
+
 # Model Links {#model-links}
 
 To link from one model to another, specify the model name for the field type:
