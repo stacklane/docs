@@ -17,6 +17,8 @@
 @import "/bulma/elements/progress";
 
 // warning, interferes with prismjs: @import "/bulma/elements/tag";
+// so instead:
+@import "/style/badge";
 
 @import "/bulma/components/navbar";
 @import "/bulma/grid/columns";

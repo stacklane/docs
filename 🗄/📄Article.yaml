@@ -2,6 +2,10 @@ title: string
 
 content: document-text
 
+beta:
+  type: boolean
+  init: true
+
 uid:
   type: document-uid
   path: true

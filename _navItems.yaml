@@ -40,6 +40,7 @@ models:
   path: models/ordering
 - title: Static
   path: models/static
+  beta: true
 
 endpoints:
 - title: Overview
