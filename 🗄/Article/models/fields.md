@@ -27,12 +27,16 @@ Other strings result in a validation error.
 Non-floating 64 bit integer (long).
 Accepts string input which does not contain a decimal point.
 Other strings result in a validation error.
+The default minimum is **0**.
+Alternative max/min may be set on the field definition.
 
 ## `double`
 
 Floating-point number (64-bit double precision, IEEE 754).
 Accepts string input representing a decimal or non-decimal.
 Other strings result in a validation error.
+The default minimum is **0**.
+Alternative max/min may be set on the field definition.
 
 ## `timestamp`
 
