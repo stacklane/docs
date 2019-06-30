@@ -49,7 +49,7 @@ Other strings result in a validation error.
 
 # Options {#options}
 
-`options` are a special purpose string field, limited to pre-configured string values.
+`options` are a special purpose string field, limited to pre-configured values.
 The options / values must be entirely lower case, using single byte letters.
 
 ## Example {#options-example}
@@ -76,7 +76,7 @@ Instead of referencing the available values by string, it's recommend to use
 the type-safe version.  Given a `Product` model:
 
 ```javascript
-let p = new Product().status(Product.status.pending);
+new Product().status(Product.status.pending);
 ```
 
 # Speciality
