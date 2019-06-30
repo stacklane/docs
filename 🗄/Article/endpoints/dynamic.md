@@ -166,6 +166,3 @@ Alternatively the values may correspond to an
 ```yaml
 values: 📦.Task.status
 ```
-
-Keep in mind that for URLs the camel case option values will be translated to URL identifiers (lower case dashed).
-All access via JavaScript and Mustache however should be using the original camel case format.

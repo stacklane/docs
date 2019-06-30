@@ -50,7 +50,7 @@ Other strings result in a validation error.
 # Options {#options}
 
 `options` are a special purpose string field, limited to pre-configured string values.
-The options / values must be camel case (example, exampleOne, exampleTwoOther), using single byte letters.
+The options / values must be entirely lower case, using single byte letters.
 
 ## Example {#options-example}
 
