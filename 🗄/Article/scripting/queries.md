@@ -146,11 +146,11 @@ Article.metadata(new Article.Metadata().title('The Title')).get();
 
 This will return an `Article` where `Article.metadata.title == 'The Title'`;
 
-## Embedded Lists
+# Embedded Lists {#embedded-lists}
 
 Lists of embedded models come with important limitations.
 Chiefly they only match when the _entire_ embedded model in the list matches all given fields.
-In other words, when embedded models are in a list, it's not possible search for a
+In other words, when embedded models are in a list, it's not possible to search for a
 partial field match (unless querying a unique value field).
 
 Therefore if needing to query against lists of embedded values, then it's recommended to
@@ -173,7 +173,7 @@ For models which are [contained](/🗄/Article/models/containers.md) by a parent
 querying is performed in much the same way as any other query.
 
 The difference is that querying for a child model happens within the scope of a _selected_ container.
-There are 3 ways to ensure a container is _selected_ and in-scope (before querying a child).
+There are 4 ways to ensure a container is _selected_ and in-scope (before querying a child).
 
 1. [Dynamic Paths](/🗄/Article/endpoints/dynamic.md) &mdash;
    If a container model is the target of a dynamic path,
@@ -184,6 +184,7 @@ There are 3 ways to ensure a container is _selected_ and in-scope (before queryi
    Return values are optional.
 3. Iteration &mdash; If a container is being iterated (for example in Mustache, as a part of `map()`, etc),
    then it is selected within the context of each iteration: `Container.all().map(c=>({children: Child.all()}))`.
+4. Method Call &mdash; All children have an explicit method for querying the desired container `Child.container(containerVar)...`.
 
 ## Ancestor Scope
 
@@ -199,7 +200,7 @@ When querying across containers the selected container in the example would be `
 
 # Unique Value Queries {#unique}
 
-Query [unique fields](/🗄/Article/models/fields.md#unique) and 
+Query [unique fields](/🗄/Article/models/fields.md#unique) and
 [UID fields](/🗄/Article/models/fields.md#uid)
 as you would any other type of equality query.
 Assuming a model named `Article` and a UID field named "slug":

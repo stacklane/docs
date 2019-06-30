@@ -38,16 +38,102 @@ They may either be top level or [contained](/🗄/Article/models/containers.md).
 # Embedded {#embedded}
 
 Embedded models create a complex value (or sub-document) that can be used as a field type for another model type.
-It may also be used for lists, where for example "Order.items" is a list of "OrderItem" embedded values.
+It may also be used for lists, where for example `Order.item` is a list of `OrderItem` embedded values.
 Models to be embedded take on the field limitations of whatever type they are embedded on.
-
-For more information see [embedded definitions](/🗄/Article/models/definition.md#embedded).
 
 ## Local vs Global 
 
-Global Embedded types may be used and embedded within any other type,
-as long as their fields are compatible with that type.
-They have a distinct name and configuration file.
+Global embedded types may be used and embedded within any other type.
+They have a distinct name and definition file separate from other files.
+Because they are independent types, they may be used from any other type.
 
-Local Embedded types may only be used and embedded within a single model type,
-and they are defined directly in the same model configuration file that uses them.
+Local embedded types may only be used and embedded within a single model type.
+They are defined directly in the same model configuration file that uses them.
+
+# Defining Types {#definitions}
+
+To define and use data models in your project, create a directory named "📦" in the root
+of your project.  This directory will contain `.yaml` files that
+define the model names and fields, as well as the structure of
+[container relationships](/🗄/Article/models/containers.md).
+
+The file name indicates _both_ the name of the model as well as the model's type.
+The model's type is denoted with a specific emoji prefix.
+
+- [Universal](/🗄/Article/models/types.md#universal) &mdash; prefix file with 🌐
+- [Content](/🗄/Article/models/types.md#content) &mdash; prefix file with 📄
+- [User Profile](/🗄/Article/models/types.md#profile) &mdash; prefix file with 👤
+- [Embedded](/🗄/Article/models/types.md#embedded) &mdash; prefix with 📎
+
+## Containers
+
+To define models that are in a container, place them into directories.  Example files and folders in the
+"📦" directory which define 3 model types, two of which are in containers.
+
+```file-list
+/📦/🌐Account.yaml
+/📦/Account/🌐List.yaml
+/📦/Account/List/🌐Task.yaml
+```
+
+## Fields
+
+Field names must follow camel case, e.g. "camel" or "camelCase".
+All defined fields are indexed and required by default.
+Field definitions have a short form and long form,
+which may be mixed and matched as needed in the same file.
+_.yaml files use spaces, not tabs, for indentation._
+
+### Short Form
+
+To compactly use all defaults for a field, simply assign a [field type](/🗄/Article/models/fields.md)
+immediately following your field name (all fields are required by default).
+
+```yaml
+fieldName: string
+otherField: boolean
+```
+
+### Long Form
+
+To define additional [field properties](/🗄/Article/models/fields.md) use the long form:
+
+```yaml
+fieldName:
+  type: string
+  optional: true
+  unique: true
+
+otherField:
+  type: boolean
+```
+
+## Embedded Values
+
+Global embedded values may be referenced as any other field type:
+
+```file-name
+/📦/🌐Order.yaml
+```
+```yaml
+contact: Contact
+```
+
+Local embedded values have field definitions inlined beneath the `type`:
+
+```file-name
+/📦/🌐Order.yaml
+```
+```yaml
+contact:
+  type:
+    first: string
+    last: string
+    email: string
+```
+
+This local embedded model type is ultimately accessed as:
+
+```javascript
+order.contact = new Order.Contact().email('a@b.com')
+```

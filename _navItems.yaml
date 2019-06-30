@@ -32,15 +32,12 @@ models:
   path: models/containers
 - title: Fields
   path: models/fields
-- title: Images
-  path: models/images
-- title: Definition
-  path: models/definition
 - title: Ordering
   path: models/ordering
 - title: Static
   path: models/static
-  beta: true
+- title: Images
+  path: models/images
 
 endpoints:
 - title: Overview

@@ -40,9 +40,12 @@ let listId = '...';
 List.get(listId).remove();
 ```
 
-## html
+# Transactions
 
-Model fields have a number of conveniences for [working with HTML forms](/🗄/Article/models/forms.md).
+All model operations (create, update, delete/remove), which happen
+within a single request are committed together / atomically.
+There is no way to end up in a state where the first few models have
+been persisted, but later changes haven't.
 
 # Containers
 
@@ -61,42 +64,18 @@ import {List,Note} from '📦';
 
 let list = new List();
 
-let childNote = list(()=>{
-  return new Note().title('My Task');
+// Constructor
+let childNote1 = new Note(list).title('Task1');
+
+// Or, Block Scope
+let childNote2 = list(()=>{
+  return new Note().title('Task2');
 });
+
+//...
 ```
 
 ## Query Children
-
-```file-name
-/list/tasks/GET.js
-```
-```javascript
-// Load the container 'List'
-let listId = '...';
-let myList = List.get(listId);
-
-// Select myList, and get all Note titles for myList:
-let titleStream = myList(()=>{
-   return Note.all().map((n)=>n.title));
-});
-
-// Output JSON of Note titles:
-titleStream;
-```
-
-Or, the most compact form of same above statements:
-
-```javascript
-let listId = '...';
-List.get(listId)(()=>Note.all().map((n)=>n.title)));
-```
-
-## Dynamic Endpoint
-
-When working with containers from a
-[dynamic endpoint path](/🗄/Article/endpoints/dynamic.md)
-the container selection has already occurred:
 
 ```file-name
 /list/{list}/tasks/GET.js
@@ -104,16 +83,35 @@ the container selection has already occurred:
 ```javascript
 import {list} from '🔗';
 
-// Output JSON of Note titles:
-Note.all().map((n)=>n.title));
+// JSON of Note titles for the list:
+Note.list(list).map((n)=>n.title));
 ```
 
-# Transactions
+For more information see [querying containers](/🗄/Article/scripting/queries.md#containers).
 
-All model operations (create, update, delete/remove), which happen
-within a single request are committed together / atomically.
-There is no way to end up in a state where the first few models have
-been persisted, but later changes haven't.
+# Embedded Models {#embedded}
+
+## Capped/Rolling Lists
+
+Lists of embedded values may also be used to retain only `N` recent values,
+where `N` is the maximum size defined for the embedded list.
+
+This works in a way similar to circular buffers:
+once a list fills its allocated space,
+it makes room for new embedded entries by overwriting the oldest value in the list.
+
+Use the `put` method on the list to achieve this behavior.
+Assuming an embedded value list with a maximum number of entries set to `2`:
+
+```javascript
+let p = new Post();
+p.recentComments.put(new Post.Comment().content('<p>a</p>'));
+p.recentComments.put(new Post.Comment().content('<p>b</p>'));
+p.recentComments.put(new Post.Comment().content('<p>c</p>'));
+```
+The `Post` will now only contain comments `b` and `c`.
+Putting the last comment `c` dropped off the older comment `a`,
+since that exceeded the maximum of `2` entries for this embedded list field.
 
 # Error Handling {#errors}
 

@@ -8,13 +8,14 @@ summary: Learn about available field types for your models.
 Every non-embedded model type is pre-defined with a unique `id`, plus `created` and `modified` timestamp fields.
 These are automatically managed.  They are available before persisting.
 
-# Primitive
+# Primitives
 
 ## `string`
 
 Maximum length: 100 UTF-8 *characters*.
-May be marked as <a href="#unique">unique: true</a>.
-The maximum length may be lowered by defining `max: N` on the field definition.
+May be marked as "[unique: true](/🗄/Article/models/fields.md#unique)".
+Supports min/max characters via `max: N` and `min: N` on the
+[field definition](/🗄/Article/models/types.md#definitions).
 
 ## `boolean`
 
@@ -27,16 +28,16 @@ Other strings result in a validation error.
 Non-floating 64 bit integer (long).
 Accepts string input which does not contain a decimal point.
 Other strings result in a validation error.
-The default minimum is **0**.
-Alternative max/min may be set on the field definition.
+Supports min/max via `max: N` and `min: N` on the
+[field definition](/🗄/Article/models/types.md#definitions) (default minimum is **0**).
 
 ## `double`
 
 Floating-point number (64-bit double precision, IEEE 754).
 Accepts string input representing a decimal or non-decimal.
 Other strings result in a validation error.
-The default minimum is **0**.
-Alternative max/min may be set on the field definition.
+Supports min/max via `max: N` and `min: N` on the
+[field definition](/🗄/Article/models/types.md#definitions) (default minimum is **0**).
 
 ## `timestamp`
 
@@ -123,8 +124,8 @@ see [Models / Images](/🗄/Article/models/images.md).
 ## Maximum Size
 
 Upload sizes of up to 10MB are accepted.
-However images that exceed 2000px wide will be proportionally
-re-sized to 2000px wide with a proportional height.
+However images that exceed 2000px wide will be
+resized to 2000px wide with a proportional height.
 The size of an image does **not** contribute to the size of a model.
 
 ## Example Definition
@@ -181,7 +182,8 @@ The markdown string value is available on the never null `.value` field:
 
 `model.markdownField.value.length == 0`
 
-To adjust the maximum characters use the `max: N` field configuration value.
+Supports min/max characters via `max: N` and `min: N` on the
+[field definition](/🗄/Article/models/types.md#definitions).
 
 # Model Links {#model-links}
 
@@ -211,26 +213,46 @@ There is already a method provided for this
 
 This is the field type corresponding to a complex value defined by an [Embedded](/🗄/Article/models/types.md#embedded) model type.
 
-It may be a many valued array/list, in which case there is a limit of **20** embedded entries.
-Keep in mind that embedded lists carry [query limitations](/🗄/Article/scripting/queries.md#embedded)
+For more information on defining an embedded field, [click here](/🗄/Article/models/types.md#definitions).
 
-For more information on defining an embedded field, [click here](/🗄/Article/models/types.md#embedded).
+# Lists
 
-# Unique Values {#unique}
+Multi-valued lists may be defined for either simple values or complex embedded models.
+To denote a list, add brackets "[]" after the field name.
+If requirements don't call for the maximum of 20 entries,
+then provision less entries by specifying a number (less than 20) between the brackets.
 
-> {.alert .is-warning .is-small}
->
-> A transaction will fail if trying to persist a duplicate unique value.
-> Therefore if a unique value is being created or changed,
-> first [query by the unique field](/🗄/Article/scripting/queries.md)
-> to check whether it's already used.
+## Simple Values
 
-The `string` field type may be marked as unique for the [Universal](/🗄/Article/models/types.md#universal)
-model type only.  Unique values are constrained/scoped to the nearest [container](/🗄/Article/models/containers.md).
-        
-Deleting a document will delete all associated unique values.
+`string` and `options` may be used for lists of values.
+Only distinct values will be allowed in the list.
 
-# URL Identifiers {#uid}
+```yaml
+categories[]:
+  type: options
+  values:
+    - one
+    - two
+```
+
+## Embedded Models
+
+Whether defined [globally or locally](/🗄/Article/models/types.md#definitions),
+embedded models can allow multiple values by adding "[]" after the field name:
+
+```yaml
+items[]:
+  type:
+    price: double
+
+address[5]: Address
+```
+
+Capped/rolling/LRU lists are also [supported](/🗄/Article/scripting/models.md#embedded).
+Before using embedded model lists, review the
+[query limitations and suggestions](/🗄/Article/scripting/queries.md#embedded-lists).
+
+# UIDs {#uid}
 
 `uid` is used for "user friendly" unique identifiers destined for URL paths (aka URL slugs).
 
@@ -251,3 +273,22 @@ In an ideal scenario from an SEO standpoint, if the visitor has reached a URL by
 then it's recommended you redirect to the current/primary UID value.
 When using [dynamic endpoints](/🗄/Article/endpoints/dynamic.md) backed by a UID field,
 this redirection is handled automatically.
+
+# Unique Values {#unique}
+
+> {.alert .is-warning .is-small}
+>
+> A transaction will fail if trying to persist a duplicate unique value.
+> If a unique value is being created or changed,
+> first [query by the unique field](/🗄/Article/scripting/queries.md)
+> to check whether it's already used.
+
+The `string` field type may be marked as `unique: true` for the [Universal](/🗄/Article/models/types.md#universal)
+model type only. Unique values are constrained/scoped to the nearest [container](/🗄/Article/models/containers.md).
+
+The [`uid` field type](/🗄/Article/models/fields.md#uid) is *always* unique (and retains previously used values).
+
+Deleting a document will delete all associated unique values.
+
+Within the directory "📦", and given a file name named `🌐Article.yaml`,
+a "Universal" model named `Article` will be available to your scripts.

@@ -134,6 +134,14 @@ article > h2{
   font-weight: 600;
 }
 
+article > h3{
+  font-size: $size-7;
+  text-decoration: underline;
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  font-weight: 400;
+}
+
 article header h1{
   font-size: $size-2;
   color: black;

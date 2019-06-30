@@ -8,7 +8,7 @@ Static model documents allow placing model data directly within source code, eff
 
 # Definition
 
-Static models are [defined similarly to dynamic models](/🗄/Article/models/definition.md).
+Static models are [defined similarly to dynamic models](/🗄/Article/models/types.md#definition).
 However instead of placing definitions in the `/📦/` directory,
 use the special directory `/🗄/` for these model definitions.
 
