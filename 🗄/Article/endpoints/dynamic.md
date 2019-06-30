@@ -130,13 +130,6 @@ values:
   - etc
 ```
 
-Alternatively the values may correspond to an 
-[options field type](/🗄/Article/models/fields.md#options):
-
-```yaml
-values: 📦.Task.status
-```
-
 Fixed values paths are exposed to scripting and templates
 in two different ways.
         
@@ -164,3 +157,15 @@ Mustache example:
     ....
 {{/thePathVar.option-one}}
 ```
+
+## Model Field Options
+
+Alternatively the values may correspond to an
+[options field type](/🗄/Article/models/fields.md#options):
+
+```yaml
+values: 📦.Task.status
+```
+
+Keep in mind that for URLs the camel case option values will be translated to URL identifiers (lower case dashed).
+All access via JavaScript and Mustache however should be using the original camel case format.
