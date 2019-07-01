@@ -38,7 +38,8 @@ They may either be top level or [contained](/🗄/Article/models/containers.md).
 # Embedded {#embedded}
 
 Embedded models create a complex value (or sub-document) that can be used as a field type for another model type.
-It may also be used for lists, where for example `Order.item` is a list of `OrderItem` embedded values.
+It may also be used for [lists](/🗄/Article/models/fields.md#lists),
+where for example `Order.item` is a list of `OrderItem` embedded values.
 Models to be embedded take on the field limitations of whatever type they are embedded on.
 
 ## Local vs Global 
@@ -63,7 +64,7 @@ The model's type is denoted with a specific emoji prefix.
 - [Universal](/🗄/Article/models/types.md#universal) &mdash; prefix file with 🌐
 - [Content](/🗄/Article/models/types.md#content) &mdash; prefix file with 📄
 - [User Profile](/🗄/Article/models/types.md#profile) &mdash; prefix file with 👤
-- [Embedded](/🗄/Article/models/types.md#embedded) &mdash; prefix with 📎
+- [Embedded](/🗄/Article/models/types.md#embedded) &mdash; prefix file with 📎
 
 ## Containers
 
@@ -87,7 +88,7 @@ _.yaml files use spaces, not tabs, for indentation._
 ### Short Form
 
 To compactly use all defaults for a field, simply assign a [field type](/🗄/Article/models/fields.md)
-immediately following your field name (all fields are required by default).
+immediately following the field name (all fields are required by default).
 
 ```yaml
 fieldName: string

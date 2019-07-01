@@ -14,21 +14,17 @@ let newList = new List().title('x');
 ## Read
 
 ```javascript
-let listId = '...';
+// Throws $ModelNotFound
 let list = List.get(listId);
-
-// Because of error handling,
-// 'list' is always defined at this point
-let listTitle = list.title;
 ```
 
 ## Update
 
 ```javascript
-// field/property setter:
+// Field/property setter:
 list.title = 'new title';
 
-// fluent setter:
+// Fluent setter:
 list.title('new title')
     .otherField('value');
 ```
@@ -36,16 +32,17 @@ list.title('new title')
 ## Delete
 
 ```javascript
-let listId = '...';
-List.get(listId).remove();
+list.remove();
 ```
 
 # Transactions
 
-All model operations (create, update, delete/remove), which happen
+All model operations which happen
 within a single request are committed together / atomically.
-There is no way to end up in a state where the first few models have
-been persisted, but later changes haven't.
+In most cases there is no way to end up in a state where the first few models have
+been persisted, but other changes have not.
+(An exception to this is a [bulk modification](/🗄/Article/scripting/queries.md#modify)
+which occurs via asynchronous batches.)
 
 # Containers
 
@@ -64,10 +61,10 @@ import {List,Note} from '📦';
 
 let list = new List();
 
-// Constructor
+// Parent via constructor:
 let childNote1 = new Note(list).title('Task1');
 
-// Or, Block Scope
+// Or, parent via callback scope:
 let childNote2 = list(()=>{
   return new Note().title('Task2');
 });
@@ -96,7 +93,7 @@ For more information see [querying containers](/🗄/Article/scripting/queries.m
 Lists of embedded values may also be used to retain only `N` recent values,
 where `N` is the maximum size defined for the embedded list.
 
-This works in a way similar to circular buffers:
+This works in a way similar to circular buffers or an LRU cache:
 once a list fills its allocated space,
 it makes room for new embedded entries by overwriting the oldest value in the list.
 
@@ -116,7 +113,7 @@ since that exceeded the maximum of `2` entries for this embedded list field.
 # Error Handling {#errors}
 
 In several examples above, note that `null` or `undefined`
-is not used to represent the absence of a result -- for example `List.get` and
+is not used to represent the absence of a result &mdash; for example `List.get` and
 `Article.slug` never return a null/undefined value.
 
 Instead, an exception is thrown if there is no result.  This exception can be left unhandled,

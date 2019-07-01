@@ -102,13 +102,13 @@ let distinctTitleCount = Article.all()
     .count();
 ```
 
-# get()
+# get() {#get}
 
 Returns a single result (effectively `limit(1)`).
 If there is no result, then a `$ModelNotFound`
 exception is generated, similar to loading a model by GUID.
         
-# modify(function)
+# modify(function) {#modify}
 
 The callback function to `modify`
 receives a Model instance as its parameter,

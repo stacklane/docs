@@ -315,9 +315,8 @@ Renders the HTML attribute `required` if true, otherwise renders nothing.
 
 ## html.input
 
-Renders an HTML `<input>` for `string`, 'markdown', 'integer', 'double' field types.
+Renders an appropriate HTML `<input>` for `string`, 'markdown', 'integer', 'double', and 'boolean' field types.
 
 ## html.select
 
 Renders an HTML `<select>` for the `options` field type.
-
