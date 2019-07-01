@@ -102,9 +102,9 @@ Assuming an embedded value list with a maximum number of entries set to `2`:
 
 ```javascript
 let p = new Post();
-p.recentComments.put(new Post.Comment().content('<p>a</p>'));
-p.recentComments.put(new Post.Comment().content('<p>b</p>'));
-p.recentComments.put(new Post.Comment().content('<p>c</p>'));
+p.recentComments.put(new Post.Comment().content('a'));
+p.recentComments.put(new Post.Comment().content('b'));
+p.recentComments.put(new Post.Comment().content('c'));
 ```
 The `Post` will now only contain comments `b` and `c`.
 Putting the last comment `c` dropped off the older comment `a`,
