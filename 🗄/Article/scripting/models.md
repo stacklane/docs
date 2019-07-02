@@ -86,11 +86,43 @@ Note.list(list).map((n)=>n.title));
 
 For more information see [querying containers](/🗄/Article/scripting/queries.md#containers).
 
-# Embedded Models {#embedded}
+# String Lists {#string-lists}
 
-## Capped/Rolling Lists
+[String lists](/🗄/Article/models/fields.md#lists) are never null and contain the following properties/methods:
 
-Lists of embedded values may also be used to retain only `N` recent values,
+- `contains(value) / includes(value)` &mdash; Returns true if the list contains the string value.
+- `add(value) / push(value)` &mdash; Adds a new value to the list.
+- `remove(value)` &mdash; Return true if the value was in the list and removed.
+- `removeIf(value=>filter)` &mdash; Removes the element if it matches the filter, and returns true if any where removed.
+- `length` &mdash; Length of the list.
+- `put` &mdash; [Capped/rolling lists](/🗄/Article/scripting/models.md#rolling-lists)
+
+Streaming methods:
+
+- `map(function)`
+- `filter(function)`
+- `limit(number)`
+- `get()`
+
+# Embedded Model Lists {#embedded-lists}
+
+[Embedded model lists](/🗄/Article/models/fields.md#lists) are never null and contain the following properties/methods:
+
+- `add(value) / push(value)` &mdash; Adds a new value to the list.
+- `removeIf(value=>filter)` &mdash; Removes the element if it matches the filter, and returns true if any where removed.
+- `length` &mdash; Length of the list.
+- `put` &mdash; [Capped/rolling lists](/🗄/Article/scripting/models.md#rolling-lists)
+
+Streaming methods:
+
+- `map(function)`
+- `filter(function)`
+- `limit(number)`
+- `get()`
+
+# Capped/Rolling Lists {#rolling-lists}
+
+Lists of values may also be used to retain only `N` recent values,
 where `N` is the maximum size defined for the embedded list.
 
 This works in a way similar to circular buffers or an LRU cache:

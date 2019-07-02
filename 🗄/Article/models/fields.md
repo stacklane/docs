@@ -215,17 +215,18 @@ This is the field type corresponding to a complex value defined by an [Embedded]
 
 For more information on defining an embedded field, [click here](/🗄/Article/models/types.md#definitions).
 
-# Lists
+# Lists {#lists}
 
 Multi-valued lists may be defined for either simple values or complex embedded models.
 To denote a list, add brackets "[]" after the field name.
 If requirements don't call for the maximum of 20 entries,
 then provision less entries by specifying a number (less than 20) between the brackets.
 
-## Simple Values
+## String Lists
 
 `string` and `options` may be used for lists of values.
 Only distinct values will be allowed in the list.
+Define the field type as normal, but include brackets to denote a list.
 
 ```yaml
 categories[]:
@@ -235,7 +236,7 @@ categories[]:
     - two
 ```
 
-## Embedded Models
+## Embedded Model Lists
 
 Whether defined [globally or locally](/🗄/Article/models/types.md#definitions),
 embedded models can allow multiple values by adding "[]" after the field name:
@@ -248,7 +249,7 @@ items[]:
 address[5]: Address
 ```
 
-Capped/rolling/LRU lists are also [supported](/🗄/Article/scripting/models.md#embedded).
+Capped/rolling/LRU lists are also [supported](/🗄/Article/scripting/models.md#rolling-lists).
 Before using embedded model lists, review the
 [query limitations and suggestions](/🗄/Article/scripting/queries.md#embedded-lists).
 
