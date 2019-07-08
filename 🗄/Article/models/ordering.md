@@ -49,7 +49,8 @@ Results for field specific query criteria are _unordered_ by default.
 
 Ordering of field queries may be activated with `asc()` or `desc()`.
 However we recommend minimizing their use in this case, and relying on the _unordered_ behavior.
-The general goal of field specific query criteria to return a relatively small set of results.
+The typical goal of field specific query criteria is to return a relatively small set of results,
+at which point client side ordering is also a possibility.
 
 # Hierarchy
 
