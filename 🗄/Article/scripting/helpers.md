@@ -38,7 +38,6 @@ import {Form} from 'form{}';
 
 let theValue = Form.theParamName;
 let theOtherValue = Form['theOtherParam'];
-let hasAValue = Form.has('checkboxValue');
 ```
 
 ## Multiple Values
@@ -59,6 +58,23 @@ import {Form} from 'form{}';
 
 Form.values('selections').forEach(v=>{ /*...*/ });
 ```
+
+## Form Object
+
+The `Form` object imported from `'form{}''` has the following methods:
+
+### keys()
+
+Returns an array of submitted form values, which may be iterated with `.forEach(key=>{..})`
+
+### has(keyName)
+
+Returns true if keyName was submitted for the form, even if the submitted value is empty.
+
+### values(keyName)
+
+Return an array of values for a same-named field, regardless of whether the form submission contained the value.
+The returned value will never be null, but may be an empty array.
 
 # Cookies {#cookies}
 
