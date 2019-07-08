@@ -279,6 +279,13 @@ there are two points where it's possible to check for a still viable form instan
    but the form given in the parameter has expired, then any resulting call to `create` or `update`
    will result in a validation error.
 
+# Nested Forms {#nested}
+
+Nested forms occur for [embedded model types](/🗄/Article/models/types#embedded).
+They are directly reachable via the `.value` property.
+Unlike regular embedded model values, which may be optional and therefore null,
+nested form values are *never* null.
+
 # Field Properties
 
 The following field properties are available:
@@ -286,6 +293,7 @@ The following field properties are available:
 ## value
 
 The current value of the field.
+This value may be a [nested form](#nested).
 
 ## path
 
@@ -317,6 +325,8 @@ true if the current value is invalid.
 
 A message object associated with the field, with properties `.type` and `.value`.
 Always defined if `invalid == true`.
+These messages are intended to be seen by the user submitting the form,
+and next to the field itself, for example: "Fill out this field".
 
 ## readable
 
