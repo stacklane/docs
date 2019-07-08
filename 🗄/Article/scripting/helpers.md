@@ -61,7 +61,7 @@ Form.values('selections').forEach(v=>{ /*...*/ });
 
 ## Form Object
 
-The `Form` object imported from `'form{}''` has the following methods:
+The `Form` object imported from `'form{}'` has the following methods:
 
 ### keys()
 
