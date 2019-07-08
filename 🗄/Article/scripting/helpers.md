@@ -43,7 +43,7 @@ let hasAValue = Form.has('checkboxValue');
 
 ## Multiple Values
 
-When access multiple values, the variable will always be a defined array,
+When accessing multiple values, the variable will always be a defined array,
 even if the form submission did not include any value (empty array).
 
 ```javascript
