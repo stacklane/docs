@@ -73,7 +73,7 @@ Returns true if keyName was submitted for the form, even if the submitted value 
 
 ### values(keyName)
 
-Return an array of values for a same-named field, regardless of whether the form submission contained the value.
+Returns an array of values for a same-named field, regardless of whether the form submission contained the value.
 The returned value will never be null, but may be an empty array.
 
 # Cookies {#cookies}
