@@ -165,7 +165,7 @@ Maximum size: 2000 bytes.
 projectIcon: svg-icon
 ```
 
-To display an SVG field in Mustache, use triple brackets `{{{ model.textField }}}`.
+To display an SVG field in Mustache, use triple brackets `{{{ model.textField }}}`
 
 # Markdown {#markdown}
 
