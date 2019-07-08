@@ -21,22 +21,43 @@ import {specific, param, here as Other} from '&';
 
 # Form Params {#form}
 
-Access form parameters via the `'form'` module, or the `'form{}'` module.
+There are several different ways to access form parameters.
 If your form parameter is separated by dashes, 
 such as `this-that`, then import it with camel case instead: `thisThat`.
 
+## Single Values
+
 ```javascript
-/* individual parameters */
+/* Specific parameters */
 
 import {specific, param, here as Other} from 'form';
 
-/* import as hash or object literal */
+/* As hash / object */
 
 import {Form} from 'form{}';
 
 let theValue = Form.theParamName;
 let theOtherValue = Form['theOtherParam'];
 let hasAValue = Form.has('checkboxValue');
+```
+
+## Multiple Values
+
+When access multiple values, the variable will always be a defined array,
+even if the form submission did not include any value (empty array).
+
+```javascript
+/* Specific parameters */
+
+import {selections} from 'form[]';
+
+selections.forEach(v=>{ /*...*/ });
+
+/* As hash / object */
+
+import {Form} from 'form{}';
+
+Form.values('selections').forEach(v=>{ /*...*/ });
 ```
 
 # Cookies {#cookies}
