@@ -90,14 +90,31 @@ For more information see [querying containers](/🗄/Article/scripting/queries.m
 
 [String lists](/🗄/Article/models/fields.md#lists) are never null and contain the following properties/methods:
 
-- `contains(value) / includes(value)` &mdash; Returns true if the list contains the string value.
-- `add(value) / push(value)` &mdash; Adds a new value to the list.
-- `remove(value)` &mdash; Return true if the value was in the list and removed.
-- `removeIf(value=>filter)` &mdash; Removes the element if it matches the filter, and returns true if any where removed.
-- `length` &mdash; Length of the list.
-- `put` &mdash; [Capped/rolling lists](/🗄/Article/scripting/models.md#rolling-lists)
+### contains(value) / includes(value)
 
-Streaming methods:
+Returns true if the list contains the string value.
+
+### add(value) / push(value)
+
+Adds a new value to the list.
+
+### remove(value)
+
+Returns true if the value was in the list and removed.
+
+### removeIf(value=>filter)
+
+Removes elements if matching the filter, and returns true if any where removed.
+
+### length
+
+Length of the list.
+
+### put(value)
+
+[Capped/rolling lists](/🗄/Article/scripting/models.md#rolling-lists)
+
+### Streaming Methods
 
 - `map(function)`
 - `filter(function)`
@@ -108,12 +125,23 @@ Streaming methods:
 
 [Embedded model lists](/🗄/Article/models/fields.md#lists) are never null and contain the following properties/methods:
 
-- `add(value) / push(value)` &mdash; Adds a new value to the list.
-- `removeIf(value=>filter)` &mdash; Removes the element if it matches the filter, and returns true if any where removed.
-- `length` &mdash; Length of the list.
-- `put` &mdash; [Capped/rolling lists](/🗄/Article/scripting/models.md#rolling-lists)
+### add(value) / push(value)
 
-Streaming methods:
+Adds a new value to the list.
+
+### removeIf(value=>filter)
+
+Removes elements if matching the filter, and returns true if any where removed.
+
+### length
+
+Length of the list.
+
+### put(value)
+
+[Capped/rolling lists](/🗄/Article/scripting/models.md#rolling-lists)
+
+### Streaming Methods
 
 - `map(function)`
 - `filter(function)`
