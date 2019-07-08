@@ -33,9 +33,15 @@ initializing as needed by reading form submission data, or an existing form.
   {{! Access Product.name field data }}
   {{#form.name}}
     <label for="{{path}}">{{label}}</label>
-    {{{html.input}}}
+    {{#input as input}}
+    <input id="{{path}}" name="{{path}}" value="{{value}}"
+      class="input {{#invalid}}is-danger{{/invalid}}"
+      {{{input.attributes}}}>
+    {{/input}}
     {{#about}}<p>{{about}}</p>{{/about}}
-    {{#message}}<p class="is-{{message.type}}">{{message.value}}</p>{{/message}}
+    {{#invalid}}
+      <p class="is-danger">{{message.value}}</p>
+    {{/invalid}}
   {{/form.name}}
 
   </form>
@@ -284,6 +290,8 @@ The current value of the field.
 ## path
 
 An underscore separated identifier for the field, beginning with the type's name.
+Suitable for `id` and `name` HTML attributes, and _required_ on `name`
+for proper interpretation of form input.
 
 ## required
 
@@ -308,15 +316,64 @@ true if the current value is invalid.
 ## message
 
 A message object associated with the field, with properties `.type` and `.value`.
+Always defined if `invalid == true`.
 
-## html.required
+## readable
 
-Renders the HTML attribute `required` if true, otherwise renders nothing.
+true if the field is readable with the current user's permissions.
 
-## html.input
+## updatable
 
-Renders an appropriate HTML `<input>` for `string`, 'markdown', 'integer', 'double', and 'boolean' field types.
+true if the field is updatable with the current user's permissions.
 
-## html.select
+## readOnly
 
-Renders an HTML `<select>` for the `options` field type.
+Readable, but not updatable, with the current user's permissions.
+
+# HTML Controls
+
+Stacklane provides utilities for generating HTML forms.
+Keep in mind that not all field types have a direct translation to a form type.
+For additional context check out the [forms example](https://github.com/stacklane-blueprints/forms).
+Note that for all of the HTML utilities below, `id`, `name`, and `class` are never emitted.
+
+## input
+
+Defined for `string`, `integer`, and `double`.
+
+Contains an `attributes` property which emits HTML attributes as needed for the field type:
+type, value, required, placeholder, value, maxlength, minlength, max, min, pattern, readonly
+
+When using `input.attributes` do not also define any above attributes, or duplicates/conflicts may occur.
+
+## textarea
+
+Defined for `markdown`.
+
+Contains an `attributes` property which emits HTML attributes as needed for the field type:
+required, placeholder, maxlength, minlength, readonly
+
+When using `textarea.attributes` do not also define any above attributes, or duplicates/conflicts may occur.
+
+## toggle
+
+Defined for `boolean`.
+
+Contains `on` and `off` properties, which are always defined.
+The on/off objects each have the following properties: `value`, `label`, `selected`.
+
+## selectOne
+
+Defined for 'options'.
+
+Contains an `options` property, which is a list of available options.
+Each available option object has the following properties: `value`, `label`, `selected`.
+0-1 option may be selected.
+
+## selectMany
+
+Defined for a list/array of 'options'.
+
+Contains an `options` property, which is a list of available options.
+Each available option object has the following properties: `value`, `label`, `selected`.
+0+ options may be selected.
