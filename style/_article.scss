@@ -126,6 +126,11 @@ article > h1, article header + p{
   padding-top: $article-h1-top-spacing;
 }
 
+article header h1{
+  font-size: $size-2;
+  color: black;
+}
+
 article > h2{
   font-size: $size-6;
   text-decoration: none;
@@ -136,36 +141,19 @@ article > h2{
 
 article > h3{
   font-size: $size-6 - 0.1rem; //$size-7;
-  text-decoration: underline;
+  //text-decoration: underline;
   margin-top: 1rem;
   margin-bottom: .5rem;
   font-weight: 400;
+  color: $grey-darker;
 }
 
-article header h1{
-  font-size: $size-2;
-  color: black;
-}
-/*
-article pre{
-  // padding-top: 0 !important;
-  // padding-bottom: 0 !important;
-  background: #f7f8f9 !important;
-  border-radius: 5px !important;
-  position: relative !important;
-}
-article pre code{
-  padding:0 !important;
-  color: #333 !important;
-  font-weight: 500 !important;
-  font-size: 13px !important;
-  line-height: 19px !important;
-}*/
 article code{
   white-space: pre;
   word-break: keep-all; // code usually for small snippets or words, not large blocks.  so prevent those words/snippets from breaking.
+  color: #e83e8c;
 }
 
-//article .code > pre{
- // margin:0;
-//}
+article h3 code{
+  color: $grey-darker;
+}

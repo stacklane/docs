@@ -90,29 +90,29 @@ For more information see [querying containers](/🗄/Article/scripting/queries.m
 
 [String lists](/🗄/Article/models/fields.md#lists) are never null and contain the following properties/methods:
 
-### contains(value) / includes(value)
+### `contains(value)` / `includes(value)`
 
 Returns true if the list contains the string value.
 
-### add(value) / push(value)
+### `add(value)` / `push(value)`
 
 Adds a new value to the list.
 
-### remove(value)
+### `remove(value)`
 
 Returns true if the value was in the list and removed.
 
-### removeIf(value=>filter)
+### `removeIf(value=>filter)`
 
 Removes elements if matching the filter, and returns true if any where removed.
 
-### length
+### `length`
 
 Length of the list.
 
-### put(value)
+### `put(value)`
 
-[Capped/rolling lists](/🗄/Article/scripting/models.md#rolling-lists)
+[Rolls off](/🗄/Article/scripting/models.md#rolling-lists) old values according to maximum list size.
 
 ### Streaming Methods
 
@@ -125,21 +125,21 @@ Length of the list.
 
 [Embedded model lists](/🗄/Article/models/fields.md#lists) are never null and contain the following properties/methods:
 
-### add(value) / push(value)
+### `add(value) / push(value)`
 
 Adds a new value to the list.
 
-### removeIf(value=>filter)
+### `removeIf(value=>filter)`
 
 Removes elements if matching the filter, and returns true if any where removed.
 
-### length
+### `length`
 
 Length of the list.
 
-### put(value)
+### `put(value)`
 
-[Capped/rolling lists](/🗄/Article/scripting/models.md#rolling-lists)
+[Rolls off](/🗄/Article/scripting/models.md#rolling-lists) old values according to maximum list size.
 
 ### Streaming Methods
 
@@ -166,9 +166,34 @@ p.recentComments.put(new Post.Comment().content('a'));
 p.recentComments.put(new Post.Comment().content('b'));
 p.recentComments.put(new Post.Comment().content('c'));
 ```
+
 The `Post` will now only contain comments `b` and `c`.
 Putting the last comment `c` dropped off the older comment `a`,
 since that exceeded the maximum of `2` entries for this embedded list field.
+
+# Model Links {#model-links}
+
+The [Model Link field type](/🗄/Article/models/fields.md#model-links)
+allows linking to other models. Fields of this type never return null or undefined.
+Keep in mind that links may be "broken" if the target of the link was deleted.
+
+Model links have the following methods/properties:
+
+### `get()`
+
+Obtain a live instance of the model linked to.  Throws `$ModelNotFound` if it no longer exists.
+
+### `exists()`
+
+Returns true if the linked model still exists.
+
+### `linked()`
+
+Link fields are never null or undefined.  Returns true if the a link has been set.
+
+### `id`
+
+The unique ID of the model, or `null` if `linked() == false`.
 
 # Error Handling {#errors}
 

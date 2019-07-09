@@ -193,16 +193,11 @@ To link from one model to another, specify the model name for the field type:
 otherModel: TheOtherModelName
 ```
 
+Fields of this type never return null or undefined.
 Keep in mind that links may be "broken" if the target of the link was deleted.
 
-Fields of this type never return null or undefined.
-
-Model links have the following methods/properties:
-
-- `get()` &mdash; Obtain a live instance of the model linked to.  Throws `$ModelNotFound` if it no longer exists.
-- `exists()` &mdash; Return true if the linked model still exists.
-- `linked()` &mdash; Link fields are never null or undefined.  Returns true if the a link has been set.
-- `id` &mdash; The ID of the model, or null if `linked() == false`.
+For more information on methods and properties available see
+[Model Link Scripting](/🗄/Article/scripting/models.md#model-links).
 
 For [contained models](/🗄/Article/models/containers.md),
 there is no need to add a link from the contained model back to the container.

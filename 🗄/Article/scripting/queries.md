@@ -144,7 +144,7 @@ The following assumes `Article` has a field named `metadata` with an embedded mo
 Article.metadata(new Article.Metadata().title('The Title')).get();
 ```
 
-This will return an `Article` where `Article.metadata.title == 'The Title'`;
+This will return an `Article` where `Article.metadata.title == 'The Title'`
 
 # Embedded Lists {#embedded-lists}
 
