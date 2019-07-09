@@ -34,6 +34,8 @@ models:
   path: models/fields
 - title: Ordering
   path: models/ordering
+- title: Forms
+  path: models/forms
 - title: Static
   path: models/static
 - title: Images
