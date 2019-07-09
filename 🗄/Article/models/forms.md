@@ -57,13 +57,16 @@ Form data is only accessible from the same client, for a period of up to 4 hours
 
 ## Manual Invalidation
 
-If a given form's data should no longer be considered usable, then manually calling the `remove()` on
+If a given form's data should no longer be considered usable, then manually calling `remove()` on
 the form instance will invalidate it.  This is not necessary for most flows.
 
 # Labels
 
-When using models for forms, it's useful to define labels and descriptions for the field,
-which may then be used directly within HTML.
+> {.alert .is-info .is-small}
+>
+> All labels are assumed to be in the language of the [Manifest locale](/🗄/Article/settings/manifest.md#locale).
+
+When using models for forms, it's useful to define labels and descriptions for the field, which may then be used directly within HTML.
 
 ```file-name
 /📦/🌐Product.yaml
@@ -77,7 +80,19 @@ name:
 ```
 
 Even if not explicitly given, a default label is generated for every field using its name. "name" -> "Name", "myField" -> "My Field".
-The label, placeholder, and about are assumed to be in the language of the [Manifest locale](/🗄/Article/settings/manifest.md#locale).
+
+## Option Labels
+
+When using the `options` field type, each option is given a default label.
+To define a custom label for an option use the following format:
+
+```yaml
+status:
+  type: options
+  values:
+    act: Active
+    dis: Disabled
+```
 
 # Creating Models {#create}
 
