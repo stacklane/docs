@@ -121,7 +121,7 @@ Length of the list.
 - `limit(number)`
 - `get()`
 
-# Embedded Model Lists {#embedded-lists}
+# Model Lists {#model-lists}
 
 [Embedded model lists](/🗄/Article/models/fields.md#lists) are never null and contain the following properties/methods:
 

@@ -216,6 +216,7 @@ Multi-valued lists may be defined for either simple values or complex embedded m
 To denote a list, add brackets "[]" after the field name.
 If requirements don't call for the maximum of 20 entries,
 then provision less entries by specifying a number (less than 20) between the brackets.
+Capped/rolling/LRU lists are also [supported](/🗄/Article/scripting/models.md#rolling-lists).
 
 ## String Lists
 
@@ -231,7 +232,9 @@ categories[]:
     - two
 ```
 
-## Embedded Model Lists
+For more information, see [String List Scripting](/🗄/Article/scripting/models.md#string-lists).
+
+## Model Lists
 
 Whether defined [globally or locally](/🗄/Article/models/types.md#definitions),
 embedded models can allow multiple values by adding "[]" after the field name:
@@ -244,9 +247,10 @@ items[]:
 address[5]: Address
 ```
 
-Capped/rolling/LRU lists are also [supported](/🗄/Article/scripting/models.md#rolling-lists).
 Before using embedded model lists, review the
-[query limitations and suggestions](/🗄/Article/scripting/queries.md#embedded-lists).
+[query limitations and suggestions](/🗄/Article/scripting/queries.md#model-lists).
+
+For more information, see [Model List Scripting](/🗄/Article/scripting/models.md#model-lists).
 
 # UIDs {#uid}
 
