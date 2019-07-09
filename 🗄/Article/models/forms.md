@@ -196,11 +196,7 @@ Now use the partial form type as you would any other form type.
 
 # Incremental Forms {#incremental}
 
-Especially when creating a new model for the first time,
-it's common to have a larger form that needs to be broken up across multiple pages
-to collect the fields.
-
-This may be accomplished with "Partial Forms".
+[Partial Forms](#partial) allow collecting information across multiple pages.
 
 As in the example above, assume the first page begins collecting
 a Product's name and price using `ProductNamePriceForm`.
