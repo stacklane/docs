@@ -281,7 +281,7 @@ there are two points where it's possible to check for a still viable form instan
 
 # Nested Forms {#nested}
 
-Nested forms occur for [embedded model types](/🗄/Article/models/types#embedded).
+Nested forms occur for [embedded model types](/🗄/Article/models/types.md#embedded).
 They are directly reachable via the `.value` property.
 Unlike regular embedded model values, which may be optional and therefore null,
 nested form values are *never* null.
