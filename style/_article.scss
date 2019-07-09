@@ -135,7 +135,7 @@ article > h2{
 }
 
 article > h3{
-  font-size: $size-7;
+  font-size: $size-6 - 0.1rem; //$size-7;
   text-decoration: underline;
   margin-top: 1rem;
   margin-bottom: .5rem;
