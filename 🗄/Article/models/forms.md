@@ -323,57 +323,57 @@ This enables nested field access such as:
 
 # Field Properties
 
-Each form instance contains properties that reach the fields available on the form.
+Each form instance contains properties which reach the fields available on the form.
 For example, `Product.Form.get().name` accesses the field information for `name`.
 The following properties are available for each field:
 
-## value
+### `value`
 
 The current value of the field.
 This value may be a [nested form](#nested).
 
-## path
+### `path`
 
 An underscore separated identifier for the field, beginning with the type's name.
 Suitable for `id` and `name` HTML attributes, and _required_ on `name`
 for proper interpretation of form input.
 
-## required
+### `required`
 
 true if field has been set to required.
 
-## label
+### `label`
 
 The field label text as defined in the model's definition.
 
-## placeholder
+### `placeholder`
 
 The field placeholder text as defined in the model's definition.
 
-## about
+### `about`
 
 The field about text as defined in the model's definition.
 
-## invalid
+### `invalid`
 
 true if the current value is invalid.
 
-## message
+### `message`
 
 A message object associated with the field, with properties `.type` and `.value`.
 Always defined if `invalid == true`.
 These messages are intended to be seen by the user submitting the form,
 and next to the field itself, for example: "Fill out this field".
 
-## readable
+### `readable`
 
 true if the field is readable with the current user's permissions.
 
-## updatable
+### `updatable`
 
 true if the field is updatable with the current user's permissions.
 
-## readOnly
+### `readOnly`
 
 Readable, but not updatable, with the current user's permissions.
 
@@ -385,7 +385,7 @@ The following properties are available for every field &mdash; they are mutually
 and a given control will not be defined twice for the same field.
 Note that for all of the HTML utilities below, `id`, `name`, and `class` are never emitted.
 
-## input
+### `input`
 
 Defined for `string`, `integer`, and `double`.
 
@@ -394,7 +394,7 @@ type, value, required, placeholder, value, maxlength, minlength, max, min, patte
 
 When using `input.attributes` do not also define any above attributes, or duplicates/conflicts may occur.
 
-## textarea
+### `textarea`
 
 Defined for `markdown`.
 
@@ -403,14 +403,14 @@ required, placeholder, maxlength, minlength, readonly
 
 When using `textarea.attributes` do not also define any above attributes, or duplicates/conflicts may occur.
 
-## toggle
+### `toggle`
 
 Defined for `boolean`.
 
 Contains `on` and `off` properties, which are always defined.
 The on/off objects each have the following properties: `value`, `label`, `selected`.
 
-## selectOne
+### `selectOne`
 
 Defined for 'options'.
 
@@ -418,7 +418,7 @@ Contains an `options` property, which is a list of available options.
 Each available option object has the following properties: `value`, `label`, `selected`.
 0-1 option may be selected.
 
-## selectMany
+### `selectMany`
 
 Defined for a list/array of 'options'.
 
