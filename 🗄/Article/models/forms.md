@@ -18,7 +18,7 @@ This may be thought of a singleton for the current user, request, and response.
 The Form type of a model has all of the fields of a regular model.
 The main difference is that it can exist in an *invalid* state.
 The `get()` method of the Form type always returns an instance,
-initializing as needed by reading form submission data, or an existing form.
+initializing as needed by reading form submission data, or an existing form instance.
 
 ```file-name
 /product/add.html
@@ -48,6 +48,12 @@ initializing as needed by reading form submission data, or an existing form.
 {{/Product.Form.get}}
 ```
 
+## Supported Fields
+
+Forms support a subset of [field types](/🗄/Article/models/fields.md).
+For other field types custom handling will be necessary, prior to calling the `fill(model)` method on the form.
+The following field types are supported: `string`, `options`, `options[]`, `boolean`, `integer`, `double`, `markdown`
+
 # Lifecycle
 
 Forms are immutable once initialized &mdash;
@@ -59,6 +65,7 @@ Form data is only accessible from the same client, for a period of up to 4 hours
 
 If a given form's data should no longer be considered usable, then manually calling `remove()` on
 the form instance will invalidate it.  This is not necessary for most flows.
+Allow a few minutes for the invalidation to take effect.
 
 # Labels
 
@@ -96,17 +103,21 @@ status:
 
 # Creating Models {#create}
 
+New may be filled with form data using the `fill(model)` method.
+
 ```file-name
 /product/📮create.js
 ```
 ```javascript
 import {Product} from '📦';
 
-let form = Product.Form.get(); // Reads form submission
+let form = Product.Form.get();
 
 try {
 
-   let newProduct = form.create(); // throws $ModelInvalid
+   let newProduct = new Product();
+
+   form.fill(newProduct); // throws $ModelInvalid
 
    Redirect.dir('product').dir(newProduct.id);
 
@@ -145,11 +156,11 @@ which is useful for updating existing model instances.
 import {Product} from '📦';
 import {product} from '🔗';
 
-let form = Product.Form.get(); // Read form submission
+let form = Product.Form.get();
 
 try {
 
-   form.update(product); // throws $ModelInvalid
+   form.fill(product); // throws $ModelInvalid
 
    Redirect.dir('product')
            .dir(newProduct.id)
@@ -168,20 +179,16 @@ try {
 
 # Partial Forms {#partial}
 
-It's common to break up model fields into multiple forms,
-rather than one monolithic form which validates and updates all possible fields.
-
-To create a partial form, use the fluent builder starting with `only`:
+To create a partial form, which includes only a subset of fields,
+define a supplier value with the ⏳ prefix:
 
 ```file-name
-/📤/ProductNamePriceForm.js
+/📤/⏳ProductNamePriceForm.yaml
 ```
-```javascript
-import {Product} from '📦';
-
-let partial = Product.Form.only().name().price().get();
-
-export {partial as ProductNamePriceForm}
+```yaml
+📦.Product:
+  - name
+  - price
 ```
 
 Now use the partial form type as you would any other form type.
@@ -227,7 +234,7 @@ Notice that in *both* redirects we are including the form instance.
 import {Product} from '📦';
 import {ProductNamePriceForm} from '📤';
 
-let form = ProductNamePriceForm.get(); // Read form submission
+let form = ProductNamePriceForm.get();
 
 try {
 
@@ -274,7 +281,7 @@ On the next/last step, include the original form ID as a query parameter:
 ```javascript
 import {Product} from '📦';
 
-// First reads the _form query param, THEN reads form submission.
+// First reads the _form query param, THEN reads form submission:
 let form = Product.Form.get();
 
 // ... Remainder identical to normal creation
@@ -296,10 +303,29 @@ Nested forms occur for [embedded model types](/🗄/Article/models/types.md#embe
 They are directly reachable via the `.value` property.
 Unlike regular embedded model values, which may be optional and therefore null,
 nested form values are *never* null.
+This enables nested field access such as:
+
+```html
+<!--TEMPLATE mustache-->
+{{% import {Product} from '📦' }}
+
+{{#Product.Form.get as form}}
+  <form action="/product/create" method="POST">
+
+  {{! Access Product.description.summary field data }}
+  {{#form.description.value.summary}}
+     ...
+  {{/form.description.value.summary}}
+
+  </form>
+{{/Product.Form.get}}
+```
 
 # Field Properties
 
-The following field properties are available:
+Each form instance contains properties that reach the fields available on the form.
+For example, `Product.Form.get().name` accesses the field information for `name`.
+The following properties are available for each field:
 
 ## value
 
@@ -354,8 +380,9 @@ Readable, but not updatable, with the current user's permissions.
 # HTML Controls
 
 Stacklane provides utilities for generating HTML forms.
-Keep in mind that not all field types have a direct translation to a form type.
 For additional context check out the [forms example](https://github.com/stacklane-blueprints/forms).
+The following properties are available for every field &mdash; they are mutually exclusive,
+and a given control will not be defined twice for the same field.
 Note that for all of the HTML utilities below, `id`, `name`, and `class` are never emitted.
 
 ## input
