@@ -207,6 +207,24 @@ let randomIcon = Identicon.random();
 
 ## RelativeDateTime
 
+### `days(date, number)`
+
+Returns a stream of `Date` objects, beginning from the first parameter and
+spanning through the number of days in the second parameter.
+The second parameter may be negative to return past dates (in descending order).
+
+This is a streaming method generally followed by `map`.
+
+### `months(date, number)`
+
+Returns a stream of `Date` objects, beginning from the first parameter and
+spanning through the number of months in the second parameter.
+The second parameter may be negative to return past dates (in descending order).
+
+This is a streaming method generally followed by `map`.
+
+### `fromNow(date)`
+
 Utility for displaying relative date/times server-side, rather than resorting to a client-side library.
 Relative date/times are designed to give a general sense of time, not precision.
 
@@ -220,7 +238,7 @@ Post.all().map(p=>({
 }));
 ```
 
-Examples of `RelativeDateTime.fromNow` output:
+Example output:
 
 `now`\
 `3 seconds ago`\
