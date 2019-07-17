@@ -12,13 +12,40 @@ For example, a [Mustache endpoint](/🗄/Article/endpoints/mustache.md)
 may iterate over a query given by a [supplier](/🗄/Article/scripting/suppliers.md)
 to display results as HTML.
 
-# all()
+# Field Filters {#field}
+
+All queries besides `all()` start with a field filter.
+Multiple field filters may be chained together.
+Keep in mind that field filters are effectively **and** conditions.
+By default field filters return [_unordered_ results](/🗄/Article/models/ordering.md#query).
+
+### `eq`
+        
+`Article.title('theTitle')`
+
+### `gt`
+
+`Article.created_gt(new Date(2000))`
+
+### `gte`
+
+`Product.price_gte(30)`
+
+### `lt`
+        
+`Article.created_gt(new Date(2000)).created_lt(new Date(2010))`
+
+### `lte`
+        
+`Product.price_gte(30).price_lte(40)`
+
+# All Results {#all}
 
 To query all models of a type, without any filters, use the `all()` method. For example, `Note.all()`.
 
 Results will be returned in the model's [natural ordering](/🗄/Article/models/ordering.md#query).
 
-The "all" query on a model type is also available to [Mustache](/🗄/Article/endpoints/mustache.md).
+The "all" query on a model type is also available directly to [Mustache](/🗄/Article/endpoints/mustache.md).
 Any other queries must be built within a [supplier](/🗄/Article/scripting/suppliers.md) before importing them into Mustache.
 
 ```file-name
@@ -32,65 +59,77 @@ Any other queries must be built within a [supplier](/🗄/Article/scripting/supp
 {{/Note.all}}
 ```
 
-# Field Filters
+Keep in mind that for contained models, `all` will only include results for a
+[given parent container in scope](#containers).
 
-All queries besides `all()` start with a field filter.
-Multiple field filters may be chained together.
-Keep in mind that field filters are effectively **and** conditions.
-By default field filters return [_unordered_ results](/🗄/Article/models/ordering.md#query).
+# Methods {#methods}
 
-## eq
-        
-`Article.title('theTitle')`
+The following methods influence the query results.
 
-## gt
-
-`Article.created_gt(new Date(2000))`
-
-## gte
-
-`Product.price_gte(30)`
-
-## lt
-        
-`Article.created_gt(new Date(2000)).created_lt(new Date(2010))`
-
-## lte
-        
-`Product.price_gte(30).price_lte(40)`
-
-# asc()/desc()
+### `asc()/desc()` {#order}
 
 All model types have a [natural ordering](/🗄/Article/models/ordering.md).
 In general it's recommended to minimize the use of `asc()` and `desc()`
 and to typically rely on the [default ordering of various query types](/🗄/Article/models/ordering.md#query).
 
-# filter(function) 
+### `filter(function)` {#filter}
 
 The callback function to `filter` returns a `boolean`
 that indicates whether the item should be included in the results (return false to exclude an entry).
 This should only be used if another field filter (eq, gt, gte, lt, lte) is not sufficient.
 
-# limit(number)
+### `limit(number)` {#limit}
 
 Limits the results of a query.
 
-# map(function)
+### `map(function)` {#map}
 
 The callback function to `map` _transforms_ the current stream element
-into a map.  This is often used to transform a model to a JSON object literal.
-It should be the last method in a chain (or followed only by `get` / `distinct` / `count`).
+into a map or other value.  This is often used to transform a model to a JSON object literal.
         
 ```javascript
-let titlesOnly = Article.all().map(article=>({title:article.title}));
+Article.all().map(article=>({title:article.title}));
 ```
 
-# flatMap(function)
+### `flatMap(function)` {#flatMap}
 
-The callback function to `flatMap` _transforms_ the current stream element
-into an array. It should be the last method in a chain (or followed only by `get` / `distinct` / `count`).
-        
-# distinct()
+The callback function to `flatMap` _transforms_ the current stream
+element into another stream.
+
+Return a single value, array, or other stream from the callback.
+The results will be flattened into the resulting stream.
+For example, given an `options[]` field, get only distinct options:
+
+```javascript
+Product.all().flatMap(product=>product.options).distinct();
+```
+
+### `insert(function)` {#insert}
+
+Use `insert` to grow or inflate the original results.
+`insert` must only be used after `map`, and the results inserted must be the same type of value as were originally returned from `map`.
+The insert method transforms the original source results by *optionally* inserting elements
+at the beginning, between two elements (previous and next), or at the very end.
+It may also take otherwise empty results and fill them.
+To ensure predictable results, keep in mind the [default ordering of various query types](/🗄/Article/models/ordering.md#query).
+
+This method is particularly useful for inserting points along sparsely populated time series data,
+in [conjunction with `RelativeDateTime`](/🗄/Article/scripting/helpers.md#utilities) to help
+generate the missing points.
+
+The callback function uses a single parameter as an "iterator".
+The iterator exposes the optional/nullable fields `next` and `previous`, which will be null in specific cases.
+Those 3 cases are exposed as booleans fields `empty` (next/previous both null), `first` (previous is null), `last` (next is null).
+
+Returned values from the callback function are inserted into the results.
+Returnable values are null, a single value, arrays, or other streams.
+
+
+Keep in mind that returned results must be the same type of value as were originally returned from `map` (on the source).
+In other words, if the original `map` operation returned results like `{date: value.created}` then
+values being returned from the `insert` callback but also be in the format `{date: /* value */}`.
+
+### `distinct()` {#distinct}
 
 Using the results from either `map` or `flatMap`,
 creates new results that contain only unique values.
@@ -102,13 +141,23 @@ let distinctTitleCount = Article.all()
     .count();
 ```
 
-# get() {#get}
+# Execution {#exec}
+
+Once a query is built up with various methods,
+the query results are *executed and used* by including the query in JSON output, or Mustache HTML output.
+The following methods also execute and use the results from a query:
+
+### `count()` {#count}
+
+Return the total number of results, after considering all other methods, such as `limit`.
+
+### `get()` {#get}
 
 Returns a single result (effectively `limit(1)`).
 If there is no result, then a `$ModelNotFound`
-exception is generated, similar to loading a model by GUID.
+exception is generated, similar to loading a model by its ID.
         
-# modify(function) {#modify}
+### `modify(function)` {#modify}
 
 The callback function to `modify`
 receives a Model instance as its parameter,
@@ -118,20 +167,16 @@ It is only available during `POST`, `PUT`, `DELETE`.
         
 It is not required that every Model be modified, for example if it doesn't satisfy some condition.
 However consider using `filter(...)` in the case where there are well defined conditions
-that must be met before updating a model.  This will also keep your modify function simpler.
-        
-This method works with full Model instances, and should therefore not be used in conjunction with
-`map(..)`.
-        
-## Semi-Asynchronous
-        
-For bulk operations the first 10 updates will occur synchronously, before the method returns
-(before the request ends).  From a user standpoint this means that up to 10 results will be modified
- before they view the results or next page.
-Any results beyond the first 10 are processed asynchronously in batches, meaning there could be a
-short delay for a user to see the result of changes to larger batches.
-This "semi-asynchronous" approach strikes a balance between user expectations on more common (small) operations,
-while making sure the request time is at a minimum for larger operations.
+that must be met before updating a model.  This will also keep the modify function simpler.
+
+> {.more}
+>
+> For bulk operations the first 10 updates will occur synchronously, before the method returns (before the request ends).
+> From a user standpoint this means that up to 10 results will be modified before they view the results or next page.
+> Any results beyond the first 10 are processed asynchronously in batches, meaning there could be a
+> short delay for a user to see the result of changes to larger batches.
+> This "semi-asynchronous" approach strikes a balance between user expectations on more common (small) operations,
+> while making sure the request time is at a minimum for larger operations.
 
 # Embedded Models {#embedded}
 
