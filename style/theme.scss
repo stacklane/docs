@@ -15,12 +15,15 @@
 @import "/bulma/elements/title";
 @import "/bulma/elements/table";
 @import "/bulma/elements/progress";
+@import "/bulma/elements/other";
 
 // warning, interferes with prismjs: @import "/bulma/elements/tag";
 // so instead:
 @import "/style/badge";
 
 @import "/bulma/components/navbar";
+@import "/bulma/components/modal";
+
 @import "/bulma/grid/columns";
 
 ////////////

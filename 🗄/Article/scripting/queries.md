@@ -107,26 +107,29 @@ Product.all().flatMap(product=>product.options).distinct();
 ### `insert(function)` {#insert}
 
 Use `insert` to grow or inflate the original results.
-`insert` must only be used after `map`, and the results inserted must be the same type of value as were originally returned from `map`.
-The insert method transforms the original source results by *optionally* inserting elements
-at the beginning, between two elements (previous and next), or at the very end.
+The insert method transforms the original source results by *optionally* inserting elements.
 It may also take otherwise empty results and fill them.
 To ensure predictable results, keep in mind the [default ordering of various query types](/🗄/Article/models/ordering.md#query).
 
-This method is particularly useful for inserting points along sparsely populated time series data,
-in [conjunction with `RelativeDateTime`](/🗄/Article/scripting/helpers.md#utilities) to help
-generate the missing points.
-
-The callback function uses a single parameter as an "iterator".
-The iterator exposes the optional/nullable fields `next` and `previous`, which will be null in specific cases.
-Those 3 cases are exposed as booleans fields `empty` (next/previous both null), `first` (previous is null), `last` (next is null).
-
-Returned values from the callback function are inserted into the results.
-Returnable values are null, a single value, arrays, or other streams.
-
-Keep in mind that returned results must be the same type of value as were originally returned from `map` (on the source).
-In other words, if the original `map` operation returned results like `{date: value.created}` then
-values being returned from the `insert` callback but also be in the format `{date: /* value */}`.
+> {.more}
+>
+> `insert` must only be used after `map`, and the results inserted must be the same type of value as were originally returned from `map`.
+> at the beginning, between two elements (previous and next), or at the very end.
+>
+> This method is particularly useful for inserting points along sparsely populated time series data,
+> in [conjunction with `RelativeDateTime`](/🗄/Article/scripting/helpers.md#utilities) to help
+> generate the missing points.
+>
+> The callback function uses a single parameter as an "iterator".
+> The iterator exposes the optional/nullable fields `next` and `previous`, which will be null in specific cases.
+> Those 3 cases are exposed as booleans fields `empty` (next/previous both null), `first` (previous is null), `last` (next is null).
+>
+> Returned values from the callback function are inserted into the results.
+> Returnable values are null, a single value, arrays, or other streams.
+>
+> Keep in mind that returned results must be the same type of value as were originally returned from `map` (on the source).
+> In other words, if the original `map` operation returned results like `{date: value.created}` then
+> values being returned from the `insert` callback but also be in the format `{date: /* value */}`.
 
 ### `distinct()` {#distinct}
 
@@ -163,12 +166,12 @@ receives a Model instance as its parameter,
 and does not expect any return value.
 This should only be used to update fields, or `remove()` models in bulk.
 It is only available during `POST`, `PUT`, `DELETE`.
-        
-It is not required that every Model be modified, for example if it doesn't satisfy some condition.
-However consider using `filter(...)` in the case where there are well defined conditions
-that must be met before updating a model.  This will also keep the modify function simpler.
 
 > {.more}
+>
+> It is not required that every Model be modified, for example if it doesn't satisfy some condition.
+> However consider using `filter(...)` in the case where there are well defined conditions
+> that must be met before updating a model.  This will also keep the modify function simpler.
 >
 > For bulk operations the first 10 updates will occur synchronously, before the method returns (before the request ends).
 > From a user standpoint this means that up to 10 results will be modified before they view the results or next page.

@@ -62,14 +62,14 @@
 
 <script>
     /** Add a body class when scrolled past the fixed nav bar height. */
-    window.addEventListener('scroll', function(){
+    window.addEventListener('scroll', ()=>{
         var st = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
         var past = st > $get('nav').getBoundingClientRect().height;
         document.body.classList.toggle('is-scrolled', past);
     });
 
     /** TODO better as IntersectionObserver? **/
-    $ready(function() {
+    $ready(()=>{
         var height = $get('nav').getBoundingClientRect().height;
         if (typeof SmoothScroll !== 'undefined') new SmoothScroll('[data-scroll]', {
             /** Related to CSS involved with handling h1:target anchors from direct links */

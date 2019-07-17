@@ -37,20 +37,79 @@
     </div>
 </div>
 
-<!--
-  TOC
-  -->
-<script>
-    var html = '';
+<template id="more-modal">
+    <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title"></p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <article class="modal-card-body">
 
-    document.querySelectorAll('article > h1').forEach(function (e) {
-        if (e.id){
-            var title = e.innerText;
-            html += '<li><a href="#' + e.id + '" data-scroll>' + title + '</a></li>';
-        }
+            </article>
+        </div>
+    </div>
+</template>
+
+<script>
+    /* TOC */
+    $ready(()=>{
+        var html = '';
+
+        document.querySelectorAll('article > h1').forEach((e)=>{
+            if (e.id) {
+                var title = e.innerText;
+                html += '<li><a href="#' + e.id + '" data-scroll>' + title + '</a></li>';
+            }
+        });
+
+        if (html.length > 0) $get('toc').innerHTML = '<ul>' + html + '</ul>';
     });
 
-    if (html.length > 0) $get('toc').innerHTML = '<ul>' + html + '</ul>';
+    /* .more */
+    $ready(()=>{
+        let article = document.querySelector('article');
+
+        document.querySelectorAll('article > .more').forEach((e)=>{
+            let moreContent = e.innerHTML;
+            let sibling = e.previousElementSibling;
+            let count = 0;
+
+            let contentItems = new Array();
+            contentItems.push(moreContent);
+
+            while (sibling.tagName != 'H3' && sibling.tagName != 'H2'){
+                contentItems.push(sibling.outerHTML);
+                sibling = sibling.previousElementSibling;
+                count++;
+                if (count > 10) return; // Did not find an H3/H2
+            }
+
+            let title = sibling.innerHTML;
+            let content = contentItems.reverse().join('\n');
+
+            let button = document.createElement('span');
+            button.innerText = 'More...';
+            button.setAttribute('class', 'button is-dark is-small is-rounded');
+            sibling.appendChild(button);
+
+            button.addEventListener('click', ()=>{
+                let template = document.querySelector('#more-modal');
+                let modal = document.importNode(template.content, true);
+                let modalElement = modal.querySelector('.modal');
+                let modalContent = modal.querySelector('.modal-card-body');
+                let modalTitle = modal.querySelector('.modal-card-title');
+                let modalClose = modal.querySelector('.modal-card-head .delete');
+                modalContent.innerHTML = content;
+                modalTitle.innerHTML = title;
+                modalClose.addEventListener('click', ()=>modalElement.remove());
+                article.appendChild(modal);
+            });
+
+            e.remove();
+        });
+    });
 
     /* does not span sections..
     $ready(function() {
