@@ -124,7 +124,6 @@ Those 3 cases are exposed as booleans fields `empty` (next/previous both null), 
 Returned values from the callback function are inserted into the results.
 Returnable values are null, a single value, arrays, or other streams.
 
-
 Keep in mind that returned results must be the same type of value as were originally returned from `map` (on the source).
 In other words, if the original `map` operation returned results like `{date: value.created}` then
 values being returned from the `insert` callback but also be in the format `{date: /* value */}`.
