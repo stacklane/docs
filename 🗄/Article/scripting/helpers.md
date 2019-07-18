@@ -225,30 +225,33 @@ This is a streaming method generally followed by `map`.
 
 ### `fromNow(date)`
 
-Utility for displaying relative date/times server-side, rather than resorting to a client-side library.
-Relative date/times are designed to give a general sense of time, not precision.
+Utility for displaying relative date/time messages server-side, rather than resorting to a client-side library.
+Relative date/time messages are designed to give a general sense of time, not precision.
+For example "now", ""3 seconds ago", "1.5 years ago", etc.
 
-```javascript
-import {Post} from '📦';
-import {RelativeDateTime} from 'util';
-
-Post.all().map(p=>({
-    createdAgo: RelativeDateTime.fromNow(p.created),
-    title: p.title
-}));
-```
-
-Example output:
-
-`now`\
-`3 seconds ago`\
-`6 hours ago`\
-`1 day ago`\
-`2 weeks ago`\
-`4 months ago`\
-`1.4 years ago`
-
-Only the year resolution will use a single decimal fraction.
+> {.more}
+>
+> ```javascript
+> import {Post} from '📦';
+> import {RelativeDateTime} from 'util';
+>
+> Post.all().map(p=>({
+>     createdAgo: RelativeDateTime.fromNow(p.created),
+>     title: p.title
+> }));
+> ```
+>
+> Example output:
+>
+> `now`\
+> `3 seconds ago`\
+> `6 hours ago`\
+> `1 day ago`\
+> `2 weeks ago`\
+> `4 months ago`\
+> `1.4 years ago`
+>
+> Only the year resolution will use a single decimal fraction.
 
 
 

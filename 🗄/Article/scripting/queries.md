@@ -233,17 +233,19 @@ There are 4 ways to ensure a container is _selected_ and in-scope (before queryi
    then it is selected within the context of each iteration: `Container.all().map(c=>({children: Child.all()}))`.
 4. Method Call &mdash; All children have an explicit method for querying the desired container `Child.container(containerVar)...`.
 
-## Ancestor Scope
-
-In certain cases it may be necessary to query for children _across_ containers, up to 1 level deep.
-Take the following model containers and children:  `Project` / `List` / `Task`.
-The following queries are possible:
-
-1. Single Container &mdash; Query for all `List`'s in a single `Project`, _or_ all `Task`'s in a single `List`.
-2. Across Containers &mdash; Query for all `Task`'s in a single `Project` (across all `List`'s in 1 `Project`).
-
-The 3 selection rules still apply.
-When querying across containers the selected container in the example would be `Project` instead of `List`.
+> {.more}
+>
+> ## Ancestor Scope
+>
+> In certain cases it may be necessary to query for children _across_ containers, up to 1 level deep.
+> Take the following model containers and children:  `Project` / `List` / `Task`.
+> The following queries are possible:
+>
+> 1. Single Container &mdash; Query for all `List`'s in a single `Project`, _or_ all `Task`'s in a single `List`.
+> 2. Across Containers &mdash; Query for all `Task`'s in a single `Project` (across all `List`'s in 1 `Project`).
+>
+> The 3 selection rules still apply.
+> When querying across containers the selected container in the example would be `Project` instead of `List`.
 
 # Unique Value Queries {#unique}
 

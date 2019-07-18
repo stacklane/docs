@@ -15,10 +15,9 @@
 @import "/bulma/elements/title";
 @import "/bulma/elements/table";
 @import "/bulma/elements/progress";
-@import "/bulma/elements/other";
+// .number screws up prismjs: @import "/bulma/elements/other";
 
-// warning, interferes with prismjs: @import "/bulma/elements/tag";
-// so instead:
+// warning, interferes with prismjs: @import "/bulma/elements/tag"; // so instead:
 @import "/style/badge";
 
 @import "/bulma/components/navbar";
@@ -37,6 +36,10 @@
 @import "/style/build";
 
 ////////////
+
+.delete {
+  @extend %delete;
+}
 
 .small, small{
   font-size: $size-7;
@@ -103,7 +106,9 @@ main {
   // for mobile:
   margin-left: 1rem;
   margin-right: 1rem;
+}
 
+body {
   pre[class*="language-"] {
     @include is-boxed;
   }

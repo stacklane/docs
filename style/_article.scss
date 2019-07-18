@@ -161,3 +161,21 @@ article h3 code{
 article .more {
 
 }
+
+article .more-button{
+  font-size: .6rem;
+  font-weight: bold;
+
+  svg{
+    fill: white;
+  }
+}
+
+article h1 .more-button, article h2 .more-button, article h3 .more-button{
+  margin-left: .25rem;
+}
+
+.modal-card-title code{
+  color: $modal-card-title-color !important;
+}
+

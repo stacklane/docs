@@ -3,6 +3,7 @@
 {{% partial /_layout }}
 {{% partial /_nav }}
 {{% import {article} from '🔗' }}
+{{% svg /icons/ as icons }}
 
 {{< layout}}
 
@@ -37,6 +38,13 @@
     </div>
 </div>
 
+<template id="more-button">
+    <span class="more-button button is-info">
+        <span>Read More</span>
+        <span class="icon is-small">{{>icons-open}}</span>
+    </span>
+</template>
+
 <template id="more-modal">
     <div class="modal is-active">
         <div class="modal-background"></div>
@@ -69,8 +77,6 @@
 
     /* .more */
     $ready(()=>{
-        let article = document.querySelector('article');
-
         document.querySelectorAll('article > .more').forEach((e)=>{
             let moreContent = e.innerHTML;
             let sibling = e.previousElementSibling;
@@ -79,20 +85,18 @@
             let contentItems = new Array();
             contentItems.push(moreContent);
 
-            while (sibling.tagName != 'H3' && sibling.tagName != 'H2'){
+            while (sibling.tagName != 'H3' && sibling.tagName != 'H2' && sibling.tagName != 'H1'){
                 contentItems.push(sibling.outerHTML);
                 sibling = sibling.previousElementSibling;
-                count++;
-                if (count > 10) return; // Did not find an H3/H2
+                count++; if (count > 20) return; // Did not find an H3/H2/H1
             }
 
             let title = sibling.innerHTML;
             let content = contentItems.reverse().join('\n');
 
-            let button = document.createElement('span');
-            button.innerText = 'More...';
-            button.setAttribute('class', 'button is-dark is-small is-rounded');
-            sibling.appendChild(button);
+            let importedButton = document.importNode(document.querySelector('#more-button').content, true);
+            let button = importedButton.querySelector('.button');
+            sibling.appendChild(importedButton);
 
             button.addEventListener('click', ()=>{
                 let template = document.querySelector('#more-modal');
@@ -103,8 +107,16 @@
                 let modalClose = modal.querySelector('.modal-card-head .delete');
                 modalContent.innerHTML = content;
                 modalTitle.innerHTML = title;
+                if (modalContent.querySelector('.token') == null &&
+                    modalContent.querySelector('code') != null){
+                    if (Prism) Prism.highlightAllUnder(modalContent);
+                }
+                // not working:
+                //modalElement.addEventListener('keydown', (evt)=>{
+                //    if (evt.key === "Escape" || evt.key === "Esc") modalElement.remove();
+                //});
                 modalClose.addEventListener('click', ()=>modalElement.remove());
-                article.appendChild(modal);
+                document.body.appendChild(modal);
             });
 
             e.remove();
