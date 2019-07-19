@@ -219,32 +219,55 @@ However if spaces are needed in the strings use JSON for the definition via
 }}
 ```
 
-# Iteration 
+# Iteration {#iteration}
 
-We've extended Mustache iteration with a couple of helpful utilities.
-Standard mustache iteration looks like
-`{{#SomeList}} ... {{/SomeList}}`.
-There are two additional iteration options:
+Stacklane extends Mustache iteration with several helpful utilities.
+`as` creates an alias for the iteration object, `by` creates groups of up to 10 objects at a time,
+and `$first`/`$last` booleans are available to detect the beginning and ending of an iteration stream/list.
 
-## as {#iteration-as}
-
-Use 'as' to rename the internal variable available in each iteration:
-
-`{{#SomeList as item}} {{item.prop}} {{/SomeList}}`
-
-## by {#iteration-by}
-
-Use 'by' to iterate the collection in groups of N (up to 10).
-
-This is most useful when working with various CSS grid layouts.
-
-```html
-{{#SomeList by 2 as grp}}
-    {{#grp as item}}
-        {{item.prop}}
-    {{/grp}}
-{{/SomeList}}
-```
+> {.more}
+>
+> ## as {#iteration-as}
+>
+> Use 'as' to rename the internal variable available in each iteration:
+>
+> `{{#SomeList as item}} {{item.prop}} {{/SomeList}}`
+>
+> ## by {#iteration-by}
+>
+> Use 'by' to iterate the collection in groups of N (up to 10).
+>
+> This is most useful when working with various CSS grid layouts.
+>
+> ```html
+> {{#SomeList by 2 as grp}}
+>    {{#grp as item}}
+>        {{item.prop}}
+>    {{/grp}}
+> {{/SomeList}}
+> ```
+>
+> ## $first/$last
+>
+> Duration iteration two booleans are exposed to denote whether the current element is either first or last.
+>
+> ```html
+> {{#Things}}
+>   {{#$first}}<ul>{{/$first}}
+>     <li>{{this}}</li>
+>   {{#$last}}</ul>{{/$last}}
+> {{/Things}}
+> ```
+>
+> If using `as` then use the alias as the prefix:
+>
+> ```html
+> {{#Things as thing}}
+>   {{#thing$first}}<ul>{{/thing$first}}
+>     <li>{{thing}}</li>
+>   {{#thing$last}}</ul>{{/thing$last}}
+> {{/Things}}
+> ```
 
 # Variable Imports {#variables}
 
