@@ -170,20 +170,127 @@ To display an SVG field in Mustache, use triple brackets `{{{ model.textField }}
 # Markdown {#markdown}
 
 Use the `markdown` field type for simple and safe rich text formatting.
-The default maximum size is 2,000 characters, which may be increased up to 20,000 characters.
+Markdown is typically used for direct input from a standard input/textarea,
+by semi-technical users (or users willing to read simple documentation).
+
 This field accepts string input.
-The field is never null, and always returns a value object, even when the value is empty.
 
-To display as rendered HTML within Mustache, use triple brackets:
+> {.more}
+>
+> The default maximum size is 2,000 *characters*, which may be increased up to 20,000 *characters*.
+> Supports min/max *characters* via `max: N` and `min: N` on the
+> [field definition](/🗄/Article/models/types.md#definitions).
+>
+> ## Initializing
+>
+> A string may be assigned directly to the model's field.
+> Or a value object may be created using the static field method:
+>
+> `let value = new Product.summary('*Markdown* summary')`
+>
+> ## HTML Display
+>
+> To display as rendered HTML within Mustache, use triple brackets: `{{{ model.markdownField }}}`
+>
+> ## Properties
+>
+> If defined, the markdown value object has the following fields:
+>
+> ### `value`
+>
+> String value which is never null, but may be empty.
+>
+> ### `empty`
+>
+> true if the value is empty (also checks for empty when all whitespace is removed)
+>
+> ### `length`
+>
+> Same as calling `value.length`
+>
+> ### `characterCount`
+>
+> The number of characters in the value, which counts against the min/max setting for the field.
+> Depending on the kinds of characters, this may or may not be the same as the `length`.
+>
+> ### `valid`
+>
+> true if the value is valid according to the field settings.
 
-`{{{ model.markdownField }}}`
+# HTML {#html}
 
-The markdown string value is available on the never null `.value` field:
+Use the `html` field type combined with a WYSIWYG client-side editor.
+Allowed HTML is highly limited, and the client-side editor must take that into account.
 
-`model.markdownField.value.length == 0`
+The structure of the valid HTML is a series of block level elements:
+`h1-h6`, `p`, `pre`, `section` (with `h1-h6` as first child), `blockquote`, `ul/li`, `ol/li`.
 
-Supports min/max characters via `max: N` and `min: N` on the
-[field definition](/🗄/Article/models/types.md#definitions).
+Within each supported block, the following inline elements are supported:
+`a`, `br`, `code`, `em`, `s`, `strong`, `sub`, `sup`.
+
+This field accepts string input.
+
+> {.more}
+>
+> The default maximum size is 2,000 *bytes*, which may be increased up to 20,000 *bytes*.
+> Supports min/max *bytes* via `max: N` and `min: N` on the
+> [field definition](/🗄/Article/models/types.md#definitions).
+>
+> ## Initializing
+>
+> A string may be assigned directly to the model's field.
+> Or a value object may be created using the static field method:
+>
+> `let value = new Product.summary('<p>summary</p>')`
+>
+> ## HTML Display
+>
+> To display as rendered HTML within Mustache, use triple brackets: `{{{ model.htmlField }}}`
+>
+> ## Markdown
+>
+> HTML fields support markdown input via field-specific methods.
+> Keep in mind that the markdown must ultimately resolve to valid HTML for the field type.
+>
+> ```javascript
+> let markdown = 'My *markdown* string'
+> new Product().summary(Product.summary.md(markdown));
+> ```
+>
+> To later convert back to Markdown (potentially with minor formatting differences):
+>
+> ```javascript
+> let markdown = theProduct.summary.md();
+> ```
+>
+> ## Properties
+>
+> If defined, the HTML value object has the following fields/methods:
+>
+> ### `value`
+>
+> String value which is never null, but may be empty.
+>
+> ### `empty`
+>
+> true if the value is empty (also checks for empty when all whitespace is removed)
+>
+> ### `length`
+>
+> Same as calling `value.length`
+>
+> ### `characterCount`
+>
+> The number of characters in the value, which counts against the min/max setting for the field.
+> Depending on the kinds of characters, this may or may not be the same as the `length`.
+>
+> ### `valid`
+>
+> true if the value is valid according to the field settings.
+>
+> ### `md()`
+>
+> Returns a markdown representation of the HTML.
 
 # Model Links {#model-links}
 
