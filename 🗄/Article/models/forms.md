@@ -27,7 +27,7 @@ initializing as needed by reading form submission data, or an existing form inst
 <!--TEMPLATE mustache-->
 {{% import {Product} from '📦' }}
 
-{{#Product.Form.get as form}}
+{{#Product.Form.view as form}}
   <form action="/product/create" method="POST">
 
   {{! Access Product.name field data }}
@@ -45,7 +45,7 @@ initializing as needed by reading form submission data, or an existing form inst
   {{/form.name}}
 
   </form>
-{{/Product.Form.get}}
+{{/Product.Form.view}}
 ```
 
 ## Supported Fields
@@ -111,13 +111,12 @@ New may be filled with form data using the `fill(model)` method.
 ```javascript
 import {Product} from '📦';
 
-let form = Product.Form.get();
-
 try {
 
    let newProduct = new Product();
 
-   form.fill(newProduct); // throws $ModelInvalid
+   // throws $ModelInvalid, and rolls back 'newProduct'
+   Product.Form.submit(newProduct);
 
    Redirect.dir('product').dir(newProduct.id);
 
@@ -126,7 +125,8 @@ try {
    // Redisplay with form values, errors, etc:
    Redirect.dir('product')
            .name('create')
-           .form(form);
+           // May use exception for form():
+           .form($ModelInvalid);
 
 }
 ```
@@ -144,9 +144,9 @@ which is useful for updating existing model instances.
 {{% import {Product} from '📦' }}
 {{% import {product} from '🔗' }}
 
-{{#Product.Form.get product}}
+{{#Product.Form.view product}}
 ...
-{{/Product.Form.get}}
+{{/Product.Form.view}}
 ```
 
 ```file-name
@@ -156,11 +156,10 @@ which is useful for updating existing model instances.
 import {Product} from '📦';
 import {product} from '🔗';
 
-let form = Product.Form.get();
-
 try {
 
-   form.fill(product); // throws $ModelInvalid
+   // throws $ModelInvalid:
+   Product.Form.submit(product);
 
    Redirect.dir('product')
            .dir(newProduct.id)
@@ -172,7 +171,8 @@ try {
    Redirect.dir('product')
            .dir(newProduct.id)
            .name('update')
-           .form(form);
+           // May use exception for form():
+           .form($ModelInvalid);
 
 }
 ```
@@ -199,9 +199,9 @@ Now use the partial form type as you would any other form type.
 <!--TEMPLATE mustache-->
 {{% import {ProductNamePriceForm} from '📤' }}
 
-{{#ProductNamePriceForm.get as form}}
+{{#ProductNamePriceForm.view as form}}
 ...
-{{/ProductNamePriceForm.get}}
+{{/ProductNamePriceForm.view}}
 ```
 
 ## Updating
@@ -211,9 +211,9 @@ Now use the partial form type as you would any other form type.
 {{% import {product} from '🔗' }}
 {{% import {ProductNamePriceForm} from '📤' }}
 
-{{#ProductNamePriceForm.get product as form}}
+{{#ProductNamePriceForm.view product as form}}
 ...
-{{/ProductNamePriceForm.get}}
+{{/ProductNamePriceForm.view}}
 ```
 
 # Incremental Forms {#incremental}
@@ -265,13 +265,13 @@ On the next/last step, include the original form ID as a query parameter:
 {{/ProductNamePriceForm.exists}}
 
 {{#ProductNamePriceForm.exists}}
-  {{#Product.Form.get as form}}
+  {{#Product.Form.view as form}}
   <form
-     action="/product/finish?_form={{ProductNamePriceForm.get.id}}"
+     action="/product/finish?_form={{ProductNamePriceForm.view.id}}"
      method="POST">
     {{! more fields }}
   </form>
-  {{/Product.Form.get}}
+  {{/Product.Form.view}}
 {{/ProductNamePriceForm.exists}}
 ```
 
@@ -309,7 +309,7 @@ This enables nested field access such as:
 <!--TEMPLATE mustache-->
 {{% import {Product} from '📦' }}
 
-{{#Product.Form.get as form}}
+{{#Product.Form.view as form}}
   <form action="/product/create" method="POST">
 
   {{! Access Product.description.summary field data }}
@@ -318,13 +318,13 @@ This enables nested field access such as:
   {{/form.description.value.summary}}
 
   </form>
-{{/Product.Form.get}}
+{{/Product.Form.view}}
 ```
 
 # Field Properties
 
 Each form instance contains properties which reach the fields available on the form.
-For example, `Product.Form.get().name` accesses the field information for `name`.
+For example, `Product.Form.view().name` accesses the field information for `name`.
 The following properties are available for each field:
 
 ### `value`
@@ -412,7 +412,7 @@ The on/off objects each have the following properties: `value`, `label`, `select
 
 ### `selectOne`
 
-Defined for 'options'.
+Defined for `options`.
 
 Contains an `options` property, which is a list of available options.
 Each available option object has the following properties: `value`, `label`, `selected`.
@@ -420,7 +420,7 @@ Each available option object has the following properties: `value`, `label`, `se
 
 ### `selectMany`
 
-Defined for a list/array of 'options'.
+Defined for `options[]`.
 
 Contains an `options` property, which is a list of available options.
 Each available option object has the following properties: `value`, `label`, `selected`.
