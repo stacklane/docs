@@ -287,11 +287,6 @@ This field accepts string input.
 >
 > Same as calling `value.length`
 >
-> ### `characterCount`
->
-> The number of characters in the value, which counts against the min/max setting for the field.
-> Depending on the kinds of characters, this may or may not be the same as the `length`.
->
 > ### `valid`
 >
 > true if the value is valid according to the field settings.
