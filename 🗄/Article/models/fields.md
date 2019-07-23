@@ -192,6 +192,8 @@ This field accepts string input.
 >
 > To display as rendered HTML within Mustache, use triple brackets: `{{{ model.markdownField }}}`
 >
+> The value will not be rendered if `invalid`.
+>
 > ## Properties
 >
 > If defined, the markdown value object has the following fields:
@@ -216,6 +218,10 @@ This field accepts string input.
 > ### `valid`
 >
 > true if the value is valid according to the field settings.
+>
+> ### `invalid`
+>
+> true if the value is invalid according to the field settings.
 
 # HTML {#html}
 
@@ -246,6 +252,8 @@ This field accepts string input.
 > ## HTML Display
 >
 > To display as rendered HTML within Mustache, use triple brackets: `{{{ model.htmlField }}}`
+>
+> The value will not be rendered if `invalid`.
 >
 > ## Markdown
 >
@@ -288,6 +296,10 @@ This field accepts string input.
 >
 > true if the value is valid according to the field settings.
 >
+> ### `invalid`
+>
+> true if the value is invalid according to the field settings.
+
 > ### `md()`
 >
 > Returns a markdown representation of the HTML.
