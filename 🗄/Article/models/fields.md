@@ -298,10 +298,12 @@ This field accepts string input.
 > ### `md()`
 >
 > Returns a Markdown representation of the HTML.
+> It may be re-parsed back to HTML using the static method described above.
 >
 > ### `text()`
 >
-> Returns a plain text representation of the HTML (similar to Markdown).
+> Returns a plain text representation of the HTML (similar to Markdown),
+> however there is no guarantee this form may be re-parsed back to HTML.
 
 # Model Links {#model-links}
 
