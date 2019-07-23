@@ -297,7 +297,11 @@ This field accepts string input.
 >
 > ### `md()`
 >
-> Returns a markdown representation of the HTML.
+> Returns a Markdown representation of the HTML.
+>
+> ### `text()`
+>
+> Returns a plain text representation of the HTML (similar to Markdown).
 
 # Model Links {#model-links}
 
