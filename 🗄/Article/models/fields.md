@@ -36,6 +36,7 @@ Supports min/max via `max: N` and `min: N` on the
 Floating-point number (64-bit double precision, IEEE 754).
 Accepts string input representing a decimal or non-decimal.
 Other strings result in a validation error.
+The default rounding scale is **2**, and rounding mode is "half to even".
 Supports min/max via `max: N` and `min: N` on the
 [field definition](/🗄/Article/models/types.md#definitions) (default minimum is **0**).
 
