@@ -12,6 +12,29 @@ For example, a [Mustache endpoint](/🗄/Article/endpoints/mustache.md)
 may iterate over a query given by a [supplier](/🗄/Article/scripting/suppliers.md)
 to display results as HTML.
 
+# All Results {#all}
+
+To query all models of a type, without any filters, use the `all()` method. For example, `Note.all()`.
+
+Results will be returned in the model's [natural ordering](/🗄/Article/models/ordering.md#query).
+
+The "all" query on a model type is also available directly to [Mustache](/🗄/Article/endpoints/mustache.md).
+Any other queries must be built within a [supplier](/🗄/Article/scripting/suppliers.md) before importing them into Mustache.
+
+```file-name
+/index.html
+```
+```html
+<!--TEMPLATE mustache-->
+{{% import {Note} from '📦' }}
+{{#Note.all as note}}
+  {{note.title}}
+{{/Note.all}}
+```
+
+Keep in mind that for contained models, `all` will only include results for a
+[given parent container in scope](#containers).
+
 # Field Filters {#field}
 
 All queries besides `all()` start with a field filter.
@@ -39,29 +62,6 @@ By default field filters return [_unordered_ results](/🗄/Article/models/order
         
 `Product.price_gte(30).price_lte(40)`
 
-# All Results {#all}
-
-To query all models of a type, without any filters, use the `all()` method. For example, `Note.all()`.
-
-Results will be returned in the model's [natural ordering](/🗄/Article/models/ordering.md#query).
-
-The "all" query on a model type is also available directly to [Mustache](/🗄/Article/endpoints/mustache.md).
-Any other queries must be built within a [supplier](/🗄/Article/scripting/suppliers.md) before importing them into Mustache.
-
-```file-name
-/index.html
-```
-```html
-<!--TEMPLATE mustache-->
-{{% import {Note} from '📦' }}
-{{#Note.all as note}}
-  {{note.title}}
-{{/Note.all}}
-```
-
-Keep in mind that for contained models, `all` will only include results for a
-[given parent container in scope](#containers).
-
 # Methods {#methods}
 
 The following methods influence the query results.
@@ -81,6 +81,10 @@ This should only be used if another field filter (eq, gt, gte, lt, lte) is not s
 ### `limit(number)` {#limit}
 
 Limits the results of a query.
+
+# Modifiers {#modifiers}
+
+Modifiers transform the original results.
 
 ### `map(function)` {#map}
 
@@ -106,8 +110,8 @@ Product.all().flatMap(product=>product.options).distinct();
 
 ### `insert(function)` {#insert}
 
-Use `insert` to grow or inflate the original results.
-The insert method transforms the original source results by *optionally* inserting elements.
+Using the results from either `map` or `flatMap`, use `insert` to grow or inflate those results.
+The insert method transforms the modified original results by *optionally* inserting new elements of the same format.
 It may also take otherwise empty results and fill them.
 To ensure predictable results, keep in mind the [default ordering of various query types](/🗄/Article/models/ordering.md#query).
 
@@ -133,8 +137,8 @@ To ensure predictable results, keep in mind the [default ordering of various que
 
 ### `distinct()` {#distinct}
 
-Using the results from either `map` or `flatMap`,
-creates new results that contain only unique values.
+Using the results from `map`, `flatMap`, or `insert`,
+creates new results which contain only unique values.
         
 ```javascript
 let distinctTitleCount = Article.all()
@@ -158,12 +162,31 @@ Return the total number of results, after considering all other methods, such as
 Returns a single result (effectively `limit(1)`).
 If there is no result, then a `$ModelNotFound`
 exception is generated, similar to loading a model by its ID.
-        
+
+### `sum(field)` {#sum}
+
+Must be called before a [modifier](#modifiers).
+Returns the sum of a field (`integer` or `double`).
+
+```javascript
+Product.all().sum(Product.price);
+```
+
+The sum will be zero if there are no results (results are empty).
+
+### `avg(field)` {#avg}
+
+Must be called before a [modifier](#modifiers).
+
+```javascript
+Product.all().avg(Product.rating);
+```
+
+`avg` may return null if there are no results to average (results are empty).
+
 ### `modify(function)` {#modify}
 
-The callback function to `modify`
-receives a Model instance as its parameter,
-and does not expect any return value.
+The callback function to `modify` receives a Model instance as its parameter, and does not expect any return value.
 This should only be used to update fields, or `remove()` models in bulk.
 It is only available during `POST`, `PUT`, `DELETE`.
 
