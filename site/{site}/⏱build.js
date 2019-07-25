@@ -23,7 +23,7 @@ new PlaySite(url)
 .status((log)=>{
     buffered.push({
         level: log.level,
-        value: log.value
+        value: log.value + ''
     });
 })
 .then((site)=>{
@@ -70,8 +70,8 @@ new PlaySite(url)
                 $event: {type: "completed", last: true},
                 level: "info",
                 value: "Completed",
-                url: finished.url,
-                frame: finished.frameName
+                url: finished.url + '',
+                frame: finished.frameName + ''
             });
 
             return next;
