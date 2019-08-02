@@ -4,70 +4,23 @@ summary: Learn about model validation and HTML forms.
 beta: true
 ---
 
-HTML forms are a natural fit for models.
-Typically the input to a form ends up being transformed into model values.
-Those values may be valid or invalid.
-To handle user form input, continuations, and validation,
+To handle user form input, incremental steps, and validation,
 Stacklane provides a specialized model type.
 
-# Form Type
+# Overview
 
 All models have a corresponding Form type.
 For example a `Product` model also has a `Product.Form`.
 This may be thought of a singleton for the current user, request, and response.
-The Form type of a model has all of the fields of a regular model.
-The main difference is that it can exist in an *invalid* state.
-The `get()` method of the Form type always returns an instance,
-initializing as needed by reading form submission data, or an existing form instance.
 
-```file-name
-/product/add.html
-```
-```html
-<!--TEMPLATE mustache-->
-{{% import {Product} from '📦' }}
-
-{{#Product.Form.view as form}}
-  <form action="/product/create" method="POST">
-
-  {{! Access Product.name field data }}
-  {{#form.name}}
-    <label for="{{path}}">{{label}}</label>
-    {{#input as input}}
-    <input id="{{path}}" name="{{path}}" value="{{value}}"
-      class="input {{#invalid}}is-danger{{/invalid}}"
-      {{{input.attributes}}}>
-    {{/input}}
-    {{#about}}<p>{{about}}</p>{{/about}}
-    {{#invalid}}
-      <p class="is-danger">{{message.value}}</p>
-    {{/invalid}}
-  {{/form.name}}
-
-  </form>
-{{/Product.Form.view}}
-```
-
-## Supported Fields
-
-Forms support a subset of [field types](/🗄/Article/models/fields.md).
-For other field types custom handling will be necessary, prior to calling the `fill(model)` method on the form.
-The following field types are supported: `string`, `options`, `options[]`, `boolean`, `integer`, `double`, `markdown`
-
-# Lifecycle
+## Lifecycle
 
 Forms are immutable once initialized &mdash;
 for example, a given Form ID being passed in the `_form` parameter will never have field values which change over time.
 This means that every form submission results in a new, unique Form ID.
 Form data is only accessible from the same client, for a period of up to 4 hours.
 
-## Manual Invalidation
-
-If a given form's data should no longer be considered usable, then manually calling `remove()` on
-the form instance will invalidate it.  This is not necessary for most flows.
-Allow a few minutes for the invalidation to take effect.
-
-# Labels
+## Labels
 
 > {.alert .is-info .is-small}
 >
@@ -101,9 +54,36 @@ status:
     dis: Disabled
 ```
 
+# Viewing Forms {#view}
+
+```file-name
+/product/add.html
+```
+```html
+<!--TEMPLATE mustache-->
+{{% import {Product} from '📦' }}
+
+{{#Product.Form.view}}
+  <form action="/product/create?_form={{id}}" method="POST">
+  {{#name}}
+    <label for="{{path}}">{{label}}</label>
+    {{#input as input}}
+    <input id="{{path}}" name="{{path}}" value="{{value}}"
+      class="input {{#invalid}}is-danger{{/invalid}}"
+      {{{input.attributes}}}>
+    {{/input}}
+    {{#about}}<p>{{about}}</p>{{/about}}
+    {{#invalid}}
+      <p class="is-danger">{{message.value}}</p>
+    {{/invalid}}
+  {{/name}}
+  </form>
+{{/Product.Form.view}}
+```
+
 # Creating Models {#create}
 
-New may be filled with form data using the `fill(model)` method.
+New models may be filled with form data using the `submit(model)` method.
 
 ```file-name
 /product/📮create.js
@@ -126,7 +106,7 @@ try {
    Redirect.dir('product')
            .name('create')
            // May use exception for form():
-           .form($ModelInvalid);
+           .invalid($ModelInvalid);
 
 }
 ```
@@ -159,20 +139,19 @@ import {product} from '🔗';
 try {
 
    // throws $ModelInvalid:
-   Product.Form.submit(product);
+   Product.Form.submit(product.get());
 
    Redirect.dir('product')
-           .dir(newProduct.id)
+           .dir(product.id)
            .success('Updated!');
 
 } catch ($ModelInvalid){
 
    // Redisplay with form values, errors, etc:
    Redirect.dir('product')
-           .dir(newProduct.id)
+           .dir(product.id)
            .name('update')
-           // May use exception for form():
-           .form($ModelInvalid);
+           .invalid($ModelInvalid);
 
 }
 ```
@@ -191,65 +170,64 @@ define a supplier value with the ⏳ prefix:
   - price
 ```
 
-Now use the partial form type as you would any other form type.
+Now use the partial form type as you would any other form type,
+by first importing it from the supplier module:
 
-## Creating
-
-```html
-<!--TEMPLATE mustache-->
-{{% import {ProductNamePriceForm} from '📤' }}
-
-{{#ProductNamePriceForm.view as form}}
-...
-{{/ProductNamePriceForm.view}}
+```javascript
+import {ProductNamePriceForm} from '📤'
 ```
 
-## Updating
+[Labels](#labels) may also be overridden per field:
 
-```html
-<!--TEMPLATE mustache-->
-{{% import {product} from '🔗' }}
-{{% import {ProductNamePriceForm} from '📤' }}
-
-{{#ProductNamePriceForm.view product as form}}
-...
-{{/ProductNamePriceForm.view}}
+```yaml
+📦.Product:
+  - name:
+      label: Product Name
+  - price
 ```
 
 # Incremental Forms {#incremental}
 
-[Partial Forms](#partial) allow collecting information across multiple pages.
+[Partial forms](#partial) allow collecting information across multiple steps.
 
-As in the example above, assume the first page begins collecting
-a Product's name and price using `ProductNamePriceForm`.
-
-The submission of the first page is similar, however instead of creating a new Product
-we're simply moving on to the next step.
-Notice that in *both* redirects we are including the form instance.
+The following example defines two steps, `Begin` and `End`:
 
 ```file-name
-/product/📮start.js
+/📤/⏳CreateProduct.yaml
+```
+```yaml
+📦.Product:
+  Begin:
+    - name
+  End:
+    - price
+```
+
+Each subsequent step contains the fields from previous steps.
+In this example the form for `End` actually contains `name` and `price`.
+
+For the submission of the first step, we're validating and moving on to the next step.
+
+```file-name
+/product/📮begin.js
 ```
 ```javascript
 import {Product} from '📦';
-import {ProductNamePriceForm} from '📤';
-
-let form = ProductNamePriceForm.get();
+import {CreateProduct} from '📤';
 
 try {
 
-   form.validate();
+   let form = CreateProduct.Begin.read();
 
    Redirect.dir('product')
-           .name('finish') // last page
+           .name('end') // last page
            .form(form);
 
 } catch ($ModelInvalid){
 
-   // Redisplay with form values, errors, etc:
    Redirect.dir('product')
-           .name('start') // stay
-           .form(form);
+           .name('begin') // stay
+           .invalid($ModelInvalid);
 
 }
 ```
@@ -260,42 +238,34 @@ On the next/last step, include the original form ID as a query parameter:
 /product/finish.html
 ```
 ```html
-{{^ProductNamePriceForm.exists}}
-  <a href="/product/start.html">Start Over</a>
-{{/ProductNamePriceForm.exists}}
+{{^CreateProduct.Begin.valid}}
+  <a href="/product/begin">Start Over</a>
+{{/CreateProduct.Begin.valid}}
 
-{{#ProductNamePriceForm.exists}}
-  {{#Product.Form.view as form}}
-  <form
-     action="/product/finish?_form={{ProductNamePriceForm.view.id}}"
-     method="POST">
-    {{! more fields }}
-  </form>
-  {{/Product.Form.view}}
-{{/ProductNamePriceForm.exists}}
+{{#CreateProduct.Begin.valid}}
+  {{#CreateProduct.End.view}}
+    <form action="/product/end?_form={{id}}" method="POST">
+      {{! more fields }}
+    </form>
+  {{/CreateProduct.End.view}}
+{{/CreateProduct.Begin.valid}}
 ```
 
 ```file-name
-/product/📮finish.js
+/product/📮end.js
 ```
 ```javascript
 import {Product} from '📦';
+import {CreateProduct} from '📤';
 
-// First reads the _form query param, THEN reads form submission:
-let form = Product.Form.get();
+try {
 
-// ... Remainder identical to normal creation
+  let newProduct = new Product();
+
+  CreateProduct.End.submit(newProduct);
+
+} //...
 ```
-
-## Expired Forms
-
-To handle the temporary nature of forms while collection incremental forms over a period of time,
-there are two points where it's possible to check for a still viable form instance:
-
-1. `exists` &mdash; Useful on incremental forms during GET.
-2. During a POST/PUT, if a `_form` is passed for incremental form processing,
-   but the form given in the parameter has expired, then any resulting call to `create` or `update`
-   will result in a validation error.
 
 # Nested Forms {#nested}
 
@@ -309,21 +279,78 @@ This enables nested field access such as:
 <!--TEMPLATE mustache-->
 {{% import {Product} from '📦' }}
 
-{{#Product.Form.view as form}}
-  <form action="/product/create" method="POST">
-
-  {{! Access Product.description.summary field data }}
-  {{#form.description.value.summary}}
-     ...
-  {{/form.description.value.summary}}
-
+{{#Product.Form.view}}
+  <form action="/product/create?_form={{id}}" method="POST">
+    {{#description.value.summary}}
+    ...
+    {{/description.value.summary}}
   </form>
 {{/Product.Form.view}}
 ```
 
-# Field Properties
+# Form Type {#form-type}
 
-Each form instance contains properties which reach the fields available on the form.
+The following top level methods are available for each form type:
+
+### `view()`
+
+Usable during GET. Returns an existing or new [form instance](#form-instance).
+May be used in Mustache templates.
+
+### `get()`
+
+Usable during non-GET. Reads any previous state, combined with incoming form data,
+and returns an new [form instance](#form-instance).
+
+### `read()`
+
+Identical to `get()` however it will throw `$ModelInvalid` if the read form is invalid.
+Equivalent to calling `let instance = FormType.get(); instance.validate();`
+
+### `submit(model)`
+
+Fills a new or existing model with information in the form.
+Throws `$ModelInvalid` if either the form or the filled model are invalid.
+If an exception is thrown, then the model is rolled back.
+Equivalent to calling `FormType.get().submit(model)`.
+
+### `exists()`
+
+Returns `true` if there is an existing model / previous state.
+May be used in Mustache templates.
+
+### `valid()`
+
+Returns `true` if there is an existing model / previous state **and** it is valid.
+May be used in Mustache templates.
+
+# Form Instance {#form-instance}
+
+The following properties/methods are available for each form instance.
+Form instances are returned for `view()`, `get()`, and `read()`
+
+### `id`
+
+Returns the unique identifier for the form.
+This should be included the `_form` query param in URLs related to the form.
+
+### `validate()`
+
+Throws `$ModelInvalid` if the form instance is invalid.
+
+### `submit(model)`
+
+Fills a new or existing model with information in the form.
+Throws $ModelInvalid if either the form or the filled model are invalid.
+If an exception is thrown, then the model is rolled back.
+
+### [`fieldName`](#form-fields)
+
+Each form instance contains a property for accessing each [field](#form-fields).
+
+# Form Fields {#form-fields}
+
+Each [form instance](#form-instance) contains properties which reach the fields available on the form.
 For example, `Product.Form.view().name` accesses the field information for `name`.
 The following properties are available for each field:
 
@@ -425,3 +452,59 @@ Defined for `options[]`.
 Contains an `options` property, which is a list of available options.
 Each available option object has the following properties: `value`, `label`, `selected`.
 0+ options may be selected.
+
+# Generic Control
+
+Using [HTML suppliers](/🗄/Article/scripting/suppliers.md), it's possible create a generic HTML control.
+Here is an example for the Bulma CSS library, which accepts the field of a form instance as its input parameter.
+
+```file-name
+/📤/Field.html
+```
+```html
+<!--TEMPLATE mustache-->
+{{#updatable}}
+<div class="field">
+    {{^toggle}}<label class="label" for="{{path}}">{{label}}</label>{{/toggle}}
+    <div class="control">
+        {{#input as input}}
+        <input id="{{path}}" name="{{path}}" value="{{value}}"
+           class="input {{#invalid}}is-danger{{/invalid}}" {{{input.attributes}}}>
+        {{/input}}
+        {{#textarea as textarea}}
+        <textarea id="{{path}}" name="{{path}}"
+           class="textarea" {{{textarea.attributes}}}>{{value}}</textarea>
+        {{/textarea}}
+        {{#toggle as toggle}}
+        <label class="checkbox" for="{{path}}">
+            <input id="{{path}}" type="checkbox" name="{{path}}" value="{{toggle.on.value}}"
+                   {{#toggle.on.selected}}checked{{/toggle.on.selected}}> {{toggle.on.label}}
+        </label>
+        {{/toggle}}
+        {{#selectOne as select}}
+        <div class="select {{#invalid}}is-danger{{/invalid}}">
+            <select id="{{path}}" name="{{path}}" {{#required}}required{{/required}}>
+            {{#select.options as option}}
+            <option value="{{option.value}}" {{#option.selected}}selected{{/option.selected}}>
+            {{option.label}}
+            </option>
+            {{/select.options}}
+            </select>
+        </div>
+        {{/selectOne}}
+        {{#selectMany as select}}
+        {{#select.options as option}}
+        <label class="checkbox" for="{{path}}_{{option.value}}">
+            <input type="checkbox" value="{{option.value}}"
+                   id="{{path}}_{{option.value}}" name="{{path}}"
+                   {{#option.selected}}checked{{/option.selected}}>
+            {{option.label}}
+        </label>
+        {{/select.options}}
+        {{/selectMany}}
+    </div>
+    {{#about}}<p class="help">{{about}}</p>{{/about}}
+    {{#invalid}}<p class="help is-danger">{{message.value}}</p>{{/invalid}}
+</div>
+{{/updatable}}
+```
