@@ -295,7 +295,10 @@ The following top level methods are available for each form type:
 ### `view()`
 
 Usable during GET. Returns an existing or new [form instance](#form-instance).
-May be used in Mustache templates.
+This method may be used directly in Mustache templates,
+or its resulting form instance may be exported from a [supplier](/📤/Article/scripting/suppliers.md).
+It optionally accepts an existing model as a parameter to initialize the view,
+*or* it accepts an object literal / hash of field values to initialize the view.
 
 ### `get()`
 
@@ -313,6 +316,10 @@ Fills a new or existing model with information in the form.
 Throws `$ModelInvalid` if either the form or the filled model are invalid.
 If an exception is thrown, then the model is rolled back.
 Equivalent to calling `FormType.get().submit(model)`.
+Keep in mind that the form itself must be valid,
+**and** the resulting model must be valid &mdash;
+for example, if there are other non-form fields which should be set on the
+model, these should be set before calling `submit(model)`.
 
 ### `exists()`
 
