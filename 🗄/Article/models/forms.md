@@ -303,12 +303,12 @@ It optionally accepts an existing model as a parameter to initialize the view,
 ### `get()`
 
 Usable during non-GET. Reads any previous state, combined with incoming form data,
-and returns an new [form instance](#form-instance).
+and returns a [form instance](#form-instance).
 
 ### `read()`
 
 Identical to `get()` however it will throw `$ModelInvalid` if the read form is invalid.
-Equivalent to calling `let instance = FormType.get(); instance.validate();`
+Equivalent to calling `let form = FormType.get(); form.validate();`
 
 ### `submit(model)`
 
@@ -320,16 +320,6 @@ Keep in mind that the form itself must be valid,
 **and** the resulting model must be valid &mdash;
 for example, if there are other non-form fields which should be set on the
 model, these should be set before calling `submit(model)`.
-
-### `exists()`
-
-Returns `true` if there is an existing model / previous state.
-May be used in Mustache templates.
-
-### `valid()`
-
-Returns `true` if there is an existing model / previous state **and** it is valid.
-May be used in Mustache templates.
 
 # Form Instance {#form-instance}
 
