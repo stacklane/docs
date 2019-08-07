@@ -341,6 +341,19 @@ Fills a new or existing model with information in the form.
 Throws $ModelInvalid if either the form or the filled model are invalid.
 If an exception is thrown, then the model is rolled back.
 
+### `invalid()`
+
+Returns `true` if the form instance is invalid.
+Newly initialized form views (with no previous state) are *neither* valid or invalid.
+In that case this will always return false.
+May be used in Mustache templates.
+
+### `ready()`
+
+Returns `true` if the form instance came from a previous state and it is valid.
+Primarily used for incremental form steps.
+May be used in Mustache templates.
+
 ### [`fieldName`](#form-fields)
 
 Each form instance contains a property for accessing each [field](#form-fields).
