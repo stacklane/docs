@@ -413,3 +413,16 @@ Deleting a document will delete all associated unique values.
 
 Within the directory "📦", and given a file name named `🌐Article.yaml`,
 a "Universal" model named `Article` will be available to your scripts.
+
+# Protected Fields {#protected}
+
+Protected fields have values which are intended to be handled with more care and thought than regular fields.
+Fields which may be protected are usually access tokens, identifiers, and other generated values.
+
+A field may be marked as protected using `protected: true`
+
+A protected field has the following properties:
+
+- *Not* available for direct access in Mustache (but may be exposed via [suppliers](/🗄/Article/scripting/suppliers.md)).
+- *Not* available for use in [forms](/🗄/Article/scripting/suppliers.md), including custom forms (their input may not come directly from a user).
+- Available for direct access in server-side JavaScript, and exportable from [suppliers](/🗄/Article/scripting/suppliers.md) as usual.
