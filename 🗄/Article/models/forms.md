@@ -267,27 +267,6 @@ try {
 } //...
 ```
 
-# Nested Forms {#nested}
-
-Nested forms occur for [embedded model types](/🗄/Article/models/types.md#embedded).
-They are directly reachable via the `.value` property.
-Unlike regular embedded model values, which may be optional and therefore null,
-nested form values are *never* null.
-This enables nested field access such as:
-
-```html
-<!--TEMPLATE mustache-->
-{{% import {Product} from '📦' }}
-
-{{#Product.Form.view}}
-  <form action="/product/create?_form={{id}}" method="POST">
-    {{#description.value.summary}}
-    ...
-    {{/description.value.summary}}
-  </form>
-{{/Product.Form.view}}
-```
-
 # Form Type {#form-type}
 
 The following top level methods are available for each form type:
