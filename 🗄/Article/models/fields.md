@@ -230,7 +230,7 @@ Use the `html` field type combined with a WYSIWYG client-side editor.
 Allowed HTML is highly limited, and the client-side editor must take that into account.
 
 The structure of the valid HTML is a series of block level elements:
-`h1-h6`, `p`, `pre`, `section` (with `h1-h6` as first child), `blockquote`, `ul/li`, `ol/li`.
+`h1-h6`, `div`, `p`, `pre`, `section` (with `h1-h6` as first child), `blockquote`, `ul/li`, `ol/li`.
 
 Within each supported block, the following inline elements are supported:
 `a`, `br`, `code`, `em`, `s`, `strong`, `sub`, `sup`.
