@@ -251,7 +251,7 @@ They are useful for collecting information progressively, across multiple steps.
 Each step is a distinct form which contains all fields from any previous step.
 
 Form steps will always initialize their state from other steps already filled out.
-It's not required that all steps be followed &mdash as with other forms,
+It's not required that all steps be followed &mdash; as with other forms,
 the only requirement is that all fields of the submitted form are valid.
 
 The following example defines two steps, `Begin` and `End`:
