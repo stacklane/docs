@@ -186,9 +186,73 @@ import {ProductNamePriceForm} from '📤'
   - price
 ```
 
-# Incremental Forms {#incremental}
+# Form Groups {#group}
 
-[Partial forms](#partial) allow collecting information across multiple steps.
+In certain cases its useful to unify several forms under a common identifier.
+For example, a single HTML form may be collecting information for two different models.
+
+```file-name
+/📤/⏳SetupForm.yaml
+```
+```yaml
+OneForm:
+  📦.One:
+    - fieldOne
+TwoForm:
+  📦.Two:
+    - fieldTwo
+```
+
+```file-name
+/product/setup.html
+```
+```html
+{{#SetupForm.view}}
+  <form action="/setup?_form={{id}}" method="POST">
+    {{#SetupForm.OneForm.view}}
+       {{#fieldOne}}
+         <input id="{{path}}" name="{{path}}" value="{{value}}"
+            {{{input.attributes}}}>
+       {{/fieldOne}}
+    {{/SetupForm.OneForm.view}}
+    {{#SetupForm.TwoForm.view}}
+       {{#fieldTwo}}
+         <input id="{{path}}" name="{{path}}" value="{{value}}"
+            {{{input.attributes}}}>
+       {{/fieldTwo}}
+    {{/SetupForm.TwoForm.view}}
+    <input type="submit" value="Submit">
+  </form>
+{{/SetupForm.view}}
+```
+
+In the subsequent script receiving the form POST,
+for user friendly rollback handling, be sure to construct models immediately
+before their corresponding use in `submit`:
+
+```file-name
+/product/📮setup.js
+```
+```javascript
+import {SetupForm} from '📤';
+
+//...
+let one = new One();
+SetupForm.OneForm.submit(one);
+let two = new Two();
+SetupForm.TwoForm.submit(two);
+//...
+```
+
+# Form Steps {#step}
+
+Form steps are a type of form group.
+They are useful for collecting information progressively, across multiple steps.
+Each step is a distinct form which contains all fields from any previous step.
+
+Form steps will always initialize their state from other steps already filled out.
+It's not required that all steps be followed &mdash as with other forms,
+the only requirement is that all fields of the submitted form are valid.
 
 The following example defines two steps, `Begin` and `End`:
 
@@ -196,15 +260,16 @@ The following example defines two steps, `Begin` and `End`:
 /📤/⏳CreateProduct.yaml
 ```
 ```yaml
-📦.Product:
-  Begin:
+Begin:
+  📦.Product:
     - name
-  End:
-    - price
++End:
+  - price
 ```
 
 Each subsequent step contains the fields from previous steps.
-In this example the form for `End` actually contains `name` and `price`.
+In this example the form for `End` contains `name` and `price`.
+The prefix '+' indicates that it adds fields to the previous step.
 
 For the submission of the first step, we're validating and moving on to the next step.
 
@@ -232,7 +297,7 @@ try {
 }
 ```
 
-On the next/last step, include the original form ID as a query parameter:
+On the next/last step, include the form ID as a query parameter:
 
 ```file-name
 /product/finish.html
@@ -401,6 +466,10 @@ The following properties are available for every field &mdash; they are mutually
 and a given control will not be defined twice for the same field.
 Note that for all of the HTML utilities below, `id`, `name`, and `class` are never emitted.
 
+Using [HTML suppliers](/🗄/Article/scripting/suppliers.md),
+it's possible create a generic HTML control which accepts the field of a form instance as its input parameter.
+[Check out the example](/🗄/Article/models/form-control.md).
+
 ### `input`
 
 Defined for `string`, `integer`, and `double`.
@@ -441,59 +510,3 @@ Defined for `options[]`.
 Contains an `options` property, which is a list of available options.
 Each available option object has the following properties: `value`, `label`, `selected`.
 0+ options may be selected.
-
-# Generic Control
-
-Using [HTML suppliers](/🗄/Article/scripting/suppliers.md), it's possible create a generic HTML control.
-Here is an example for the Bulma CSS library, which accepts the field of a form instance as its input parameter.
-
-```file-name
-/📤/Field.html
-```
-```html
-<!--TEMPLATE mustache-->
-{{#updatable}}
-<div class="field">
-    {{^toggle}}<label class="label" for="{{path}}">{{label}}</label>{{/toggle}}
-    <div class="control">
-        {{#input as input}}
-        <input id="{{path}}" name="{{path}}" value="{{value}}"
-           class="input {{#invalid}}is-danger{{/invalid}}" {{{input.attributes}}}>
-        {{/input}}
-        {{#textarea as textarea}}
-        <textarea id="{{path}}" name="{{path}}"
-           class="textarea" {{{textarea.attributes}}}>{{value}}</textarea>
-        {{/textarea}}
-        {{#toggle as toggle}}
-        <label class="checkbox" for="{{path}}">
-            <input id="{{path}}" type="checkbox" name="{{path}}" value="{{toggle.on.value}}"
-                   {{#toggle.on.selected}}checked{{/toggle.on.selected}}> {{toggle.on.label}}
-        </label>
-        {{/toggle}}
-        {{#selectOne as select}}
-        <div class="select {{#invalid}}is-danger{{/invalid}}">
-            <select id="{{path}}" name="{{path}}" {{#required}}required{{/required}}>
-            {{#select.options as option}}
-            <option value="{{option.value}}" {{#option.selected}}selected{{/option.selected}}>
-            {{option.label}}
-            </option>
-            {{/select.options}}
-            </select>
-        </div>
-        {{/selectOne}}
-        {{#selectMany as select}}
-        {{#select.options as option}}
-        <label class="checkbox" for="{{path}}_{{option.value}}">
-            <input type="checkbox" value="{{option.value}}"
-                   id="{{path}}_{{option.value}}" name="{{path}}"
-                   {{#option.selected}}checked{{/option.selected}}>
-            {{option.label}}
-        </label>
-        {{/select.options}}
-        {{/selectMany}}
-    </div>
-    {{#about}}<p class="help">{{about}}</p>{{/about}}
-    {{#invalid}}<p class="help is-danger">{{message.value}}</p>{{/invalid}}
-</div>
-{{/updatable}}
-```
