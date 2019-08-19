@@ -95,6 +95,12 @@ fieldName: string
 otherField: boolean
 ```
 
+Short form field definitions may be configured as `optional` with the '?' postfix:
+
+```yaml
+optionalNumber?: integer
+```
+
 ### Long Form
 
 To define additional [field properties](/🗄/Article/models/fields.md) use the long form:
