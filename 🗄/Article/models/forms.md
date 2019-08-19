@@ -188,7 +188,7 @@ import {ProductNamePriceForm} from '📤'
 
 # Form Groups {#group}
 
-In certain cases its useful to unify several forms under a common identifier.
+In certain cases it's useful to unify several forms under a common identifier.
 For example, a single HTML form may be collecting information for two different models.
 
 ```file-name
