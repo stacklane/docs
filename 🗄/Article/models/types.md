@@ -77,6 +77,24 @@ To define models that are in a container, place them into directories.  Example 
 /📦/Account/List/🌐Task.yaml
 ```
 
+## Custom ID Prefixes
+
+Models always have an automatically generated unique `id` field.
+A custom prefix may be added to all generated IDs for a particular model type.
+This prefix may be between 1-3 lowercase alpha characters (a-z), and optionally end with an underscore.
+
+```file-name
+/📦/🌐Product.yaml
+```
+```yaml
+🎛:
+  prefix: prd_
+
+# Field definitions
+```
+
+This will produce IDs for the `Product` model such as `prd_QpvhSS8U34k`
+
 ## Fields
 
 Field names must follow camel case, e.g. "camel" or "camelCase".
