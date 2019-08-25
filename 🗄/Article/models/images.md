@@ -3,19 +3,16 @@ title: Image Field Type
 summary:  Learn about uploading and displaying images.
 ---
 
-# Overview
-
 The `image` field type stores a single image. Supported image types are JPG, GIF, PNG.
-Because non-expert users may be using your site/app, the system supports image uploads of up to 10MB.
+Because non-expert users may be using the site/app, the platform supports image uploads of up to 10MB.
 However all images will be rescaled to no more than 2000px wide (with a proportional height).
 
 # Display
 
 Images are served out of an optimized, secure, and "generic" domain name
-which is independent from the domain your site is hosted on.
+which is independent from the domain a site is hosted on.
 The image URLs are not designed to be user friendly or directly shared.
-Image URLs should always be embedded in HTML, even if it's a simple
-shareable "wrapper".
+Image URLs should always be embedded in HTML, even if it's a simple shareable "wrapper".
 
 Using a Mustache template, a triple bracket expression will render an appropriate `<img>` tag, for example:
 
@@ -40,7 +37,8 @@ Prior to processing, images displayed while in this phase will still be in their
 ## Postprocess
 
 The image has been processed and is now in its final stored state.
-Processing includes rescaling, auto-orientation correction based EXIF data, and removal of all EXIF data (GPS location, etc). 
+Processing includes rescaling, EXIF orientation correction, [safety scanning](#unsafe),
+and removal of potentially identifiable EXIF data (GPS location, etc).
 
 # Utilities
 
@@ -182,3 +180,18 @@ We've put together a full <a href="https://github.com/stacklane-blueprints/image
 that we recommend looking at.
 This examples includes a StimulusJS widget, that with a few modifications
 could be useful in any project.
+
+# Unsafe Content {#unsafe}
+
+A challenge with user-uploaded content is that it may literally be anything.
+While most users are well-behaved, it only takes a single user to throw off a community.
+Unsafe content detection will consider images which appear to be adult, racy, or violent.
+
+Stacklane automatically applies safety detection to uploaded images.
+This occurs during the processing phase &mdash;
+an image where `processed==true` has already had safety detection applied.
+
+If an image appears to be unsafe, then the image will be blurred, and the `unsafe` property will return false.
+When using the default `<img>` HTML generation via triple brackets `{{{post.image}}}`,
+the generated `<img>` tag will contain the attribute `data-unsafe="true"`.
+Using an attribute selector it's possible to apply additional formatting beyond the default blurring.
