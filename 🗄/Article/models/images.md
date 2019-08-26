@@ -1,11 +1,10 @@
 ---
 title: Image Field Type
-summary:  Learn about uploading and displaying images.
+summary: Learn about uploading and displaying images.
 ---
 
 The `image` field type stores a single image. Supported image types are JPG, GIF, PNG.
 Because non-expert users may be using the site/app, the platform supports image uploads of up to 10MB.
-However all images will be rescaled to no more than 2000px wide (with a proportional height).
 
 # Display
 
@@ -34,39 +33,29 @@ This is the image state immediately after it's transferred/uploaded.
 It is the raw image received from the client.
 Prior to processing, images displayed while in this phase will still be in their original state.
 
-## Postprocess
+## Processing
 
-The image has been processed and is now in its final stored state.
+After committed, an image moves to the processing phase.
+During this phase the image will still display in its original raw state.
 Processing includes rescaling, EXIF orientation correction, [safety scanning](#unsafe),
 and removal of potentially identifiable EXIF data (GPS location, etc).
 
-# Utilities
+## Postprocess
 
-An image value has several helpful utility fields:
+The image has been processed and is now in its final stored state.
 
-## processed
+# Rescaling
 
-`true` if the uploaded image has been analyzed and resized.
+Non-expert users may upload full resolution / raw images which are too large for general web display.
+These may be rescaled or cropped client-side.
+Otherwise Stacklane will automatically rescale images during the processing phase.
 
-## width
-
-If available, then returns the width of the image, otherwise null.
-
-## height
-
-If available, then returns the height of the image, otherwise null.
-
-## square, horizontal, vertical
-
-If width/height are available, then returns true/false if image width == height,
-width > height, and width < height respectively.
-
-## ratio
-
-If width/height are available, then returns the ratio of the image such as `16:9`. 
-Variations of this field are `ratioBy` which returns as `2by3`, and `ratioX` which returns as `1x1`.
-The ratio (combined with a CSS class) can be useful in displaying responsive images.
-If the image's dimensions are unusual, then the ratio may be null.
+- Images > 1000px, rescaled to 1000px wide and proportional height.
+- Images <= 1000px wide remain unscaled.
+- JPG images will use progressive rendering.
+- PNG images will use progressive rendering. PNG
+- PNG images exceeding 500K bytes after rescaling are converted to JPG.
+- Resulting image size must be less than 500K bytes.
 
 # Friendly URLs {#sharing}
      
@@ -195,3 +184,39 @@ If an image appears to be unsafe, then the image will be blurred, and the `unsaf
 When using the default `<img>` HTML generation via triple brackets `{{{post.image}}}`,
 the generated `<img>` tag will contain the attribute `data-unsafe="true"`.
 Using an attribute selector it's possible to apply additional formatting beyond the default blurring.
+
+# Utilities
+
+An image value has several helpful utility fields:
+
+## `processed`
+
+`true` if the uploaded image has been analyzed and resized.
+
+## `width`
+
+If available, then returns the width of the image, otherwise null.
+
+## `height`
+
+If available, then returns the height of the image, otherwise null.
+
+## `square`, `horizontal`, `vertical`
+
+If width/height are available, then returns true/false if image width == height,
+width > height, and width < height respectively.
+
+## `ratio`
+
+If width/height are available, then returns the ratio of the image such as `16:9`.
+Variations of this field are `ratioBy` which returns as `2by3`, and `ratioX` which returns as `1x1`.
+The ratio (combined with a CSS class) can be useful in displaying responsive images.
+If the image's dimensions are unusual, then the ratio may be null.
+
+## `ratioX`
+
+Variation of ratio which returns values separated with 'x' such as `1x1`.
+
+## `ratioBy`
+
+Variation of ratio which returns values separated with 'by' such as `2by3`.

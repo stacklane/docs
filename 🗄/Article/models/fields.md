@@ -119,15 +119,7 @@ Getting/reading a geo value always results in an object with the properties:
 # Image
 
 The `image` field type stores a single image. Supported image types are JPG, GIF, PNG.
-For more information on uploading and displaying images,
-see [Models / Images](/🗄/Article/models/images.md).
-
-## Maximum Size
-
-Upload sizes of up to 10MB are accepted.
-However images that exceed 2000px wide will be
-resized to 2000px wide with a proportional height.
-The size of an image does **not** contribute to the size of a model.
+For more information on uploading and displaying images, see [Models / Images](/🗄/Article/models/images.md).
 
 ## Example Definition
 
