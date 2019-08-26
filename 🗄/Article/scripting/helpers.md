@@ -149,6 +149,17 @@ Resulting in:
 {"redirect": {"path":"/", "messages":[{"type":"success", "value": "Going Home"}]}
 ```
 
+## Throwing
+
+Redirects are unique in that they will produce the same response
+whether they are the result of a script, or whether they are thrown as an exception value.
+
+Throwing a `Redirect` at any time will stop script execution and send a redirect to the client.
+
+`throw Redirect.home()`
+
+Keep in mind that because the script did not complete normally, any model changes will be rolled back.
+
 ## Messages
 
 As convenience to using the [Messages](/🗄/Article/scripting/messages.md) object directly,
