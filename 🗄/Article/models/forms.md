@@ -209,18 +209,18 @@ TwoForm:
 ```html
 {{#SetupForm.view}}
   <form action="/setup?_form={{id}}" method="POST">
-    {{#SetupForm.OneForm.view}}
+    {{#OneForm}}
        {{#fieldOne}}
          <input id="{{path}}" name="{{path}}" value="{{value}}"
             {{{input.attributes}}}>
        {{/fieldOne}}
-    {{/SetupForm.OneForm.view}}
-    {{#SetupForm.TwoForm.view}}
+    {{/OneForm}}
+    {{#TwoForm}}
        {{#fieldTwo}}
          <input id="{{path}}" name="{{path}}" value="{{value}}"
             {{{input.attributes}}}>
        {{/fieldTwo}}
-    {{/SetupForm.TwoForm.view}}
+    {{/TwoForm}}
     <input type="submit" value="Submit">
   </form>
 {{/SetupForm.view}}
@@ -244,94 +244,6 @@ SetupForm.TwoForm.submit(two);
 //...
 ```
 
-# Form Steps {#step}
-
-Form steps are a type of form group.
-They are useful for collecting information progressively, across multiple steps.
-Each step is a distinct form which contains all fields from any previous step.
-
-Form steps will always initialize their state from other steps already filled out.
-It's not required that all steps be followed &mdash; as with other forms,
-the only requirement is that all fields of the submitted form are valid.
-
-The following example defines two steps, `Begin` and `End`:
-
-```file-name
-/📤/⏳CreateProduct.yaml
-```
-```yaml
-Begin:
-  📦.Product:
-    - name
-+End:
-  - price
-```
-
-Each subsequent step contains the fields from previous steps.
-In this example the form for `End` contains `name` and `price`.
-The prefix '+' indicates that it adds fields to the previous step.
-
-For the submission of the first step, we're validating and moving on to the next step.
-
-```file-name
-/product/📮begin.js
-```
-```javascript
-import {Product} from '📦';
-import {CreateProduct} from '📤';
-
-try {
-
-   let form = CreateProduct.Begin.read();
-
-   Redirect.dir('product')
-           .name('end') // last page
-           .form(form);
-
-} catch ($ModelInvalid){
-
-   Redirect.dir('product')
-           .name('begin') // stay
-           .invalid($ModelInvalid);
-
-}
-```
-
-On the next/last step, include the form ID as a query parameter:
-
-```file-name
-/product/finish.html
-```
-```html
-{{^CreateProduct.Begin.valid}}
-  <a href="/product/begin">Start Over</a>
-{{/CreateProduct.Begin.valid}}
-
-{{#CreateProduct.Begin.valid}}
-  {{#CreateProduct.End.view}}
-    <form action="/product/end?_form={{id}}" method="POST">
-      {{! more fields }}
-    </form>
-  {{/CreateProduct.End.view}}
-{{/CreateProduct.Begin.valid}}
-```
-
-```file-name
-/product/📮end.js
-```
-```javascript
-import {Product} from '📦';
-import {CreateProduct} from '📤';
-
-try {
-
-  let newProduct = new Product();
-
-  CreateProduct.End.submit(newProduct);
-
-} //...
-```
-
 # Form Type {#form-type}
 
 The following top level methods are available for each form type:
@@ -344,15 +256,9 @@ or its resulting form instance may be exported from a [supplier](/📤/Article/s
 It optionally accepts an existing model as a parameter to initialize the view,
 *or* it accepts an object literal / hash of field values to initialize the view.
 
-### `get()`
+### `validate()`
 
-Usable during non-GET. Reads any previous state, combined with incoming form data,
-and returns a [form instance](#form-instance).
-
-### `read()`
-
-Identical to `get()` however it will throw `$ModelInvalid` if the read form is invalid.
-Equivalent to calling `let form = FormType.get(); form.validate();`
+Throws `$ModelInvalid` if the read form is invalid.
 
 ### `submit(model)`
 
@@ -375,27 +281,11 @@ Form instances are returned for `view()`, `get()`, and `read()`
 Returns the unique identifier for the form.
 This should be included the `_form` query param in URLs related to the form.
 
-### `validate()`
-
-Throws `$ModelInvalid` if the form instance is invalid.
-
-### `submit(model)`
-
-Fills a new or existing model with information in the form.
-Throws $ModelInvalid if either the form or the filled model are invalid.
-If an exception is thrown, then the model is rolled back.
-
 ### `invalid()`
 
 Returns `true` if the form instance is invalid.
 Newly initialized form views (with no previous state) are *neither* valid or invalid.
 In that case this will always return false.
-May be used in Mustache templates.
-
-### `ready()`
-
-Returns `true` if the form instance came from a previous state and it is valid.
-Primarily used for incremental form steps.
 May be used in Mustache templates.
 
 ### [`fieldName`](#form-fields)
