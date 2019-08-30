@@ -244,13 +244,106 @@ SetupForm.TwoForm.submit(two);
 //...
 ```
 
+# Form Steps {#step}
+
+Form steps are a type of form group.
+They are useful for collecting information progressively, across multiple steps.
+Each step is a distinct form which contains all fields from any previous step.
+
+Form steps will always initialize their state from other steps already filled out.
+It's not required that all steps be followed &mdash; as with other forms,
+the only requirement is that all fields of the submitted form are valid.
+
+The following example defines two steps, `Begin` and `End`:
+
+```file-name
+/📤/⏳CreateProduct.yaml
+```
+```yaml
+Begin:
+  📦.Product:
+    - name
++End:
+  - price
+```
+
+Each subsequent step contains the fields from previous steps.
+In this example the form for `End` contains `name` and `price`.
+The prefix '+' indicates that it adds fields to the previous step.
+
+For the submission of the first step, we're validating and moving on to the next step.
+
+```file-name
+/product/📮begin.js
+```
+```javascript
+import {Product} from '📦';
+import {CreateProduct} from '📤';
+
+try {
+
+   let form = CreateProduct.Begin.validate();
+
+   Redirect.dir('product')
+           .name('end') // last page
+           .form(form);
+
+} catch ($ModelInvalid){
+
+   Redirect.dir('product')
+           .name('begin') // stay
+           .invalid($ModelInvalid);
+
+}
+```
+
+On the next (last) step, include the form ID as a query parameter and
+check `ready` for the state of the previous step:
+
+```file-name
+/product/finish.html
+```
+```html
+{{#CreateProduct.Begin.view}}
+
+{{^ready}}
+  <a href="/product/begin">Start Over</a>
+{{/ready}}
+
+{{#ready}}
+  {{#CreateProduct.End.view}}
+    <form action="/product/end?_form={{id}}" method="POST">
+      {{! more fields }}
+    </form>
+  {{/CreateProduct.End.view}}
+{{/ready}}
+
+{{/CreateProduct.Begin.view}}
+```
+
+```file-name
+/product/📮end.js
+```
+```javascript
+import {Product} from '📦';
+import {CreateProduct} from '📤';
+
+try {
+
+  let newProduct = new Product();
+
+  CreateProduct.End.submit(newProduct);
+
+} //...
+```
+
 # Form Type {#form-type}
 
 The following top level methods are available for each form type:
 
 ### `view()`
 
-Usable during GET. Returns an existing or new [form instance](#form-instance).
+Usable during GET. Returns a [form instance](#form-instance).
 This method may be used directly in Mustache templates,
 or its resulting form instance may be exported from a [supplier](/📤/Article/scripting/suppliers.md).
 It optionally accepts an existing model as a parameter to initialize the view,
@@ -259,22 +352,20 @@ It optionally accepts an existing model as a parameter to initialize the view,
 ### `validate()`
 
 Throws `$ModelInvalid` if the read form is invalid.
+Returns a [form instance](#form-instance).
 
 ### `submit(model)`
 
 Fills a new or existing model with information in the form.
 Throws `$ModelInvalid` if either the form or the filled model are invalid.
 If an exception is thrown, then the model is rolled back.
-Equivalent to calling `FormType.get().submit(model)`.
-Keep in mind that the form itself must be valid,
-**and** the resulting model must be valid &mdash;
+Keep in mind that the form itself must be valid, **and** the resulting model must be valid &mdash;
 for example, if there are other non-form fields which should be set on the
 model, these should be set before calling `submit(model)`.
 
 # Form Instance {#form-instance}
 
 The following properties/methods are available for each form instance.
-Form instances are returned for `view()`, `get()`, and `read()`
 
 ### `id`
 
@@ -287,6 +378,18 @@ Returns `true` if the form instance is invalid.
 Newly initialized form views (with no previous state) are *neither* valid or invalid.
 In that case this will always return false.
 May be used in Mustache templates.
+
+### `ready()`
+
+Returns `true` if the form instance came from a previous state and it is valid.
+Primarily used for incremental form steps.
+May be used in Mustache templates.
+
+### `submit(model)`
+
+Fills a new or existing model with information in the form.
+Throws $ModelInvalid if either the form or the filled model are invalid.
+If an exception is thrown, then the model is rolled back.
 
 ### [`fieldName`](#form-fields)
 
