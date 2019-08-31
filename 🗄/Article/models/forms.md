@@ -208,19 +208,21 @@ TwoForm:
 ```
 ```html
 {{#SetupForm.view}}
-  <form action="/setup?_form={{id}}" method="POST">
-    {{#OneForm}}
+  <form action="/setup?_form={{id}}" method="POST"
+        data-validated="{{validated}}"
+    >
+    {{#OneForm.view}}
        {{#fieldOne}}
          <input id="{{path}}" name="{{path}}" value="{{value}}"
             {{{input.attributes}}}>
        {{/fieldOne}}
     {{/OneForm}}
-    {{#TwoForm}}
+    {{#TwoForm.view}}
        {{#fieldTwo}}
          <input id="{{path}}" name="{{path}}" value="{{value}}"
             {{{input.attributes}}}>
        {{/fieldTwo}}
-    {{/TwoForm}}
+    {{/TwoForm.view}}
     <input type="submit" value="Submit">
   </form>
 {{/SetupForm.view}}
