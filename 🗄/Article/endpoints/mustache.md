@@ -168,7 +168,29 @@ field types.
 
 # Utilities {#util}
 
-## choose-string
+## $any
+
+Tests if any of a series of scalar values are "truthy".
+If true, then displays a block.
+
+```html
+{{#$any value1 value.two}}
+  one scalar was true
+{{/$any}}
+```
+
+## $all
+
+Tests if all of a series of scalar values are "truthy".
+If true, then displays a block.
+
+```html
+{{#$all value1 value.two}}
+  all scalars were true
+{{/$all}}
+```
+
+## choose-string-map / choose-string-json
 
 Provides a declarative way to choose one string based on another string.
 If it were defined programmatically it would be a series of simple if/then/else,
@@ -176,48 +198,50 @@ or switch/case/default statements.
 This is especially useful when dealing with constant, well-defined values
 for a model field.
 
-First, declare the string choices using `choose-string-map`.
-
-```html
-{{% choose-string-map message error=alert-danger *=alert-* }}
-```
-
-The first parameter of `message` defines a name of the string choice,
-which will be repeated later for `choose-string`.
-The remaining parameters define the mapping of input strings to output strings,
-with an optional capture of the input via "*".
-
-The above example outputs "alert-danger" when the string input is "error".
-A catch all / else case may defined with "*".
-In the example above an input of "success" would result in "alert-success".
-For any of the cases, "*" is available to fill in the existing string input.
-
-Second, use the previously defined string map.
-The first parameter repeats the name given to the string map,
-and the second parameter is the string input.
-
-```html
-{{#Messages.all}}
-<div class="notification {{% choose-string message this.type }}">
-  {{this.value}}
-</div>
-{{/Messages.all}}
-```
-
-## Alternative Definition
-
-`choose-string-map` is the most compact way to define the choices.
-However if spaces are needed in the strings use JSON for the definition via
-`choose-string-json`.
-
-```html
-{{% choose-string-json message
-  {
-    "error": "alert alert-danger",
-     "*": "alert alert-*"
-  }
-}}
-```
+> {.more}
+>
+> First, declare the string choices using `choose-string-map`.
+>
+> ```html
+> {{% choose-string-map message error=alert-danger *=alert-* }}
+> ```
+>
+> The first parameter of `message` defines a name of the string choice,
+> which will be repeated later for `choose-string`.
+> The remaining parameters define the mapping of input strings to output strings,
+> with an optional capture of the input via "*".
+>
+> The above example outputs "alert-danger" when the string input is "error".
+> A catch all / else case may defined with "*".
+> In the example above an input of "success" would result in "alert-success".
+> For any of the cases, "*" is available to fill in the existing string input.
+>
+> Second, use the previously defined string map.
+> The first parameter repeats the name given to the string map,
+> and the second parameter is the string input.
+>
+> ```html
+> {{#Messages.all}}
+> <div class="notification {{% choose-string message this.type }}">
+>  {{this.value}}
+> </div>
+> {{/Messages.all}}
+> ```
+>
+> ## Alternative Definition
+>
+> `choose-string-map` is the most compact way to define the choices.
+> However if spaces are needed in the strings use JSON for the definition via
+> `choose-string-json`.
+>
+> ```html
+> {{% choose-string-json message
+>  {
+>    "error": "alert alert-danger",
+>     "*": "alert alert-*"
+>  }
+> }}
+> ```
 
 # Iteration {#iteration}
 
