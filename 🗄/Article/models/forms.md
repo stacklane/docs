@@ -209,8 +209,7 @@ TwoForm:
 ```html
 {{#SetupForm.view}}
   <form action="/setup?_form={{id}}" method="POST"
-        data-validated="{{validated}}"
-    >
+        data-validated="{{validated}}">
     {{#OneForm.view}}
        {{#fieldOne}}
          <input id="{{path}}" name="{{path}}" value="{{value}}"
