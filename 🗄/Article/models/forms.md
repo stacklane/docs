@@ -209,7 +209,7 @@ TwoForm:
 ```html
 {{#SetupForm.view}}
   <form action="/setup?_form={{id}}" method="POST"
-        data-validated="{{validated}}">
+        class="{{#invalid}}is-invalid{{/invalid}}"">
     {{#OneForm.view}}
        {{#fieldOne}}
          <input id="{{path}}" name="{{path}}" value="{{value}}"
@@ -354,6 +354,11 @@ It optionally accepts an existing model as a parameter to initialize the view,
 
 Throws `$ModelInvalid` if the read form is invalid.
 Returns a [form instance](#form-instance).
+
+### `get()`
+
+Retrieves a [form instance](#form-instance) without validating.
+May be used to individually inspect fields.
 
 ### `submit(model)`
 
