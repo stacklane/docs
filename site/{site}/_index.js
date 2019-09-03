@@ -77,6 +77,7 @@ function init(branch){
 
     init.onerror = function(e){
         if (!graceful) {
+            console.error(e);
             addStatus('Connection failed: ' + e.message, "is-danger");
         }
     };

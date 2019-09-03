@@ -4,50 +4,52 @@
  * see final returned callback.
  */
 
-import {PlaySite} from "🔌";
+import {Build, Mapping, Source} from "🔌";
 import {site} from '🔗';
 import * as Params from "&";
 
 let buffered = [];
 let bufferedIndex = 0;
 let finished = null;
-let url = site.url;
 
-/**
- * Initiate the (potentially long running) builder and callbacks.
- */
+try {
+    let mapping = Mapping.test()
+        .source(Source.of(site.url).withBranch(Params.branch));
 
-new PlaySite(url)
-.branch(Params.branch)
-.build()
-.status((log)=>{
-    buffered.push({
-        level: log.level,
-        value: log.value + ''
-    });
-})
-.then((site)=>{
-    finished = site;
-})
-.catch((error)=>{
     /**
-     * Error details should have already been emitted in status callback.
+     * Initiate the long running builder and callbacks.
      */
+    Build.mapping(mapping)
+        .status((log)=>{
+            buffered.push({
+                level: log.level,
+                value: log.value + ''
+            });
+        })
+        .then((site)=>{
+            finished = site;
+        })
+        .catch((error)=>{
+            /**
+             * Error details should have already been emitted in status callback.
+             */
+            buffered.push({
+                $event: {last: true},
+                level: "error",
+                value: 'Build failed'
+            });
+        });
+} catch (e){
     buffered.push({
         $event: {last: true},
         level: "error",
-        value: 'Build failed'
+        value: 'Initialization failed: ' + e
     });
-});
-
+}
 
 /**
- * Return a callback that will emit Server Sent Events.
- * This will be periodically called until a "last event" is sent,
- * either explicitly, or by throwing the event(s).
- * The following code sets the last event explicitly.
+ * Event emitter
  */
-
 (lastEventId)=>{
 
     /**
@@ -60,28 +62,18 @@ new PlaySite(url)
 
     if (finished) {
 
-        /**
-         * SSE can optionally return a callback.
-         * This is only necessarily when persistence / commit is needed
-         * during SSE execution (which it is not in this case).
-         */
-        return () => {
-            next.push({
-                $event: {type: "completed", last: true},
-                level: "info",
-                value: "Completed",
-                url: finished.url + '',
-                frame: finished.frameName + ''
-            });
+        next.push({
+            $event: {type: "completed", last: true},
+            level: "info",
+            value: "Completed",
+            url: finished.url + '',
+            frame: finished.frame + ''
+        });
 
-            return next;
-        }
+        return next;
 
     } else {
 
-        /**
-         * No persistence needed, so return as-is.
-         */
         return next;
 
     }
