@@ -105,7 +105,7 @@ try {
    // Redisplay with form values, errors, etc:
    Redirect.dir('product')
            .name('create')
-           // May use exception for form():
+           // Invalid redirect will rollback
            .invalid($ModelInvalid);
 
 }
@@ -151,6 +151,7 @@ try {
    Redirect.dir('product')
            .dir(product.id)
            .name('update')
+           // Invalid redirect will rollback
            .invalid($ModelInvalid);
 
 }
@@ -293,6 +294,7 @@ try {
 
    Redirect.dir('product')
            .name('begin') // stay
+           // Invalid redirect will rollback
            .invalid($ModelInvalid);
 
 }
@@ -467,7 +469,7 @@ Note that for all of the HTML utilities below, `id`, `name`, and `class` are nev
 
 Using [HTML suppliers](/🗄/Article/scripting/suppliers.md),
 it's possible create a generic HTML control which accepts the field of a form instance as its input parameter.
-[Check out the example](/🗄/Article/models/form-control.md).
+[Check out the example](/🗄/Article/endpoints/form-control.md).
 
 ### `input`
 

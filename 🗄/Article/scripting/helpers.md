@@ -23,7 +23,7 @@ import {specific, param, here as Other} from '&';
 
 > {.alert .is-info .is-small}
 >
-> For model-based form handling check out [Model Forms](/🗄/Article/models/forms.md).
+> For model-based form handling check out [Model Forms](/🗄/Article/endpoints/forms.md).
 
 There are several different ways to access low-level form values.
 Note: If your form parameter is separated by dashes,
@@ -121,60 +121,6 @@ Cookie.name('token').value('123').days(30).submit();
 - `invalidate()` &mdash; Sets an empty value, and an expires in the past.
 
 For security purposes cookies use the `Secure`, `HttpOnly`, `SameSite=lax` flags.
-
-# Redirect
-
-The `Redirect` object is already imported.
-The following examples show the available methods and their result.
-
-```javascript
-Redirect.home(); // Result: /
-Redirect.dir('accounts').dir(accountId); // Result: /accounts/1234/
-Redirect.dir('accounts').dir(accountId).name('settings'); // Result: /accounts/1234/settings
-Redirect.home().name('place').params({this:'that'});  // Result: /place?this=that
-Redirect.index().name('other'); // If current request is /here/there, result: /here/other
-Redirect.home().hash('123'); // Result /#123
-Redirect.home().url.href; // Full URL including host
-```
-
-Redirects may also be used as JSON values:
-
-```javascript
-({redirect: Redirect.home().success('Going Home')});
-```
-
-Resulting in:
-
-```javascript
-{"redirect": {"path":"/", "messages":[{"type":"success", "value": "Going Home"}]}
-```
-
-## Throwing
-
-Redirects are unique in that they will produce the same response
-whether they are the result of a script, or whether they are thrown as an exception value.
-
-Throwing a `Redirect` at any time will stop script execution and send a redirect to the client.
-
-`throw Redirect.home()`
-
-Keep in mind that because the script did not complete normally, any model changes will be rolled back.
-
-## Messages
-
-As convenience to using the [Messages](/🗄/Article/scripting/messages.md) object directly,
-messages may "go with" the redirect being built.
-For example, after adding a new Article:
-
-```javascript
-import {Article} from '📦';
-
-let article = new Article().title('New');
-
-Redirect.dir('articles')
-        .dir(article.id)
-        .success('New Article successfully created');
-```
 
 # Utilities
 

@@ -34,8 +34,6 @@ models:
   path: models/fields
 - title: Ordering
   path: models/ordering
-- title: Forms
-  path: models/forms
 - title: Static
   path: models/static
 - title: Images
@@ -44,12 +42,14 @@ models:
 endpoints:
 - title: Overview
   path: endpoints/
-- title: Dynamic
-  path: endpoints/dynamic
-- title: Mustache
-  path: endpoints/mustache
 - title: JavaScript
   path: endpoints/js
+- title: Mustache
+  path: endpoints/mustache
+- title: Dynamic
+  path: endpoints/dynamic
+- title: Forms
+  path: endpoints/forms
 - title: Assets
   path: endpoints/assets
 - title: Errors
