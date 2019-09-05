@@ -74,8 +74,9 @@ simply change `init` to `true`. Otherwise it will default to null.
 
 ## Type-Safe Access {#options-type-safe}
 
-Instead of referencing the available values by string, it's recommend to use
-the type-safe version.  Given a `Product` model:
+Instead of referencing the available values by string,
+it's recommended to use the type-safe version.
+Given a `Product` model:
 
 ```javascript
 new Product().status(Product.status.pending);
