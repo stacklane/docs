@@ -33,9 +33,9 @@ Additional user settings files (👤.yaml) may be selectively placed in sub-dire
 As with the root file, settings in a sub-directory file are in scope for all descendants,
 unless another 👤.yaml is specified, in which case that begins a new scope.
 
-Using sub-directory configurations achieving various common layouts.
-Note that in the examples below, an `/auth/` area is always provided for login,
-and that the proper setting for this area is `auth: optional`.
+Use sub-directory configurations to achieve various common layouts.
+In the examples below, an `/auth/` area is always provided for login,
+and the proper setting for this area is `auth: optional`.
 
 ## Public Main Site, Private App
 
