@@ -18,6 +18,7 @@ and
 
 - Mailgun
 - Amazon
+- Gmail
 
 # Email Marketing
 
