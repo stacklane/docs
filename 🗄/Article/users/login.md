@@ -142,4 +142,3 @@ provider.brand: `google`
 provider.name: `GitHub`\
 provider.type: `github`\
 provider.brand: `github`
-

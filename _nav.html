@@ -1,7 +1,7 @@
 <!--TEMPLATE mustache-->
-{{% svg /icons/ as icon }}
 
 {{% yaml /_navItems as items }}
+{{% svg /_icons/ as icon }}
 
 <div id="sidebar" class="is-invisible sidebar">
 <h1 class="nav-category">Overview</h1>
@@ -10,6 +10,9 @@
     <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
     {{/ items.overview }}
 </ul>
+
+<div class="nav-separator"></div>
+
 <h1 class="nav-category">Settings</h1>
 <ul>
     {{# items.settings }}
@@ -40,21 +43,34 @@
     <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
     {{/ items.users }}
 </ul>
-<div class="nav-separator">
-    <a href="/examples"><h1 class="">Examples</h1></a>
-</div>
+
+<div class="nav-separator"></div>
+
+<a class="nav-link level" href="/examples">
+    <div class="level-left">
+        <div class="level-item"><span class="icon is-small">{{> icon-slideshow }}</span></div>
+        <div class="level-item">Examples</div>
+    </div>
+</a>
+
+<a class="nav-link level" href="/integrations">
+    <div class="level-left">
+        <div class="level-item"><span class="icon is-small">{{> icon-extension }}</span></div>
+        <div class="level-item">Integrations</div>
+    </div>
+</a>
+
 </div>
 
-<!--
-    At earliest possible moment, select the current nav link, and enable category expansion.
--->
+{{! At earliest moment, select the current nav link, and enable category expansion. }}
 <script>
     $each('.nav-link', function(e){
         if (e.getAttribute('href') == window.location.pathname){
             e.classList.add('is-active');
             var ul = e.parentElement.parentElement;
             ul.classList.toggle('is-active', true);
-            ul.previousElementSibling.classList.toggle('is-active', true);
+            if (ul.previousElementSibling)
+                ul.previousElementSibling.classList.toggle('is-active', true);
         }
     });
 

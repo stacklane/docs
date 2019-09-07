@@ -1,14 +1,14 @@
 <!--TEMPLATE mustache-->
-{{% svg /_logos/ as logo }}
-{{% partial /_layout }}
 
+{{% partial /_layoutSide }}
+{{% svg /_logos/ as logo }}
 {{% import {Example} from '🗄' }}
 
-{{< layout}}
+{{< layoutSide}}
 
-{{$title}}Examples{{/title}}
+{{$title2}}Users{{/title2}}
 
-{{$content}}
+{{$content2}}
 
 <style>
     .d-none{
@@ -58,10 +58,8 @@
 
 </article>
 
-<!--
-  Inline
-  -->
+{{! Inline }}
 <script src="_examples.js"></script>
 
-{{/content}}
-{{/layout}}
+{{/content2}}
+{{/layoutSide}}

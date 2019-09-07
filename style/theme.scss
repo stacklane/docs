@@ -15,6 +15,7 @@
 @import "/bulma/elements/title";
 @import "/bulma/elements/table";
 @import "/bulma/elements/progress";
+
 // .number screws up prismjs: @import "/bulma/elements/other";
 
 // warning, interferes with prismjs: @import "/bulma/elements/tag"; // so instead:
@@ -22,6 +23,7 @@
 
 @import "/bulma/components/navbar";
 @import "/bulma/components/modal";
+@import "/bulma/components/level";
 
 @import "/bulma/grid/columns";
 
@@ -36,6 +38,16 @@
 @import "/style/build";
 
 ////////////
+
+.icon > svg{
+  width: 100%;
+  height: 100%;
+  fill: rgba(0,0,0,.7);
+
+  .icon-accent{
+    opacity: 0.1;
+  }
+}
 
 .delete {
   @extend %delete;

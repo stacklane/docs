@@ -42,7 +42,6 @@ and the proper setting for this area is `auth: optional`.
 ```file-name
 /👤.yaml
 ```
-
 ```yaml
 auth: none
 ```
@@ -50,7 +49,6 @@ auth: none
 ```file-name
 /app/👤.yaml
 ```
-
 ```yaml
 auth: required
 
@@ -61,7 +59,6 @@ default: all
 ```file-name
 /auth/👤.yaml
 ```
-
 ```yaml
 auth: optional
 ```
@@ -71,7 +68,6 @@ auth: optional
 ```file-name
 /👤.yaml
 ```
-
 ```yaml
 auth: required
 
@@ -82,7 +78,6 @@ default: all
 ```file-name
 /assets/👤.yaml
 ```
-
 ```yaml
 auth: none
 ```
@@ -90,7 +85,6 @@ auth: none
 ```file-name
 /auth/👤.yaml
 ```
-
 ```yaml
 auth: optional
 ```
