@@ -71,7 +71,7 @@ including putting `index.html` into a route with a trailing slash.
 If you decide to rename your file extension to use Mustache in the future,
 there is no change to the public endpoint/URL.
 
-# External Assets {#external}
+# External JS/CSS {#external}
 
 ## JS
    
