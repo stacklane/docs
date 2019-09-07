@@ -17,8 +17,8 @@ and
 # Sending Email
 
 - Mailgun
-- Amazon
 - Gmail
+- Amazon Simple Email Service (SES)
 
 # Email Marketing
 
