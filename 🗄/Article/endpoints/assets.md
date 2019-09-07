@@ -71,18 +71,11 @@ including putting `index.html` into a route with a trailing slash.
 If you decide to rename your file extension to use Mustache in the future,
 there is no change to the public endpoint/URL.
 
-# External JS/CSS {#external}
+# Additional CSP {#add-csp}
 
-## JS
-   
-We like to think of third party JS libraries as part of the browser's stack
-&mdash; something that extends the native functionality of the browser, and that your app may put to use.
+Local or external JavaScript may have further dependencies &mdash; for example it may connect to another API.
 
-We generally do not recommend hosting these along with custom Stacklane JavaScript files, as it brings no additional benefit.
-
-There are many excellent services, where third party libraries are dependable, distributed, and versioned.
-
-Depending on the script, it may be necessary to specify additional Content-Security-Policy information.
+In that case it may be necessary to specify additional Content-Security-Policy information.
 frame-src and connect-src may be specified directly on the element:
 
 ```html
@@ -90,6 +83,18 @@ frame-src and connect-src may be specified directly on the element:
         data-frame-src="https://js.stripe.com"
         data-connect-src="https://api.stripe.com"></script>
 ```
+
+# External JS/CSS {#external}
+
+## JS
+
+There are many excellent JS hosting services, where third party libraries are dependable, distributed, and versioned.
+
+We like to think of third party JS libraries as part of the browser's stack
+&mdash; something that extends the native functionality of the browser, and that your app may put to use.
+
+Ensure that you're able to obtain a reliable Subresource Integrity (SRI) `integrity` attribute for the external JS,
+and place it on the `<script>` element.  Typically SRI is only reliable for "versioned" URLs.
 
 ## CSS
 
