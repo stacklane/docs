@@ -7,7 +7,7 @@ Stacklane provides integration points for
 [user identity](/users/),
 [sending email](/🗄/Article/scripting/email.md),
 and
-[API connections](/🗄/Article/scripting/connectors.md).
+[API connectors](/🗄/Article/scripting/connectors.md).
 
 # User Identity
 
@@ -16,9 +16,9 @@ and
 
 # Sending Email
 
-- Mailgun
+- [Mailgun](https://mailgun.com)
+- [Amazon SES](https://aws.amazon.com/ses/)
 - Gmail
-- Amazon Simple Email Service (SES)
 
 # Email Marketing
 
@@ -26,11 +26,11 @@ and
 
 # Payment Processing
 
-- Stripe
+- [Stripe](https://github.com/stacklane-registry/stripe.com)
 
 # Monitoring
 
-- Site24x7
+- [Site24x7](https://github.com/stacklane-registry/site24x7.com)
 
 
 
