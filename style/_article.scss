@@ -34,7 +34,7 @@ article .is-missing-link:after{
 article p, article ul, article ol{
   margin-bottom: $article-block-spacing;
   line-height: 1.8;
-  list-style-position: inside;
+  list-style: square inside;
 }
 
 article p:last-child, article ul:last-child{
