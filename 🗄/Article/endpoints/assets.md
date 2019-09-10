@@ -79,9 +79,9 @@ In that case it may be necessary to specify additional Content-Security-Policy i
 frame-src and connect-src may be specified directly on the element:
 
 ```html
-<script src="https://js.stripe.com/v3/"
-        data-frame-src="https://js.stripe.com"
-        data-connect-src="https://api.stripe.com"></script>
+<script src="https://cdn.asset.com/file.js"
+        data-frame-src="https://frame.asset.com/"
+        data-connect-src="https://api.asset.com/"></script>
 ```
 
 # External JS/CSS {#external}
@@ -105,11 +105,12 @@ and place it on the `<link>` element.  Typically SRI is only reliable for "versi
 
 The following external font services are supported:
 
-- Google Fonts (SRI integrity attribute is not required)
+- [Google Fonts (via Stacklane Connector)](https://github.com/stacklane-registry/fonts.google.com)
 
 Stacklane does not currently support:
 
-- Adobe TypeKit &mdash; [does not support](https://helpx.adobe.com/fonts/using/content-security-policy.html) safe Content Security Policies (requires use of unsafe-inline).
+- Adobe TypeKit &mdash; [does not support](https://helpx.adobe.com/fonts/using/content-security-policy.html)
+safe Content Security Policies (requires use of unsafe-inline).
 
 ## SRI
 
