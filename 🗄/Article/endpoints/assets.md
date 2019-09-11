@@ -103,14 +103,10 @@ and place it on the `<link>` element.  Typically SRI is only reliable for "versi
 
 ## Fonts
 
-The following external font services are supported:
-
-- [Google Fonts (via Stacklane Connector)](https://github.com/stacklane-registry/fonts.google.com)
-
-Stacklane does not currently support:
-
-- Adobe TypeKit &mdash; [does not support](https://helpx.adobe.com/fonts/using/content-security-policy.html)
-safe Content Security Policies (requires use of unsafe-inline).
+Third party font providers often require special setup for the Content-Security-Policy.
+Stacklane bundles this setup into specific third party connectors.
+The list of available font connectors may be found in the
+[Stacklane Registry](https://github.com/stacklane-registry?q=font).
 
 ## SRI
 
@@ -120,13 +116,3 @@ files they fetch are delivered without unexpected manipulation.
 It works by allowing you to provide a cryptographic hash that a fetched file must match.
 Most services such as <a target="_blank" href="https://www.jsdelivr.com/">jsDelivr</a>
 automatically provide SRI information to copy/paste.
-
-## SRI Whitelist
-
-The following JS does not require SRI:
-
-- https://js.stripe.com/v3/
-
-The following CSS does not require SRI:
-
-- https://fonts.googleapis.com/css?...
