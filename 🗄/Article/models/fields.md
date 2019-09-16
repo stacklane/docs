@@ -96,6 +96,8 @@ Special case field that should be used sparingly.
 Maps support free-form string, number, and boolean values.
 _Maps are not indexed, and not queryable_.
 They are only suitable for free-form fields that may vary widely for the same model type.
+Maps are never null, and are always ready to be read/modified.
+Us an optional map field if no values are required.
 
 # Geo Point
 
