@@ -3,8 +3,8 @@ overview:
 #  path:
 - title: Development
   path: dev
-- title: Infrastructure
-  path: infrastructure
+- title: Security
+  path: security
 - title: Limits
   path: limits
 # linked instead from /dev

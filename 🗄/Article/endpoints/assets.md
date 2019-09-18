@@ -44,7 +44,7 @@ Alternatively you may inline a private file by
 referencing it like any external script: `<script src="/_myCode.js"></script>`.
 Because of the underscore marking it as a private file, Stacklane inlines the JS into the page.
 
-In either case Stacklane produces an appropriate [CSP](/🗄/Article/infrastructure.md#csp).
+In either case Stacklane produces an appropriate [CSP](/🗄/Article/security.md#csp).
 
 ## Turbolinks + StimulusJS
 
