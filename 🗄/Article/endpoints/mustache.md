@@ -378,6 +378,30 @@ has an underscore such as `/_files/something.html`,
 will be considered private even if the files themselves are not prefixed
 with an underscore.
 
+# Conditional Render {#render-if}
+
+Certain HTML endpoints may have sections which take longer to load than others.
+We recommending breaking up this HTML into separate fragments which are retrieved using a client-side `fetch`.
+The main page will then load as quickly as possible, followed by the longer loading fragments, increasing perceived responsiveness.
+
+When using this pattern, it's sometimes useful to quickly and completely bypass the rendering of certain fragments.
+This may be accomplished with the `{{% Render-If variable }}` header.  For example:
+
+```file-name
+/fragment.html
+```
+```html
+<!--TEMPLATE mustache-->
+{{% import {ShouldRender} from '📤' }}
+
+{{% Render-If ShouldRender }}
+{{% Cache-Control-Seconds 60 }}
+
+... HTML content if ShouldRender == true ...
+```
+
+When the supplied variable `ShouldRender` is false, then the endpoint will return status code 200 and 0 bytes.
+
 # Cache Control
 
 > {.alert .is-warning .is-small}
@@ -402,9 +426,7 @@ Stacklane automatically considers an HTML page as being generated for a single s
 
 In these cases it applies the Cache-Control:
 
-```
-no-cache, no-store, max-age=0, must-revalidate
-```
+`no-cache, no-store, max-age=0, must-revalidate`
 
 When used in conjunction with `Cache-Control-Seconds`, this becomes:
 
