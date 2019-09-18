@@ -1,11 +1,12 @@
 <!--TEMPLATE mustache-->
 
-{{% partial /_layout }}
-{{% partial /_nav }}
-{{% import {article} from '🔗' }}
+{{% partial /_nav/ as nav }}
+
 {{% svg /_icons/ as icons }}
 
-{{< layout}}
+{{% import {article} from '🔗' }}
+
+{{< nav-layout}}
 
 {{$title}}{{article.title}}{{/title}}
 
@@ -13,7 +14,7 @@
 
 <div class="columns">
     <div class="column is-one-fifth is-hidden-mobile">
-        {{>nav}}
+        {{>nav-menu}}
     </div>
     <div class="column">
         <article>
@@ -140,4 +141,4 @@
 </script>
 
 {{/content}}
-{{/layout}}
+{{/nav-layout}}

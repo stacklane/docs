@@ -1,7 +1,8 @@
 <!--TEMPLATE mustache-->
-{{% partial /_layoutSide }}
 
-{{< layoutSide}}
+{{% partial /_nav/ as nav }}
+
+{{< nav-layout-side}}
 
 {{$content2}}
 
@@ -15,4 +16,4 @@
 </article>
 
 {{/content2}}
-{{/layoutSide}}
+{{/nav-layout-side}}

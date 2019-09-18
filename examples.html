@@ -1,10 +1,10 @@
 <!--TEMPLATE mustache-->
 
-{{% partial /_layoutSide }}
+{{% partial /_nav/ as nav }}
 {{% svg /_logos/ as logo }}
 {{% import {Example} from '🗄' }}
 
-{{< layoutSide}}
+{{< nav-layout-side}}
 
 {{$title2}}Users{{/title2}}
 
@@ -62,4 +62,4 @@
 <script src="_examples.js"></script>
 
 {{/content2}}
-{{/layoutSide}}
+{{/nav-layout-side}}

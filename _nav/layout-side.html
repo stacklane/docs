@@ -1,9 +1,8 @@
 <!--TEMPLATE mustache-->
 
-{{% partial /_layout }}
-{{% partial /_nav }}
+{{% partial /_nav/ as nav }}
 
-{{< layout}}
+{{< nav-layout}}
 
 {{$title}}{{$title2}}Content{{/title2}}{{/title}}
 
@@ -11,7 +10,7 @@
 
 <div class="columns">
     <div class="column is-one-fifth is-hidden-mobile">
-        {{>nav}}
+        {{>nav-menu}}
     </div>
     <div class="column">
         {{$content2}}Content{{/content2}}
@@ -19,4 +18,4 @@
 </div>
 
 {{/content}}
-{{/layout}}
+{{/nav-layout}}
