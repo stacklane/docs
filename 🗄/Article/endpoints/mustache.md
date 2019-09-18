@@ -395,20 +395,17 @@ Sets the "max-age" to the given seconds:
 {{% Cache-Control-Seconds 30 }}
 ```
 
-## Cache-Control-Single-User
+## Single User Endpoints
 
-For endpoints that are intended for a single user.
+When using [built-in user functionality](/users/) and [forms](/🗄/Article/endpoints/forms.md),
+Stacklane automatically considers an HTML page as being generated for a single specific user/visitor.
 
-```html
-{{% Cache-Control-Single-User }}
+In these cases it applies the Cache-Control:
+
+```
+no-cache, no-store, max-age=0, must-revalidate
 ```
 
-By default this will use `no-cache, no-store, max-age=0, must-revalidate`.
-If used in conjunction with `Cache-Control-Seconds`, this will be changed to `max-age=N, private`.
+When used in conjunction with `Cache-Control-Seconds`, this becomes:
 
-This setting is _never_ recommended or needed when already using the [built-in user functionality](/users/).
-
-
-
-
-
+`max-age=N, private`
