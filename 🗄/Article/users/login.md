@@ -71,7 +71,7 @@ Take note of the special `itemprop='content-security-policy` in the example belo
 ...
 <div class="provider-list">
     {{! Login }}
-    {{^Me.linked}}
+    {{^Me}}
     {{#Providers.all as provider}}
     <form id="{{provider.type}}" method="post" class="provider-form" action="{{provider.authPath}}">
     <button type="submit" class="provider-button provider-{{provider.brand}}">
@@ -80,17 +80,17 @@ Take note of the special `itemprop='content-security-policy` in the example belo
     </button>
     </form>
     {{/Providers.all}}
-    {{/Me.linked}}
+    {{/Me}}
 
     {{! Logout }}
-    {{#Me.linked}}
+    {{#Me}}
     <form method="post" class="provider-form" action="/__/auth/provider/logout">
         <button type="submit" class="provider-button provider-logout">
             <div class="provider-icon">{{! CSS target }}</div>
             <div class="provider-text">{{🎨.logout}}</div>
         </button>
     </form>
-    {{/Me.linked}}
+    {{/Me}}
 </div>
 ```
 
