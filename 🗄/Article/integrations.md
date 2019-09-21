@@ -7,7 +7,7 @@ Stacklane provides integration points for
 [user identity](/users/),
 [sending email](/🗄/Article/scripting/email.md),
 and
-[API connectors](/🗄/Article/scripting/connectors.md).
+[API connectors](/🗄/Article/api/connectors.md).
 
 # User Identity
 

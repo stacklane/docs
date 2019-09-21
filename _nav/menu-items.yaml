@@ -68,8 +68,6 @@ scripting:
   path: scripting/helpers
 - title: Messages
   path: scripting/messages
-- title: Connectors
-  path: scripting/connectors
 - title: Email
   path: scripting/email
 
