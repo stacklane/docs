@@ -5,8 +5,8 @@ overview:
   path: dev
 - title: Security
   path: security
-- title: Limits
-  path: limits
+- title: Quotas
+  path: quotas
 # linked instead from /dev
 #- title: Build API
 #  path: api/build

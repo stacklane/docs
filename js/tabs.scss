@@ -1,0 +1,23 @@
+/**
+ * Tabs in general use is-active within their tab-content
+ * to reveal blocks hidden by default (see below).
+ */
+.tab-content > .tab-pane.is-active,
+.tab-content .is-filterable.is-active
+{
+  display: block;
+}
+
+/**
+ * Regular tab type
+ */
+.tab-content > .tab-pane{
+  display: none;
+}
+
+/**
+ * Filtering tab type
+ */
+.tab-content .is-filterable{
+  display: none;
+}

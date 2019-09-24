@@ -1,0 +1,304 @@
+<!--TEMPLATE mustache-->
+{{% partial /_nav/ as nav }}
+
+{{< nav-layout-side}}
+
+{{$title2}}Quotas &amp; Units{{/title2}}
+
+{{$content2}}
+
+<article>
+    <header>
+        <h1>Quotas &amp; Units</h1>
+        <p>
+            Learn about quotas which emphasize Stacklane best practices.
+        </p>
+    </header>
+
+    <p>
+        Stacklane's quotas are designed to emphasize best practices,
+        and ensure long term scale and performance characteristics.
+    </p>
+
+    <br>
+    <br>
+
+    <div class="tabs" data-controller="tabs">
+        <ul>
+            <li class="is-active"><a href="#units">Pricing Units</a></li>
+            <li><a href="#source">Source Code</a></li>
+            <li><a href="#models">Models</a></li>
+            <li><a href="#fields">Fields</a></li>
+        </ul>
+    </div>
+
+    <div class="tab-content">
+        <div class="tab-pane" id="source">
+            <p>
+                The following quotas deal with the size of data inside a source code repository.
+            </p>
+            <table class="table is-fullwidth">
+                <thead>
+                <tr>
+                    <th scope="col">Quota</th>
+                    <th scope="col">Limit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Source Code
+                        <br>
+                        <small>
+                            Size of the source code only &mdash; static assets, endpoints, settings, etc.
+                            This does not refer to model data storage.
+                        </small>
+                    </td>
+                    <td>5 MB</td>
+                </tr>
+                <tr>
+                    <td>
+                        Image Count
+                        <br>
+                        <small>
+                            Repository images are primarily for styling / decoration / theme
+                            and are not related to <a href="/models/images">model data images</a>.
+                        </small>
+                    </td>
+                    <td>50</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane" id="models">
+            <table class="table is-fullwidth">
+                <thead>
+                <tr>
+                    <th scope="col">Quota</th>
+                    <th scope="col">Limit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        Total Records
+                    </td>
+                    <td>Unlimited</td>
+                </tr>
+                <tr>
+                    <td>
+                        Field and Model Name Length
+                    </td>
+                    <td>20 chars</td>
+                </tr>
+                <tr>
+                    <td>
+                        Field Count
+                        <br>
+                        <small>
+                            Extendable using embedded field types,
+                            as long as the provisioned size for the type is not exceeded.
+                        </small>
+                    </td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>
+                        Field Type Size
+                        <br><small>Choose the right field type for the job.</small>
+                    </td>
+                    <td><a href="#fields">Varies</a></td>
+                </tr>
+                <tr>
+                    <td>
+                        Embedded List Entries
+                        <br>
+                        <small>
+                            The maximum number of embedded entries in a multi-valued field.
+                            Typically this will be customized to a <a href="/models/fields#lists">lesser value</a>,
+                            to reduce the total provisioned size.
+                            For unbounded one-to-many associations use <a href="/models/containers">containers</a>.
+                        </small>
+                    </td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>
+                        Provisioned Size
+                        <p class="small">
+                            The sum of all <a href="#fields">provisioned field sizes</a>.
+                            Exceeding the provisioned size of a model type will be determined during compile/build time,
+                            ensuring that during runtime there are zero surprises.
+                        </p>
+                        <p class="small">
+                            Universal Type
+                            <br>
+                            Content Type
+                            <br>
+                            User Profile Type
+                        </p>
+                    </td>
+                    <td class="align-bottom">
+                        <p class="small">
+                            20KB
+                            <br>
+                            200KB
+                            <br>
+                            20KB
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane" id="fields">
+            <p>
+                A model type's total provisioned size is the sum of the
+                provisioned size for each field defined for the model.
+                Stacklane determines the provisioned size of a model at compile time,
+                ensuring that during runtime there are zero surprises.
+            </p>
+
+            <table class="table is-fullwidth">
+                <thead>
+                <tr>
+                    <th scope="col">Field Type</th>
+                    <th scope="col">Provisioned Size</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>string</td>
+                    <td>
+                        4 <b>x</b> max characters (400 bytes by default)
+                    </td>
+                </tr>
+                <tr>
+                    <td>boolean</td>
+                    <td>1 byte</td>
+                </tr>
+                <tr>
+                    <td>integer</td>
+                    <td>8 bytes</td>
+                </tr>
+                <tr>
+                    <td>double</td>
+                    <td>8 bytes</td>
+                </tr>
+                <tr>
+                    <td>timestamp</td>
+                    <td>8 bytes</td>
+                </tr>
+                <tr>
+                    <td>options</td>
+                    <td>50 bytes</td>
+                </tr>
+                <tr>
+                    <td>country</td>
+                    <td>3 bytes</td>
+                </tr>
+                <tr>
+                    <td>geo</td>
+                    <td>16 bytes</td>
+                </tr>
+                <tr>
+                    <td>image</td>
+                    <td>100 bytes (independent of image size)</td>
+                </tr>
+                <tr>
+                    <td>hierarchy</td>
+                    <td>50 bytes</td>
+                </tr>
+                <tr>
+                    <td>svg-icon</td>
+                    <td>2000 bytes</td>
+                </tr>
+                <tr>
+                    <td>uid</td>
+                    <td>100 bytes</td>
+                </tr>
+                <tr>
+                    <td>html</td>
+                    <td>2,000 bytes (by default)</td>
+                </tr>
+                <tr>
+                    <td>markdown</td>
+                    <td>
+                        4 <b>x</b> max characters (8,000 bytes by default)
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="/models/types#embedded">Embedded</a></td>
+                    <td>
+                        Sum of field sizes (<b>x</b> times number of possible entries)
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane is-active" id="units">
+            <p>
+                Stacklane pricing plans are based on virtual units.
+                Units include storage, access, and operation.
+                Using units ensures that plans are automatically adaptable to a wide range of sites and applications.
+            </p>
+
+            <table class="table is-fullwidth">
+                <thead>
+                <tr>
+                    <th scope="col">Unit Name</th>
+                    <th scope="col">Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Universal Model Record
+                            <br>
+                            <small>
+                                Use and storage of a single Universal model record.
+                            </small>
+                        </td>
+                        <td>1 Unit</td>
+                    </tr>
+                    <tr>
+                        <td>Content Model Record
+                            <br>
+                            <small>
+                                Use and storage of a single Content model record.
+                            </small>
+                        </td>
+                        <td>2 Units</td>
+                    </tr>
+                    <tr>
+                        <td>Model Image
+                            <br>
+                            <small>
+                                Use and storage  usage of a single image.
+                                <br>
+                                For example, a Universal model with 1 image would be 4 units total.
+                            </small>
+                        </td>
+                        <td>3 Units</td>
+                    </tr>
+                    <tr>
+                        <td>User & Profile Records
+                            <br>
+                            <small>
+                                Use and storage of a single User, along with any number of its Profile models.
+                            </small>
+                        </td>
+                        <td>5 Units</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</article>
+
+
+{{/content2}}
+{{/nav-layout-side}}
