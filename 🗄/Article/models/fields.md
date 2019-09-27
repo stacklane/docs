@@ -364,7 +364,7 @@ address[5]: Address
 ```
 
 Before using embedded model lists, review the
-[query limitations and suggestions](/🗄/Article/scripting/queries.md#model-lists).
+[query limitations and suggestions](/🗄/Article/scripting/queries.md#embedded-lists).
 
 For more information, see [Model List Scripting](/🗄/Article/scripting/models.md#model-lists).
 
