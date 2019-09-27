@@ -29,6 +29,7 @@
             <li><a href="#source">Source Code</a></li>
             <li><a href="#models">Models</a></li>
             <li><a href="#fields">Fields</a></li>
+            <li><a href="#endpoints">Endpoints</a></li>
         </ul>
     </div>
 
@@ -65,6 +66,45 @@
                         </small>
                     </td>
                     <td>50</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane" id="endpoints">
+            <p>
+                Endpoints should always be crafted to do small amounts of work quickly.
+                For example, they are not for initiating large batch operations.
+            </p>
+            <table class="table is-fullwidth">
+                <thead>
+                <tr>
+                    <th scope="col">Quota</th>
+                    <th scope="col">Limit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>JavaScript Execution Time
+                        <br>
+                        <small>
+                            Maximum length of time for a JavaScript endpoint to execute
+                            (does not include the time to send the response to the client).
+                        </small>
+                    </td>
+                    <td>30 Seconds</td>
+                </tr>
+                <tr>
+                    <td>
+                        JavaScript Model Batches
+                        <br>
+                        <small>
+                            Each Model Type is assigned an insert and update/delete limit.
+                        </small>
+                    </td>
+                    <td>Per Model Type:
+                        <br>10 Inserts
+                        <br>100 Updates</td>
                 </tr>
                 </tbody>
             </table>
