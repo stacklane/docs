@@ -121,7 +121,7 @@ To ensure predictable results, keep in mind the [default ordering of various que
 > at the beginning, between two elements (previous and next), or at the very end.
 >
 > This method is particularly useful for inserting points along sparsely populated time series data,
-> in [conjunction with `RelativeDateTime`](/🗄/Article/scripting/helpers.md#utilities) to help
+> in [conjunction with `RelativeDateTime`](/🗄/Article/scripting/helpers.md#util) to help
 > generate the missing points.
 >
 > The callback function uses a single parameter as an "iterator".

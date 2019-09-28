@@ -122,7 +122,7 @@ Cookie.name('token').value('123').days(30).submit();
 
 For security purposes cookies use the `Secure`, `HttpOnly`, `SameSite=lax` flags.
 
-# Utilities
+# Utilities {#util}
 
 The utilities module is named `'util'` and exports the following objects and methods.
 All utilities are safe and efficient to use during any HTTP method.

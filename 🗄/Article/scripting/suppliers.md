@@ -48,8 +48,8 @@ if allowed by the endpoint.
 `📤/{}AnyName.js`
 
 Allowed exports: "Utility" functions only.
-Function Suppliers have very limited functionality. 
-They may not import anything (not even other suppliers).
+Function Suppliers have very limited functionality.
+For example, they may only import the [Utility Module](/🗄/Article/scripting/helpers.md#util).
 Their primary purpose is to provide functions that perform _calculations or transformations_ on parameters.
 
 ## HTML Supplier {#html}

@@ -150,7 +150,7 @@ order: hierarchy
 
 `svg-icon` is a purpose specific field for holding a web-safe, square SVG icon.
 Typically these values are generated from the `Identicon`
-[utility](/🗄/Article/scripting/helpers.md#utilities).
+[utility](/🗄/Article/scripting/helpers.md#util).
 This field is highly constrained to valid and safe SVG.
 No scripting or inline styles are allowed.
 Maximum size: 2000 bytes.
