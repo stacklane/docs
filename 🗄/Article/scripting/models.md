@@ -35,15 +35,6 @@ list.title('new title')
 list.remove();
 ```
 
-# Transactions
-
-All model operations which happen
-within a single request are committed together / atomically.
-In most cases there is no way to end up in a state where the first few models have
-been persisted, but other changes have not.
-(An exception to this is a [bulk modification](/🗄/Article/scripting/queries.md#modify)
-which occurs via asynchronous batches.)
-
 # Containers
 
 Since [containers](/🗄/Article/models/containers.md) create a "scope" for
