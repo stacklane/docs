@@ -87,7 +87,7 @@ Returns true if the list contains the string value.
 
 ### `add(value)` / `push(value)`
 
-Adds a new value to the list.
+Adds a new value to the end of the list.
 
 ### `remove(value)`
 
@@ -118,7 +118,7 @@ Length of the list.
 
 ### `add(value) / push(value)`
 
-Adds a new value to the list.
+Adds a new value to the end of the list.
 
 ### `removeIf(value=>filter)`
 
@@ -134,6 +134,7 @@ Length of the list.
 
 ### Streaming Methods
 
+- `forEach(function)`
 - `map(function)`
 - `filter(function)`
 - `limit(number)`
