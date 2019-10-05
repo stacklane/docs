@@ -96,13 +96,15 @@
                 </tr>
                 <tr>
                     <td>
-                        JavaScript Model Changes
+                        JavaScript Model Batch Size
                         <br>
                         <small>
-                            Each Model Type is assigned an insert and update/delete limit.
+                            Maximum updates (total of create/update/delete) which may
+                            be performed in a single user request / transaction.
+                            Larger updates may be split into asynchronous requests.
                         </small>
                     </td>
-                    <td>10 inserts and/or 10 updates</td>
+                    <td>100 Updates</td>
                 </tr>
                 </tbody>
             </table>
