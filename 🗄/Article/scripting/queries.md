@@ -184,11 +184,17 @@ Product.all().avg(Product.rating);
 
 `avg` may return null if there are no results to average (results are empty).
 
-### `removeAll` {#remove-all}
+### `modify(function)` {#modify}
 
-The `removeAll` method targets the results of the query.
-For example, any previous filtering statements are considered.
-Depending on the size of the results to remove, some removals may occur asynchronously.
+The callback function to `modify` receives a Model instance as its parameter, and does not expect any return value.
+This should only be used to update fields, or `remove()` models in bulk.
+It is only available during `POST`, `PUT`, `DELETE`, and is limited to the quota on batch size for the request.
+
+> {.more}
+>
+> It is not required that every Model be modified, for example if it doesn't satisfy some condition.
+> However consider using `filter(...)` in the case where there are well defined conditions
+> that must be met before updating a model.  This will also keep the modify function simpler.
 
 # Embedded Models {#embedded}
 
