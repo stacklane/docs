@@ -394,9 +394,10 @@ this redirection is handled automatically.
 
 > {.alert .is-warning .is-small}
 >
+> It is *not* recommended that an existing field be changed to unique after there is already live/production data for the field.
 > A transaction will fail if trying to persist a duplicate unique value.
 > If a unique value is being created or changed,
-> first [query by the unique field](/🗄/Article/scripting/queries.md)
+> first [query by the unique field](/🗄/Article/scripting/queries.md#unique)
 > to check whether it's already used.
 
 The `string` field type may be marked as `unique: true` for the [Universal](/🗄/Article/models/types.md#universal)
