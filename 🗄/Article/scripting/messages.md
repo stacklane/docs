@@ -5,7 +5,7 @@ summary: Learn about using the Messages object across requests.
 
 Messages are a simple way to communicate a one-time notice, alert, or message.
 They are intended for a single user/visitor to see on the very next page view (GET).
-Messages may be more typically added during [redirects](/🗄/Article/scripting/helpers.md#redirect).
+Messages may be more typically added during [redirects](/🗄/Article/endpoints/js.md#redirect).
   
 > {.alert .is-warning .is-small}
 > 
