@@ -1,6 +1,6 @@
 url:
   type: string
-  unique: true
+  # only one unique value allowed: unique: true
 
 key:
   type: uid
