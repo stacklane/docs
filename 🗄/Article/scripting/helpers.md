@@ -162,7 +162,7 @@ let repeatableIcon = Identicon.of('any string value');
 let randomIcon = Identicon.random();
 ```
 
-## RelativeDateTime
+## Dates
 
 ### `days(date, number)`
 
@@ -190,10 +190,10 @@ For example "now", ""3 seconds ago", "1.5 years ago", etc.
 >
 > ```javascript
 > import {Post} from '📦';
-> import {RelativeDateTime} from 'util';
+> import {Dates} from 'util';
 >
 > Post.all().map(p=>({
->     createdAgo: RelativeDateTime.fromNow(p.created),
+>     createdAgo: Dates.fromNow(p.created),
 >     title: p.title
 > }));
 > ```
