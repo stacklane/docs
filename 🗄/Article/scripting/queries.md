@@ -40,7 +40,6 @@ Keep in mind that for contained models, `all` will only include results for a
 All queries besides `all()` start with a field filter.
 Multiple field filters may be chained together.
 Keep in mind that field filters are effectively **and** conditions.
-By default field filters return [_unordered_ results](/🗄/Article/models/ordering.md#query).
 
 ### `eq`
         
@@ -62,6 +61,12 @@ By default field filters return [_unordered_ results](/🗄/Article/models/order
         
 `Product.price_gte(30).price_lte(40)`
 
+## Ordering and Limits
+
+Field filters are typically used to return a small number of specific results.
+By default they return [_unordered_ results](/🗄/Article/models/ordering.md#query).
+Unordered results are implicitly limited to 100 results, which may be explicitly raised to 500 results.
+
 # Methods {#methods}
 
 The following methods influence the query results.
@@ -69,7 +74,7 @@ The following methods influence the query results.
 ### `asc()/desc()` {#order}
 
 All model types have a [natural ordering](/🗄/Article/models/ordering.md).
-In general it's recommended to minimize the use of `asc()` and `desc()`
+It's recommended to minimize the use of `asc()` and `desc()`
 and to typically rely on the [default ordering of various query types](/🗄/Article/models/ordering.md#query).
 
 ### `filter(function)` {#filter}
