@@ -111,6 +111,8 @@ Length of the list.
 - `filter(function)`
 - `limit(number)`
 - `get()`
+- `exists()`
+- `optional()`
 
 # Model Lists {#model-lists}
 
@@ -139,6 +141,8 @@ Length of the list.
 - `filter(function)`
 - `limit(number)`
 - `get()`
+- `exists()`
+- `optional()`
 
 # Capped/Rolling Lists {#rolling-lists}
 
