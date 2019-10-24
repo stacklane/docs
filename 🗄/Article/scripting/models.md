@@ -3,79 +3,114 @@ title: Model Scripting
 summary: Learn about scripting with data models.
 ---
 
-# CRUD
-
-## Create
+# Create
 
 ```javascript
 let newList = new List().title('x');
 ```
 
-## Read
+# Read
+
+### `get(id)`
+
+Returns the model if it exists for the ID, otherwise throws a `$ModelNotFound` exception.
 
 ```javascript
 // Throws $ModelNotFound
 let list = List.get(listId);
 ```
 
-## Update
+### `optional(id)`
+
+Returns the model if it exists for the ID, otherwise returns null.
 
 ```javascript
-// Field/property setter:
-list.title = 'new title';
+// May return null
+let list = List.optional(listId);
+```
 
-// Fluent setter:
+### `exists(id)`
+
+Returns true if the model exists for the ID, false otherwise.
+
+```javascript
+let listExists = List.exists(listId);
+```
+
+# Update
+
+### Field Setter
+
+```javascript
+list.title = 'new title';
+```
+
+### Fluent Setter
+
+```javascript
 list.title('new title')
     .otherField('value');
 ```
 
-## Delete
+# Delete
 
 ```javascript
 list.remove();
 ```
 
-# Containers
+# Containers {#containers}
 
-Since [containers](/🗄/Article/models/containers.md) create a "scope" for
-working with other data, a container must be selected
-before any other operations on its contained data.
+A specific [container](/🗄/Article/models/containers.md) is *not* needed
+when loading a child model directly by ID or model link.
 
-To execute code in the context of selected container, pass a function
-to the container's variable.  The return value of the function
-will be passed back as the return value of selecting the container.
+However when creating or querying child models the container must be known/selected
+or an exception will be thrown.
 
-## Create Child
+The following approaches select containers in various scenarios.
+
+## Dynamic Paths
+
+Containers are automatically selected when using [dynamic paths](/🗄/Article/endpoints/dynamic.md).
+
+## Constructor
 
 ```javascript
-import {List,Note} from '📦';
+let list = new List();
+let note = new Note(list).title('Note1');
+```
 
+## Callback
+
+The callback approach is useful when working with multiple models.
+
+```javascript
 let list = new List();
 
-// Parent via constructor:
-let childNote1 = new Note(list).title('Task1');
-
-// Or, parent via callback scope:
-let childNote2 = list(()=>{
-  return new Note().title('Task2');
+let notes = list(()=>{
+  let note1 = new Note().title('Note1');
+  let note2 = new Note().title('Note2');
+  return [note1, note2];
 });
-
-//...
 ```
 
-## Query Children
+## Query Method
 
-```file-name
-/list/{list}/tasks/GET.js
-```
+When querying a child its parent may be explicitly passed using a method named after its container.
+In this case the container model `List` uses the method name `list`.
+
 ```javascript
-import {list} from '🔗';
-
-// JSON of Note titles for the list:
-Note.list(list).map((n)=>n.title));
+let noteTitles = Note.list(list).map(n=>n.title);
 ```
 
-For more information see [querying containers](/🗄/Article/scripting/queries.md#containers).
+## Query Iteration
+
+While a parent is being iterated it is selected for child queries.
+
+```javascript
+List.all().map(list=>(
+  {noteTitles: Note.all().map(n=>n.title)}
+));
+```
 
 # String Lists {#string-lists}
 
@@ -110,7 +145,7 @@ Length of the list.
 - `map(function)`
 - `filter(function)`
 - `limit(number)`
-- `get()`
+- `one()`
 - `exists()`
 - `optional()`
 
@@ -140,7 +175,7 @@ Length of the list.
 - `map(function)`
 - `filter(function)`
 - `limit(number)`
-- `get()`
+- `one()`
 - `exists()`
 - `optional()`
 

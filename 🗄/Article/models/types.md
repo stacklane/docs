@@ -68,13 +68,12 @@ The model's type is denoted with a specific emoji prefix.
 
 ## Containers
 
-To define models that are in a container, place them into directories.  Example files and folders in the
-"📦" directory which define 3 model types, two of which are in containers.
+To define model types that are in a container, place them into a directory named after the container type.
 
 ```file-list
-/📦/🌐Account.yaml
-/📦/Account/🌐List.yaml
-/📦/Account/List/🌐Task.yaml
+/📦/🌐List.yaml
+/📦/List/🌐Note.yaml
+/📦/List/🌐Task.yaml
 ```
 
 ## Custom ID Prefixes

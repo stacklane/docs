@@ -37,7 +37,7 @@ Keep in mind that for contained models, `all` will only include results for a
 
 # Field Filters {#field}
 
-All queries besides `all()` start with a field filter.
+Queries besides `all()` start with a field filter.
 Multiple field filters may be chained together.
 Keep in mind that field filters are effectively **and** conditions.
 
@@ -162,11 +162,19 @@ The following methods also execute and use the results from a query:
 
 Return the total number of results, after considering all other methods, such as `limit`.
 
-### `get()` {#get}
+### `one()` {#one}
 
 Returns a single result (effectively `limit(1)`).
 If there is no result, then a `$ModelNotFound`
-exception is generated, similar to loading a model by its ID.
+exception is thrown, similar to loading a model by its ID.
+
+### `optional()` {#optional}
+
+Behaves similarly to `one()`, but returns `null` instead of throwing `$ModelNotFound`.
+
+### `exists()` {#exists}
+
+Returns `true` if there is at least 1 result for the query.
 
 ### `sum(field)` {#sum}
 
@@ -203,70 +211,39 @@ It is only available during `POST`, `PUT`, `DELETE`, and is limited to the quota
 
 # Embedded Models {#embedded}
 
-Queries for embedded models work in much the same as any equality query.
-Use an instance of an embedded model to define the "example" criteria to search for.
+Queries for embedded models are similar to equality queries.
 
-The following assumes `Article` has a field named `metadata` with an embedded model as its value:
+The following assumes `Article` has a field named `metadata`.
+The `metadata` field is an embedded model name `ArticleMetadata` with the field `title`.
 
 ```javascript
-Article.metadata(new Article.Metadata().title('The Title')).get();
+Article.metadata({title: 'The Title'}).one();
 ```
 
-This will return an `Article` where `Article.metadata.title == 'The Title'`
+This will return an `Article` where `Article.metadata.title == 'The Title'`,
+regardless of whether `ArticleMetadata` has other defined fields.
 
 # Embedded Lists {#embedded-lists}
 
-Lists of embedded models come with important limitations.
-Chiefly they only match when the _entire_ embedded model in the list matches all given fields.
-In other words, when embedded models are in a list, it's not possible to search for a
-partial field match (unless querying a unique value field).
+Queries for values in an embedded model list are similar to queries for embedded models.
 
-Therefore if needing to query against lists of embedded values, then it's recommended to
-either keep the model limited to 1-2 fields, or keep the queries limited to a unique value.
+However they carry the important limitation that all fields must match.
 
-Otherwise, use [contained models](/🗄/Article/models/containers.md), which provide more robust querying.
-
-Assuming a simple single-valued embedded list model:
-
-```javascript
-Article.languages(new Article.Language().value('en'));
-```
-
-This will return all `Article`'s with "en" as one of its `Article.languages`.
-Because `Article.languages` is an embedded list, it may have other languages besides "en".
+In general we do not recommend modeling with querying in mind for embedded lists.
 
 # Contained Models {#containers}
 
-For models which are [contained](/🗄/Article/models/containers.md) by a parent model,
-querying is performed in much the same way as any other query.
+Querying a model [contained](/🗄/Article/models/containers.md) by a parent model
+is performed in much the same way as any other model query.
 
-The difference is that querying for a child model happens within the scope of a _selected_ container.
-There are 4 ways to ensure a container is _selected_ and in-scope (before querying a child).
+By default queries for a child model occur within the context of a _selected_ (parent) container.
+If there is no selected container, then an exception will be thrown.
 
-1. [Dynamic Paths](/🗄/Article/endpoints/dynamic.md) &mdash;
-   If a container model is the target of a dynamic path,
-   then it is automatically selected for all descendant endpoints and directories.
-   This selection may be overridden by the other two methods.
-2. Variable Selection &mdash; Every container variable is also a function.  Whatever happens in this function is
-   done in the context of that container:  `let children = containerVar(()=>Child.all())`.
-   Return values are optional.
-3. Iteration &mdash; If a container is being iterated (for example in Mustache, as a part of `map()`, etc),
-   then it is selected within the context of each iteration: `Container.all().map(c=>({children: Child.all()}))`.
-4. Method Call &mdash; All children have an explicit method for querying the desired container `Child.container(containerVar)...`.
+There are [automatic and explicit ways](/🗄/Article/scripting/models.md#containers) that a parent container may be selected.
+For queries the most common approaches are automatic selection from [Dynamic Paths](/🗄/Article/endpoints/dynamic.md),
+and explicit selection using the method named after the parent: `Note.list(theListVar) ...`.
 
-> {.more}
->
-> ## Ancestor Scope
->
-> In certain cases it may be necessary to query for children _across_ containers, up to 1 level deep.
-> Take the following model containers and children:  `Project` / `List` / `Task`.
-> The following queries are possible:
->
-> 1. Single Container &mdash; Query for all `List`'s in a single `Project`, _or_ all `Task`'s in a single `List`.
-> 2. Across Containers &mdash; Query for all `Task`'s in a single `Project` (across all `List`'s in 1 `Project`).
->
-> The 3 selection rules still apply.
-> When querying across containers the selected container in the example would be `Project` instead of `List`.
+It's also possible to query for children across *all* containers: `Note.anyList() ...`.
 
 # Unique Value Queries {#unique}
 
@@ -277,6 +254,6 @@ Assuming a model named `Article` and a UID field named "slug":
         
 ```javascript
 let slugId = '....';
-let found = Article.slug(slugId).get();
+let found = Article.slug(slugId).one();
 // Because of error handling, 'found' is always defined at this point
 ```

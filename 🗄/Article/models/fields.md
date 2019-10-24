@@ -363,10 +363,8 @@ items[]:
 address[5]: Address
 ```
 
-Before using embedded model lists, review the
-[query limitations and suggestions](/🗄/Article/scripting/queries.md#embedded-lists).
-
-For more information, see [Model List Scripting](/🗄/Article/scripting/models.md#model-lists).
+Model lists should be used sparingly due to their [query limitations](/🗄/Article/scripting/models.md#model-lists).
+In general we do not recommend using model lists which need to be queried.
 
 # UIDs {#uid}
 
