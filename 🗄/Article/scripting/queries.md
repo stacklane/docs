@@ -162,7 +162,7 @@ The following methods also execute and use the results from a query:
 
 Return the total number of results, after considering all other methods, such as `limit`.
 
-### `one()` {#one}
+### `get()` {#get}
 
 Returns a single result (effectively `limit(1)`).
 If there is no result, then a `$ModelNotFound`
@@ -170,7 +170,7 @@ exception is thrown, similar to loading a model by its ID.
 
 ### `optional()` {#optional}
 
-Behaves similarly to `one()`, but returns `null` instead of throwing `$ModelNotFound`.
+Behaves similarly to `get()`, but returns `null` instead of throwing `$ModelNotFound`.
 
 ### `exists()` {#exists}
 
@@ -217,7 +217,7 @@ The following assumes `Article` has a field named `metadata`.
 The `metadata` field is an embedded model name `ArticleMetadata` with the field `title`.
 
 ```javascript
-Article.metadata({title: 'The Title'}).one();
+Article.metadata({title: 'The Title'}).get();
 ```
 
 This will return an `Article` where `Article.metadata.title == 'The Title'`,
@@ -264,6 +264,6 @@ Assuming a model named `Article` and a UID field named "slug":
         
 ```javascript
 let slugId = '....';
-let found = Article.slug(slugId).one();
+let found = Article.slug(slugId).get();
 // Because of error handling, 'found' is always defined at this point
 ```

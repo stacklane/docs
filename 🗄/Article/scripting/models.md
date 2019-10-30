@@ -116,7 +116,7 @@ Length of the list.
 - `map(function)`
 - `filter(function)`
 - `limit(number)`
-- `one()`
+- `get()`
 - `exists()`
 - `optional()`
 
@@ -146,7 +146,7 @@ Length of the list.
 - `map(function)`
 - `filter(function)`
 - `limit(number)`
-- `one()`
+- `get()`
 - `exists()`
 - `optional()`
 

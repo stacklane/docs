@@ -184,7 +184,7 @@ import {Cookie} from '🍪';
 import {t} from '&';
 
 try {
-  Verify.token(t).one().verified = true;
+  Verify.token(t).get().verified = true;
   new Cookie().name('verified').value(t).days(30);
   Redirect.dir('verified');
 } catch ($ModelNotFound){
