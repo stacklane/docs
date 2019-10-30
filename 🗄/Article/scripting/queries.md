@@ -235,15 +235,25 @@ In general we do not recommend modeling with querying in mind for embedded lists
 
 Querying a model [contained](/🗄/Article/models/containers.md) by a parent model
 is performed in much the same way as any other model query.
+The main difference is that these queries must first specify a parent selector:
 
-By default queries for a child model occur within the context of a _selected_ (parent) container.
-If there is no selected container, then an exception will be thrown.
+## Specific Parent
 
-There are [automatic and explicit ways](/🗄/Article/scripting/models.md#containers) that a parent container may be selected.
-For queries the most common approaches are automatic selection from [Dynamic Paths](/🗄/Article/endpoints/dynamic.md),
-and explicit selection using the method named after the parent: `Note.list(theListVar) ...`.
+To query for models within a specific container, use the method by its lowercase name.
+Given a container named `List` and its contained model named `Note`,
+then a query for every `Note` in a specific `List` would be:
 
-It's also possible to query for children across *all* containers: `Note.anyList() ...`.
+`Note.list(theListVar)`
+
+## Any Parent
+
+To query contained models across all of its containers, use the `any` prefix:
+
+`Note.anyList()`
+
+## Additional Filters
+
+After a parent container selector, any other field filters and query methods may be specified as usual.
 
 # Unique Value Queries {#unique}
 

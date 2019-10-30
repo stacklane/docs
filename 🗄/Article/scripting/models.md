@@ -9,6 +9,12 @@ summary: Learn about scripting with data models.
 let newList = new List().title('x');
 ```
 
+When creating contained child models, the parent container must be specified in the constructor:
+
+```javascript
+let note = new Note(newList).title('Note1');
+``
+
 # Read
 
 ### `get(id)`
@@ -56,41 +62,6 @@ list.title('new title')
 
 ```javascript
 list.remove();
-```
-
-# Containers {#containers}
-
-A specific [container](/🗄/Article/models/containers.md) is *not* needed
-when loading a child model directly by ID or model link.
-
-However when creating or querying child models the container must be known/selected
-or an exception will be thrown.
-
-The following approaches select containers in various scenarios.
-
-## Dynamic Paths
-
-Containers are automatically selected when using [dynamic paths](/🗄/Article/endpoints/dynamic.md).
-
-## Constructor
-
-```javascript
-let list = new List();
-let note = new Note(list).title('Note1');
-```
-
-## Callback
-
-The callback approach is useful when working with multiple models.
-
-```javascript
-let list = new List();
-
-let notes = list(()=>{
-  let note1 = new Note().title('Note1');
-  let note2 = new Note().title('Note2');
-  return [note1, note2];
-});
 ```
 
 ## Query Method
@@ -218,13 +189,17 @@ Obtain a live instance of the model linked to.  Throws `$ModelNotFound` if it no
 
 Returns true if the linked model still exists.
 
+### `optional()`
+
+Returns the linked model if it exists, otherwise returns null.
+
 ### `linked()`
 
-Link fields are never null or undefined.  Returns true if the a link has been set.
+Link fields are never null or undefined.  Returns true if a link has been set.
 
 ### `id`
 
-The unique ID of the model, or `null` if `linked() == false`.
+The unique ID of the linked model, or `null` if `linked() == false`.
 
 # Error Handling {#errors}
 

@@ -6,15 +6,11 @@ summary: Learn about designing models with containers in mind.
 # Overview
 
 Containers in Stacklane are an important modeling concept.
-They creates a strong one-to-many, or parent/child relationship.
+They create a strong one-to-many, or parent/child relationship.
 A container may have many kinds of children, but a child may only have one kind of container/parent.
 For example, List ▶ Note and List ▶ Task, but there would
 never be another parent for "Task" besides "List".
 The container (parent) is always a [Universal](/🗄/Article/models/types.md#universal) type.
-
-For more information about containers see
-[scripting](/🗄/Article/scripting/models.md#containers) and
-[querying](/🗄/Article/scripting/queries.md#containers).
 
 # Back References {#container-link}
 
@@ -25,8 +21,11 @@ the back reference method would be `task.list()`
 
 # One Level Deep {#depth}
 
-Containers may only be one level deep &mdash; one parent container may have any number of contained types,
+Containers may be one level deep &mdash; one parent container may have any number of contained types,
 however those child types may not themselves be containers.
+
+Keep in mind that [model links](/🗄/Article/models/fields.md#model-links) are another way
+to maintain model associations.
 
 # Access Control {#access}
 

@@ -69,13 +69,8 @@ When accessing user profiles for the currently logged in user,
 use the special `me()` method to load them.
        
 ```javascript
-import {BasicProfile} from '📦'
-
-try {
-    let currentUserProfile = BasicProfile.me().get();
-} catch ($ModelNotFound){
-    // No BasicProfile created for current user
-}
+BasicProfile.me().get(); // Throws $ModelNotFound
+ContainedProfile.me().get(containerVar); // Throws $ModelNotFound
 ```
 
 # Roles
