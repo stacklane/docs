@@ -76,12 +76,13 @@ there is no change to the public endpoint/URL.
 Local or external JavaScript may have further dependencies &mdash; for example it may connect to another API.
 
 In that case it may be necessary to specify additional Content-Security-Policy information.
-frame-src and connect-src may be specified directly on the element:
+frame-src, connect-src, and style-src may be specified directly on the element:
 
 ```html
 <script src="https://cdn.asset.com/file.js"
         data-frame-src="https://frame.asset.com/"
-        data-connect-src="https://api.asset.com/"></script>
+        data-connect-src="https://connect.asset.com/"
+        data-style-src="https://style.asset.com/"></script>
 ```
 
 # External JS/CSS {#external}
