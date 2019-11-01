@@ -76,13 +76,14 @@ there is no change to the public endpoint/URL.
 Local or external JavaScript may have further dependencies &mdash; for example it may connect to another API.
 
 In that case it may be necessary to specify additional Content-Security-Policy information.
-frame-src, connect-src, and style-src may be specified directly on the element:
+frame-src, connect-src, style-src, and font-src may be specified directly on the `<script>`:
 
 ```html
 <script src="https://cdn.asset.com/file.js"
         data-frame-src="https://frame.asset.com/"
         data-connect-src="https://connect.asset.com/"
-        data-style-src="https://style.asset.com/"></script>
+        data-style-src="https://style.asset.com/"
+        data-font-src="https://font.asset.com/"></script>
 ```
 
 # External JS/CSS {#external}
@@ -95,12 +96,12 @@ We like to think of third party JS libraries as part of the browser's stack
 &mdash; something that extends the native functionality of the browser, and that your app may put to use.
 
 Ensure that you're able to obtain a reliable Subresource Integrity (SRI) `integrity` attribute for the external JS,
-and place it on the `<script>` element.  Typically SRI is only reliable for "versioned" URLs.
+and place it on the `<script>` element.  Typically SRI is only reliable for versioned URLs.
 
 ## CSS
 
 Ensure that you're able to obtain a reliable Subresource Integrity (SRI) `integrity` attribute for the external CSS,
-and place it on the `<link>` element.  Typically SRI is only reliable for "versioned" URLs.
+and place it on the `<link>` element.  Typically SRI is only reliable for versioned URLs.
 
 ## Fonts
 
