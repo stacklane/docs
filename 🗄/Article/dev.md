@@ -56,7 +56,7 @@ for WebStorm for easy testing.
  
 # Credentials
 
-For certain functionality such as [connectors](/🗄/Article/scripting/connectors.md) to third party APIs,
+For certain functionality such as [connectors](/🗄/Article/api/connectors.md) to third party APIs,
 you'll need to define credentials with your local build.
 Defining credentials is done with a JSON file that is specified in an IDE-specific way.
 
