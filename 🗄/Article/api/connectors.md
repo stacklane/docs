@@ -1,6 +1,6 @@
 ---
 title: Connectors
-summary: Learn about defining and using Connectors, which wrap third party REST APIs.
+summary: Learn about defining and using Connectors.
 ---
 
 Connectors provide a secure and type-safe way to access third party REST APIs.
@@ -17,35 +17,49 @@ it in the public registry.
 
 In the root directory, define a manifest file: `/🎛.yaml`
 
-## Example
-
 ```file-name
 /🎛.yaml
 ```
-
 ```yaml
-name: site24x7.com
+name: stripe.com
 
-type: rest-api
-
-rest-api:
-  prefix: https://www.site24x7.com/api
-  docs: https://www.site24x7.com/help/api/
-  token: Zoho-authtoken
-  payload: json
-  accept: application/json; version=2.0
+type: connector
 ```
 
 ## name
 
-Typically the domain name the connector is for, 
-however this is for management purposes and does not impact the connector's functionality.
-For example "ABC API v2" would be a valid name.
+The domain name the connector is for.
+
+## type
+
+Must be the string `connector`.
+
+# REST APIs
+
+The definition of a connector involves mapping
+folders/files to third party REST endpoints.
+
+## Manifest
+
+```file-name
+/🎛.yaml
+```
+```yaml
+name: stripe.com
+
+type: connector
+
+rest-api:
+  prefix: https://api.stripe.com/v1
+  docs: https://stripe.com/docs/api
+  token: Bearer
+  payload: form
+  accept: application/json
+```
 
 ## prefix
 
-The `prefix` will be prepended to all endpoint paths
-for this connector.
+The `prefix` will be prepended to all endpoint paths for this connector.
 
 ## token
 
@@ -59,11 +73,6 @@ to indicate how request content should be encoded and passed to non-GET endpoint
 ## accept
 
 The `Accept` header expected by the third party API.
-
-# Definitions
-
-The definition of a connector involves mapping
-folders/files to third party REST endpoints.
 
 ## Example
 
@@ -101,17 +110,49 @@ JavaScript use:
 
 `customers('customer').update({ payload });`
 
+# Tags
+
+Connectors may predefine one or more `<link>` and `<script>` tags.
+These specialized third party tags may then be used directly in [Mustache](/🗄/Article/endpoints/mustache.md).
+The main advantage to using connector tags is their ability to set a [Content Security Policy](/🗄/Article/security.md#csp).
+All tag definitions must be placed in the directory named `/<>/`.
+
+## Example
+
+```file-name
+/<>/v3.yaml
+```
+```yaml
+script:
+  src: https://js.stripe.com/v3/
+  #integrity: # not supported by stripe.com
+  async: optional
+
+csp:
+  script-src: https://js.stripe.com/v3/
+  frame-src: https://js.stripe.com
+  connect-src: # Multiple using list format
+    - https://api.stripe.com
+```
+
+## Usage
+
+After importing the connector, the tag may be used directly in a Mustache file:
+
+```html
+<stripe.com-v3 defer/>
+```
+
 # Importing
 
 Connectors must be imported into the project that will use it.
-Define a file in the root named `/🔌.yaml`
+Define a root file named `/🔌.yaml`
 Within this file specify each imported connector's GIT source
 (branch/tag is optional):
 
 ```file-name
 /🔌.yaml
 ```
-
 ```yaml
 - https://github.com/stacklane-registry/site24x7.com.git#branch
 - https://github.com/stacklane-registry/stripe.com.git#!tag
@@ -119,7 +160,7 @@ Within this file specify each imported connector's GIT source
 
 # Credentials
 
-Most third party APIs require an authorization token.
+Many third party REST APIs require an authorization token.
 To pass the authorization token during development builds,
 see the [development credentials](/🗄/Article/dev.md#credentials) JSON format.
 
