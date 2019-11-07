@@ -14,26 +14,33 @@ to display results as HTML.
 
 # All Results {#all}
 
-To query all models of a type, without any filters, use the `all()` method. For example, `Note.all()`.
+To query all models of a type, without any filters, use the `all()` method. For example, `Article.all()`
 
 Results will be returned in the model's [natural ordering](/🗄/Article/models/ordering.md#query).
 
-The "all" query on a model type is also available directly to [Mustache](/🗄/Article/endpoints/mustache.md).
-Any other queries must be built within a [supplier](/🗄/Article/scripting/suppliers.md) before importing them into Mustache.
+# Contained Models {#containers}
 
-```file-name
-/index.html
-```
-```html
-<!--TEMPLATE mustache-->
-{{% import {Note} from '📦' }}
-{{#Note.all as note}}
-  {{note.title}}
-{{/Note.all}}
-```
+Querying a model [contained](/🗄/Article/models/containers.md) by a parent model
+is performed in much the same way as any other model query.
+The main difference is that these queries must first specify a parent selector:
 
-Keep in mind that for contained models, `all` will only include results for a
-[given parent container in scope](#containers).
+## Specific Parent
+
+To query for models within a specific container, use the method by its lowercase name.
+Given a container named `List` and its contained model named `Note`,
+then a query for every `Note` in a specific `List` would be:
+
+`Note.list(theListVar)`
+
+## Any Parent
+
+To query contained models across all of its containers, use the `any` prefix, followed by the name of the parent type:
+
+`Note.anyList()`
+
+## Additional Filters
+
+After a parent container selector, any other field filters and query methods may be specified as usual.
 
 # Field Filters {#field}
 
@@ -65,7 +72,7 @@ Keep in mind that field filters are effectively **and** conditions.
 
 Field filters are typically used to return a small number of specific results.
 By default they return [_unordered_ results](/🗄/Article/models/ordering.md#query).
-Unordered results are implicitly limited to 100 results, which may be explicitly raised to 500 results.
+Unordered results are limited to 100 results by default, which may be explicitly raised to 500 results.
 
 # Methods {#methods}
 
@@ -74,7 +81,7 @@ The following methods influence the query results.
 ### `asc()/desc()` {#order}
 
 All model types have a [natural ordering](/🗄/Article/models/ordering.md).
-It's recommended to minimize the use of `asc()` and `desc()`
+It is recommended to minimize the use of `asc()` and `desc()`
 and to typically rely on the [default ordering of various query types](/🗄/Article/models/ordering.md#query).
 
 ### `filter(function)` {#filter}
@@ -231,30 +238,6 @@ However they carry the important limitation that all fields must match.
 
 In general we do not recommend modeling with querying in mind for embedded lists.
 
-# Contained Models {#containers}
-
-Querying a model [contained](/🗄/Article/models/containers.md) by a parent model
-is performed in much the same way as any other model query.
-The main difference is that these queries must first specify a parent selector:
-
-## Specific Parent
-
-To query for models within a specific container, use the method by its lowercase name.
-Given a container named `List` and its contained model named `Note`,
-then a query for every `Note` in a specific `List` would be:
-
-`Note.list(theListVar)`
-
-## Any Parent
-
-To query contained models across all of its containers, use the `any` prefix:
-
-`Note.anyList()`
-
-## Additional Filters
-
-After a parent container selector, any other field filters and query methods may be specified as usual.
-
 # Unique Value Queries {#unique}
 
 Query [unique fields](/🗄/Article/models/fields.md#unique) and
@@ -267,3 +250,36 @@ let slugId = '....';
 let found = Article.slug(slugId).get();
 // Because of error handling, 'found' is always defined at this point
 ```
+
+# Mustache Use {#mustache}
+
+The "all" query on a model type is available directly to [Mustache](/🗄/Article/endpoints/mustache.md).
+
+```file-name
+/index.html
+```
+```html
+<!--TEMPLATE mustache-->
+{{% import {List} from '📦' }}
+
+{{#List.all as list}}
+  {{list.title}}
+{{/List.all}}
+```
+
+Simple contained model queries are also available directly to Mustache:
+
+```file-name
+/index.html
+```
+```html
+<!--TEMPLATE mustache-->
+{{% import {Note} from '📦' }}
+{{% import {list} from '🔗' }}
+
+{{#Note.list list as note}}
+  {{note.title}}
+{{/Note.list}}
+```
+
+Any other queries must be defined and built within a [supplier](/🗄/Article/scripting/suppliers.md) before importing them into Mustache.

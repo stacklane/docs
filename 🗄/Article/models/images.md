@@ -180,7 +180,7 @@ Stacklane automatically applies safety detection to uploaded images.
 This occurs during the processing phase &mdash;
 an image where `processed==true` has already had safety detection applied.
 
-If an image appears to be unsafe, then the image will be blurred, and the `unsafe` property will return false.
+If an image appears to be unsafe, then the image will be blurred, and the `unsafe` property will return true.
 When using the default `<img>` HTML generation via triple brackets `{{{post.image}}}`,
 the generated `<img>` tag will contain the attribute `data-unsafe="true"`.
 Using an attribute selector it's possible to apply additional formatting beyond the default blurring.
@@ -220,3 +220,7 @@ Variation of ratio which returns values separated with 'x' such as `1x1`.
 ## `ratioBy`
 
 Variation of ratio which returns values separated with 'by' such as `2by3`.
+
+## `unsafe`
+
+`true` if the uploaded image has been processed and determined to be unsafe.

@@ -54,8 +54,8 @@ A successful response is either a status 200 or status 302 redirect.
 
 Failures always rollback any previous work.
 Explicit throws and uncaught exceptions always result in a failure.
-Also any [Redirect](#redirect) returned (even if not thrown) for
-"[invalid forms](/🗄/Article/endpoints/forms.md)" will be considered a failure.
+Also any [Redirect](#redirect) for [invalid forms](/🗄/Article/endpoints/forms.md)
+(even if not thrown) will be considered a failure.
 
 ## JSON
 
