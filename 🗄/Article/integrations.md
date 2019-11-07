@@ -32,5 +32,13 @@ and
 
 - [Site24x7](https://github.com/stacklane-registry/site24x7.com)
 
+# Analytics
+
+- [Clicky](https://github.com/stacklane-registry/clicky.com)
+
+# Fonts
+
+- [Google](https://github.com/stacklane-registry/fonts.google.com)
+- [TypeKit](https://github.com/stacklane-registry/typekit.com)
 
 
