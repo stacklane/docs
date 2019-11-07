@@ -230,13 +230,7 @@ Article.metadata({title: 'The Title'}).get();
 This will return an `Article` where `Article.metadata.title == 'The Title'`,
 regardless of whether `ArticleMetadata` has other defined fields.
 
-# Embedded Lists {#embedded-lists}
-
-Queries for values in an embedded model list are similar to queries for embedded models.
-
-However they carry the important limitation that all fields must match.
-
-In general we do not recommend modeling with querying in mind for embedded lists.
+Queries for values in an embedded model list are identical.
 
 # Unique Value Queries {#unique}
 

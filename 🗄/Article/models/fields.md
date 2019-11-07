@@ -363,9 +363,6 @@ items[]:
 address[5]: Address
 ```
 
-Model lists should be used sparingly due to their [query limitations](/🗄/Article/scripting/models.md#model-lists).
-In general we do not recommend using model lists which need to be queried.
-
 # UIDs {#uid}
 
 `uid` is used for "user friendly" unique identifiers destined for URL paths (aka URL slugs).
