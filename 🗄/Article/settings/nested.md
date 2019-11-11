@@ -15,8 +15,8 @@ nested site at `https://abccompany.com/store/`
 Development of a nested site should be no different than if the site is intended for deployment on a root domain.
 The final deployment location of the site (root domain or nested path) is code agnostic.
 Therefore the nested site's code should *not* hardcode its final mount location.
-Stacklane automatically applies a few simple rules to facilitate this.
-The following scenarios are automatically modified to include with the mount path prefix of the nested site:
+Stacklane applies a few simple rules to facilitate this.
+The following scenarios are automatically modified to include the mount path prefix of the nested site:
 
 - Static assets such as links to scripts / images.
 - Redirects from JavaScript endpoints.

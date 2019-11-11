@@ -106,17 +106,5 @@ For example the full key for Mailgun would be `email:mailgun`.
 
 # Providers
 
-The following providers are currently supported.
+For a list of available providers see [integrations](/integrations#email).
 To configure a provider from a test environment make sure and use its `type`.
-
-## Google Gmail
-
-- `type`: `gmail` &mdash; A dedicated Gmail account is recommended for this purpose.  Generate an app specific password, and enable "Less secure app access" in the security settings.
-
-## Amazon SES
-
-- `type`: `ses-us-east-1` / `ses-eu-west-1`, according to the AWS region the credentials have been setup in.
-
-## Mailgun
-
-- `type`: `mailgun`

@@ -129,16 +129,17 @@ using `google`.
 
 # Providers
 
-The following providers are currently available:
+For a list of available providers see [integrations](/integrations#users).
+Providers have the following properties:
 
-## Google
+### `name`
 
-provider.name: `Google`\
-provider.type: `google`\
-provider.brand: `google`
+Name of the provider, suitable for display to the visitor logging in.
 
-## GitHub
+### `type`
 
-provider.name: `GitHub`\
-provider.type: `github`\
-provider.brand: `github`
+Unique identifier type.
+
+### `brand`
+
+Brand identifier suitable for CSS styling. Multiple providers may have the same brand.

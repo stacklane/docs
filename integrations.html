@@ -1,0 +1,164 @@
+<!--TEMPLATE mustache-->
+{{% partial /_nav/ as nav }}
+
+{{% import {UserProvider, EmailProvider} from '🗄' }}
+
+{{< nav-layout-side}}
+
+{{$title2}}Integrations{{/title2}}
+
+{{$content2}}
+
+<article>
+    <header>
+        <h1>Integrations</h1>
+        <p>
+            Learn about available third party integration points.
+        </p>
+    </header>
+
+    <p>
+        Stacklane provides integration points for
+        <a href="/users/">user identity</a>,
+        <a href="/scripting/email">sending email</a>,
+        <a href="/api/connectors">API connectors</a>,
+        and
+        <a href="/api/build">IDEs</a>.
+    </p>
+
+    <br>
+
+    <div class="tabs" data-controller="tabs">
+        <ul>
+            <li class="is-active"><a href="#connectors">Connectors</a></li>
+            <li><a href="#users">Users</a></li>
+            <li><a href="#email">Email</a></li>
+            <li><a href="#ide">IDEs</a></li>
+        </ul>
+    </div>
+
+    <div class="tab-content">
+
+        <div class="tab-pane is-active" id="connectors">
+            {{!
+              TODO create a doc specific connector (stacklane/docs-registry-connector) to pull from github
+              e.g.
+              curl --header "Accept: application/vnd.github.mercy-preview+json" https://api.github.com/orgs/stacklane-registry/repos?per_page=100
+            }}
+            <p>
+                <a href="/api/connectors">Learn more</a> about using and developing connectors.
+            </p>
+            <table class="table is-fullwidth">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Source</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>stripe.com</td>
+                    <td>Payments</td>
+                    <td><a href="https://github.com/stacklane-registry/stripe.com">View</a></td>
+                </tr>
+                <tr>
+                    <td>site24x7.com</td>
+                    <td>Monitoring</td>
+                    <td><a href="https://github.com/stacklane-registry/site24x7.com">View</a></td>
+                </tr>
+                <tr>
+                    <td>clicky.com</td>
+                    <td>Analytics</td>
+                    <td><a href="https://github.com/stacklane-registry/clicky.com">View</a></td>
+                </tr>
+                <tr>
+                    <td>fonts.google.com</td>
+                    <td>Fonts</td>
+                    <td><a href="https://github.com/stacklane-registry/fonts.google.com">View</a></td>
+                </tr>
+                <tr>
+                    <td>typekit.com</td>
+                    <td>Fonts</td>
+                    <td><a href="https://github.com/stacklane-registry/typekit.com">View</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane" id="users">
+            <p>
+                Providers supported by the <a href="/users/">user module</a>.
+            </p>
+            <table class="table is-fullwidth">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Brand ID</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#UserProvider.all}}
+                <tr>
+                    <td>{{title}}</td>
+                    <td>{{keyType}}</td>
+                    <td>{{brandId}}</td>
+                </tr>
+                {{/UserProvider.all}}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane" id="email">
+            <p>
+                Providers supported by the <a href="/scripting/email">email module</a>.
+            </p>
+            <table class="table is-fullwidth">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#EmailProvider.all}}
+                <tr>
+                    <td>{{title}}
+                        {{#about as a}}<br><small>{{a}}</small>{{/about}}
+                    </td>
+                    <td class="nowrap">{{keyType}}</td>
+                </tr>
+                {{/EmailProvider.all}}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tab-pane" id="ide">
+            <p>
+                To learn more about developing IDE plugins, see the
+                <a href="/api/build">Build API documentation</a>.
+            </p>
+            <table class="table is-fullwidth">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Plugin</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a href="https://www.jetbrains.com/webstorm/download/">WebStorm</a></td>
+                    <td><a href="https://plugins.jetbrains.com/plugin/10313-stacklane">View</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</article>
+
+
+{{/content2}}
+{{/nav-layout-side}}
