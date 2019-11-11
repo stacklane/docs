@@ -163,17 +163,17 @@ Because suppliers follow the hierarchical REST structure, they have varying leve
 The most specific supplier is one with the same name as the endpoint itself.
 For example, an endpoint named `index.html`
 may also have a supplier named `📤/index.js`.
-As the most specific supplier, only `index.html` may access values exported by `📤index.js`
+As the most specific supplier, only `index.html` may access values exported by `📤/index.js`
 (however `index.html` may also access other in-scope suppliers).
 
 ## Pinned Supplier
 
-An extension to an endpoint specific supplier is a "pinned" supplier.
-Indicate a pinned supplier with the pin emoji, e.g. `📤/📌index.js`,
+Pinned suppliers are an extension to endpoint specific suppliers.
+Indicate a pinned supplier with the pin emoji, for example `📤/📌index.js`,
 using the same file name as the target Mustache template.
 Pinned suppliers may be used to hide _or_ re-expose broader/earlier supplied values.
 
-This is especially useful where more strict separation of concerns
+This is primarily used where more strict separation of concerns
 are desired, for example in the case of [Mustache endpoints](/🗄/Article/endpoints/mustache.md#soc).
 The JavaScript developer may want to ensure that regardless of any suppliers along the REST path,
 only very explicit / strictly supplied values are visible to the Mustache file.
