@@ -18,30 +18,6 @@ To query all models of a type, without any filters, use the `all()` method. For 
 
 Results will be returned in the model's [natural ordering](/🗄/Article/models/ordering.md#query).
 
-# Contained Models {#containers}
-
-Querying a model [contained](/🗄/Article/models/containers.md) by a parent model
-is performed in much the same way as any other model query.
-The main difference is that these queries must first specify a parent selector:
-
-## Specific Parent
-
-To query for models within a specific container, use the method by its lowercase name.
-Given a container named `List` and its contained model named `Note`,
-then a query for every `Note` in a specific `List` would be:
-
-`Note.list(theListVar)`
-
-## Any Parent
-
-To query contained models across all of its containers, use the `any` prefix, followed by the name of the parent type:
-
-`Note.anyList()`
-
-## Additional Filters
-
-After a parent container selector, any other field filters and query methods may be specified as usual.
-
 # Field Filters {#field}
 
 Queries besides `all()` start with a field filter.
@@ -215,6 +191,47 @@ It is only available during `POST`, `PUT`, `DELETE`, and is limited to the quota
 > It is not required that every Model be modified, for example if it doesn't satisfy some condition.
 > However consider using `filter(...)` in the case where there are well defined conditions
 > that must be met before updating a model.  This will also keep the modify function simpler.
+
+# Contained Models {#containers}
+
+Querying a model [contained](/🗄/Article/models/containers.md) by a parent model
+is performed in much the same way as any other model query.
+The main difference is that these queries must first specify a parent selector:
+
+## Specific Parent
+
+To query for models within a specific container, use the method by its lowercase name.
+Given a container named `List` and its contained model named `Note`,
+then a query for every `Note` in a specific `List` would be:
+
+`Note.list(theListVar)`
+
+## Any Parent
+
+To query contained models across all of its containers, use the `any` prefix, followed by the name of the parent type:
+
+`Note.anyList()`
+
+## Additional Filters
+
+After a parent container selector, any other field filters and query methods may be specified as usual.
+
+## Grouping
+
+When querying across any parent, it's also possible to group by each distinct parent.
+
+```javascript
+List
+  .grouping(Note.anyList().status('active'))
+  .map(group=>({
+    listName: group.list.name,
+    noteNames: group.note.map(note=>note.name)
+  }))
+```
+
+For each parent group, the children returned will be limited.
+By default each parent is limited to 100 child results.
+This may be decreased using the `limit(n)` on the child's query.
 
 # Embedded Models {#embedded}
 
