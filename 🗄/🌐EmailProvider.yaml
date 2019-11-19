@@ -4,4 +4,6 @@ title:
 
 keyType: string
 
+url: string
+
 about?: markdown
