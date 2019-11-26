@@ -34,6 +34,65 @@ The domain name the connector is for.
 
 Must be the string `connector`.
 
+# Importing
+
+Connectors must be imported into the project that will use it.
+Define a root file named `/🔌.yaml`
+Within this file specify each imported connector's GIT source
+(branch/tag is optional):
+
+```file-name
+/🔌.yaml
+```
+```yaml
+- https://github.com/stacklane-registry/site24x7.com.git#branch
+- https://github.com/stacklane-registry/stripe.com.git#!tag
+```
+
+# Credentials
+
+Many third party REST APIs require an authorization token.
+To pass the authorization token during development builds,
+see the [development credentials](/🗄/Article/dev.md#credentials) JSON format.
+
+The credential key for a connector is `api:[connector-root-domain]`,
+where `[connector-root-domain]` is the name of the rest API's root domain.
+For example, a connector to `api.abc.com` would have the credential key of `api:abc.com`.
+
+# Tags
+
+Connectors may predefine one or more `<link>` and `<script>` tags,
+which may be thought of as a client-side connection.
+These specialized third party tags are used directly in [Mustache](/🗄/Article/endpoints/mustache.md).
+The main advantage to using connector tags is their ability to set a [Content Security Policy](/🗄/Article/security.md#csp).
+All tag definitions must be placed in the directory named `/<>/`.
+
+## Example
+
+```file-name
+/<>/v3.yaml
+```
+```yaml
+script:
+  src: https://js.stripe.com/v3/
+  #integrity: # not supported by stripe.com
+  async: optional
+
+csp:
+  script-src: https://js.stripe.com/v3/
+  frame-src: https://js.stripe.com
+  connect-src: # Multiple using list format
+    - https://api.stripe.com
+```
+
+## Usage
+
+After importing the connector, the tag may be used directly in a Mustache file:
+
+```html
+<stripe.com-v3 defer/>
+```
+
 # REST APIs
 
 The definition of a connector involves mapping
@@ -52,29 +111,83 @@ type: connector
 rest-api:
   prefix: https://api.stripe.com/v1
   docs: https://stripe.com/docs/api
-  token: Bearer
   payload: form
   accept: application/json
 ```
 
-## prefix
+### `prefix`
 
 The `prefix` will be prepended to all endpoint paths for this connector.
 
-## token
-
-The name of the token expected in the `Authorization` header.
-
-## payload
+### `payload`
 
 Either `json` or `form`,
 to indicate how request content should be encoded and passed to non-GET endpoints.
 
-## accept
+### `accept`
 
 The `Accept` header expected by the third party API.
 
-## Example
+# REST Authentication
+
+The following types of authentication are supported:
+
+## Static Token
+
+```file-name
+/🎛.yaml
+```
+```yaml
+# ...
+rest-api:
+  # ...
+  auth:
+    mode: static
+    token-name: Bearer
+```
+
+### `token-name`
+
+Defines the prefix for the static token in the "Authorization" header.
+For example: `Authorization: Bearer [static-token]`.
+The static token value is defined with the connector credentials.
+Defaults to "Bearer".
+
+## OAuth2 Token
+
+For server-to-server OAuth2 based authentication, the third party API needs to
+support a "refresh token" which never expires.  Stacklane will use the
+non-expiring refresh token defined in the connector credentials to obtain temporary access tokens.
+
+```file-name
+/🎛.yaml
+```
+```yaml
+# ...
+rest-api:
+  # ...
+  auth:
+    mode: oauth2
+    token-name: Zoho-oauthtoken
+    refresh-url: https://accounts.zoho.com/oauth/v2/token
+    scheme: request-body
+```
+
+### `token-name`
+
+Defines the prefix for the token in the "Authorization" header.
+Defaults to "Bearer".
+
+### `refresh-url`
+
+The URL for generating new access tokens from the refresh token.
+
+### `scheme`
+
+The method for passing credentials when refreshing an access token.
+Defaults to "basic", but may be "request-body".
+
+# REST API Layout
 
 ```file-name
 /balance/history/{txn}/get.yaml
@@ -109,61 +222,3 @@ REST endpoint result:
 JavaScript use:
 
 `customers('customer').update({ payload });`
-
-# Tags
-
-Connectors may predefine one or more `<link>` and `<script>` tags.
-These specialized third party tags may then be used directly in [Mustache](/🗄/Article/endpoints/mustache.md).
-The main advantage to using connector tags is their ability to set a [Content Security Policy](/🗄/Article/security.md#csp).
-All tag definitions must be placed in the directory named `/<>/`.
-
-## Example
-
-```file-name
-/<>/v3.yaml
-```
-```yaml
-script:
-  src: https://js.stripe.com/v3/
-  #integrity: # not supported by stripe.com
-  async: optional
-
-csp:
-  script-src: https://js.stripe.com/v3/
-  frame-src: https://js.stripe.com
-  connect-src: # Multiple using list format
-    - https://api.stripe.com
-```
-
-## Usage
-
-After importing the connector, the tag may be used directly in a Mustache file:
-
-```html
-<stripe.com-v3 defer/>
-```
-
-# Importing
-
-Connectors must be imported into the project that will use it.
-Define a root file named `/🔌.yaml`
-Within this file specify each imported connector's GIT source
-(branch/tag is optional):
-
-```file-name
-/🔌.yaml
-```
-```yaml
-- https://github.com/stacklane-registry/site24x7.com.git#branch
-- https://github.com/stacklane-registry/stripe.com.git#!tag
-```
-
-# Credentials
-
-Many third party REST APIs require an authorization token.
-To pass the authorization token during development builds,
-see the [development credentials](/🗄/Article/dev.md#credentials) JSON format.
-
-The credential key for a connector is `api:[connector-root-domain]`,
-where `[connector-root-domain]` is the name of the rest API's root domain.
-For example, a connector to `api.abc.com` would have the credential key of `api:abc.com`.
