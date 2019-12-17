@@ -196,7 +196,7 @@ It is only available during `POST`, `PUT`, `DELETE`, and is limited to the quota
 
 Querying a model [contained](/🗄/Article/models/containers.md) by a parent model
 is performed in much the same way as any other model query.
-The main difference is that these queries must first specify a parent selector:
+The main difference is that these queries must first specify a parent selector.
 
 ## Specific Parent
 
