@@ -6,7 +6,7 @@ summary: Learn about available field types for your models.
 # Default
 
 Every non-embedded model type is pre-defined with a unique `id`, plus `created` and `modified` timestamp fields.
-These are automatically managed.  They are available before persisting.
+These are automatically managed.  All are available before persisting.
 
 # Primitives
 
@@ -82,22 +82,19 @@ Given a `Product` model:
 new Product().status(Product.status.pending);
 ```
 
-# Speciality
+# Country Code
 
-Speciality fields provide validation, and often lower provisioned sizes.
+Use the `country` field to store
+<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3" target="_blank">ISO 3166-1 alpha-3</a> country codes.
 
-## `country`
+# Map
 
-<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3" target="_blank">ISO 3166-1 alpha-3</a> country code.
-
-## `map`
-
-Special case field that should be used sparingly.
+The `map` field type is a special case field that should be used sparingly.
 Maps support free-form string, number, and boolean values.
 _Maps are not indexed, and not queryable_.
 They are only suitable for free-form fields that may vary widely for the same model type.
 Maps are never null, and are always ready to be read/modified.
-Us an optional map field if no values are required.
+Use an optional map field if no values are required.
 
 # Geo Point
 
