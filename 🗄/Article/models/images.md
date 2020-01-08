@@ -50,7 +50,7 @@ Non-expert users may upload full resolution / raw images which are too large for
 These may be rescaled or cropped client-side.
 Otherwise Stacklane will automatically rescale images during the processing phase.
 
-- Image longest side > 1000px, rescaled to 1000px.
+- Image longest side > 1000px, proportionally rescaled to 1000px.
 - Image longest side <= 1000px wide remain unscaled.
 - JPG images will use progressive rendering.
 - PNG images will use progressive rendering. PNG
