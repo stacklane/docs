@@ -6,7 +6,7 @@ summary: Learn about available field types for your models.
 # Default
 
 Every non-embedded model type is pre-defined with a unique `id`, plus `created` and `modified` timestamp fields.
-These are automatically managed.  All are available before persisting.
+These are automatically managed.  All are available immediately after model creation, even prior to persisting.
 
 # Primitives
 
@@ -74,12 +74,12 @@ simply change `init` to `true`. Otherwise it will default to null.
 
 ## Type-Safe Access {#options-type-safe}
 
-Instead of referencing the available values by string,
-it's recommended to use the type-safe version.
-Given a `Product` model:
+Available values may be assigned strings,
+however whenever possible use the type-safe equivalent.
+For example, given a `Product` model:
 
 ```javascript
-new Product().status(Product.status.pending);
+new Product().status(Product.status.pending)
 ```
 
 # Country Code
