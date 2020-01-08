@@ -53,7 +53,7 @@ Otherwise Stacklane will automatically rescale images during the processing phas
 - Image longest side > 1000px, proportionally rescaled to 1000px.
 - Image longest side <= 1000px wide remain unscaled.
 - JPG images will use progressive rendering.
-- PNG images will use progressive rendering. PNG
+- PNG images will use progressive rendering.
 - PNG images exceeding 500K bytes after rescaling are converted to JPG.
 - Resulting image size must be less than 500K bytes.
 
