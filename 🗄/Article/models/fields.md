@@ -187,6 +187,16 @@ This field accepts string input.
 >
 > The value will not be rendered if `invalid`
 >
+> ## Configuration
+>
+> The following additional field configuration options are available:
+>
+> ### `render/autolink`
+>
+> Controls whether plain URLs found within text are automatically converted to links when the value is rendered to HTML.
+>
+> May be `true` or `blank`.  `blank` will ensure links are output with `target="_blank"`.
+>
 > ## Properties
 >
 > If defined, the markdown value object has the following fields:
@@ -263,6 +273,16 @@ This field accepts string input.
 > ```javascript
 > let markdown = theProduct.summary.md();
 > ```
+>
+> ## Configuration
+>
+> The following additional field configuration options are available:
+>
+> ### `render/autolink`
+>
+> Controls whether plain URLs found within text are automatically converted to links when the value is rendered to HTML.
+>
+> May be `true` or `blank`.  `blank` will ensure links are output with `target="_blank"`.
 >
 > ## Properties
 >
