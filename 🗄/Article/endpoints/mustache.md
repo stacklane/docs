@@ -335,6 +335,11 @@ Files are analyzed to create a reasonable CSP file.
 - Inline `<script>` elements become a CSP hash source.
 - Inline `<style>` elements become a CSP hash source.
 
+## Restrictions
+
+- Inline style attributes `style="..."` are not allowed.
+- Inline JavaScript via attributes `onclick="..."`, etc, are not allowed.
+
 ## Custom Declarations
 
 Include the following tag anywhere in the body:
@@ -352,7 +357,7 @@ This tag supports the following properties:
 ## Script Dependencies
 
 Certain scripts, external or otherwise, may have further CSP dependencies.
-For readability these may be specified on the `<script>` element itself:
+For readability these may be specified on the `<script>` element itself.
 
 ```html
 <script 
@@ -362,10 +367,8 @@ For readability these may be specified on the `<script>` element itself:
 ></script>
 ```
 
-## Restrictions
-
-- Inline style attributes `style="..."` are not allowed.
-- Inline JavaScript via attributes `onclick="..."`, etc, are not allowed.
+For more information see the
+[documentation on adding content security policies to external scripts](/🗄/Article/endpoints/assets.md#add-csp).
 
 # Private Files {#private}
 

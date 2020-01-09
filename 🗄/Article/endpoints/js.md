@@ -57,11 +57,11 @@ Explicit throws and uncaught exceptions always result in a failure.
 Also any [Redirect](#redirect) for [invalid forms](/🗄/Article/endpoints/forms.md)
 (even if not thrown) will be considered a failure.
 
-## JSON
+## JSON {#json-response}
 
 JSON may be output as a resulting value or thrown value.
 This may be accomplished with an object literal and/or use of a `map` function.
-For more information see [JSON](#json).
+For more information see [JSON Output](#json).
 
 ## HTML
 
