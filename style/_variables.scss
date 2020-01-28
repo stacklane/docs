@@ -1,28 +1,60 @@
+/**
+ * Branding
+ *
+ * Bulma uses the grey-, black-, white- variations to drive many other settings.
+ */
+
+$blue: #0c84cd;
+$blue-light: #238cd6;
+$blue-lighter: #409ce7;
+
+$primary: $blue;
+$info: $blue;
+
+$black: #14171A;
+$black-bis: #14171A;
+$black-ter: #14171A;
+
+$white: #ffffff;
+$white-ter: #F5F8FA;
+$white-bis: #F5F8FA;
+
+$grey-darker: #2a3137;
+$grey-dark: #414c56;
+$grey: #657786;
+$grey-light: #aab8c2;
+$grey-lighter: #E1E8ED;
+$grey-lightest: #F5F8FA;
+
+$shadow-color-for-body-background-only: rgba(#343d45 /* 25% darker than $grey-dark */, 0.1);
+
+///
+
+$scheme-main: $white-ter;
+$scheme-main-ter: $white-ter;
+$scheme-main-bis: $white-bis;
+
+/**
+ * Imports
+ */
 
 @import "/bulma/utilities/initial-variables";
 @import "/bulma/utilities/functions";
 @import "/bulma/utilities/derived-variables";
 
+
 /**
- * Custom
+ * More
  */
 
 $article-block-spacing: 1rem;
 
-$main-bg-color: #f8f8f8;
-
-//$shadow-sm: 0 .125rem .25rem rgba($black, .075) !default;
-//$shadow: 0 .5rem 1rem rgba($black, .15) !default;
-//$shadow-lg: 0 1rem 3rem rgba($black, .175) !default;
-
-//$shadow-for-bg-small: 0 2px 5px 0 rgba(59,65,94, 0.1), 0 1px 1px 0 rgba(0, 0, 0, .07) !default;
-$shadow-for-bg: 0 7px 14px 0 rgba(59,65,94, 0.1), 0 3px 6px 0 rgba(0, 0, 0, .07) !default;
-//$shadow-for-bg-large: 0 15px 35px 0 rgba(59,65,94, 0.1), 0 5px 15px 0 rgba(0, 0, 0, .07) !default;
+$shadow-for-bg: $shadow-color-for-body-background-only;
 
 $zindex-sticky: 39;
 
-$boxed-radius: $radius; //0.25rem;
-$boxed-border: 1px solid rgba(0,0,0,.1); //#e5e5e5;
+$boxed-radius: $radius;
+$boxed-border: 1px solid rgba(0,0,0,.1);
 $boxed-border-lighter: 1px solid rgba(0,0,0,.05);
 $boxed-background: white !important;
 $boxed-shadow:  0px 0px 15px 0px rgba(0, 0, 0, 0.05);
@@ -37,31 +69,20 @@ $boxed-shadow:  0px 0px 15px 0px rgba(0, 0, 0, 0.05);
 /**
  * Overrides
  */
+
 $size-7: .8rem;
 
 $navbar-z: $zindex-sticky + 1;
 $navbar-fixed-z: $navbar-z;
-$navbar-background-color: $main-bg-color;
 $navbar-height: 3.25rem;
 $navbar-padding-vertical: 1rem;
 $navbar-padding-horizontal: 1rem;
 $navbar-breakpoint: 0px;
 $navbar-total-height: $navbar-height + $navbar-padding-vertical + $navbar-padding-vertical;
 
-$family-sans-serif: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-
-$input-border-color: $grey-lighter;
-
-$body-background-color: $main-bg-color; //#101E27;
-$body-color: #555555;
 $body-size: 15px;
-$body-line-height: 1.5;
-$body-weight: $weight-normal;
 
 $table-background-color: transparent;
-
-$link: #3284A0;
-$link-hover: #345167;
 
 $box-radius: $boxed-radius;
 $box-shadow: $boxed-shadow;
@@ -73,11 +94,4 @@ $code-size: inherit;
 $code-weight: inherit;
 $code-padding: 0;
 
-/*
- * Use bootstrap breakpoints
- */
-$tablet: 576px;
-$desktop: 768px /*+ 2 * $gap*/;
-$widescreen: 992px /*+ 2 * $gap*/;
-$fullhd: 1200px /*+ 2 * $gap*/;
 

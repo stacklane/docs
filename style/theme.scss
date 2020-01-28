@@ -51,6 +51,17 @@
   }
 }
 
+.is-scrolled .navbar{
+  border-bottom: $boxed-border-lighter;
+}
+
+.navbar-brand .logo svg{
+  height: 1.5rem;
+  fill: $black;
+  margin-top: 1px; // TODO resolve somehow with flex / align?
+}
+
+
 .nowrap{
   white-space: nowrap;
 }
@@ -119,7 +130,7 @@ td.align-bottom{
 
 main {
   margin-top: $navbar-total-height;
-  background: $main-bg-color;
+  //background: $main-bg-color;
 
   // for mobile:
   margin-left: 1rem;
@@ -171,14 +182,5 @@ main + footer{
   font-size: .8rem;
 }
 
-.is-scrolled .navbar{
-  border-bottom: $boxed-border-lighter;
-}
-
-.navbar-brand .logo svg{
-  height: 1.25rem;
-  overflow:visible;
-  margin-bottom: 1px;
-}
 
 

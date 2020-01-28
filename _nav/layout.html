@@ -36,23 +36,23 @@
     {{% svg /icons/ as icon }}
 </head>
 <body>
-<nav id="nav" class="navbar is-spaced is-fixed-top" role="navigation" aria-label="main navigation">
+<nav id="nav" class="navbar is-spaced is-fixed-top is-transparent">
     <div class="container">
-    <div class="navbar-brand">
-        <a href="https://stacklane.com" class="navbar-item logo">{{>logo-sl_full}}</a>
-        <a href="/" title="Docs" class="navbar-item">Docs</a>
-        <span class="navbar-item navbar-title">{{$title}}{{/title}}</span>
-    </div>
-
-    <div class="navbar-menu">
-        <div class="navbar-start">
-
+        <div class="navbar-brand">
+            <a href="https://stacklane.com" class="navbar-item logo">{{>logo-logo-and-text-mono}}</a>
+            <a href="/" title="Docs" class="navbar-item">Docs</a>
+            <span class="navbar-item navbar-title">{{$title}}{{/title}}</span>
         </div>
 
-        <div class="navbar-end">
+        <div class="navbar-menu">
+            <div class="navbar-start">
 
+            </div>
+
+            <div class="navbar-end">
+
+            </div>
         </div>
-    </div>
     </div>
 </nav>
 
@@ -84,9 +84,8 @@
     });
 </script>
 
-{{!
+{{! TODO create a connector accessing stacklane.com/status/api/status
 
-// TODO needs csp work or a connector
 $ready(function(){
     var moreClass = 'is-invisible '; // TODO needs csp work or a connector
     var xhr = new XMLHttpRequest();
