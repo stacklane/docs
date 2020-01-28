@@ -1,7 +1,5 @@
 /**
- * Branding
- *
- * Bulma uses the grey-, black-, white- variations to drive many other settings.
+ * Literals
  */
 
 $blue: #0c84cd;
@@ -26,13 +24,17 @@ $grey-light: #aab8c2;
 $grey-lighter: #E1E8ED;
 $grey-lightest: #F5F8FA;
 
-$shadow-color-for-body-background-only: rgba(#343d45 /* 25% darker than $grey-dark */, 0.1);
-
-///
+/**
+ * Scheme
+ */
 
 $scheme-main: $white-ter;
 $scheme-main-ter: $white-ter;
 $scheme-main-bis: $white-bis;
+
+$scheme-invert: $black;
+$scheme-invert-bis: $black-bis;
+$scheme-invert-ter: $black-ter;
 
 /**
  * Imports
@@ -42,14 +44,11 @@ $scheme-main-bis: $white-bis;
 @import "/bulma/utilities/functions";
 @import "/bulma/utilities/derived-variables";
 
-
 /**
  * More
  */
 
 $article-block-spacing: 1rem;
-
-$shadow-for-bg: $shadow-color-for-body-background-only;
 
 $zindex-sticky: 39;
 
