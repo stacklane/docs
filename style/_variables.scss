@@ -52,18 +52,6 @@ $article-block-spacing: 1rem;
 
 $zindex-sticky: 39;
 
-$boxed-radius: $radius;
-$boxed-border: 1px solid rgba($black,.1);
-$boxed-border-lighter: 1px solid rgba($black,.05);
-$boxed-background: white !important;
-$boxed-shadow:  0px 0px 15px 0px rgba($black, 0.05);
-
-@mixin is-boxed {
-  box-shadow: $boxed-shadow;
-  border-radius: $boxed-radius;
-  border: $boxed-border;
-  background: $boxed-background;
-}
 
 /**
  * Overrides
@@ -83,10 +71,13 @@ $body-size: 15px;
 
 $table-background-color: transparent;
 
-$box-radius: $boxed-radius;
-$box-shadow: $boxed-shadow;
-$box-background-color: $boxed-background;
-.box{ border: $boxed-border; }
+$box-radius: $radius;
+$box-shadow: 0px 0px 15px 0px rgba($black, 0.05);
+$box-background-color: $white;
+$box-border: 1px solid rgba($black,.1);
+.box{ border: $box-border; }
+
+$input-background-color: $white;
 
 $code-background: inherit;
 $code-size: inherit;

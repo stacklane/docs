@@ -1,10 +1,28 @@
 @import "/style/variables";
 
+.article-list{
+  display: flex;
+  flex-wrap: wrap;
+
+  h2{
+    font-weight: $weight-medium;
+  }
+  a.box{
+    width: 100%;
+    margin: .25rem !important;
+  }
+  @include tablet{
+    a.box{
+      width: 48%;
+    }
+  }
+}
+
 article{
   footer{
     margin-top: 5rem;
-    border-radius: $boxed-radius;
-    border: $boxed-border;
+    border-radius: $box-radius;
+    border: $box-border;
     padding: 2rem;
   }
 
@@ -119,7 +137,7 @@ article > h1:after{
   content: '';
   flex-grow: 1;
   margin-left: .625rem;
-  border-top: $boxed-border;
+  border-top: $box-border;
 }
 
 article > h1, article header + p{

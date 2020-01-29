@@ -4,7 +4,7 @@
   z-index: $zindex-sticky;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-  border-right: $boxed-border;
+  border-right: $box-border;
 
   font-size: .9rem;
 
@@ -53,7 +53,7 @@
   }
 
   .nav-separator{
-    border-top: $boxed-border;
+    border-top: $box-border;
     margin-top: 1rem;
     padding-top: 1rem;
   }
@@ -69,14 +69,6 @@
     vertical-align: text-bottom;
     margin-right: .15rem;
   }
-
-  /*
-  .nav-item {
-    width: 100%;
-  }
-  .nav-item + .nav-item {
-    margin-left: 0;
-  }*/
 
   a.nav-link{
     border-radius: 0;
@@ -95,42 +87,17 @@
     &:hover {
       color: black;
     }
-    //&ul a.active{
-    //  color: $link;
-   // }
 
     &.level:not(:last-child){
       margin-bottom: .5rem;
     }
   }
-  /*
-  ul a {
-    border-radius: 0;
-    padding: 0;
-    color: #4c555a;
-    display:block;
-    border-right: 2px solid transparent;
-  }
-  ul a.is-active{
-
-  }
-  ul a:visited {
-    color: #4c555a;
-  }
-  ul a:hover {
-    color: black;
-  }
-  ul a.active{
-    color: $link;
-  }*/
 }
 
 @include desktop() {
   #sidebar {
     position: -webkit-sticky;
     position: sticky;
-    top: $navbar-total-height;// + 2rem;
-    ///max-height: calc(100vh - 0rem /*top*/);
-    ///height: calc(100vh - 0rem);
+    top: $navbar-total-height;
   }
 }

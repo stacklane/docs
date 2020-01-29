@@ -9,7 +9,6 @@
 @import "/bulma/elements/box";
 @import "/bulma/elements/button";
 @import "/bulma/elements/container";
-@import "/bulma/elements/form";
 @import "/bulma/elements/icon";
 @import "/bulma/elements/image";
 @import "/bulma/elements/title";
@@ -27,6 +26,8 @@
 @import "/bulma/components/tabs";
 
 @import "/bulma/grid/columns";
+
+@import "/bulma/form/all";
 
 ////////////
 
@@ -52,7 +53,7 @@
 }
 
 .is-scrolled .navbar{
-  border-bottom: $boxed-border-lighter;
+  border-bottom: $box-border;
 }
 
 .navbar-brand .logo svg{
@@ -82,45 +83,6 @@ td.align-bottom{
   font-size: .85rem;
 }
 
-.article-list{
-  display: flex;
-  flex-wrap: wrap;
-
-  h2{
-    font-weight: $weight-medium;
-  }
-  a{
-    width: 100%;
-
-    @extend %block;
-
-    background-color: $box-background-color;
-    border-radius: $box-radius;
-    box-shadow: $box-shadow;
-    color: $box-color;
-    display: block;
-    padding: $box-padding;
-    border: $boxed-border;
-
-    margin: .25rem !important;
-
-    &:hover,
-    &:focus {
-      box-shadow: $box-link-hover-shadow;
-    }
-
-    &:active {
-      box-shadow: $box-link-active-shadow;
-    }
-  }
-  @include tablet{
-    a{
-      width: 48%;
-    }
-  }
-}
-
-
 .navbar-title{
   visibility: hidden;
 }
@@ -130,7 +92,6 @@ td.align-bottom{
 
 main {
   margin-top: $navbar-total-height;
-  //background: $main-bg-color;
 
   // for mobile:
   margin-left: 1rem;
@@ -139,7 +100,17 @@ main {
 
 body {
   pre[class*="language-"] {
-    @include is-boxed;
+    /**
+     * Same as .box
+     */
+    @extend %block;
+    background-color: $box-background-color;
+    border-radius: $box-radius;
+    box-shadow: $box-shadow;
+    color: $box-color;
+    display: block;
+    padding: $box-padding;
+    border: $box-border;
   }
 
   /**
@@ -147,7 +118,7 @@ body {
    * In other words, this always "goes with" another pre language block.
    */
   pre[class*="language-file-name"]{
-    background: whitesmoke !important;
+    background: $grey-lightest !important;
     font-size: .8em;
     z-index: 1;
     position: relative;
@@ -155,7 +126,7 @@ body {
     padding: .75em;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    margin-bottom: -2px;
+    margin-bottom: -2px !important;
 
     /**
      * Stacking file-name on top of another language,
@@ -163,9 +134,7 @@ body {
      */
     + pre[class*="language-"]{
       margin-top: 0rem;
-      //margin-top: -$article-block-spacing - .25rem; // warning: this is touchy, across browsers too
       border-top-left-radius: 0;
-      //border-top-right-radius: 0;
       z-index: 2;
       position: relative;
     }
@@ -177,7 +146,7 @@ main + footer{
   padding-top: 1rem;
   padding-bottom: 2rem;
   padding-right: 1rem;
-  border-top: $boxed-border;
+  border-top: $box-border;
   text-align: right;
   font-size: .8rem;
 }
