@@ -35,7 +35,13 @@
         </article>
     </div>
     <div class="column is-narrow is-hidden-tablet-only is-hidden-mobile">
-        <div id="toc"></div>
+        <div id="toc">
+            <ul>
+            {{#article.get.content.h1 as h1}}
+            <li><a href="#{{h1.id}}" data-scroll>{{{h1.html}}}</a></li>
+            {{/article.get.content.h1}}
+            </ul>
+        </div>
     </div>
 </div>
 
@@ -62,20 +68,6 @@
 </template>
 
 <script>
-    /* TOC */
-    $ready(()=>{
-        var html = '';
-
-        document.querySelectorAll('article > h1').forEach((e)=>{
-            if (e.id) {
-                var title = e.innerText;
-                html += '<li><a href="#' + e.id + '" data-scroll>' + title + '</a></li>';
-            }
-        });
-
-        if (html.length > 0) $get('toc').innerHTML = '<ul>' + html + '</ul>';
-    });
-
     /* .more */
     $ready(()=>{
         document.querySelectorAll('article > .more').forEach((e)=>{
@@ -123,21 +115,6 @@
             e.remove();
         });
     });
-
-    /* does not span sections..
-    $ready(function() {
-        if (typeof Gumshoe !== 'undefined') {
-            var height = $get('nav').getBoundingClientRect().height;
-            new Gumshoe('#toc a', {
-                navClass: 'is-active', // applied to the nav list item
-                //contentClass: 'is-active', // applied to the content
-                offset: function () {
-                    return height;
-                },
-                reflow: true
-            });
-        }
-    });*/
 </script>
 
 {{/content}}
