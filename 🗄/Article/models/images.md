@@ -1,5 +1,5 @@
 ---
-title: Image Field Type
+title: Image Fields
 summary: Learn about uploading and displaying images.
 ---
 
