@@ -38,6 +38,8 @@ models:
   path: models/static
 - title: Images
   path: models/images
+- title: Rich Text
+  path: models/text
 
 endpoints:
 - title: Overview
