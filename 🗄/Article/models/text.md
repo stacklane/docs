@@ -39,6 +39,14 @@ Or a value object may be created using the static field method:
 
 `let value = new Product.summary('<p>summary</p>')`
 
+Markdown may be converted *to* HTML with the static method `markdown(string)`:
+
+`let value = new Product.summary('A *markdown* string')`
+
+Which would would result in an HTML value of:
+
+`<p>A <em>markdown</em> string</p>`
+
 # Markdown {#markdown}
 
 The `markdown` field type is suitable for either basic formatting, or more technical users.
