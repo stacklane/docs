@@ -10,14 +10,8 @@
 
     <link rel="stylesheet" href="/style/theme.scss">
 
-    <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@12.1.5/dist/js/smooth-scroll.min.js" integrity="sha256-MMt0/21G3z0Zg4ET1kI3HC9npItDowkitRDVr0FhCxA=" crossorigin="anonymous"></script>
-
-    {{! PrismJS }}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.15.0/themes/prism.css" integrity="sha256-/Kfdz9pXGPe+bFF+TtxHqbg6F9c3Rb0jN48uy+2b/do=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.15.0/plugins/line-highlight/prism-line-highlight.css" integrity="sha256-kjW5Ys+ilGALW4tSnWeX73qpacEG2ZXswXV98dLNNRI=" crossorigin="anonymous">
-    <script defer async src="https://cdn.jsdelivr.net/npm/prismjs@1.15.0/prism.js" integrity="sha256-epniwOZCSYGoGeC9Db9iF5ZNe1GGtWkJOx9QsjgGG1s=" crossorigin="anonymous"></script>
-    <script defer async src="https://cdn.jsdelivr.net/npm/prismjs@1.15.0/components/prism-yaml.min.js" integrity="sha256-pxsoS7PqPuy6D5T0Dq2PEXKJ5SRlIkdG8hpoMxQ0YlM=" crossorigin="anonymous"></script>
-    <script defer async src="https://cdn.jsdelivr.net/npm/prismjs@1.15.0/plugins/line-highlight/prism-line-highlight.min.js" integrity="sha256-DEl9ZQE+lseY13oqm2+mlUr+sVI18LG813P+kzzIm8o=" crossorigin="anonymous"></script>
 
     {{! Small, inline DOM utils }}
     <script src="/_dom.js"></script>
@@ -62,14 +56,17 @@
 </footer>
 
 <script>
+    /** TODO better as IntersectionObserver? **/
     /** Add a body class when scrolled past the fixed nav bar height. */
     window.addEventListener('scroll', ()=>{
         var st = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
         var past = st > $get('nav').getBoundingClientRect().height;
         document.body.classList.toggle('is-scrolled', past);
     });
+</script>
 
-    /** TODO better as IntersectionObserver? **/
+<script src="https://cdn.jsdelivr.net/npm/smooth-scroll@12.1.5/dist/js/smooth-scroll.min.js" integrity="sha256-MMt0/21G3z0Zg4ET1kI3HC9npItDowkitRDVr0FhCxA=" crossorigin="anonymous"></script>
+<script>
     $ready(()=>{
         var height = $get('nav').getBoundingClientRect().height;
         if (typeof SmoothScroll !== 'undefined') new SmoothScroll('[data-scroll]', {
@@ -79,42 +76,15 @@
     });
 </script>
 
-{{! TODO create a connector accessing stacklane.com/status/api/status
-
-$ready(function(){
-    var moreClass = 'is-invisible '; // TODO needs csp work or a connector
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/status/api/status'); // assumes docs are mounted on same domain as /status/
-
-    xhr.onreadystatechange = function () {
-    var DONE = 4; // readyState 4 means the request is done.
-    var OK = 200; // status 200 is a successful return.
-    if (xhr.readyState === DONE) {
-    if (xhr.status === OK) {
-
-    var r = JSON.parse(xhr.responseText);
-
-    document.getElementById('status').setAttribute('class', moreClass + r.status);
-    document.getElementById('status').setAttribute('title', new Date().toLocaleString());
-
-    } else {
-    document.getElementById('status').setAttribute('class', moreClass + 'error');
-    }
-    } else {
-    document.getElementById('status').setAttribute('class', moreClass + 'error');
-    console.log('Error: ' + xhr.status); // An error occurred during the request.
-    }
-};
-
-xhr.send(null);
-});
-
-}}
-
 {{! StimulusJS }}
 <script defer src="https://cdn.jsdelivr.net/npm/stimulus@1.1.0/dist/stimulus.umd.js" integrity="sha256-4KV/iy8MHfeAUz3QV4sEhCoK4eT54AH1YxhvmN08h6s=" crossorigin="anonymous"></script>
 <script defer src="/js/init.js"></script>
 <script defer src="/js/tabs.js"></script>
+
+{{! PrismJS }}
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.15.0/prism.js" integrity="sha256-epniwOZCSYGoGeC9Db9iF5ZNe1GGtWkJOx9QsjgGG1s=" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.15.0/components/prism-yaml.min.js" integrity="sha256-pxsoS7PqPuy6D5T0Dq2PEXKJ5SRlIkdG8hpoMxQ0YlM=" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.15.0/plugins/line-highlight/prism-line-highlight.min.js" integrity="sha256-DEl9ZQE+lseY13oqm2+mlUr+sVI18LG813P+kzzIm8o=" crossorigin="anonymous"></script>
 
 </body>
 </html>
