@@ -55,20 +55,47 @@ at which point client side ordering is also a possibility.
 # Hierarchy
 
 The [hierarchy](/🗄/Article/models/fields.md#hierarchy) field type
-provides custom, manual ordering of the Universal type.
+provides custom, manual ordering of the Universal model type.
 When specified on a Universal model, it automatically changes the
 natural ordering to use this field.
 
-Hierarchy values may be thought of as a numerical value,
-however for simplicity it's best to use them in relationship
-to other hierarchy values, and other models that already exist.
+Hierarchy values may be used to represent simple custom ordering,
+and optionally more complex *nested* ordering scenarios.
+
+In contrast to a plain numeric field, hierarchy values provide efficient reordering of a single model value,
+*without* causing all other model values before and after to be reordered / updated.
+
+## Values
+
+Hierarchy fields are ultimately represented as value objects
+with various methods for traversing and manipulating the hierarchy.
+
+However they may also be assigned and represented as plain strings.
+For example, `/1/`, `/2/`, and so on.
+
+Typically when working with hierarchy values it's not necessary to think about the resulting string value.
+Instead use the available value methods to traverse and manipulate exiting hierarchy values relative to one another.
+
+## Initialization
+
+When using `init: true` with a hierarchy field, new models will
+automatically be assigned the *next* hierarchy value.
+
+The first initialized value of a hierarchy is `/0/`.
+When creating new models where the hierarchy field has `init: true`,
+then they will automatically be ordered after the last one.
+
+## Reordering
+
+The [Tasks example](https://github.com/stacklane-blueprints/tasks.git)
+shows basic reordering functionality using a hierarchy field.
 
 For example, given 3 existing Tasks, moving 1 of those Tasks
 between two others:
 
 ```javascript
 /**
- * Set 'moveTask' hierarchy value to a position 
+ * Set 'moveTask' hierarchy value to a position
  * between 'afterTask' and 'beforeTask'
  */
 moveTask.hierarchy = afterTask.hierarchy.before(
@@ -76,6 +103,39 @@ moveTask.hierarchy = afterTask.hierarchy.before(
 );
 ```
 
-The "tasks"
-<a href="https://github.com/stacklane-blueprints/tasks.git">example</a>
-shows basic reordering functionality using a hierarchy field.
+## Properties
+
+The following fields and methods are available on hierarchy values.
+
+### `value`
+
+Returns the string representation of the hierarchy, for example `/1/`.
+
+### `hasParent`
+
+Returns `true` if the hierarchy is nested, for example `/1/2/`.
+Whereas `/1/` and `/2/` alone are top-level and would return `false`.
+
+### `parent()`
+
+Returns the parent if one exists, or null otherwise.
+
+### `previous()`
+
+Returns a sibling hierarchy value immediately *before* this hierarchy value.
+For example if the hierarchy value is `/4/` its previous sibling is `/3/`.
+
+### `next()`
+
+Returns a sibling hierarchy value immediately *after* this hierarchy value.
+For example if the hierarchy value is `/3/` its next sibling is `/4/`.
+
+### `before(otherValue)`
+
+The before method is used for reordering *between* two other known values.
+
+For example, if this hierarchy value is `/4/`, then passing a larger sibling value of `/15/` results in `/5/`.
+Similarly if this hierarchy value is `/3/`, then passing a larger sibling value of `/4/` results in `/3.1/`.
+
+Each value must be a sibling of the other -- in other words there is no value
+between `/2/` and `/2/4/` because these values are not on the same level.

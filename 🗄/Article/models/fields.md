@@ -132,16 +132,15 @@ coverImage: image
 `hierarchy` is a specialized field type which enables
 custom ordering of the _Universal_ model type.
 
-This field may only be named "hierarchy" or "order",
-and a model may only contain one field of this type.
-For more information on using this field type see
-[Models / Ordering](/🗄/Article/models/ordering.md).
-
-## Example Definition
-
 ```yaml
 order: hierarchy
 ```
+
+This field may only be named "hierarchy" or "order",
+and a model may only contain one field of this type.
+
+For more information on using this field type see
+[Models / Ordering](/🗄/Article/models/ordering.md#hierarchy).
 
 # SVG Icon {#svg-icon}
 
