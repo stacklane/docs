@@ -24,7 +24,8 @@
                 {{#article.summary}}<p>{{article.summary}}</p>{{/article.summary}}
             </header>
 
-            {{{article.get.content}}}
+            {{! TODO minimumHeaderLevel=2 but need to fix styling first }}
+            {{{article.get.content.html generateHeaderId=true }}}
 
             <footer>
                 <div class="suggestion"><span>Any suggestion or typo? </span>
@@ -37,9 +38,9 @@
     <div class="column is-narrow is-hidden-tablet-only is-hidden-mobile">
         <div id="toc">
             <ul>
-            {{#article.get.content.h1 as h1}}
-            <li><a href="#{{h1.id}}" data-scroll>{{{h1.html}}}</a></li>
-            {{/article.get.content.h1}}
+            {{#article.get.content.sections as section}}
+            {{#section.id}}<li><a href="#{{section.id}}" data-scroll>{{{section.title}}}</a></li>{{/section.id}}
+            {{/article.get.content.sections}}
             </ul>
         </div>
     </div>
