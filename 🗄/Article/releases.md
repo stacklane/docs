@@ -14,4 +14,4 @@ summary: Functionality related features and bug fixes
 
 # January 1, 2020
 
-- Start of release note history
+- Start of public release note history

@@ -3,15 +3,13 @@
 {{% yaml /_nav/menu-items as items }}
 {{% svg /_icons/ as icon }}
 
-<div id="sidebar" class="is-invisible sidebar">
-<h1 class="nav-category">Overview</h1>
+<div id="sidebar" class="sidebar"> {{! is-invisible -- this is problematic for layout responsiveness.. }}
+<h1 class="nav-category">Development</h1>
 <ul>
     {{# items.overview }}
     <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
     {{/ items.overview }}
 </ul>
-
-<div class="nav-separator"></div>
 
 <h1 class="nav-category">Settings</h1>
 <ul>
@@ -67,6 +65,13 @@
     </div>
 </a>
 
+<a class="nav-link level" href="https://stacklane.com/guide/">
+    <div class="level-left">
+        <div class="level-item"><span class="icon is-small">{{> icon-map }}</span></div>
+        <div class="level-item">Evaluation Guide</div>
+    </div>
+</a>
+
 </div>
 
 {{! At earliest moment, select the current nav link, and enable category expansion. }}
@@ -85,7 +90,7 @@
      * This technique produces the least amount of 'flashing',
      * since there is nothing at all shown until navs are ready
      */
-    $get('sidebar').classList.remove('is-invisible');
+    //$get('sidebar').classList.remove('is-invisible');
 
     $on('.nav-category', 'click', function(event){
         var cat = $up(event.target, '.nav-category');

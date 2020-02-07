@@ -1,15 +1,8 @@
 overview:
-#- title: Overview
-#  path:
-- title: Development
+- title: Overview
   path: dev
-- title: Security
-  path: security
 - title: Quotas
   path: quotas
-# linked instead from /dev
-#- title: Build API
-#  path: api/build
 
 settings:
 - title: Overview

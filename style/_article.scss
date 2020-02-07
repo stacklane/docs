@@ -140,7 +140,7 @@ article > h1:after{
   border-top: $box-border;
 }
 
-article > h1, article header + p{
+article > h1, article header + p, article header + .article-list{
   padding-top: $article-h1-top-spacing;
 }
 
