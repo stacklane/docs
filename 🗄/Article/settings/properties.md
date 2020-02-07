@@ -213,7 +213,7 @@ Results in:
 Hello, John
 ```
 
-Argument formatting options are based on the <a href="https://ssl.icu-project.org/apiref/icu4j/com/ibm/icu/text/MessageFormat.html">ICU project</a>.
+Argument formatting options are based on the [ICU project](https://ssl.icu-project.org/apiref/icu4j/com/ibm/icu/text/MessageFormat.html).
 
 ## Modes
 

@@ -85,7 +85,7 @@ new Product().status(Product.status.pending)
 # Country Code
 
 Use the `country` field to store
-<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3" target="_blank">ISO 3166-1 alpha-3</a> country codes.
+[ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) country codes.
 
 # Map
 

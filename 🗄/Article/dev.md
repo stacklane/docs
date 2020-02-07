@@ -34,7 +34,7 @@ use the SSH form given in the BitBucket and GitHub UIs.
 
 Stacklane supports both a one-to-one and one-to-many model of SSH keys per repository.
 For the one-to-many model on GitHub you'll need to follow their
-"<a target="_blank" href="https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users">machine user</a>" pattern.
+["machine user"](https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users) pattern.
 
 ## Branches and Tags
 

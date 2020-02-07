@@ -29,8 +29,8 @@ SCSS inherently supports combining many files into one, as well as minification.
 # JS {#js}
 
 Whenever possible consider using native
-<a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Element">DOM</a>
-methods and of course <a target="_blank" href="http://vanilla-js.com/">VanillaJS</a>.
+[DOM](https://developer.mozilla.org/en-US/docs/Web/API/Element)
+methods and of course [VanillaJS](http://vanilla-js.com/).
 Web development has come a long way, and certain monolithic libraries were
 created in the day of poor cross-browser compatibility.
 
@@ -51,9 +51,9 @@ In either case Stacklane produces an appropriate [CSP](/🗄/Article/security.md
 As an alternative to the traditional "single page application" which
 often uses a complex library with its own learning curve,
 we recommend a combination of
-<a href="https://github.com/turbolinks/turbolinks" target="_blank">Turbolinks</a>
+[Turbolinks](https://github.com/turbolinks/turbolinks)
 and
-<a href="https://stimulusjs.org" target="_blank">StimulusJS</a>.
+[StimulusJS](https://stimulusjs.org).
 
 Turbolinks makes page-to-page navigation faster, and
 Stimulus allows you to declaratively inject/connect JavaScript to HTML.
@@ -117,5 +117,5 @@ For security purposes most external (third party) JavaScript and CSS must specif
 Subresource Integrity (SRI) is a security feature that enables browsers to verify that 
 files they fetch are delivered without unexpected manipulation.
 It works by allowing you to provide a cryptographic hash that a fetched file must match.
-Most services such as <a target="_blank" href="https://www.jsdelivr.com/">jsDelivr</a>
+Most services such as [jsDelivr](https://www.jsdelivr.com/)
 automatically provide SRI information to copy/paste.

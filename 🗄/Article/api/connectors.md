@@ -9,7 +9,7 @@ maps to the third party's REST structure.
 Each connector uses a dedicated GIT repository.
 
 Before defining a new connector, double check that one doesn't already exist in our
-<a href="https://github.com/stacklane-registry/">registry</a>.
+[registry](https://github.com/stacklane-registry/).
 If you develop a new connector, get in touch &mdash; we'd love to consider including
 it in the public registry.
 

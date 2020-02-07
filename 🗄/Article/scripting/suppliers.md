@@ -64,7 +64,7 @@ A good practice for naming these suppliers is ending
 with either "Fragment", such as `ArticleRowFragment.html`,
 or with the name of the primary element `ArticleRowDIV.html`.
 
-Learn more about <a href="#html-use">using HTML suppliers</a> below.
+Learn more about [using HTML suppliers](#html-use) below.
 
 # Export Scope {#export}
 

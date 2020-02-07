@@ -135,7 +135,7 @@ and involves obtaining the `naturalWidth` and `naturalHeight` of the image.
 
 Use XHR to PUT the file data to the one-time-use URL retrieved in the first step.
 This can be complex on the client side, and we recommend taking a look
-at our <a href="https://github.com/stacklane-blueprints/images" target="_blank">example</a>.
+at our [example](https://github.com/stacklane-blueprints/images).
 The browser's file input accept attribute should be:
 `.png, .jpg, .gif, image/png, image/jpeg, image/gif`
 Specifying both extensions and mime types is recommended by the spec.
@@ -159,13 +159,12 @@ It's important to note that on the third and final step,
 there is no need to send multipart/form-data, or it
 should be stripped out before the third step.
 The image's binary data was already sent in Step 2.
-(Our <a href="https://github.com/stacklane-blueprints/images" target="_blank">example</a>
- takes care of that for you). 
+(Our [example](https://github.com/stacklane-blueprints/images) takes care of that for you).
 
 ## Working Example
 
 The steps above are relatively boilerplate, especially step two.
-We've put together a full <a href="https://github.com/stacklane-blueprints/images" target="_blank">example</a>
+We've put together a full [example](https://github.com/stacklane-blueprints/images)
 that we recommend looking at.
 This examples includes a StimulusJS widget, that with a few modifications
 could be useful in any project.
