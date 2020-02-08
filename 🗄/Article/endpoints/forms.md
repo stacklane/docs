@@ -15,7 +15,7 @@ This may be thought of a singleton for the current user, request, and response.
 
 ## Lifecycle
 
-Forms are immutable once initialized &mdash;
+Forms are immutable once initialized --
 for example, a given Form ID being passed in the `_form` parameter will never have field values which change over time.
 This means that every form submission results in a new, unique Form ID.
 Form data is only accessible from the same client, for a period of up to 4 hours.
@@ -253,7 +253,7 @@ They are useful for collecting information progressively, across multiple steps.
 Each step is a distinct form which contains all fields from any previous step.
 
 Form steps will always initialize their state from other steps already filled out.
-It's not required that all steps be followed &mdash; as with other forms,
+It's not required that all steps be followed -- as with other forms,
 the only requirement is that all fields of the submitted form are valid.
 
 The following example defines two steps, `Begin` and `End`:
@@ -367,7 +367,7 @@ May be used to individually inspect fields.
 Fills a new or existing model with information in the form.
 Throws `$ModelInvalid` if either the form or the filled model are invalid.
 If an exception is thrown, then the model is rolled back.
-Keep in mind that the form itself must be valid, **and** the resulting model must be valid &mdash;
+Keep in mind that the form itself must be valid, **and** the resulting model must be valid --
 for example, if there are other non-form fields which should be set on the
 model, these should be set before calling `submit(model)`.
 
@@ -463,7 +463,7 @@ Readable, but not updatable, with the current user's permissions.
 
 Stacklane provides utilities for generating HTML forms.
 For additional context check out the [forms example](https://github.com/stacklane-blueprints/forms).
-The following properties are available for every field &mdash; they are mutually exclusive,
+The following properties are available for every field -- they are mutually exclusive,
 and a given control will not be defined twice for the same field.
 Note that for all of the HTML utilities below, `id`, `name`, and `class` are never emitted.
 

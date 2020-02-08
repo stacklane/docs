@@ -5,19 +5,19 @@ summary: Learn about HTML and Markdown fields
 
 Stacklane supports two different types of rich text fields.
 Rich text fields are necessary when a user needs to enter formatted text which will ultimately be displayed as HTML.
-Both field types share the same functionality &mdash; the primary difference is in how they are natively stored,
+Both field types share the same functionality -- the primary difference is in how they are natively stored,
 and in how they will primarily be edited on the front-end.
 
 # HTML {#html}
 
 The `html` field type is recommended when the user interface front-end will use a WYSIWYG editor.
-The `html` field type is also best suited for cases where dual modes (HTML or Markdown) are needed &mdash;
+The `html` field type is also best suited for cases where dual modes (HTML or Markdown) are needed --
 for example, if some users may want a WYSIWYG HTML editor, and others may want to enter Markdown directly.
 
 ## Valid Structure {#html-valid}
 
 To ensure uniformity the HTML allowed by this field limits elements and attributes,
-and any front-end editor should take this into consideration &mdash;
+and any front-end editor should take this into consideration --
 most editors allow configuration of allowed input.
 
 It expects a series of block level elements:

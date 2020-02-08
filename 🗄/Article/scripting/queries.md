@@ -4,7 +4,7 @@ summary: Learn about querying for models with chainable filters.
 ---
 
 Stacklane uses method chaining to define the criteria of returned query results.
-In general with method chaining _order matters_ &mdash; for example, field filters must be defined
+In general with method chaining _order matters_ -- for example, field filters must be defined
 before calling `limit`.
 
 The results of a query are generally "used" outside of the script itself.  

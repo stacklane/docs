@@ -60,7 +60,7 @@ The response from a successful upload is the current contents as defined by `GET
 Use PATCH for incremental syncing of an existing `ProjectId`.
 When a `ProjectId` already exists this is the quickest way to generate a new test instance.
 If the `ProjectId` does not exist the response status is **404**.
-This would typically be transparent to the user &mdash;
+This would typically be transparent to the user --
 for example, if GET returns 404, then automatically perform a PUT instead of trying a PATCH.
 PATCH takes two forms depending on the request Content-Type.
 

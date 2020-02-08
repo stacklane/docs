@@ -10,7 +10,7 @@ Each connector uses a dedicated GIT repository.
 
 Before defining a new connector, double check that one doesn't already exist in our
 [registry](https://github.com/stacklane-registry/).
-If you develop a new connector, get in touch &mdash; we'd love to consider including
+If you develop a new connector, get in touch -- we'd love to consider including
 it in the public registry.
 
 # Manifest

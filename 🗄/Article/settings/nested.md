@@ -20,7 +20,7 @@ The following scenarios are automatically modified to include the mount path pre
 
 - Static assets such as links to scripts / images.
 - Redirects from JavaScript endpoints.
-- Form actions beginning with `/` &mdash; `<form ... action="/my-endpoint">` 
+- Form actions beginning with `/` -- `<form ... action="/my-endpoint">`
 - *Any* HTML attribute in the format `href="/my/path"` where the attribute ends with `href` and its value begins with `/`.
 
 The last rule covers a variety of scenarios including `a`, as well as custom attributes, for example:

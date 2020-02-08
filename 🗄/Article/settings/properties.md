@@ -8,7 +8,7 @@ summary: A purpose specific SCSS file which may define colors, phrases, and opti
 
 The properties file is a plain SCSS-like file that accepts values/variables only.
 These values may be overridden for instances of the site,
-and also accessed from server-side environments &mdash;
+and also accessed from server-side environments --
 JavaScript, Mustache, and imported into other SCSS files.
 
 Create a file at the root `/🎨.scss` to define your properties.
@@ -35,10 +35,10 @@ $theme-color: blue;
 The following variable names have reserved meaning for [progressive web apps (PWAs)](/🗄/Article/settings/app.md).
 Freely use them as "standardized" variable names, however be sure to keep the intent described below.
 
-- `$name` &mdash; The name of the web app or site as it is usually displayed to the user 
+- `$name` -- The name of the web app or site as it is usually displayed to the user
   (e.g., amongst a list of other applications, or as a label for an icon).
   Example: "The Great App".
-- `$short-name` &mdash; Only used in the case that `$name` is rather long.
+- `$short-name` -- Only used in the case that `$name` is rather long.
   It is a short version of the name of the web app, intended to be used where there is insufficient space to display the full name.
   If both are provided, `$short-name` is used on the user's home screen, launcher, or other places where space may be limited.
   Example: "TheGreat".
@@ -47,8 +47,8 @@ Freely use them as "standardized" variable names, however be sure to keep the in
 
 ## Colors
 
-- `$theme-color` &mdash; Often a brand color, toolbar color, or otherwise primary color in e.g. a logo.
-- `$background-color` &mdash; Used on the splash screen when the application is first launched.
+- `$theme-color` -- Often a brand color, toolbar color, or otherwise primary color in e.g. a logo.
+- `$background-color` -- Used on the splash screen when the application is first launched.
   This value repeats what is already available in the site’s CSS, 
   but can be used by browsers to draw the background color before the stylesheet has loaded. 
   This creates a smooth transition between launching the web application and loading the site's content.
@@ -57,14 +57,14 @@ Freely use them as "standardized" variable names, however be sure to keep the in
 
 These icons are used in places like the home screen, app launcher, task switcher, splash screen, etc.
 
-- `$icon-sm` &mdash; 192x192 absolute PNG image `url`.  
-- `$icon-lg` &mdash; 512x512 absolute PNG image `url`.
+- `$icon-sm` -- 192x192 absolute PNG image `url`.
+- `$icon-lg` -- 512x512 absolute PNG image `url`.
 
 ## Apple Touch Icon
 
 For iOS, there are a few more requirements:
 
-- `$icon-apple` &mdash; 180x180 absolute PNG image `url`. 
+- `$icon-apple` -- 180x180 absolute PNG image `url`.
 
 This PNG should fill the entire 180x180 square.  No rounded corners or transparency.
 

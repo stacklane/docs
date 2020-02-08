@@ -36,7 +36,7 @@ another custom role may not reduce the permissions already in effect for the def
 # Custom Roles {#custom}
 
 Custom role names must start with an uppercase character and be valid identifiers.
-We recommend using a singular form for role names &mdash; for example,
+We recommend using a singular form for role names -- for example,
 use the role name of `Owner` instead of the plural `Owners`.
 
 ## Role Associations
@@ -77,25 +77,25 @@ and one or more operations allowed (separated by commas).
 The following operations may be specified for any resource rule
 Besides `all`, no operation implies another operation.
 
-- `none` &mdash; Only applicable to root settings file roles.
-- `all` &mdash; All operations allowed.
-- `access` &mdash; May also refer to "select", "exists", "accessible", or "visible". Necessary for accessing linked/referenced models. 
-- `read` &mdash; Read a value.  May also refer to "get", "load" if the operation requires knowing an ID.
-- `create` &mdash; Create / new operation such as `new Task()`.
-- `update` &mdash; Update / set a field value.
-- `delete` &mdash; Removing / deleting a model.
-- `state` &mdash; Special case of a field value `update`, representing a significant "change in state". This occurs only by nomenclature, for any field named "state", "status", "stage", or "lifecycle".
-- `list` &mdash; List operations are "bulk" operations, and usually refer to queries that may return multiple results.
+- `none` -- Only applicable to root settings file roles.
+- `all` -- All operations allowed.
+- `access` -- May also refer to "select", "exists", "accessible", or "visible". Necessary for accessing linked/referenced models.
+- `read` -- Read a value.  May also refer to "get", "load" if the operation requires knowing an ID.
+- `create` -- Create / new operation such as `new Task()`.
+- `update` -- Update / set a field value.
+- `delete` -- Removing / deleting a model.
+- `state` -- Special case of a field value `update`, representing a significant "change in state". This occurs only by nomenclature, for any field named "state", "status", "stage", or "lifecycle".
+- `list` -- List operations are "bulk" operations, and usually refer to queries that may return multiple results.
 
 ## Resource Rules
 
 Resource rules for models follow the data structure, from general to specific.
 The rule most specific to the requested resource will be used.
 
-- `📦` &mdash; Package/module level rule.
-- `📦.Product` &mdash; Model type specific rule.
-- `📦.Product.title` &mdash; Field specific rule.
-- `📦.Product.Description` &mdash; Embedded model specific rule.
+- `📦` -- Package/module level rule.
+- `📦.Product` -- Model type specific rule.
+- `📦.Product.title` -- Field specific rule.
+- `📦.Product.Description` -- Embedded model specific rule.
 
 ```file-name
 👤.yaml
@@ -144,7 +144,7 @@ Permissions are never revoked. In this way deeper sub-directories
 are usually going from less permissive to more permissive 
 (accumulating new role permissions as needed).
 
-It's also not necessary to specify every role &mdash; only those 
+It's also not necessary to specify every role -- only those
 roles which are being granted additional permissions in the sub-directory file. 
 
 ## Example

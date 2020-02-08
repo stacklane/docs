@@ -2,7 +2,7 @@
 title: Development
 ---
  
-Stacklane doesn't require any special UI setup to start coding &mdash; everything
+Stacklane doesn't require any special UI setup to start coding -- everything
 needed to run a Stacklane site is in standard file formats,
 hosted in a BitBucket or GitHub GIT repository.
 For ease of testing, we recommend using WebStorm and its Stacklane plugin.

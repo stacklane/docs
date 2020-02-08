@@ -21,7 +21,7 @@ the back reference method would be `task.list()`
 
 # One Level Deep {#depth}
 
-Containers may be one level deep &mdash; one parent container may have any number of contained types,
+Containers may be one level deep -- one parent container may have any number of contained types,
 however those child types may not themselves be containers.
 
 Keep in mind that [model links](/🗄/Article/models/fields.md#model-links) are another way

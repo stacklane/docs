@@ -204,7 +204,7 @@ The unique ID of the linked model, or `null` if `linked() == false`.
 # Error Handling {#errors}
 
 In several examples above, note that `null` or `undefined`
-is not used to represent the absence of a result &mdash; for example `List.get` and
+is not used to represent the absence of a result -- for example `List.get` and
 `Article.slug` never return a null/undefined value.
 
 Instead, an exception is thrown if there is no result.  This exception can be left unhandled,

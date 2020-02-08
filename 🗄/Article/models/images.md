@@ -176,7 +176,7 @@ While most users are well-behaved, it only takes a single user to throw off a co
 Unsafe content detection will consider images which appear to be adult, racy, or violent.
 
 Stacklane automatically applies safety detection to uploaded images.
-This occurs during the processing phase &mdash;
+This occurs during the processing phase --
 an image where `processed==true` has already had safety detection applied.
 
 If an image appears to be unsafe, then the image will be blurred, and the `unsafe` property will return true.

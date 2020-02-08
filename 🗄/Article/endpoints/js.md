@@ -65,7 +65,7 @@ For more information see [JSON Output](#json).
 
 ## HTML
 
-Scripts never directly produce HTML &mdash; instead [Redirect](#redirect)
+Scripts never directly produce HTML -- instead [Redirect](#redirect)
 to a [Mustache](/🗄/Article/endpoints/mustache.md) endpoint.
 
 ## Redirects

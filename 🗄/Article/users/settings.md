@@ -12,10 +12,10 @@ check out the closely related [user scripting](/🗄/Article/users/scripting.md)
 Predefined string which specifies the overall authentication
 mode of the site.  Default: `inherit`
 
-- `inherit` &mdash; Default. If the site is nested, inherit the parent site's user behavior, otherwise `none`
-- `none` &mdash; Explicitly disabled user and/or session functionality. Suitable for assets and fully public sites.
-- `required` &mdash; Private access only, requiring user authentication for all endpoints. 
-- `optional` &mdash; Aware of users, but they are not explicitly required for access. Suitable for login screens and other dual use areas.
+- `inherit` -- Default. If the site is nested, inherit the parent site's user behavior, otherwise `none`
+- `none` -- Explicitly disabled user and/or session functionality. Suitable for assets and fully public sites.
+- `required` -- Private access only, requiring user authentication for all endpoints.
+- `optional` -- Aware of users, but they are not explicitly required for access. Suitable for login screens and other dual use areas.
 
 # Roles
 

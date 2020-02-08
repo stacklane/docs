@@ -23,7 +23,7 @@ then it will be inlined into the HTML.
 
 A `.css` file may be included anywhere, however in general we recommend SCSS (`.scss`) files
 due to the additional capabilities offered.
-There are performance benefits to SCSS in addition to its functionality &mdash;
+There are performance benefits to SCSS in addition to its functionality --
 SCSS inherently supports combining many files into one, as well as minification.
 
 # JS {#js}
@@ -73,7 +73,7 @@ there is no change to the public endpoint/URL.
 
 # Additional CSP {#add-csp}
 
-Local or external JavaScript may have further dependencies &mdash; for example it may connect to another API.
+Local or external JavaScript may have further dependencies -- for example it may connect to another API.
 
 In that case it may be necessary to specify additional Content-Security-Policy information.
 frame-src, script-src, connect-src, style-src, and font-src may be specified directly on the `<script>`:
@@ -94,7 +94,7 @@ frame-src, script-src, connect-src, style-src, and font-src may be specified dir
 There are many excellent JS hosting services, where third party libraries are dependable, distributed, and versioned.
 
 We like to think of third party JS libraries as part of the browser's stack
-&mdash; something that extends the native functionality of the browser, and that your app may put to use.
+-- something that extends the native functionality of the browser, and that your app may put to use.
 
 Ensure that you're able to obtain a reliable Subresource Integrity (SRI) `integrity` attribute for the external JS,
 and place it on the `<script>` element.  Typically SRI is only reliable for versioned URLs.

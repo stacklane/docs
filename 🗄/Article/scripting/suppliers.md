@@ -4,7 +4,7 @@ summary:  Learn about sharing and reusing values across multiple scripts and vie
 ---
 
 Suppliers are scripts which export one or more named values, for the sole purpose of
-having those values imported by another script &mdash; either by another supplier,
+having those values imported by another script -- either by another supplier,
 a [JS endpoint](/🗄/Article/endpoints/js.md), or a 
 [Mustache endpoint](/🗄/Article/endpoints/mustache.md).
 Suppliers allow for reusing values and functions.

@@ -350,9 +350,9 @@ Include the following tag anywhere in the body:
 
 This tag supports the following properties:
 
-- `data-connect-self="true"` &mdash; allows AJAX connections to the same web app. Default: *true*.
-- `data-form-self="true"` &mdash; allows AJAX connections to the same web app. Default: *true*.
-- `data-img-src-data="true"` &mdash; allows "data:" as an image source in CSS (not recommended). Default: *false*.
+- `data-connect-self="true"` -- allows AJAX connections to the same web app. Default: *true*.
+- `data-form-self="true"` -- allows AJAX connections to the same web app. Default: *true*.
+- `data-img-src-data="true"` -- allows "data:" as an image source in CSS (not recommended). Default: *false*.
 
 ## Script Dependencies
 

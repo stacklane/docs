@@ -59,7 +59,7 @@ Simply include the following line in your Mustache file's `<head>`, usually in a
 
 Legacy support for iOS does not have the "[Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest)" recommendation.
 
-Therefore we recommend only emitting Apple specific information on one HTML endpoint &mdash; this being the specific endpoint
+Therefore we recommend only emitting Apple specific information on one HTML endpoint -- this being the specific endpoint
 which a user is expected to choose "Add to Home Screen" from.
 
 To explicitly emit Apple related tags, and assuming a layout template as in the example above:
@@ -105,12 +105,12 @@ specify `crossorigin="anonymous"`:
 Individual HTML endpoints may be given custom caching strategies.
 We recommend using these sparingly on only the most commonly accessed views.
 
-- **Network-First (Network Falling Back to Cache)** &mdash; 
+- **Network-First (Network Falling Back to Cache)** --
   Good for endpoints which may be updated frequently. 
   By default it will try and fetch the latest request from the network. 
   If the request is successful, it’ll put the response in the cache. 
   If the network fails to return a response, the caches response will be used.
-- **Stale-While-Revalidate** &mdash; 
+- **Stale-While-Revalidate** --
   The stale-while-revalidate pattern responds to a request as
   quickly as possible with a cached response if available, falling back to the network 
   request if it’s not cached. The network request is then used to update the cache.
