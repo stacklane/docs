@@ -1,6 +1,10 @@
 title: string
 
-content: document-text
+content:
+  type: document-markdown
+  render:
+    generateHeaderId: true
+    autolink: blank
 
 beta:
   type: boolean
