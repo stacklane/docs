@@ -5,6 +5,7 @@ content:
   render:
     generateHeaderId: true
     autolink: blank
+    typography: true
 
 beta:
   type: boolean
