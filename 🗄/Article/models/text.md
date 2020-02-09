@@ -98,9 +98,22 @@ Rendering a rich text field occurs when using a Mustache template along with tri
 By default this will display the HTML unmodified, or the Markdown as directly converted to HTML.
 
 Stacklane supports rendering options which transform the HTML for various cases.
-To pass rendering options use the `html` method on the field, for example:
+
+Most rendering options may be configured at the field level:
+
+```yaml
+myField:
+  type: html
+  render:
+    autolink: blank
+    generateHeaderId: true
+```
+
+Or, passed using the `html` method:
 
 `{{{ model.htmlOrMarkdownField.html autolink=true }}}`
+
+Rendering options passed using the `html` method will be combined with any field level rendering options.
 
 ## `autolink`
 
