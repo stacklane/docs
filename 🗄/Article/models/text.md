@@ -122,8 +122,13 @@ as well as incrementing all other header levels to maintain semantic meaning.
 
 ## `generateHeaderId`
 
-When this rendering option is `true`, then any headers
+When `true`, then any headers
 which do not contain an ID already will be automatically assigned one based on the text within the header element.
+
+## `typography`
+
+Enables typographic extensions.  When `true` plain text values with two dashes `--` will be converted to `&mdash;`
+and three dashes `---` converted to `&ndash;`
 
 ## Adding Classes
 
