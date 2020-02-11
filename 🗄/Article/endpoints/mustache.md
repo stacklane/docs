@@ -168,6 +168,14 @@ field types.
 
 # Utilities {#util}
 
+## Display Year
+
+Display the current year according to UTC/GMT timezone:
+
+```html
+{{%year}}
+```
+
 ## $any
 
 Tests if any of a series of scalar values are "truthy".
