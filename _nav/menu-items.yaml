@@ -1,6 +1,10 @@
-overview:
+dev:
 - title: Overview
-  path: dev
+  path: dev/overview
+- title: Repositories
+  path: dev/repositories
+- title: Credentials
+  path: dev/credentials
 - title: Quotas
   path: quotas
 
@@ -13,6 +17,8 @@ settings:
   path: settings/properties
 - title: Nested
   path: settings/nested
+- title: Connectors
+  path: settings/connectors
 - title: Web App
   path: settings/app
 

@@ -94,7 +94,7 @@ and if successful returns a unique domain name for testing and sharing.
 ## Passing Credentials
 
 The POST operation may optionally pass 
-[development credentials](/🗄/Article/dev.md#credentials).
+[development credentials](/🗄/Article/dev/credentials.md).
 When passing the credential JSON file to the build process,
 specify a `Content-Type` of `application/json` and
 the JSON credentials file as the content/payload of the request.

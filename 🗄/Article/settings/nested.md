@@ -35,6 +35,11 @@ If the site is deployed to the root domain then this will always be `/`.
 
 Otherwise it will be the mount path where parent site is nesting this site.
 
+# Permissions
+
+For production deployment, the repository `/owner/` must match the owner of the
+source which is importing the nested site.
+
 # `source`
 
 The only required field for a site mount is the location to obtain the nested site's source code.
@@ -43,23 +48,7 @@ The only required field for a site mount is the location to obtain the nested si
 source: https://github.com/owner/project.git
 ```
 
-To specify a branch:
-
-```yaml
-source: https://github.com/owner/project.git#branch
-```
-
-To specify a tag (prefix with '!'):
-
-```yaml
-source: https://github.com/owner/project.git#!tag
-```
-
-The `#branch` and `#!tag` postfixes also apply to private SSH GIT sources.
-
-> {.alert .is-warning .is-small}
->
-> For production deployment, the _owner_ must match the owner of the source including the nested site.
+Optionally the source URL may specify a [branch or tag](/🗄/Article/dev/repositories.md#branches-tags).
 
 # `namespace`
 

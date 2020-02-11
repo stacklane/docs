@@ -3,12 +3,12 @@
 {{% yaml /_nav/menu-items as items }}
 {{% svg /_icons/ as icon }}
 
-<div id="sidebar" class="sidebar"> {{! is-invisible -- this is problematic for layout responsiveness.. }}
+<div id="sidebar" class="sidebar">
 <h1 class="nav-category">Development</h1>
 <ul>
-    {{# items.overview }}
+    {{# items.dev }}
     <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
-    {{/ items.overview }}
+    {{/ items.dev }}
 </ul>
 
 <h1 class="nav-category">Settings</h1>
@@ -79,18 +79,12 @@
     $each('.nav-link', function(e){
         if (e.getAttribute('href') == window.location.pathname){
             e.classList.add('is-active');
-            var ul = e.parentElement.parentElement;
+            let ul = e.parentElement.parentElement;
             ul.classList.toggle('is-active', true);
             if (ul.previousElementSibling)
                 ul.previousElementSibling.classList.toggle('is-active', true);
         }
     });
-
-    /**
-     * This technique produces the least amount of 'flashing',
-     * since there is nothing at all shown until navs are ready
-     */
-    //$get('sidebar').classList.remove('is-invisible');
 
     $on('.nav-category', 'click', function(event){
         var cat = $up(event.target, '.nav-category');
