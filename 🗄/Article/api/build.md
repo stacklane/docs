@@ -5,8 +5,6 @@ summary: Learn about using the build API to test sites from client-side IDEs.
 
 Stacklane provides a build API for syncing files, validating + building sites,
 and generating shareable test domains.
-To see this API in action view the source code for the
-[WebStorm plugin](https://github.com/stacklane/ide-jetbrains).
 
 # Auth
 
