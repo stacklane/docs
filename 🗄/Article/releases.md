@@ -1,6 +1,6 @@
 ---
 title: Release Notes
-summary: Functionality related features and bug fixes
+summary: Functionality related features and bug fixes.
 ---
 
 # February 11th, 2020
