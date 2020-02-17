@@ -30,7 +30,7 @@ Within this file specify each imported connector's GIT source
 Connectors may predefine one or more `<link>` and `<script>` tags,
 which may be thought of as a client-side connection.
 These specialized third party tags are used directly in [Mustache](/🗄/Article/endpoints/mustache.md).
-The main advantage to using connector tags is their ability to set a [Content Security Policy](/🗄/Article/security.md#csp).
+The main advantage to using connector tags is their ability to set a Content Security Policy.
 
 ## Usage
 

@@ -44,7 +44,7 @@ Alternatively you may inline a private file by
 referencing it like any external script: `<script src="/_myCode.js"></script>`.
 Because of the underscore marking it as a private file, Stacklane inlines the JS into the page.
 
-In either case Stacklane produces an appropriate [CSP](/🗄/Article/security.md#csp).
+In either case Stacklane produces an appropriate Content Security Policy.
 
 ## Turbolinks + StimulusJS
 
@@ -66,7 +66,7 @@ and facilitates highly readable and maintainable code.
 
 If the extra capabilities of [Mustache](/🗄/Article/endpoints/mustache.md)
 templates are not needed, then a plain HTML file may be used.  It follows the same routing conventions
-and [CSP](/🗄/Article/endpoints/mustache.md#csp) requirements as Mustache files,
+and Content Security Policy requirements as Mustache files,
 including putting `index.html` into a route with a trailing slash.
 If you decide to rename your file extension to use Mustache in the future,
 there is no change to the public endpoint/URL.
