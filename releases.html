@@ -1,0 +1,32 @@
+<!--TEMPLATE mustache-->
+
+{{% partial /_nav/ as nav }}
+{{% svg /_logos/ as logo }}
+{{% import {Release} from '🗄' }}
+
+{{< nav-layout-side}}
+
+{{$title2}}Release Notes{{/title2}}
+
+{{$content2}}
+
+<article>
+    <header>
+        <h1>Release Notes</h1>
+
+        <p>
+            Functionality related features and bug fixes.
+        </p>
+    </header>
+
+    {{#Release.all.desc as release}}
+    <h1 data-date-value="{{release.date}}">{{release.date}}</h1>
+    <p>
+        {{{release.content}}}
+    </p>
+    {{/Release.all.desc}}
+
+</article>
+
+{{/content2}}
+{{/nav-layout-side}}
