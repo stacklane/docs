@@ -1,3 +1,10 @@
-date: document-date
+date:
+  type: document-date
+  order: true
 
-content: document-markdown
+content:
+  type: document-markdown
+  render:
+    generateHeaderId: true
+    autolink: blank
+    typography: true
