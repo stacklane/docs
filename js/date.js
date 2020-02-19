@@ -5,7 +5,7 @@
         connect(){
             let val = this.data.get('value');
             this.element.innerText = new Date(val).toLocaleDateString(
-            undefined, {year: 'numeric', day: 'numeric', month:'long'}
+            undefined, {timeZone: 'UTC', year: 'numeric', day: 'numeric', month:'long'}
             );
         }
     });
