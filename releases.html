@@ -20,7 +20,7 @@
     </header>
 
     {{#Release.all.desc as release}}
-    <h1 data-date-value="{{release.date}}">{{release.date}}</h1>
+    <h1 data-date-value="{{release.date}}" data-controller="date">{{release.date}}</h1>
     <p>
         {{{release.content}}}
     </p>
