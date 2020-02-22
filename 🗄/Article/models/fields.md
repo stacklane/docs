@@ -10,20 +10,20 @@ These are automatically managed.  All are available immediately after model crea
 
 # Primitives
 
-## `string`
+## `string` {#string}
 
 Maximum length: 100 UTF-8 *characters*.
 May be marked as "[unique: true](/🗄/Article/models/fields.md#unique)".
 Supports min/max characters via `max: N` and `min: N` on the
 [field definition](/🗄/Article/models/types.md#definitions).
 
-## `boolean`
+## `boolean` {#boolean}
 
 true/false boolean value.
 Also accepts string input of "true"/"1", "false"/"0".
 Other strings result in a validation error.
 
-## `integer`
+## `integer` {#integer}
 
 Non-floating 64 bit integer (long).
 Accepts string input which does not contain a decimal point.
@@ -31,7 +31,7 @@ Other strings result in a validation error.
 Supports min/max via `max: N` and `min: N` on the
 [field definition](/🗄/Article/models/types.md#definitions) (default minimum is **0**).
 
-## `double`
+## `double` {#double}
 
 Floating-point number (64-bit double precision, IEEE 754).
 Accepts string input representing a decimal or non-decimal.
@@ -40,12 +40,19 @@ The default rounding scale is **2**, and rounding mode is "half to even".
 Supports min/max via `max: N` and `min: N` on the
 [field definition](/🗄/Article/models/types.md#definitions) (default minimum is **0**).
 
-## `timestamp`
+## `timestamp` {#timestamp}
 
 Date/time stored as UTC.
 Keep in mind that every model comes with
 automatically managed `created` and `modified` timestamp fields.
 Initialize a timestamp field to the current date/time using `init: true`.
+Accepts string input in ISO 8601 format, including partial formats such as "2000-01-01".
+Other strings result in a validation error.
+
+## `date` {#date}
+
+Date only, with no time component.
+Initialize a date field to the current date (based on UTC) using `init: true`.
 Accepts string input in ISO 8601 format, including partial formats such as "2000-01-01".
 Other strings result in a validation error.
 

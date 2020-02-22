@@ -17,7 +17,7 @@ However keep in mind that ordered versus unordered results are also influenced b
 
 The Universal type supports custom ordering for the following field types:
 
-`string`, `integer`, `double`, `timestamp`
+`string`, `integer`, `double`, `timestamp`, `date`
 
 To specify custom natural ordering on one of these field
 types use the `order` attribute set to `true`.

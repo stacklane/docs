@@ -101,6 +101,18 @@ There are a few things going on in this example:
 field: 🗄.Article.uid
 ```
 
+# Date-Based {#date}
+
+The special static document field type `document-date` may be used to construct `date` values from the file path.
+
+Example static `document-date` formats:
+
+- `/🗄/Entry/2000-01-03.md` will have the date `2000-01-03`
+- `/🗄/Entry/2000-01/02.yaml` will have the date `2000-01-02`
+- `/🗄/Entry/2000/01-01.yaml` will have the date `2000-01-01`
+
+When using `document-date` it typically makes sense to enable ordering by using `order: true` on the field definition.
+
 # Linking {#linking}
 
 > {.alert .is-warning .is-small}
