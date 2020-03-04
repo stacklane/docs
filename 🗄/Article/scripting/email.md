@@ -10,26 +10,9 @@ Contact us if you require a provider not already setup.
 # Basic Use {#basic}
 
 Once configured, the email module named "📧" is available to non-GET JavaScript endpoints.
-
-There are two ways to send an email.  There is no functional difference between them.
-In both cases the email will not be sent unless the endpoint completes without exception.
-
-## new
-
-Construct the new Email instance, then build the email.  Sending is implied.
-
-```javascript
-import {Email} from '📧';
-
-new Email()
-     .to('me@example.com')
-     .subject('Hello')
-     .text('World');
-```
-
-## send()
-
-Use the factory method `to`, build the email, and then `send()`.
+Use the factory method `to`, then build the email, and finally call `send()`.
+The email will not be sent unless the endpoint completes
+[successfully](/🗄/Article/endpoints/js.md#response).
 
 ```javascript
 import {Email} from '📧';
