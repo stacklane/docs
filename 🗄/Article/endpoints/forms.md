@@ -473,7 +473,7 @@ it's possible create a generic HTML control which accepts the field of a form in
 
 ### `input`
 
-Defined for `string`, `integer`, and `double`.
+Defined for `string`, `integer`, `double`, and `date`.
 
 Contains an `attributes` property which emits HTML attributes as needed for the field type:
 type, value, required, placeholder, value, maxlength, minlength, max, min, pattern, readonly
