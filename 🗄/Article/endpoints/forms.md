@@ -271,7 +271,7 @@ Begin:
 
 Each subsequent step contains the fields from previous steps.
 In this example the form for `End` contains `name` and `price`.
-The prefix '+' indicates that it adds fields to the previous step.
+The prefix `+` indicates that it adds fields to the previous step.
 
 For the submission of the first step, we're validating and moving on to the next step.
 
