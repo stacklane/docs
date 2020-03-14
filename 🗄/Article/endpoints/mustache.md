@@ -251,6 +251,11 @@ for a model field.
 > }}
 > ```
 
+## Placeholder Text {#lorem}
+
+Use the pragmas `{{% lorem-title }}` and `{{% lorem-paragraph }}` to insert
+placeholder text while mocking views.
+
 # Iteration {#iteration}
 
 Stacklane extends Mustache iteration with several helpful utilities.
