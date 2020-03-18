@@ -103,7 +103,7 @@ import {Something, Other, That} from '📤';
 
 # HTML Suppliers {#html-use}
 
-HTML suppliers are only necessary when sharing a fragment of HTML between *both* server-side JavaScript and server-side Mustache.
+HTML suppliers are useful when sharing a fragment of HTML between *both* server-side JavaScript and server-side Mustache.
 It's also useful if multiple Mustache templates need to share an HTML fragment that requires a parameter.
 
 All HTML suppliers are called as a function with a single parameter, even if that single parameter is an empty `{}`.
@@ -153,6 +153,20 @@ let item = new Item().name('ABC');
 {{/Item.all}}
 </div>
 ...
+```
+
+## Name/Value Pairs
+
+To pass more complex name/value pairs to an HTML supplier, use object literals for JavaScript:
+
+```javascript
+({html: ItemDIV({item:1, content:'Example'})});
+```
+
+and for Mustache templates use the following format name/value syntax:
+
+```html
+{{{ ItemDIV item=1 content='Example' }}}
 ```
 
 # Endpoint Specific {#endpoint}
