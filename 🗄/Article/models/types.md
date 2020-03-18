@@ -24,8 +24,6 @@ anything from an Article to a Product.
 
 It supports a larger field size for the [rich text field type](/🗄/Article/models/fields.md#rich),
 as well as a larger overall model size.
-Because it is intended to be created and managed by people,
-only 1 insert is allowed per transaction/request.
  
 # User Profile {#profile}
 
