@@ -163,7 +163,7 @@ To pass more complex name/value pairs to an HTML supplier, use object literals f
 ({html: ItemDIV({item:1, content:'Example'})});
 ```
 
-and for Mustache templates use the following format name/value syntax:
+For Mustache templates use the following format name/value syntax:
 
 ```html
 {{{ ItemDIV item=1 content='Example' }}}
