@@ -1,7 +1,6 @@
 ---
 title: Forms
 summary: Learn about model validation and HTML forms.
-beta: true
 ---
 
 To handle user form input, incremental steps, and validation,
