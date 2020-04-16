@@ -1,12 +1,31 @@
 ---
 title: Assets
-summary: Learn how to use SCSS, CSS, static HTML, and client side JS.
+summary: Learn how to use images, SCSS, and client-side JavaScript.
 ---
+
+# Images {#images}
+
+Static images are used and referenced from HTML as normal.
+Stacklane will automatically replace all image references with a unique hash identifier,
+to facilitate long-term access from a Content Delivery Network.
+
+## Permanent Image URLs
+
+In certain cases, such as images distributed through social media,
+it may be desirable to keep a permanent image URL regardless of any future changes to the image.
+Simply prefix the image's name with 📌.
+For example, the internal image file `/assets/social/📌logo.png`
+will resolve externally at the path `/assets/social/logo.png`.
+Within any HTML source the internal file path should be used:
+
+```html
+<meta name="og:image" href="/assets/social/📌logo.png">
+```
 
 # SCSS {#scss}
 
 Stacklane includes native support for `.scss` files.
-If you have a SCSS file at `/theme.scss`, then reference this
+For a SCSS file at `/theme.scss`, reference this
 in your HTML or Mustache file as you would any CSS file:
 
 ```html
@@ -45,22 +64,6 @@ referencing it like any external script: `<script src="/_myCode.js"></script>`.
 Because of the underscore marking it as a private file, Stacklane inlines the JS into the page.
 
 In either case Stacklane produces an appropriate Content Security Policy.
-
-## Turbolinks + StimulusJS
-
-As an alternative to the traditional "single page application" which
-often uses a complex library with its own learning curve,
-we recommend a combination of
-[Turbolinks](https://github.com/turbolinks/turbolinks)
-and
-[StimulusJS](https://stimulusjs.org).
-
-Turbolinks makes page-to-page navigation faster, and
-Stimulus allows you to declaratively inject/connect JavaScript to HTML.
-Together they are a lightweight alternative
-which respects the natural structure of the web, allows
-code to stay close to the native browser capabilities,
-and facilitates highly readable and maintainable code.
 
 # HTML
 
