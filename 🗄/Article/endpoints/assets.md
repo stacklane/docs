@@ -13,13 +13,20 @@ to facilitate long-term access from a Content Delivery Network.
 
 In certain cases, such as images distributed through social media,
 it may be desirable to keep a permanent image URL regardless of any future changes to the image.
-Simply prefix the image's name with 📌.
+Simply prefix the image's name with 📌. Within HTML source the internal file path should always be used.
+
 For example, the internal image file `/assets/social/📌logo.png`
 will resolve externally at the path `/assets/social/logo.png`.
-Within any HTML source the internal file path should be used:
+The internal HTML source code with:
 
 ```html
 <meta name="og:image" href="/assets/social/📌logo.png">
+```
+
+will be rendered externally as:
+
+```html
+<meta name="og:image" href="/assets/social/logo.png">
 ```
 
 # SCSS {#scss}
