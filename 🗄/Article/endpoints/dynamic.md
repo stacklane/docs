@@ -130,7 +130,7 @@ values:
   - etc
 ```
 
-Fixed values paths are exposed to scripting and templates
+Fixed value paths are exposed to scripting and templates
 in two different ways.
         
 ```javascript
