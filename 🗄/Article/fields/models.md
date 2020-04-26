@@ -19,7 +19,7 @@ Fields of this type never return null or undefined.
 Keep in mind that links may be "broken" if the target of the link was deleted.
 
 For more information on methods and properties available see
-[Model Link Scripting](/🗄/Article/scripting/models.md#model-links).
+[Model Link Scripting](/🗄/Article/modules/models.md#model-links).
 
 For [contained models](/🗄/Article/models/containers.md),
 there is no need to add a link from the contained model back to the container.
@@ -38,7 +38,7 @@ Multi-valued lists may be defined for either simple values or complex embedded m
 To denote a list, add brackets "[]" after the field name.
 If requirements don't call for the maximum of 20 entries,
 then provision less entries by specifying a number (less than 20) between the brackets.
-Capped/rolling/LRU lists are also [supported](/🗄/Article/scripting/models.md#rolling-lists).
+Capped/rolling/LRU lists are also [supported](/🗄/Article/modules/models.md#rolling-lists).
 
 Whether defined [globally or locally](/🗄/Article/models/definition.md),
 embedded models can allow multiple values by adding "[]" after the field name:
@@ -51,4 +51,4 @@ items[]:
 address[5]: Address
 ```
 
-For more information, see [String List Scripting](/🗄/Article/scripting/models.md#string-lists).
+For more information, see [String List Scripting](/🗄/Article/modules/models.md#string-lists).

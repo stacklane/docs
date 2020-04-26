@@ -38,7 +38,7 @@ then the field _names_ which allow custom ordering are limited to
 
 # Query Ordering {#query}
 
-The default ordering of results is impacted by the type of [query](/🗄/Article/scripting/queries.md) performed.
+The default ordering of results is impacted by the type of [query](/🗄/Article/modules/queries.md) performed.
 
 ## "All" / all() {#all-query}
 

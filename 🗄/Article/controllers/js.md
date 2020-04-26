@@ -103,7 +103,7 @@ Redirect.home().invalid($ModelInvalid); // Invalid form handling
 
 ## With Messages
 
-As a convenience to using the [Messages](/🗄/Article/scripting/messages.md) object directly,
+As a convenience to using the [Messages](/🗄/Article/modules/messages.md) object directly,
 messages may "go with" the redirect being built.
 For example, after adding a new Article:
 

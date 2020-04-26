@@ -39,7 +39,7 @@ those endpoints which need the values/functions.
 `📤/AnyName.js`
 
 Allowed exports: Primitives (String, Number, Boolean), Map/Object of Primitives,
-a single instance of a [Model](/🗄/Article/models/overview.md), or a [query](/🗄/Article/scripting/queries.md).
+a single instance of a [Model](/🗄/Article/models/overview.md), or a [query](/🗄/Article/modules/queries.md).
 
 Only model read/query operations are allowed within the supplier.
 However the endpoint finally using the supplied value may itself perform write operations
@@ -51,7 +51,7 @@ if allowed by the endpoint.
 
 Allowed exports: "Utility" functions only.
 Function Suppliers have very limited functionality.
-For example, they may only import the [Utility Module](/🗄/Article/scripting/helpers.md#util).
+For example, they may only import the [Utility Module](/🗄/Article/modules/util.md).
 Their primary purpose is to provide functions that perform _calculations or transformations_ on parameters.
 
 ## HTML Supplier {#html}

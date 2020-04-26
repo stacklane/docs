@@ -112,7 +112,7 @@ Length of the list.
 
 ### `put(value)`
 
-[Rolls off](/🗄/Article/scripting/models.md#rolling-lists) old values according to maximum list size.
+[Rolls off](/🗄/Article/modules/models.md#rolling-lists) old values according to maximum list size.
 
 ### Streaming Methods
 
@@ -141,7 +141,7 @@ Length of the list.
 
 ### `put(value)`
 
-[Rolls off](/🗄/Article/scripting/models.md#rolling-lists) old values according to maximum list size.
+[Rolls off](/🗄/Article/modules/models.md#rolling-lists) old values according to maximum list size.
 
 ### Streaming Methods
 

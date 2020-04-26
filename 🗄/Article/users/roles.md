@@ -111,7 +111,7 @@ MyRole:
 
 ## Connector Rules
 
-In addition to models, [Connectors](/🗄/Article/scripting/connectors.md)
+In addition to models, [Connectors](/🗄/Article/settings/connectors.md)
 also support permission rules. The resource of the connector rule
 follows the file-based definition of the Connector's various endpoints.
 GET's are a `read` operation, unless the endpoint is `list.yaml` and then it's a `list` operation.

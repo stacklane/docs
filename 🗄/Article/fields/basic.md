@@ -137,7 +137,7 @@ For more information on using this field type see
 
 `svg-icon` is a purpose specific field for holding a web-safe, square SVG icon.
 Typically these values are generated from the `Identicon`
-[utility](/🗄/Article/scripting/helpers.md#util).
+[utility](/🗄/Article/modules/util.md).
 This field is highly constrained to valid and safe SVG.
 No scripting or inline styles are allowed.
 Maximum size: 2000 bytes.
@@ -156,7 +156,7 @@ Multi-valued lists may be defined for either simple values or complex embedded m
 To denote a list, add brackets "[]" after the field name.
 If requirements don't call for the maximum of 20 entries,
 then provision less entries by specifying a number (less than 20) between the brackets.
-Capped/rolling/LRU lists are also [supported](/🗄/Article/scripting/models.md#rolling-lists).
+Capped/rolling/LRU lists are also [supported](/🗄/Article/modules/models.md#rolling-lists).
 
 `string` and `options` may be used for lists of values.
 Only distinct values will be allowed in the list.
@@ -170,7 +170,7 @@ categories[]:
     - two
 ```
 
-For more information, see [String List Scripting](/🗄/Article/scripting/models.md#string-lists).
+For more information, see [String List Scripting](/🗄/Article/modules/models.md#string-lists).
 
 # UIDs {#uid}
 
