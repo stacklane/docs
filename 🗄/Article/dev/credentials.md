@@ -1,6 +1,7 @@
 ---
 title: Credentials
 summary: Learn about using credentials during development
+order: 30
 ---
 
 For certain functionality such as [connectors](/🗄/Article/settings/connectors.md) to third party APIs,

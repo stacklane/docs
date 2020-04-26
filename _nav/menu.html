@@ -1,75 +1,40 @@
 <!--TEMPLATE mustache-->
 
-{{% yaml /_nav/menu-items as items }}
+{{% yaml /_nav/menu-items as menu }}
 {{% svg /_icons/ as icon }}
+{{% import {ArticlesByCategory} from '📤' }}
 
 <div id="sidebar" class="sidebar">
-<h1 class="nav-category">Development</h1>
-<ul>
-    {{# items.dev }}
-    <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
-    {{/ items.dev }}
-</ul>
 
-<h1 class="nav-category">Settings</h1>
-<ul>
-    {{# items.settings }}
-    <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
-    {{/ items.settings }}
-</ul>
-<h1 class="nav-category">Models</h1>
-<ul>
-    {{# items.models }}
-    <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
-    {{/ items.models }}
-</ul>
-<h1 class="nav-category">Endpoints</h1>
-<ul>
-    {{# items.endpoints }}
-    <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
-    {{/ items.endpoints }}
-</ul>
-<h1 class="nav-category">Scripting</h1>
-<ul>
-    {{# items.scripting }}
-    <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
-    {{/ items.scripting }}
-</ul>
-<h1 class="nav-category">Users</h1>
-<ul>
-    {{# items.users }}
-    <li><a class="nav-link" href="/{{path}}">{{title}}</a></li>
-    {{/ items.users }}
-</ul>
+{{#menu.items as item}}
+    <h1 class="nav-category main-nav-link main-nav-link-{{item.category}}">{{ item.name }}</h1>
+    <ul>
+        {{#ArticlesByCategory item.category }}
+        <li><a class="is-selectable-nav-link" href="/{{uid}}">{{#short}}{{short}}{{/short}}{{^short}}{{title}}{{/short}}</a></li>
+        {{/ArticlesByCategory}}
+        {{#item.more}}
+        <li><a class="is-selectable-nav-link" href="/{{path}}">{{title}}</a></li>
+        {{/item.more}}
+    </ul>
+{{/menu.items}}
 
-<div class="nav-separator"></div>
-
-<a class="nav-link level" href="/examples">
-    <div class="level-left">
-        <div class="level-item"><span class="icon is-small">{{> icon-slideshow }}</span></div>
-        <div class="level-item">Examples</div>
-    </div>
+<a class="main-nav-link main-nav-link-examples is-selectable-nav-link" href="/examples">
+    <span>Examples</span>
 </a>
 
-<a class="nav-link level" href="/integrations">
-    <div class="level-left">
-        <div class="level-item"><span class="icon is-small">{{> icon-extension }}</span></div>
-        <div class="level-item">Integrations</div>
-    </div>
+<a class="main-nav-link main-nav-link-integrations is-selectable-nav-link" href="/integrations">
+    <span>Integrations</span>
 </a>
 
-<a class="nav-link level" href="/releases">
-    <div class="level-left">
-        <div class="level-item"><span class="icon is-small">{{> icon-list_alt }}</span></div>
-        <div class="level-item">Release Notes</div>
-    </div>
+<a class="main-nav-link main-nav-link-releases is-selectable-nav-link" href="/releases">
+    <span>Release Notes</span>
 </a>
 
 </div>
 
 {{! At earliest moment, select the current nav link, and enable category expansion. }}
 <script>
-    $each('.nav-link', function(e){
+    $each('.is-selectable-nav-link', function(e){
         if (e.getAttribute('href') == window.location.pathname){
             e.classList.add('is-active');
             let ul = e.parentElement.parentElement;

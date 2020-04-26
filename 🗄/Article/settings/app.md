@@ -1,6 +1,8 @@
 ---
 title: Progressive Web Apps
+short: Web App
 summary: Learn the settings required to enable PWA's.
+order: 1000
 ---
 
 Progressive web apps use modern web APIs along with traditional progressive enhancement 
@@ -88,7 +90,7 @@ both `{{{🎨.WebApp}}}` and `{{{🎨.AppleMobile}}}` will be generated.
 App-enabled Stacklane sites automatically generate and install a service worker.
 This service worker sets up 
 pre-caching of static assets, 
-dynamic caching of [model images](/🗄/Article/models/images.md) ,
+dynamic caching of [model images](/🗄/Article/fields/image.md) ,
 and custom caching for HTML endpoints.
 
 ## Third Party JavaScript

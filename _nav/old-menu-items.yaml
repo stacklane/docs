@@ -1,0 +1,94 @@
+dev:
+  name: Development
+  items:
+    - title: Overview
+      path: dev/overview
+    - title: Repositories
+      path: dev/repositories
+    - title: Credentials
+      path: dev/credentials
+    - title: Quotas
+      path: quotas
+
+settings:
+  name: Settings
+  items:
+    - title: Overview
+      path: settings/
+    - title: Manifest
+      path: settings/manifest
+    - title: Properties
+      path: settings/properties
+    - title: Nested
+      path: settings/nested
+    - title: Connectors
+      path: settings/connectors
+    - title: Web App
+      path: settings/app
+
+models:
+  name: Model
+  items:
+    - title: Overview
+      path: models/
+    - title: Types
+      path: models/types
+    - title: Containers
+      path: models/containers
+    - title: Fields
+      path: models/fields
+    - title: Ordering
+      path: models/ordering
+    - title: Static
+      path: models/static
+    - title: Images
+      path: models/images
+    - title: Rich Text
+      path: models/text
+
+views:
+  name: View
+  - title: Overview
+    path: endpoints/
+  - title: JavaScript
+    path: controllers/js
+  - title: Mustache
+    path: views/mustache
+  - title: Dynamic
+    path: views/dynamic
+  - title: Forms
+    path: endpoints/forms
+  - title: Assets
+    path: views/assets
+  - title: Errors
+    path: views/errors
+
+scripting:
+- title: Overview
+  path: scripting/
+- title: Models
+  path: scripting/models
+- title: Queries
+  path: scripting/queries
+- title: Suppliers
+  path: controllers/suppliers
+- title: Helpers
+  path: scripting/helpers
+- title: Messages
+  path: scripting/messages
+- title: Email
+  path: scripting/email
+
+users:
+- title: Overview
+  path: users/
+- title: Settings
+  path: users/settings
+- title: Profiles
+  path: users/profiles
+- title: Roles
+  path: users/roles
+- title: Scripting
+  path: users/scripting
+- title: Login
+  path: users/login

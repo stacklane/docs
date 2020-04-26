@@ -1,6 +1,7 @@
 ---
 title: Connectors
 summary: Learn about importing and using Stacklane Connectors
+order: 300
 ---
 
 Connectors provide a secure and type-safe way to access third party REST APIs,
@@ -8,7 +9,7 @@ as well as define Content Security Policies for third party client-side librarie
 
 # Registry
 
-Stacklane maintains a registry of Connectors. [View the listing](/integrations#connectors).
+Stacklane maintains a registry of Connectors. [View the listing →](/integrations#connectors).
 
 # Importing
 
@@ -29,7 +30,7 @@ Within this file specify each imported connector's GIT source
 
 Connectors may predefine one or more `<link>` and `<script>` tags,
 which may be thought of as a client-side connection.
-These specialized third party tags are used directly in [Mustache](/🗄/Article/endpoints/mustache.md).
+These specialized third party tags are used directly in [Mustache](/🗄/Article/views/mustache.md).
 The main advantage to using connector tags is their ability to set a Content Security Policy.
 
 ## Usage

@@ -1,6 +1,8 @@
 ---
 title: User Settings
 summary: This configuration is needed to enable user functionality.
+short: Settings
+order: 0
 ---
 
 To enable user or session functionality drop a settings file into the root named `/👤.yaml`.

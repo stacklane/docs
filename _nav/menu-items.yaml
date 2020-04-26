@@ -1,87 +1,21 @@
-dev:
-- title: Overview
-  path: dev/overview
-- title: Repositories
-  path: dev/repositories
-- title: Credentials
-  path: dev/credentials
-- title: Quotas
-  path: quotas
+items:
+  - name: Development
+    category: dev
+    more:
+      - title: Quotas
+        path: quotas
+  - name: Settings
+    category: settings
+  - name: Models
+    category: models
+  - name: Fields
+    category: fields
+  - name: Views
+    category: views
+  - name: Controllers
+    category: controllers
+  - name: Users
+    category: users
+  - name: Modules
+    category: modules
 
-settings:
-- title: Overview
-  path: settings/
-- title: Manifest
-  path: settings/manifest
-- title: Properties
-  path: settings/properties
-- title: Nested
-  path: settings/nested
-- title: Connectors
-  path: settings/connectors
-- title: Web App
-  path: settings/app
-
-models:
-- title: Overview
-  path: models/
-- title: Types
-  path: models/types
-- title: Containers
-  path: models/containers
-- title: Fields
-  path: models/fields
-- title: Ordering
-  path: models/ordering
-- title: Static
-  path: models/static
-- title: Images
-  path: models/images
-- title: Rich Text
-  path: models/text
-
-endpoints:
-- title: Overview
-  path: endpoints/
-- title: JavaScript
-  path: endpoints/js
-- title: Mustache
-  path: endpoints/mustache
-- title: Dynamic
-  path: endpoints/dynamic
-- title: Forms
-  path: endpoints/forms
-- title: Assets
-  path: endpoints/assets
-- title: Errors
-  path: endpoints/errors
-
-scripting:
-- title: Overview
-  path: scripting/
-- title: Models
-  path: scripting/models
-- title: Queries
-  path: scripting/queries
-- title: Suppliers
-  path: scripting/suppliers
-- title: Helpers
-  path: scripting/helpers
-- title: Messages
-  path: scripting/messages
-- title: Email
-  path: scripting/email
-
-users:
-- title: Overview
-  path: users/
-- title: Settings
-  path: users/settings
-- title: Profiles
-  path: users/profiles
-- title: Roles
-  path: users/roles
-- title: Scripting
-  path: users/scripting
-- title: Login
-  path: users/login

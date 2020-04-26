@@ -1,6 +1,8 @@
 ---
 title: User Login
+short: Login
 summary: Learn about the steps to build a login area.
+order: 100
 ---
 
 Login / signup areas are created within a specific directory 

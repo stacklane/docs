@@ -1,5 +1,14 @@
 title: string
 
+short?: string
+
+order:
+  type: integer
+  order: true
+  init: true
+  min: -1000
+  max: 1000
+
 content:
   type: document-markdown
   render:
@@ -18,3 +27,7 @@ uid:
 summary:
   type: string
   optional: true
+
+#hidden:
+#  type: boolean
+ # init: true

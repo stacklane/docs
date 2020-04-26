@@ -1,7 +1,7 @@
 ---
 title: Properties
-
 summary: A purpose specific SCSS file which may define colors, phrases, and options for a running instance.
+order: 100
 ---
 
 # File Format

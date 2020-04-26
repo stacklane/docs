@@ -1,6 +1,7 @@
 ---
 title: Repositories
 summary: Learn about support source code repositories.
+order: 20
 ---
 
 A repository URL is only needed for live deployment and testing from within the Stacklane management console UI.

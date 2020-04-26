@@ -1,6 +1,7 @@
 ---
 title: Manifest
 summary: The manifest configuration file defines basic properties about a site.
+order: 1
 ---
 
 The manifest is the **only** required configuration file in a site's source.

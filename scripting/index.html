@@ -19,14 +19,14 @@
     <p>
         Stacklane uses a JavaScript <em>subset</em> for server-side logic.
         This subset is designed for speed, security, and compile time validation.
-        The primary uses are <a href="/endpoints/js">endpoints</a> and <a href="/endpoints/js">suppliers</a>.
+        The primary uses are <a href="/controllers/js">endpoints</a> and <a href="/controllers/js">suppliers</a>.
     </p>
     <p>
         The JS engine implies <code>"use strict"</code> by default, however
         its strictness goes beyond this standard setting.
         In general Stacklane will not a let a script successfully compile
         unless it can validate all properties and methods referenced actually exist.
-        This is particularly helpful when it comes to referencing <a href="/models/">data models</a>.
+        This is particularly helpful when it comes to referencing <a href="/models/overview">data models</a>.
     </p>
 
     <div class="article-list">
@@ -40,7 +40,7 @@
             <p>Create criteria based queries to find models.</p>
         </a>
 
-        <a class="box" href="/scripting/suppliers">
+        <a class="box" href="/controllers/suppliers">
             <h2>Suppliers</h2>
             <p>Reuse values across scripts and templates.</p>
         </a>

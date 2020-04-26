@@ -1,6 +1,8 @@
 ---
 title: User Scripting
 summary: Learn about scripting with users, roles, and profiles.
+short: Scripting
+order: 30
 ---
 
 User scripting puts into practice the concepts and setup from

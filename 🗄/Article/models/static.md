@@ -1,6 +1,8 @@
 ---
 title: Static Documents
+short: Static
 summary: Learn about defining static documents within source code.
+order: 40
 ---
 
 In certain cases *dynamic* model data is overkill, but model types and structured data are still warranted.
@@ -50,7 +52,7 @@ description: Neat
 ```
 
 In this particular definition `first-example.yaml` is arbitrary / unused.
-We'll discuss below how to optionally map `first-example` to a [UID field](/🗄/Article/models/fields.md#uid).
+We'll discuss below how to optionally map `first-example` to a [UID field](/🗄/Article/fields/basic.md#uid).
 
 ## Markdown
 
@@ -89,10 +91,10 @@ Antarctica is a *very* fine place.
 There are a few things going on in this example:
 
 1. YAML is still used for most fields, and this YAML is placed between the "---" lines.  Also known as "front matter".
-2. The special field type `document-text` transforms the markdown content that follows into a [rich text field](/🗄/Article/models/fields.md#rich).
-3. The special field type `document-uid` maps the directory and file name onto a [UID field](/🗄/Article/models/fields.md#uid).
+2. The special field type `document-text` transforms the markdown content that follows into a [rich text field](/🗄/Article/fields/text.md).
+3. The special field type `document-uid` maps the directory and file name onto a [UID field](/🗄/Article/fields/basic.md#uid).
 
-`document-uid` is important because it now allows us to use this value in a [dynamic path parameter](/🗄/Article/endpoints/dynamic.md).
+`document-uid` is important because it now allows us to use this value in a [dynamic path parameter](/🗄/Article/views/dynamic.md).
 
 ```file-name
 /{article}📎.yaml
@@ -120,7 +122,7 @@ When using `document-date` it typically makes sense to enable ordering by using 
 > This currently only applies when using root file dynamic path parameters, as in the above example.
 
 When using static markdown documents, it's common to link between them.
-Assuming you're using [dynamic path parameters](/🗄/Article/endpoints/dynamic.md) for your
+Assuming you're using [dynamic path parameters](/🗄/Article/views/dynamic.md) for your
 static model document, then within the markdown content structure
 links to point directly to other documents (using absolute paths):
 

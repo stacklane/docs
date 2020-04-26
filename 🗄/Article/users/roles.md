@@ -1,6 +1,8 @@
 ---
 title: User Roles
 summary: Learn about user roles and permissions
+short: Roles
+order: 20
 ---
 
 Stacklane's role and permission system is designed 
@@ -10,7 +12,7 @@ The best permission system is the one you'll actually use.
 Roles are defined (and redefined) in any 
 [user settings file](/🗄/Article/users/settings.md).
 Roles permissions are primarily centered around 
-access to [models](/models/), since model usage
+access to [models](/🗄/Article/models/overview.md), since model usage
 *broadly crosses all endpoints*.
 
 # Default Role {#default}

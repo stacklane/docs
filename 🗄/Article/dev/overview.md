@@ -1,6 +1,8 @@
 ---
 title: Development Overview
 summary: Learn the basics of Stacklane development.
+short: Overview
+order: 10
 ---
 
 Stacklane doesn't require any special UI setup to start coding -- everything

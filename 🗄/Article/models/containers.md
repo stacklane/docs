@@ -1,6 +1,7 @@
 ---
 title: Containers
 summary: Learn about designing models with containers in mind.
+order: 20
 ---
 
 # Overview
@@ -24,7 +25,7 @@ the back reference method would be `task.list()`
 Containers may be one level deep -- one parent container may have any number of contained types,
 however those child types may not themselves be containers.
 
-Keep in mind that [model links](/🗄/Article/models/fields.md#model-links) are another way
+Keep in mind that [model links](/🗄/Article/fields/models.md#model-links) are another way
 to maintain model associations.
 
 # Access Control {#access}
@@ -40,6 +41,6 @@ For more information see the document on [User Profiles](/🗄/Article/users/pro
 If a model type within a container defines unique values, then those
 unique values are local/specific to a given container.
 
-For example, given Blog ▶ Post, where Post has a [UID](/🗄/Article/models/fields.md#uid) field named "slug".
+For example, given Blog ▶ Post, where Post has a [UID](/🗄/Article/fields/basic.md#uid) field named "slug".
 If there are many Blog's, and many Posts within any given Blog, then two Posts may have the
 same UID if they are in **separate** Blog's.

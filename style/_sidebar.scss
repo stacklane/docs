@@ -1,6 +1,9 @@
 @import "/style/variables";
 
 #sidebar{
+  $nav-category-left: 1.5rem;
+  $selection-indicator-width: 3px;
+
   z-index: $zindex-sticky;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
@@ -13,31 +16,20 @@
 
   ul{
     list-style-type: none;
-    display:none;
-    margin-top: .75rem;
-    margin-left: .25rem;
+    display: none;
+    margin-bottom: .75rem;
+    padding-bottom: .75rem;
+    padding-left: $nav-category-left;
+    border-bottom: $box-border;
   }
   ul.is-active{
     display:block;
   }
 
-  .nav-category{
-    cursor: pointer;
-    position: relative;
-  }
-
-  .nav-category:not(:first-child) {
-    margin-top: 1rem;
-  }
-
-  .nav-separator + .nav-category{
-    margin-top: 0rem;
-  }
-
   .nav-category:after{
     @include arrow;
     right: 1rem;
-    border: 1px solid rgba(0,0,0,.2);
+    border: 1px solid $grey-dark;
     border-radius: 0px;
     border-right: 0;
     border-top: 0;
@@ -45,8 +37,8 @@
   }
 
   .nav-category.is-active:after{
-    margin-top:0;
-    border: 1px solid rgba(0,0,0,.2);
+    margin-top: 0;
+    border: 1px solid $grey-dark;
     border-radius: 0px;
     border-left: 0;
     border-bottom: 0;
@@ -55,7 +47,8 @@
   .nav-separator{
     border-top: $box-border;
     margin-top: 1rem;
-    padding-top: 1rem;
+    margin-bottom: 1rem
+    //padding-top: 1rem;
   }
 
   .nav-separator a,
@@ -65,32 +58,86 @@
     color: black;
   }
 
-  nav h1 svg{
-    vertical-align: text-bottom;
-    margin-right: .15rem;
-  }
+  //nav h1 svg{
+  //  vertical-align: text-bottom;
+  //  margin-right: .15rem;
+ // }
 
-  a.nav-link{
-    border-radius: 0;
-    padding: 0;
-    color: #4c555a;
-    display:block;
-    border-right: 2px solid transparent;
+  .is-selectable-nav-link{
+    border-right: $selection-indicator-width solid transparent;
 
     &.is-active{
-      border-right: 2px solid $link;
+      border-right: $selection-indicator-width solid $link;
     }
+  }
+
+  .nav-category + ul a{
+    border-radius: 0;
+    padding: 0;
+    color: $grey-dark;
+    display:block;
 
     &:visited{
-      color: #4c555a;
+      color: $grey-dark;
     }
     &:hover {
       color: black;
     }
+  }
 
-    &.level:not(:last-child){
-      margin-bottom: .5rem;
+  .main-nav-link{
+    cursor: pointer;
+    position: relative;
+    @include unselectable;
+    background: no-repeat 0rem 50%;
+    background-size: 1.25rem 1.25rem;
+    padding-left: $nav-category-left;
+    overflow: hidden;
+    font-weight: $weight-medium;
+    display: block;
+    color: $grey-dark;
+
+    //&:not(:first-child) {
+      padding-top: .25rem;
+    //}
+    padding-bottom: .25rem;
+
+    &:hover{
+      color: $black;
     }
+  }
+  .main-nav-link-settings{
+    background-image: url(/images/settings.svg)
+  }
+  .main-nav-link-examples{
+    background-image: url(/images/examples.svg)
+  }
+  .main-nav-link-releases{
+    background-image: url(/images/releases.svg)
+  }
+  .main-nav-link-integrations{
+    background-image: url(/images/integrations.svg)
+  }
+  .main-nav-link-dev{
+    background-image: url(/images/dev.svg)
+  }
+  .main-nav-link-models{
+    background-image: url(/images/models.svg)
+  }
+  .main-nav-link-fields{
+    background-image: url(/images/fields.svg)
+  }
+  .main-nav-link-views{
+    background-image: url(/images/views.svg)
+  }
+  .main-nav-link-controllers{
+    background-image: url(/images/controllers.svg)
+  }
+  .main-nav-link-users{
+    background-image: url(/images/users.svg)
+  }
+  .main-nav-link-modules{
+    background-image: url(/images/modules.svg)
   }
 }
 

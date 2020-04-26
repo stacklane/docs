@@ -1,18 +1,20 @@
 @import "/style/variables";
 
-.article-list{
+ul.article-list{
   display: flex;
   flex-wrap: wrap;
+  list-style: none;
 
-  h2{
-    font-weight: $weight-medium;
-  }
-  a.box{
+  li{
     width: 100%;
     margin: .25rem !important;
   }
+  a strong{
+    font-weight: $weight-medium;
+    display:block;
+  }
   @include tablet{
-    a.box{
+    li{
       width: 48%;
     }
   }

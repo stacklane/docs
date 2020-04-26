@@ -1,5 +1,7 @@
 ---
 title: Nested Sites
+short: Nested
+order: 200
 summary: Stacklane sites may be organized into smaller sub-sites and mounted at a path.
 ---
 
