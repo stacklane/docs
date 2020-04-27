@@ -8,6 +8,12 @@ ul.article-list{
   li{
     width: 100%;
     margin: .25rem !important;
+    display: flex;
+    flex-direction:row;
+    flex-grow:1
+  }
+  a{
+    flex-grow: 1;
   }
   a strong{
     font-weight: $weight-medium;

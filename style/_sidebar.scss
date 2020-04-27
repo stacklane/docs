@@ -89,7 +89,8 @@
     cursor: pointer;
     position: relative;
     @include unselectable;
-    background: no-repeat 0rem 50%;
+    background-repeat: no-repeat;
+    background-position: 0rem 50%;
     background-size: 1.25rem 1.25rem;
     padding-left: $nav-category-left;
     overflow: hidden;
@@ -105,39 +106,6 @@
     &:hover{
       color: $black;
     }
-  }
-  .main-nav-link-settings{
-    background-image: url(/images/settings.svg)
-  }
-  .main-nav-link-examples{
-    background-image: url(/images/examples.svg)
-  }
-  .main-nav-link-releases{
-    background-image: url(/images/releases.svg)
-  }
-  .main-nav-link-integrations{
-    background-image: url(/images/integrations.svg)
-  }
-  .main-nav-link-dev{
-    background-image: url(/images/dev.svg)
-  }
-  .main-nav-link-models{
-    background-image: url(/images/models.svg)
-  }
-  .main-nav-link-fields{
-    background-image: url(/images/fields.svg)
-  }
-  .main-nav-link-views{
-    background-image: url(/images/views.svg)
-  }
-  .main-nav-link-controllers{
-    background-image: url(/images/controllers.svg)
-  }
-  .main-nav-link-users{
-    background-image: url(/images/users.svg)
-  }
-  .main-nav-link-modules{
-    background-image: url(/images/modules.svg)
   }
 }
 
