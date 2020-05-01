@@ -56,7 +56,7 @@ at which point client side ordering is also a possibility.
 
 # Hierarchy
 
-The [hierarchy](/🗄/Article/fields/primitives.md#hierarchy) field type
+The [hierarchy](/🗄/Article/fields/basic.md#hierarchy) field type
 provides custom, manual ordering of the Universal model type.
 When specified on a Universal model, it automatically changes the
 natural ordering to use this field.
