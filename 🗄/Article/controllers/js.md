@@ -169,37 +169,6 @@ Result:
 }
 ```
 
-# Click Actions {#get-action}
-
-GET's are generally designed to be side effect free, and only for retrieving information.
-There are certain cases when coming from an external site, or link in an email,
-where it may be useful to update models or write cookies.
-
-If this case is needed use the mouse prefix "🖱" to designate the special GET endpoint to respond to such requests:
-
-```file-name
-/🖱verify.js
-```
-```javascript
-import {Verify} from '📦';
-import {Cookie} from '🍪';
-import {t} from '&';
-
-try {
-  Verify.token(t).get().verified = true;
-  new Cookie().name('verified').value(t).days(30);
-  Redirect.dir('verified');
-} catch ($ModelNotFound){
-  Redirect.dir('unverified');
-}
-```
-
-Click actions are a narrow case, and there are few limitations to be aware of:
-
-- [Redirect](#redirect) is the only valid response.
-- [Suppliers](/🗄/Article/controllers/suppliers.md) are not supported.
-- Models may be updated, but not created or deleted.
-
 # Configuration
 
 Adding a file with the same name as the JavaScript endpoint, but with 

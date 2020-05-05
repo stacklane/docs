@@ -8,5 +8,6 @@ order: -1000
 - [**JavaScript** Use server-side JS for controllers and JSON. {.box}](/🗄/Article/controllers/js.md)
 - [**Suppliers** Reuse values across controllers and views. {.box}](/🗄/Article/controllers/suppliers.md)
 - [**Forms** Simplify form handling and validation for models. {.box}](/🗄/Article/controllers/forms.md)
+- [**Click Actions** Handle visitor interactions during GET. {.box}](/🗄/Article/controllers/get-actions.md)
 
 {.article-list}
