@@ -10,6 +10,38 @@ order: -1000
 Every non-embedded model type is pre-defined with a unique `id`, plus `created` and `modified` timestamp fields.
 These are automatically managed.  All are available immediately after model creation, even prior to persisting.
 
+# Labels
+
+When using models for [forms](/🗄/Article/controllers/forms.md),
+it's useful to define labels and descriptions for the field, which may then be used directly within HTML.
+By default all labels are assumed to be in the language of the [Manifest locale](/🗄/Article/settings/manifest.md#locale).
+
+```file-name
+/📦/🌐Product.yaml
+```
+```yaml
+name:
+  type: string
+  label: Name
+  placeholder: Product Name
+  about: A great name for the product.
+```
+
+Even if not explicitly given, a default label is generated for every field using its name.
+"name" -> "Name", "myField" -> "My Field".
+
+## Option Labels
+
+When using the [options field type](/🗄/Article/fields/basic.md#options), each option is given a default label.
+To define custom labels for option values use the following name/value format:
+
+```yaml
+status:
+  type: options
+  values:
+    act: Active
+    dis: Disabled
+```
 
 # Unique Values {#unique}
 

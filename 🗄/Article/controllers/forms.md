@@ -10,7 +10,7 @@ Stacklane provides a specialized model type.
 
 # Overview
 
-All models have a corresponding Form type.
+All models have a corresponding *default* Form type.
 For example a `Product` model also has a `Product.Form`.
 This may be thought of a singleton for the current user, request, and response.
 
@@ -20,40 +20,6 @@ Forms are immutable once initialized --
 for example, a given Form ID being passed in the `_form` parameter will never have field values which change over time.
 This means that every form submission results in a new, unique Form ID.
 Form data is only accessible from the same client, for a period of up to 4 hours.
-
-## Labels
-
-> {.alert .is-info .is-small}
->
-> All labels are assumed to be in the language of the [Manifest locale](/🗄/Article/settings/manifest.md#locale).
-
-When using models for forms, it's useful to define labels and descriptions for the field, which may then be used directly within HTML.
-
-```file-name
-/📦/🌐Product.yaml
-```
-```yaml
-name:
-  type: string
-  label: Name
-  placeholder: Product Name
-  about: A great name for the product.
-```
-
-Even if not explicitly given, a default label is generated for every field using its name. "name" -> "Name", "myField" -> "My Field".
-
-## Option Labels
-
-When using the `options` field type, each option is given a default label.
-To define a custom label for an option use the following format:
-
-```yaml
-status:
-  type: options
-  values:
-    act: Active
-    dis: Disabled
-```
 
 # Viewing Forms {#view}
 
