@@ -4,13 +4,10 @@ summary: Access simple form values.
 order: 201
 ---
 
-> {.alert .is-info .is-small}
->
-> For model-based form handling check out [Model Forms](/🗄/Article/controllers/forms.md).
+# Overview
 
 There are several different ways to access low-level form values.
-Note: If your form parameter is separated by dashes,
-such as `this-that`, then import it with camel case instead: `thisThat`.
+For more expressive model-based form handling check out [Controllers → Forms](/🗄/Article/controllers/forms.md).
 
 # Single Values
 
@@ -19,13 +16,16 @@ such as `this-that`, then import it with camel case instead: `thisThat`.
 
 import {specific, param, here as Other} from 'form';
 
-/* As hash / object */
+/* As object */
 
 import {Form} from 'form{}';
 
 let theValue = Form.theParamName;
 let theOtherValue = Form['theOtherParam'];
 ```
+
+If the form parameter name is separated by dashes on the client-side,
+such as `this-that`, then import it with camel case instead: `thisThat`.
 
 # Multiple Values
 
@@ -39,7 +39,7 @@ import {selections} from 'form[]';
 
 selections.forEach(v=>{ /*...*/ });
 
-/* As hash / object */
+/* As object */
 
 import {Form} from 'form{}';
 
@@ -50,15 +50,15 @@ Form.values('selections').forEach(v=>{ /*...*/ });
 
 The `Form` object imported from `'form{}'` has the following methods:
 
-### keys()
+### `keys()`
 
 Returns an array of submitted form values, which may be iterated with `.forEach(key=>{..})`
 
-### has(keyName)
+### `has(keyName)`
 
 Returns true if keyName was submitted for the form, even if the submitted value is empty.
 
-### values(keyName)
+### `values(keyName)`
 
 Returns an array of values for a same-named field, regardless of whether the form submission contained the value.
 The returned value will never be null, but may be an empty array.
