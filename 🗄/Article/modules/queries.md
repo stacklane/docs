@@ -15,6 +15,12 @@ For example, a [Mustache endpoint](/🗄/Article/views/mustache.md)
 may iterate over a query given by a [supplier](/🗄/Article/controllers/suppliers.md)
 to display results as HTML.
 
+# Import
+
+```javascript
+import {Article, Product} from '📦';
+```
+
 # All Results {#all}
 
 To query all models of a type, without any filters, use the `all()` method. For example, `Article.all()`

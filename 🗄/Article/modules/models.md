@@ -6,6 +6,12 @@ short: Models
 order: 10
 ---
 
+# Import
+
+```javascript
+import {List, Note} from '📦';
+```
+
 # Create
 
 ```javascript
