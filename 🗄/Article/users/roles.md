@@ -130,6 +130,10 @@ default:
 
 # Sub-Directory Roles {#sub}
 
+> {.alert .is-info .is-small}
+>
+> A similar and more robust approach is possible with [nested sites](/🗄/Article/settings/nested.md).
+
 User settings files may be placed in [sub-directories](/🗄/Article/users/settings.md#sub).
 This allows roles and permissions to be scoped to a directory and its descendants.
 
