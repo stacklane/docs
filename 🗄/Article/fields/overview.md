@@ -8,7 +8,7 @@ order: -1000
 # Types
 
 Stacklane supports a wide variety of
-[business-specific field types](/🗄/Article/fields/basic.md), including
+[case-specific field types](/🗄/Article/fields/basic.md), including
 [images](/🗄/Article/fields/image.md) and
 [rich text](/🗄/Article/fields/text.md).
 
