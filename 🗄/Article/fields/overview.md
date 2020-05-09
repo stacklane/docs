@@ -5,10 +5,17 @@ summary: Learn about available field types for your models.
 order: -1000
 ---
 
-# Default
+# Types
 
-Every non-embedded model type is pre-defined with a unique `id`, plus `created` and `modified` timestamp fields.
-These are automatically managed.  All are available immediately after model creation, even prior to persisting.
+Stacklane supports a wide variety of
+[business-specific field types](/🗄/Article/fields/basic.md), including
+[images](/🗄/Article/fields/image.md) and
+[rich text](/🗄/Article/fields/text.md).
+
+In addition to custom model fields, every non-embedded model type is pre-defined with a
+unique `id`, plus `created` and `modified` timestamp fields.
+These fields are automatically managed, and all are available immediately after model creation,
+even prior to persisting.
 
 # Labels
 
@@ -28,7 +35,7 @@ name:
 ```
 
 Even if not explicitly given, a default label is generated for every field using its name.
-"name" -> "Name", "myField" -> "My Field".
+"name" → "Name", "myField" → "My Field".
 
 ## Option Labels
 
@@ -42,6 +49,43 @@ status:
     act: Active
     dis: Disabled
 ```
+
+# Metadata {#metadata}
+
+Field labels and other field properties may be accessed statically,
+even when not using automatic [form handling](/🗄/Article/controllers/forms.md).
+
+## Example
+
+```html
+<!--TEMPLATE mustache-->
+{{% import {Product} from '📦' }}
+<label>{{Product.name.label}}</label>
+```
+
+## Properties
+
+The following properties are available to all fields:
+
+### `required`
+
+true if the field is required.
+
+### `optional`
+
+true if the field is optional.
+
+### `label`
+
+The custom label if defined, or a default label based on the field's name.
+
+### `placeholder`
+
+The placeholder text if defined.
+
+### `about`
+
+The about text if defined.
 
 # Unique Values {#unique}
 
