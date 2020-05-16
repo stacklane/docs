@@ -25,7 +25,7 @@
         </p>
     </header>
 
-    <h1>Load from GitHub.com</h1>
+    <h2>Load from GitHub.com</h2>
 
     <p>
         <form id="form" method="post" action="/site">
@@ -45,16 +45,18 @@
         <progress id="example-loading" class="progress is-small is-primary d-none" max="100">15%</progress>
     </p>
 
-    <h1>Examples</h1>
+    <h2>Examples</h2>
 
-    <div class="article-list">
+    <ul class="article-list">
         {{#Example.all as example}}
+        <li>
         <a href="{{example.src}}" class="box example-loader">
-            <h2>{{example.title}}</h2>
+            <strong>{{example.title}}</strong>
             <p>{{example.description}}</p>
         </a>
+        </li>
         {{/Example.all}}
-    </div>
+    </ul>
 
 </article>
 
