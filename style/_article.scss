@@ -76,7 +76,7 @@ article pre[class*="language-"]:last-child{
   margin-bottom: 0rem;
 }
 
-article > h1{
+article > h2{
   font-size: $size-4;
   position: relative;
   display: flex;
@@ -104,9 +104,9 @@ article > h1{
   pointer-events: none;
 }*/
 
-$article-h1-top-spacing: 3.125rem;
+$article-h2-top-spacing: 3.125rem;
 
-article > h1:target {
+article > h2:target {
   position: relative;
   border-top: $navbar-total-height - 2rem solid transparent;
   margin-top: -($navbar-total-height - 2rem);
@@ -141,15 +141,15 @@ article > h1 .is-header-anchor:after{
   content: '#';
 }*/
 
-article > h1:after{
+article > h2:after{
   content: '';
   flex-grow: 1;
   margin-left: .625rem;
   border-top: $box-border;
 }
 
-article > h1, article header + p, article header + .article-list{
-  padding-top: $article-h1-top-spacing;
+article > h2, article header + p, article header + .article-list{
+  padding-top: $article-h2-top-spacing;
 }
 
 article header h1{
@@ -157,7 +157,7 @@ article header h1{
   color: black;
 }
 
-article > h2{
+article > h3{
   font-size: $size-6;
   text-decoration: none;
   margin-top: 1rem;
@@ -165,7 +165,7 @@ article > h2{
   font-weight: 600;
 }
 
-article > h3{
+article > h4{
   font-size: $size-6 - 0.1rem; //$size-7;
   //text-decoration: underline;
   margin-top: 1rem;
@@ -197,7 +197,7 @@ article .more-button{
   }
 }
 
-article h1 .more-button, article h2 .more-button, article h3 .more-button{
+article h1 .more-button, article h2 .more-button, article h3 .more-button, article h4 .more-button{
   margin-left: .25rem;
 }
 

@@ -10,7 +10,7 @@ Stacklane uses method chaining to define the criteria of returned query results.
 In general with method chaining _order matters_ -- for example, field filters must be defined
 before calling `limit`.
 
-The results of a query are generally "used" outside of the script itself.  
+The results of a query are generally "used" outside of the script itself.
 For example, a [Mustache endpoint](/🗄/Article/views/mustache.md)
 may iterate over a query given by a [supplier](/🗄/Article/controllers/suppliers.md)
 to display results as HTML.

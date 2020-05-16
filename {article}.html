@@ -24,8 +24,7 @@
                 {{#article.summary}}<p>{{article.summary}}</p>{{/article.summary}}
             </header>
 
-            {{! TODO minimumHeaderLevel=2 but need to fix styling first }}
-            {{{article.get.content.html}}}
+            {{{article.get.content.html minimumHeaderLevel=2}}}
 
             <footer>
                 <div class="suggestion"><span>Any suggestion or typo? </span>
