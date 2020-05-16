@@ -150,9 +150,11 @@ main + footer{
   padding-top: 1rem;
   padding-bottom: 2rem;
   padding-right: 1rem;
+  padding-left: 1rem;
   border-top: $box-border;
   text-align: right;
-  font-size: .8rem;
+  font-size: .85rem;
+  opacity: .8;
 }
 
 

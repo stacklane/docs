@@ -49,7 +49,7 @@ PUT completely replaces all files for the site.
 It receives the request `Content-Type` of `application/zip`.
 The body should contain the binary zip data.
 
-PUT always creates a new`ProjectId` if one does not exist,
+PUT always creates a new `ProjectId` if one does not exist,
 therefore unlike other verbs it will never return 404.
 The response from a successful upload is the current contents as defined by `GET`.
 

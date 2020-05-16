@@ -5,6 +5,7 @@
 {{% svg /_icons/ as icons }}
 
 {{% import {article} from '🔗' }}
+{{% const articleUid = article.uid }}
 
 {{< nav-layout}}
 
@@ -25,13 +26,6 @@
             </header>
 
             {{{article.get.content.html minimumHeaderLevel=2}}}
-
-            <footer>
-                <div class="suggestion"><span>Any suggestion or typo? </span>
-                    <a class="suggestion-edit-link"
-                       href="https://github.com/stacklane/docs/edit/master/🗄/Article/{{article.uid}}.md"
-                       target="_blank" rel="noreferrer noopener nofollow">Edit on GitHub</a></div>
-            </footer>
         </article>
     </div>
     <div class="column is-narrow is-hidden-tablet-only is-hidden-mobile">
