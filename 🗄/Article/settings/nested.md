@@ -66,17 +66,6 @@ Minimum length is 4 characters, maximum length is 25 characters.
 namespace: my-namespace
 ```
 
-## Shared Data
-
-A nested site may share data with its parent by specifying:
-
-```yaml
-namespace: shared
-```
-
-However this should only be used in special scenarios, especially when the parent and nested
-site are sharing the same data model.
-
 # `🎨`
 
 If the nested site contains a [properties file](/🗄/Article/settings/properties.md),
