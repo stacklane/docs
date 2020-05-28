@@ -36,9 +36,4 @@ a standalone domain name.  Default: `true`
 
 true/false value that determines whether a site may be 
 [nested](/🗄/Article/settings/nested.md)
-at a sub-path of another site.  Default: `true`
-
-# `frameable`
-
-true/false value that determines whether a site may be embedded in a frame
-of another site on the same domain.  Default: `false`
+at a sub-path of another Stacklane site.  Default: `true`
