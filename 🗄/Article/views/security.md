@@ -56,6 +56,7 @@ frame-src, script-src, connect-src, style-src, and font-src may be specified dir
         data-connect-src="https://connect.asset.com/"
         data-style-src="https://style.asset.com/"
         data-font-src="https://font.asset.com/"
+        data-img-src="https://img.asset.com/"
         data-script-src="https://script.asset.com/"></script>
 ```
 
